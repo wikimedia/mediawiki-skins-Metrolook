@@ -329,7 +329,6 @@ echo $grav_url;
 			<div id="mw-panel" class="noprint">
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
 				<br style="clear:both;line-height:0%;" />
-<a href="http://www.pidgi.net/wiki/PidgiWiki:Requests" style="text-decoration:none;" class="hoverbox"><div style="width:142px;margin-left:10px;margin-top:4px;margin-bottom:4px;padding:8px;text-align:center;color:#fff;font-size:80%;" class="hoverbox">Send in a request</div></a>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 <!-- feature -->
 <div class="portal expanded" id='p-Feature'>
