@@ -28,7 +28,7 @@ $wgExtensionCredits['skin'][] = array(
 	'description' => 'Metrolook skin for MediaWiki.',
 	'version' => '1.0.1',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
-	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison' ),
+	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
