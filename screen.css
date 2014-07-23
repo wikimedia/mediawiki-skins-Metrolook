@@ -43,10 +43,6 @@ div#content {
 	top:40px;
 	overflow:auto;
 	-webkit-overflow-scrolling: touch;
-	width: -webkit-calc(100% - 338px);
-	width: -moz-calc(100% - 338px);
-	width: -o-calc(100% - 338px);
-	width: calc(100% - 338px);
 }
 /* Head */
 #mw-page-base {
