@@ -42,21 +42,21 @@ $wgValidSkinNames['metrolook'] = 'Metrolook';
 // Register modules
 $wgResourceModules['skins.metrolook.styles'] = array(
 	'styles' => array(
-		'screen.css' => array( 'media' => 'screen' ),
+		'Metrolook/screen.css' => array( 'media' => 'screen' ),
 	),
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
 $wgResourceModules['skins.metrolook.js'] = array(
 	'scripts' => array(
-		'collapsibleTabs.js',
-		'vector.js',
+		'Metrolook/collapsibleTabs.js',
+		'Metrolook/vector.js',
 	),
 	'position' => 'top',
 	'dependencies' => array(
 		'jquery.throttle-debounce',
 		'jquery.tabIndex',
 	),
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
