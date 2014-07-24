@@ -202,7 +202,7 @@ $(function () {
 		<!-- content -->
 		<div id="content" class="overthrow">
 			<a id="top"></a>
-			<div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
+			
 				<?php if( $this->data['newtalk'] ): ?>
 				<!-- newtalk -->
 				<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
