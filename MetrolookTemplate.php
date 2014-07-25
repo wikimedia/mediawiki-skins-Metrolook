@@ -392,18 +392,6 @@ echo $grav_url;
 					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 					?>></a></div>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
-<!-- feature -->
-<div class="portal expanded" id='p-Feature'>
-	<h5>Featured media</h5>
-	<div class="body">
-				<ul style="padding-right:20px;">
-	<a href="<?php $this->msg('sidebar-feature-url') ?>">
-	<img width="100%" title="<?php $this->msg('sidebar-feature-alttext') ?>" 
-		alt="<?php $this->msg('sidebar-feature-alttext') ?>" 
-		src="<?php $this->msg('sidebar-feature-imgsrc') ?>" /></a>
-				</ul>
-			</div>
-</div>
 			</div>
 		</div>
 
