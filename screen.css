@@ -531,48 +531,45 @@ div#mw-panel-right {
 }
 /* Footer */
 div#footer {
-	margin-top: 0;
-	padding: 0.75em;
-	/* @embed */
-	background-image: url(images/border.png);
-	background-position: top left;
-	background-repeat: repeat-x;
-	direction: ltr;
+  margin-left: 10em;
+  margin-top: 0;
+  padding: 0.75em;
+  direction: ltr;
 }
 div#footer ul {
-	list-style: none;
-	list-style-image: none;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
 }
 div#footer ul li {
-	margin: 0;
-	padding: 0;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	color: #333333;
-	font-size: 0.7em;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  color: #333;
+  font-size: 0.7em;
 }
 div#footer #footer-icons {
-	float: right;
-}
-/* @noflip */
-body.ltr div#footer #footer-places {
-	float: left;
-}
-div#footer #footer-info li {
-	line-height: 1.4em;
+  float: right;
 }
 div#footer #footer-icons li {
-	float: left;
-	margin-left: 0.5em;
-	line-height: 2em;
+  float: left;
+  margin-left: 0.5em;
+  line-height: 2em;
+  text-align: right;
+}
+div#footer #footer-info li {
+  line-height: 1.4em;
 }
 div#footer #footer-places li {
-	float: left;
-	margin-right: 1em;
-	line-height: 2em;
+  float: left;
+  margin-right: 1em;
+  line-height: 2em;
+}
+body.ltr div#footer #footer-places {
+  /* @noflip */
+  float: left;
 }
 
 /*
@@ -1213,6 +1210,30 @@ div#bodyContent {
 #ca-watch.icon a span {
   display: none;
 }
+
+/* Animate between standard and high definition layouts */
+
+body.vector-animateLayout div#content,
+body.vector-animateLayout div#footer
+body.vector-animateLayout #left-navigation {
+   transition: margin-left 250ms, padding 250ms;
+}
+body.vector-animateLayout #p-logo,{ 
+   transition: left 250ms;
+}
+body.vector-animateLayout #mw-panel,{ 
+   transition: padding-right 250ms;
+}
+body.vector-animateLayout #p-search {
+   transition: margin-right 250ms;
+}
+body.vector-animateLayout #p-personal {
+   transition: right 250ms;
+}
+body.vector-animateLayout #mw-head-base {
+   transition: margin-left 250ms;
+}
+
 div.vectorTabs ul {
 	/* @embed */
 	background-image:url(images/tab-break.png);
