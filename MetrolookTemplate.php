@@ -91,7 +91,7 @@ class MetrolookTemplate extends BaseTemplate {
 		$this->data['variant_urls'] = $nav['variants'];
 
 		// Reverse horizontally rendered navigation elements
-		if ( $wgLang->isRTL() ) {
+		if ( $this->data['rtl'] ) { 
 			$this->data['view_urls'] =
 				array_reverse( $this->data['view_urls'] );
 			$this->data['namespace_urls'] =
@@ -202,97 +202,149 @@ $(function () {
 <script src="http://files.pidgi.net/overthrow.js"></script>
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
-		<!-- content -->
 		<div id="content" class="overthrow">
 			<a id="top"></a>
-			
-				<?php if( $this->data['newtalk'] ): ?>
-				<!-- newtalk -->
-				<div class="usermessage"><?php $this->html( 'newtalk' )  ?></div>
-				<!-- /newtalk -->
-				<?php endif; ?>
-<!-- Sitenotice -->
-			<?php if ( $this->data['sitenotice'] ): ?>
-			<!-- sitenotice -->
-			<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
-			<!-- /sitenotice -->
-			<?php endif; ?>
-			<!-- firstHeading -->
-			<div id="firstHeading" class="firstHeading"><?php $this->html( 'title' ) ?><br /><hr /></div>
-			<!-- /firstHeading -->
-			<!-- bodyContent -->
-			<div id="bodyContent">
-				<!-- subtitle -->
-				<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
-				<!-- /subtitle -->
-				<?php if ( $this->data['undelete'] ): ?>
-				<!-- undelete -->
-				<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
-				<!-- /undelete -->
-				<?php endif; ?>
-				<?php if ( $this->data['showjumplinks'] ): ?>
-				<!-- jumpto -->
-				<div id="jump-to-nav">
-					<?php $this->msg( 'jumpto' ) ?> <a href="#mw-head"><?php $this->msg( 'jumptonavigation' ) ?></a>,
+
+			<?php
+			if ( $this->data['sitenotice'] ) {
+				?>
+				<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
+			<?php
+			}
+			?>
+			<h1 id="firstHeading" class="firstHeading" lang="<?php
+			$this->data['pageLanguage'] =
+				$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+			$this->text( 'pageLanguage' );
+			?>"><span dir="auto"><?php $this->html( 'title' ) ?></span></h1>
+			<?php $this->html( 'prebodyhtml' ) ?>
+			<div id="bodyContent" class="mw-body-content">
+				<?php
+				if ( $this->data['isarticle'] ) {
+					?>
+					<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
+				<?php
+				}
+				?>
+				<div id="contentSub"<?php
+				$this->html( 'userlangattributes' )
+				?>><?php $this->html( 'subtitle' ) ?></div>
+				<?php
+				if ( $this->data['undelete'] ) {
+					?>
+					<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+				<?php
+				}
+				?>
+				<?php
+				if ( $this->data['newtalk'] ) {
+					?>
+					<div class="usermessage"><?php $this->html( 'newtalk' ) ?></div>
+				<?php
+				}
+				?>
+				<div id="jump-to-nav" class="mw-jump">
+					<?php $this->msg( 'jumpto' ) ?>
+					<a href="#mw-navigation"><?php
+						$this->msg( 'jumptonavigation' )
+						?></a><?php
+					$this->msg( 'comma-separator' )
+					?>
 					<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
 				</div>
-				<!-- /jumpto -->
-				<?php endif; ?>
-				<!-- bodycontent -->
 				<?php $this->html( 'bodycontent' ) ?>
-				<!-- /bodycontent -->
-				<?php if ( $this->data['printfooter'] ): ?>
-				<!-- printfooter -->
-				<div class="printfooter">
-				<?php $this->html( 'printfooter' ); ?>
-				</div>
-				<!-- /printfooter -->
-				<?php endif; ?>
-				<?php if ( $this->data['catlinks'] ): ?>
-				<!-- catlinks -->
-				<?php $this->html( 'catlinks' ); ?>
-				<!-- /catlinks -->
-				<?php endif; ?>
+				<?php
+				if ( $this->data['printfooter'] ) {
+					?>
+					<div class="printfooter">
+						<?php $this->html( 'printfooter' ); ?>
+					</div>
+				<?php
+				}
+				?>
+				<?php
+				if ( $this->data['catlinks'] ) {
+					?>
+					<?php
+					$this->html( 'catlinks' );
+					?>
+				<?php
+				}
+				?>
 <br clear="all" />
-<!-- footer -->
-		<div id="footer"<?php $this->html( 'userlangattributes' ) ?>>
+		<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
 <hr />
-			<?php foreach( $this->getFooterLinks() as $category => $links ): ?>
-				<ul id="footer-<?php echo $category ?>">
-					<?php foreach( $links as $link ): ?>
-						<li id="footer-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
-					<?php endforeach; ?>
+			<?php
+			foreach ( $this->getFooterLinks() as $category => $links ) {
+				?>
+				<ul id="footer-<?php
+				echo $category
+				?>">
+					<?php
+					foreach ( $links as $link ) {
+						?>
+						<li id="footer-<?php
+						echo $category
+						?>-<?php
+						echo $link
+						?>"><?php
+							$this->html( $link )
+							?></li>
+					<?php
+					}
+					?>
 				</ul>
-			<?php endforeach; ?>
-			<?php $footericons = $this->getFooterIcons("icononly");
-			if ( count( $footericons ) > 0 ): ?>
+			<?php
+			}
+			?>
+			<?php $footericons = $this->getFooterIcons( "icononly" );
+			if ( count( $footericons ) > 0 ) {
+				?>
 				<ul id="footer-icons" class="noprint">
-<?php			foreach ( $footericons as $blockName => $footerIcons ): ?>
-					<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
-<?php				foreach ( $footerIcons as $icon ): ?>
-						<?php echo $this->skin->makeFooterIcon( $icon ); ?>
-<?php				endforeach; ?>
-					</li>
-<?php			endforeach; ?>
+					<?php
+					foreach ( $footericons as $blockName => $footerIcons ) {
+						?>
+						<li id="footer-<?php
+						echo htmlspecialchars( $blockName ); ?>ico">
+							<?php
+							foreach ( $footerIcons as $icon ) {
+								?>
+								<?php
+								echo $this->getSkin()->makeFooterIcon( $icon );
+								?>
+
+							<?php
+							}
+							?>
+						</li>
+					<?php
+					}
+					?>
 				</ul>
-			<?php endif; ?>
+			<?php
+			}
+			?>
+			<div style="clear:both"></div>
 		</div>
-		<!-- /footer -->
-				<?php if ( $this->data['dataAfterContent'] ): ?>
-				<!-- dataAfterContent -->
-				<?php $this->html( 'dataAfterContent' ); ?>
-				<!-- /dataAfterContent -->
-				<?php endif; ?>
+		<?php $this->printTrail(); ?>
+
+	</body>
+</html>
+				<?php
+				if ( $this->data['dataAfterContent'] ) {
+					?>
+					<?php
+					$this->html( 'dataAfterContent' );
+					?>
+				<?php
+				}
+				?>
 				<div class="visualClear"></div>
-				<!-- debughtml -->
 				<?php $this->html( 'debughtml' ); ?>
-				<!-- /debughtml -->
 			</div>
-			<!-- /bodyContent -->
 		</div>
-		<!-- /content -->
-		<!-- header -->
-		<div id="mw-head" class="noprint">
+
+		<div id="mw-head">
 			<div class="vectorMenu usermenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:absolute;top:0px;right:10px;width:auto;text-align:right;">
   <div class="no-js">
 <a href="javascript:void(0);" style="text-decoration:none;"><span id="username-top"><?php
@@ -330,10 +382,15 @@ echo $grav_url;
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
 			</div>
 		</div>
-		<!-- /header -->
-		<!-- panel -->
-			<div id="mw-panel" class="noprint">
-				<br style="clear:both;line-height:0%;" />
+
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a style="background-image: url(<?php
+					$this->text( 'logopath' )
+					?>);" href="<?php
+					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+					?>" <?php
+					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+					?>></a></div>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 <!-- feature -->
 <div class="portal expanded" id='p-Feature'>
@@ -347,8 +404,10 @@ echo $grav_url;
 				</ul>
 			</div>
 </div>
+			</div>
+		</div>
 
-<?php
+	<?php
 	}
 
 	/**
