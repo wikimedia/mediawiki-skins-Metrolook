@@ -541,7 +541,6 @@ echo $grav_url;
 </div>
 <?php
 				break;
-				break;
 				case 'SEARCH':
 					?>
 					<div id="p-search" role="search">
