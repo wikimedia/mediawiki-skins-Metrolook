@@ -49,7 +49,10 @@ class MetrolookTemplate extends BaseTemplate {
 		$nav = $this->data['content_navigation'];
 
 		if ( $wgVectorUseIconWatch ) {
-			$mode = $this->skin->getTitle()->userIsWatching() ? 'unwatch' : 'watch';
+			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() )
+				? 'unwatch'
+				: 'watch';
+
 			if ( isset( $nav['actions'][$mode] ) ) {
 				$nav['views'][$mode] = $nav['actions'][$mode];
 				$nav['views'][$mode]['class'] = rtrim( 'icon ' . $nav['views'][$mode]['class'], ' ' );
@@ -323,11 +326,13 @@ echo $grav_url;
 			<div id="left-navigation">
 				<a href="http://www.pidgi.net/wiki/Special:Upload"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img src="http://images.pidgi.net/uploadlogo.png" /> <span style="color:#fff;position:relative;top:1px;"><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
+			<div id="right-navigation">
+				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+			</div>
 		</div>
 		<!-- /header -->
 		<!-- panel -->
 			<div id="mw-panel" class="noprint">
-				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
 				<br style="clear:both;line-height:0%;" />
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 <!-- feature -->
@@ -536,32 +541,55 @@ echo $grav_url;
 </div>
 <?php
 				break;
-				case 'SEARCH':
-?>
-<div id="p-search">
-	<h5<?php $this->html( 'userlangattributes' ) ?>><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h5>
-	<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-		<input type='hidden' name="title" value="<?php $this->text( 'searchtitle' ) ?>"/>
-		<?php if ( $wgVectorUseSimpleSearch && $wgUser->getOption( 'vector-simplesearch' ) ): ?>
-		<div id="simpleSearch">
-			<?php if ( $this->data['rtl'] ): ?>
-			<?php echo $this->makeSearchButton( 'image', array( 'id' => 'searchButton', 'src' => $this->skin->getSkinStylePath( 'images/search-rtl.png' ) ) ); ?>
-			<?php endif; ?>
-			<?php echo $this->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text' ) ); ?>
-			<?php if ( !$this->data['rtl'] ): ?>
-			<?php echo $this->makeSearchButton( 'image', array( 'id' => 'searchButton', 'src' => $this->skin->getSkinStylePath( 'images/search-ltr.png' ) ) ); ?>
-			<?php endif; ?>
-		</div>
-		<?php else: ?>
-		<?php echo $this->makeSearchInput( array( 'id' => 'searchInput' ) ); ?>
-		<?php echo $this->makeSearchButton( 'go', array( 'id' => 'searchGoButton', 'class' => 'searchButton' ) ); ?>
-		<?php echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton' ) ); ?>
-		<?php endif; ?>
-	</form>
-</div>
-<?php
-
 				break;
+				case 'SEARCH':
+					?>
+					<div id="p-search" role="search">
+						<h5<?php $this->html( 'userlangattributes' ) ?>>
+							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
+						</h5>
+
+						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+							<?php
+							if ($wgVectorUseSimpleSearch) {
+							?>
+							<div id="simpleSearch">
+								<?php
+							} else {
+							?>
+								<div>
+									<?php
+							}
+							?>
+							<?php
+							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+							// We construct two buttons (for 'go' and 'fulltext' search modes),
+							// but only one will be visible and actionable at a time (they are
+							// overlaid on top of each other in CSS).
+							// * Browsers will use the 'fulltext' one by default (as it's the
+							//   first in tree-order), which is desirable when they are unable
+							//   to show search suggestions (either due to being broken or
+							//   having JavaScript turned off).
+							// * The mediawiki.searchSuggest module, after doing tests for the
+							//   broken browsers, removes the 'fulltext' button and handles
+							//   'fulltext' search itself; this will reveal the 'go' button and
+							//   cause it to be used.
+							echo $this->makeSearchButton(
+								'fulltext',
+								array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
+							);
+							echo $this->makeSearchButton(
+								'go',
+								array( 'id' => 'searchButton', 'class' => 'searchButton' )
+							);
+							?>
+								</div>
+						</form>
+					</div>
+					<?php
+
+					break;
 			}
 			echo "\n<!-- /{$name} -->\n";
 		}

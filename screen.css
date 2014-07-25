@@ -121,6 +121,11 @@ div#mw-head h5 {
 		left: 190px;
 		top: 0em;
 	}
+	#right-navigation {
+	position: absolute;
+	right: 190px;
+	top: 0em;
+    }
 	/* Navigation Labels */
 	div.vectorTabs h5,
 	div.vectorMenu h5 span {
@@ -365,108 +370,95 @@ div#mw-head h5 {
 		color: #fff;
 		text-decoration: none;
 	}
-	/* Search */
-	#p-search h5 {
-		display: none;
-	}
-	/* @noflip */
-	#p-search {
-		float: left;
-		margin-bottom:0.4em;
-	}
-	#p-search {
-		margin-right: 10px;
-		margin-left: 10px;
-	}
-	#p-search form,
-	#p-search input {
-		margin: 0;
-		margin-top: -4px;
-	}
-	input#searchInput {
-		height:22px;
+/* Search */
+#p-search {
+  /* @noflip */
+  float: left;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
-	div#simpleSearch {
-		display: block;
-		width: 156px;
-		height: 1.75em;
-		margin-top: 0.6em;
-		position: relative;
-		min-height: 1px; /* Gotta trigger hasLayout for IE7 */
-		border: solid 1px #AAAAAA;
-		color: black;
-		background-color: white;
-		/* @embed */
-		background-position: top left;
-		background-repeat: repeat-x;
-	}
-	div#simpleSearch label {
-		/*
-		 * DON'T PANIC! Browsers that won't scale this properly are the same browsers that have JS issues that prevent
-		 * this from ever being shown anyways.
-		*/
-		font-size: 13px;
-		top: 0.25em;
-		direction: ltr;
-	}
-	div#simpleSearch input {
-		color: black;
-		direction: ltr;
-	}
-	div#simpleSearch input:focus {
-		outline: none;
-	}
-	div#simpleSearch input.placeholder {
-		color: #999999;
-	}
-	div#simpleSearch input::-webkit-input-placeholder { 
-		color: #999999;
-	}
-	div#simpleSearch input#searchInput {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 124px;
-		margin: 0;
-		padding: 0;
-		padding-left: 0.5em;
-		padding-top: 0.2em;
-		padding-bottom: 0.2em;
-		outline: none;
-		border: none;
-		/*
-		 * DON'T PANIC! Browsers that won't scale this properly are the same browsers that have JS issues that prevent
-		 * this from ever being shown anyways.
-		*/
-		font-size: 13px;
-		background-color: transparent;
-		direction: ltr;
-	}
-	div#simpleSearch button#searchButton {
-		position: absolute;
-		width: 24px;
-		right: 0;
-		top: 0;
-		padding: 0;
-		padding-top: 0.2em;
-		padding-bottom: 0.2em;
-		padding-right: 0.4em;
-		margin: 0;
-		border: none;
-		cursor: pointer;
-		background-color: transparent;
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div#simpleSearch button#searchButton img {
-		border: none;
-		margin: 0;
-		margin-top: -3px;
-		padding: 0;
-	}
-	/* IGNORED BY IE6 */
-	div#simpleSearch button#searchButton > img {
-		margin: 0;
-	}
+#p-search h5 {
+  display: none;
+}
+#p-search form,
+#p-search input {
+  margin: 0;
+  margin-top: 0.4em;
+}
+div#simpleSearch {
+  display: block;
+  width: 14em;
+  height: 1.4em;
+  margin-top: 0.65em;
+  position: relative;
+  min-height: 1px;
+  /* Gotta trigger hasLayout for IE7 */
+  border: solid 1px #aaa;
+  color: black;
+  background-color: white;
+  background-image: url('images/search-fade.png');
+  background-position: top left;
+  background-repeat: repeat-x;
+}
+div#simpleSearch input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: black;
+}
+div#simpleSearch #searchInput {
+  top: 0;
+  left: 0;
+  width: 90%;
+  padding: 0.2em 0 0.2em 0.2em;
+  font-size: 13px;
+  direction: ltr;
+  -webkit-appearance: textfield;
+}
+div#simpleSearch #searchInput:focus {
+  outline: none;
+}
+div#simpleSearch #searchInput.placeholder {
+  color: #999;
+}
+div#simpleSearch #searchInput:-ms-input-placeholder {
+  color: #999;
+}
+div#simpleSearch #searchInput:-moz-placeholder {
+  color: #999;
+}
+div#simpleSearch #searchInput::-webkit-search-decoration,
+div#simpleSearch #searchInput::-webkit-search-cancel-button,
+div#simpleSearch #searchInput::-webkit-search-results-button,
+div#simpleSearch #searchInput::-webkit-search-results-decoration {
+  -webkit-appearance: textfield;
+}
+div#simpleSearch #searchButton,
+div#simpleSearch #mw-searchButton {
+  top: 0;
+  right: 0;
+  width: 10%;
+  height: 100%;
+  cursor: pointer;
+  /* Hide button text and replace it with the image. */
+  /* This would be 100% if not for Firefox shenanigans (bug 60900). */
+  text-indent: 200%;
+  /* Needed to make IE6 respect the text-indent. */
+  line-height: 1;
+  /* Opera 12 on RTL flips the text in a funny way without this. */
+  /* @noflip */
+  direction: ltr;
+  white-space: nowrap;
+  overflow: hidden;
+  background-image: url('images/search-ltr.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+div#simpleSearch #mw-searchButton {
+  z-index: 1;
+}
 /* Panel */
 div#mw-panel {
 	position: absolute;
@@ -1172,45 +1164,54 @@ div#bodyContent {
 }
 
 /* Watch/Unwatch Icon Styling */
-#ca-unwatch.icon,
-#ca-watch.icon {
-	margin-right:1px;
-}
 #ca-unwatch.icon a,
 #ca-watch.icon a {
-	margin: 0;
-	padding: 0;
-	outline: none;
-	display: block;
-	width: 26px;
-	/* This hides the text but shows the background image */
-	padding-top: 3.1em;
-	margin-top: 0;
-	/* Only applied in IE6 */
-	margin-top: -0.8em !ie;
-	height: 0;
-	overflow: hidden;
-	/* @embed */
-	background-image: url(images/watch-icons.png);
-	background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 26px;
+  /* This hides the text but shows the background image */
+  padding-top: 3.1em;
+  margin-top: 0;
+  /* Only applied in IE6 */
+  margin-top: -0.8em !ie;
+  height: 0;
+  overflow: hidden;
+  background-position: 5px 50%;
 }
 #ca-unwatch.icon a {
-	background-position: -19px 50%;
+  background-image: url('images/unwatch-icon.png');
+  background-repeat: no-repeat;
 }
 #ca-watch.icon a {
-	background-position: 5px 50%;
+  background-image: url('images/watch-icon.png');
+  background-repeat: no-repeat;
 }
 #ca-unwatch.icon a:hover,
 #ca-unwatch.icon a:focus {
-	background-position: -19px 50%;
+  background-image: url('images/unwatch-icon-hl.png');
 }
 #ca-watch.icon a:hover,
 #ca-watch.icon a:focus {
-	background-position: 5px 50%;
+  background-image: url('images/watch-icon-hl.png');
+  background-repeat: no-repeat;
+}
+#ca-unwatch.icon a.loading,
+#ca-watch.icon a.loading {
+  background-image: url('images/watch-icon-loading.png');
+  background-repeat: no-repeat;
+  rotation(700ms);/*
+  Suppress the hilarious rotating focus outline on Firefox */
+  outline: none;
+  cursor: default;
+  pointer-events: none;
+  background-position: 50% 60%;
+  -webkit-transform-origin: 50% 57%;
+  transform-origin: 50% 57%;
 }
 #ca-unwatch.icon a span,
 #ca-watch.icon a span {
-	display: none;
+  display: none;
 }
 div.vectorTabs ul {
 	/* @embed */
