@@ -43,6 +43,7 @@ $wgValidSkinNames['metrolook'] = 'Metrolook';
 $wgResourceModules['skins.metrolook.styles'] = array(
 	'styles' => array(
 		'screen.css' => array( 'media' => 'screen' ),
+		'screen-hd.css' => array( 'media' => 'screen and (min-width: 982px)' ),
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
