@@ -126,250 +126,278 @@ div#mw-head h5 {
 	right: 190px;
 	top: 0em;
     }
-	/* Navigation Labels */
-	div.vectorTabs h5,
-	div.vectorMenu h5 span {
-		display: none;
-	}
-	/* Namespaces and Views */
-	/* @noflip */
-	div.vectorTabs {
-		float: left;
-		height: 2.5em;
-	}
-	div.vectorTabs {
-		/* @embed */
-		background-image: url(images/tab-break.png);
-		background-position: bottom left;
-		background-repeat: no-repeat;
-		padding-left: 1px;
-	}
-	/* @noflip */
-	div.vectorTabs ul {
-		float: left;
-	}
-	div.vectorTabs ul {
-		height: 100%;
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-	/* @noflip */
-	div.vectorTabs ul li {
-		float: left;
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div.vectorTabs ul li {
-		line-height: 14px;
-		display: inline-block;
-		height: 100%;
-		margin: 0;
-		padding: 0;
-		background:transparent;
-		/* @embed */
-		background-image: url(images/tab-normal-fade.png);
-		background-position: bottom left;
-		background-repeat: repeat-x;
-		white-space:nowrap;
-	}
-	/* IGNORED BY IE6 */
-	div.vectorTabs ul > li {
-		display: block;
-	}
-	div.vectorTabs li.selected {
-		/* @embed */
-		background-image: url(images/tab-current-fade.png);
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div.vectorTabs li a {
-		display: inline-block;
-		height: 2.1em;
-		padding-left: 0.8em;
-		padding-right: 0.8em;
-		/* @embed */
-		background-image: url(images/tab-break.png);
-		background-position: bottom right;
-		background-repeat: no-repeat;
-		color: #fff;
-		cursor: pointer;
-		font-size: 0.8em;
-		text-decoration: none;
-	}
-	/* IGNORED BY IE6 */
-	div.vectorTabs li > a {
-		display: block;
-	}
-	div.vectorTabs li a:hover {
-		background:#9F6F40;		
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div.vectorTabs span a  {
-		display: inline-block;
-		padding-top: 1em;
-	}
-	/* IGNORED BY IE6 */
-	/* @noflip */
-	div.vectorTabs span > a {
-		float: left;
-		display: block;
-	}
-	div.vectorTabs li.selected a,
-	div.vectorTabs li.selected a:visited{
-		color: #fff;
-	}
-	div.vectorTabs li.new a,
-	div.vectorTabs li.new a:visited{
-		color: #fff;
-	}
-	/* Variants and Actions */
-	/* @noflip */
-	div.vectorMenu {
-		direction: ltr;
-		float: left;
-		padding-left:5px;
-		padding-right:5px;
-		/* @embed */
-		background-color: #CF8B54;
-		background-image: url(images/arrow-down-icon.png);
-		background-position:center;
-		background-repeat: no-repeat;
-		cursor: pointer;
-		z-index:10;
-	}
-	div.vectorMenu:hover {
-		background-color: #9F6F40;
-	}
-	/* @noflip */
-	body.rtl div.vectorMenu {
-		direction: rtl;
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	/* @noflip */
-	div#mw-head div.vectorMenu h5 {
-		float: left;
-		/* @embed */
-		background-image: url(images/tab-break.png);
-		background-repeat: no-repeat;
-	}
-	/* This will be flipped - unlike the one above it */
-	div#mw-head div.vectorMenu h5 {
-		background-position: bottom left;
-		margin-left: -1px;
-	}
-	/* IGNORED BY IE6 */
-	div#mw-head div.vectorMenu > h5 {
-		background-image: none;
-	}
-	div#mw-head div.vectorMenu h4 {
-		display: inline-block;
-		float: left;
-		font-size: 0.8em;
-		padding-left: 0.5em;
-		padding-top: 1.375em;
-		font-weight: normal;
-		border: none;
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	/* @noflip */
-	div.vectorMenu h5 a {
-		display: inline-block;
-		width: 24px;
-		height: 2.5em;
-		text-decoration: none;
-		/* @embed */
-		background-image: url(images/tab-break.png);
-		background-repeat: no-repeat;
-	}
-	div.vectorMenu h5 {
-		padding: 0;
-		margin: 0;
-	}
-	/* This will be flipped - unlike the one above it */
-	div.vectorMenu h5 a {
-		background-position: bottom right;
-	}
-	/* IGNORED BY IE6 */
-	div.vectorMenu h5 > a {
-		display: block;
-	}
-	div.vectorMenu div.menu {
-		position: relative;
-		display: none;
-		clear: both;
-		text-align: left;
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	/* @noflip */
-	body.rtl div.vectorMenu div.menu {
-		margin-left: 24px;
-	}
-	/* IGNORED BY IE6 */
-	/* @noflip */
-	body.rtl div.vectorMenu > div.menu {
-		margin-left: auto;
-	}
-	/* IGNORED BY IE6 */
-	/* Also fixes old versions of FireFox */
-	/* @noflip */
-	body.rtl div.vectorMenu > div.menu,
-	x:-moz-any-link {
-		margin-left: 23px;
-	}
-	div.vectorMenu ul {
-		position: absolute;
-		background-color: white;
-		border: solid 2px #CF8B54;
-		border-top-width: 0;
-		list-style: none;
-		list-style-image: none;
-		list-style-type: none;
-		padding: 0;
-		padding-top:5px;
-		margin: 0;
-		margin-left: -6px;
-		text-align: left;
-	}
-	/* Fixes old versions of FireFox */
-	div.vectorMenu ul,
-	x:-moz-any-link {
-		min-width: 5em;
-	}
-	/* Returns things back to normal in modern versions of FireFox */
-	div.vectorMenu ul,
-	x:-moz-any-link,
-	x:default {
-		min-width: 0;
-	}
-	div.vectorMenu li {
-		padding: 0;
-		margin: 0;
-		text-align: left;
-		line-height: 1em;
-	}
-	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div.vectorMenu li a {
-		display: inline-block;
-		padding: 0.5em;
-		padding-left: 1em;
-		padding-right: 2.5em;
-		white-space: nowrap;
-		color: #333;
-		cursor: pointer;
-		font-size: 0.8em;
-		text-decoration:none;
-	}
-	div.vectorMenu li a:hover {
-		background-color:#f3f3f3;
+/*
+Styling for namespace tabs (page, discussion) and views (read, edit, view history, watch and other actions)
+*/
+/* Navigation Labels */
+div.vectorTabs h5,
+div.vectorMenu h5 span {
+  display: none;
 }
-	/* IGNORED BY IE6 */
-	div.vectorMenu li > a {
-		display: block;
-	}
-	div.vectorMenu li.selected a,
-	div.vectorMenu li.selected a:visited {
-		color: #fff;
-		text-decoration: none;
-	}
+/* Namespaces and Views */
+div.vectorTabs {
+  /* @noflip */
+  float: left;
+  height: 2.5em;
+  background-image: url('images/tab-break.png');
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  padding-left: 1px;
+}
+div.vectorTabs ul {
+  /* @noflip */
+  float: left;
+  height: 100%;
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+  background-image: url('images/tab-break.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  /* IGNORED BY IE6 which doesn't support child selector */
+}
+div.vectorTabs ul li {
+  /* @noflip */
+  float: left;
+  line-height: 14px;
+  /* For IE6, overridden later to display:block by modern browsers */
+  display: inline-block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background:transparent; 
+  background-image: url('images/tab-normal-fade.png');
+  background-position: bottom left;
+  background-repeat: repeat-x;
+  white-space: nowrap;
+}
+div.vectorTabs ul > li {
+  display: block;
+}
+div.vectorTabs li {
+  /* Ignored by IE6 which doesn't support child selector */
+}
+div.vectorTabs li.new a,
+div.vectorTabs li.new a:visited {
+  color: #fff;
+}
+div.vectorTabs li.selected {
+  background-image: url('images/tab-current-fade.png');
+}
+div.vectorTabs li.selected a,
+div.vectorTabs li.selected a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+div.vectorTabs li.icon a {
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+div.vectorTabs li a {
+  /* For IE6, overridden later to display:block by modern browsers */
+  display: inline-block;
+  height: 2.1em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  background-image: url(images/tab-break.png);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8em;
+  text-decoration: none;
+}
+div.vectorTabs li > a {
+  display: block;
+}
+div.vectorTabs li a:hover { 
+  background:#9F6F40;		 
+}
+div.vectorTabs span {
+  display: inline-block;
+  background-image: url('images/tab-break.png');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  /* Ignored by IE6 which doesn't support child selector */
+}
+div.vectorTabs span a {
+  /* For IE6, overridden later to display:block by modern browsers */
+  display: inline-block;
+  padding-top: 1em;
+}
+div.vectorTabs span > a {
+  /* @noflip */
+  float: left;
+  display: block;
+}
+
+div.vectorTabs li.selected a,  
+div.vectorTabs li.selected a:visited{  
+ 	color: #fff;  
+}  
+div.vectorTabs li.new a,  
+div.vectorTabs li.new a:visited{  
+  color: #fff;  
+}
+/* Variants and Actions */
+div.vectorMenu {
+  /* @noflip */
+  direction: ltr;
+  /* @noflip */
+  float: left;
+  padding-left:5px;
+  padding-right:5px; 
+  background-color: #CF8B54; 
+  background-image: url('images/arrow-down-icon.png');
+  /* @noflip */
+  background-position:center; 
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index:10;
+}
+div.vectorMenu:hover {  
+   background-color: #9F6F40;  
+}
+div.vectorMenu.menuForceShow {
+  background-position: 100% 100%;
+}
+div.vectorMenuFocus {
+  background-image: url('images/arrow-down-focus-icon.png');
+  background-position: 100% 60%;
+}
+body.rtl div.vectorMenu {
+  /* @noflip */
+  direction: rtl;
+}
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div#mw-head div.vectorMenu h5 {
+  /* @noflip */
+  float: left;
+  background-image: url('images/tab-break.png');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  margin-left: -1px;
+}
+/* IGNORED BY IE6 */
+div#mw-head div.vectorMenu > h5 {
+  background-image: none;
+}
+div#mw-head div.vectorMenu h4,
+div.vectorMenu#p-variants #mw-vector-current-variant {
+  display: inline-block;
+  float: left;
+  font-size: 0.8em;
+  padding-left: 0.5em;
+  padding-top: 1.375em;
+  font-weight: normal;
+  border: none;
+}
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div.vectorMenu h5 a {
+  display: inline-block;
+  width: 24px;
+  height: 2.5em;
+  text-decoration: none;
+  background-image: url('images/tab-break.png');
+  background-repeat: no-repeat;
+}
+div.vectorMenu h5 {  
+   padding: 0;  
+   margin: 0;  
+}  
+/* This will be flipped - unlike the one above it */  
+div.vectorMenu h5 a {  
+background-position: bottom right;  
+}  
+
+/* IGNORED BY IE6 */
+div.vectorMenu h5 > a {
+  display: block;
+}
+div.vectorMenu div.menu {
+  position: relative;
+  display: none;
+  clear: both;
+  text-align: left;
+}
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+body.rtl div.vectorMenu div.menu {
+  /* @noflip */
+  margin-left: 24px;
+}
+/* IGNORED BY IE6 */
+body.rtl div.vectorMenu > div.menu {
+  /* @noflip */
+  margin-left: auto;
+}
+/* IGNORED BY IE6 */
+/* Also fixes old versions of FireFox */
+body.rtl div.vectorMenu > div.menu,
+x:-moz-any-link {
+  /* @noflip */
+  margin-left: 23px;
+}
+/* Enable forcing showing of the menu for accessibility */
+div.vectorMenu:hover div.menu,
+div.vectorMenu.menuForceShow div.menu {
+  display: block;
+}
+div.vectorMenu ul {
+  position: absolute;
+  background-color: white;
+  border: solid 2px #CF8B54;
+  border-top-width: 0;
+  list-style-type: none;
+  list-style-image: none;
+  padding: 0;
+  padding-top:5px; 
+  margin: 0;
+  margin-left: -6px;
+  text-align: left;
+}
+/* Fixes old versions of FireFox */
+div.vectorMenu ul,
+x:-moz-any-link {
+  min-width: 5em;
+}
+/* Returns things back to normal in modern versions of FireFox */
+div.vectorMenu ul,
+x:-moz-any-link,
+x:default {
+  min-width: 0;
+}
+div.vectorMenu li {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  line-height: 1em;
+}
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div.vectorMenu li a {
+  display: inline-block;
+  padding: 0.5em;
+  padding-left: 1em;
+  padding-right: 2.5em;
+  white-space: nowrap;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.8em;
+  text-decoration:none; 
+}
+div.vectorMenu li a:hover {
+  background-color:#f3f3f3; 
+}
+/* IGNORED BY IE6 */
+div.vectorMenu li > a {
+  display: block;
+}
+div.vectorMenu li.selected a,
+div.vectorMenu li.selected a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Search */
 #p-search {
   /* @noflip */
