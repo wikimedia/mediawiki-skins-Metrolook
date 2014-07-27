@@ -46,6 +46,11 @@ div#content {
         overflow:auto;
         -webkit-overflow-scrolling: touch;
 }
+/* Hide, but keep accessible for screen-readers */
+#mw-navigation h2 {
+   position: absolute;
+   top: -9999px;
+}
 /* Head */
 #mw-page-base {
 	height: 2.5em;
@@ -53,6 +58,7 @@ div#content {
 	/* @embed */
 	background-position: bottom left;
 	background-repeat: repeat-x;
+	background-image: url('images/page-fade.png');
 }
 #mw-head-base {
 	margin-top: -5em;
@@ -73,61 +79,61 @@ div#mw-head h5 {
 	margin: 0;
 	padding: 0;
 }
-	/* Hide empty portlets */
-	div.emptyPortlet {
-		display: none;
-	}
-	/* Personal */
-	#p-personal {
-		position: relative;
-		top: 0em;
-	}
-	#p-personal a {
-		color:#333;
-	}
-	#p-personal h5 {
-		display: none;
-	}
-	#p-personal ul {
-		list-style: none;
-		margin-right:12px;
-		margin-left:0;
-		positon:absolute;
-		right:-12px;
-	}
-	#username-top {
-		color: #fff;
-		height:40px;
-		display:table-cell;
-		vertical-align:middle;
-		font-size:9.5pt;
-		padding-top:1px;
-		font-family:sans-serif;
-	}	
-	/* @noflip */
-	#p-personal li {
-		line-height: 20px;
-		float: left;
-		width:100%;
-	}
-	/* This one flips! */
-	#p-personal li {
-		margin-left: 0em;
-		margin-top: 0em;
-		white-space: nowrap;
-		font-size: 1em;
-	}
-	/* Navigation Containers */
-	#left-navigation {
-		position: absolute;
-		left: 190px;
-		top: 0em;
-	}
-	#right-navigation {
+/* Hide empty portlets */
+div.emptyPortlet {
+	display: none;
+}
+/* Personal */
+#p-personal {
+  position: relative;
+  top: 0em;
+  right: 0.75em;
+  /* Display on top of page tabs - bugs 37158, 48078 */
+  z-index: 100;
+}
+#p-personal h5 {
+  display: none;
+}
+#p-personal ul {
+  list-style-type: none;
+  list-style-image: none;
+  margin-right:12px;
+  margin-left:0;
+  right:-12px;
+  position:absolute;
+  /* Keep from overlapping logo */
+}
+#p-personal li {
+  line-height: 20px;
+  /* @noflip */
+  float: left;
+  width:100%;
+  margin-left: 0em;
+  margin-top: 0em;
+  font-size: 1em;
+  white-space: nowrap;
+}
+
+#username-top {
+	color: #fff;
+	height:40px;
+	display:table-cell;
+	vertical-align:middle;
+	font-size:9.5pt;
+	padding-top:1px;
+	font-family:sans-serif;
+}
+/* Navigation Containers */
+#left-navigation {
+	position: absolute;
+	left: 190px;
+	top: 0em;
+}
+#right-navigation {
 	position: absolute;
 	right: 190px;
 	top: 0em;
-    }
+}
 /*
 Styling for namespace tabs (page, discussion) and views (read, edit, view history, watch and other actions)
 */
