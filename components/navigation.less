@@ -1,0 +1,126 @@
+@import "mediawiki.mixins";
+@import "personalMenu";
+@import "collapsibleNav";
+@import "search";
+@import "tabs";
+
+/* Hide, but keep accessible for screen-readers */
+#mw-navigation h2 {
+	position: absolute;
+	top: -9999px;
+}
+
+/* Head */
+#mw-page-base {
+	height: 2.5em;
+	background-color: #CF8B54;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+}
+
+#mw-head-base {
+	margin-top: -5em;
+	margin-left: 10em;
+	height: 5em;
+	/* @embed */
+	background-image: url(images/border.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+div#mw-head {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+
+	h5 {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+/* Navigation Containers */
+#left-navigation {
+	position: absolute;
+	left: 190px;
+	top: 0em;
+}
+
+#right-navigation {
+	position: absolute;
+	right: 190px;
+	top: 0em;
+}
+
+/* Panel */
+div#mw-panel {
+	font-size: @menu-main-font-size;
+	position: absolute;
+	top: 40px;
+	padding-top: 1em;
+	width: 10em;
+	left: 0;
+
+	div.portal {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			margin: 0;
+			padding: @menu-main-heading-padding;
+			cursor: default;
+			border: none;
+		}
+
+		div.body {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+
+		&.first {
+			background-image: none;
+			margin-top: 0;
+			h5 {
+				display: none;
+			}
+			div.body {
+				margin-left: 0.5em;
+			}
+		}
+	}
+}
+

@@ -29,30 +29,22 @@
 class MetrolookTemplate extends BaseTemplate {
 	/* Members */
 
-	/**
-	 * @var Skin Cached skin object
-	 */
-	var $skin;
-
-	/* Functions */
+	/** @var string $mPersonalTools Saves the personal Tools */
+	private $mPersonalTools = '';
+	/** @var string $mPersonalToolsEcho Saves Echo notifications */
+	private $mPersonalToolsEcho = '';
 
 	/**
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		global $wgLang, $wgVectorUseIconWatch;
-
-		$this->skin = $this->data['skin'];
+		global $wgVectorUseIconWatch;
 
 		// Build additional attributes for navigation urls
-		//$nav = $this->skin->buildNavigationUrls();
 		$nav = $this->data['content_navigation'];
 
 		if ( $wgVectorUseIconWatch ) {
-			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() )
-				? 'unwatch'
-				: 'watch';
-
+			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() ) ? 'unwatch' : 'watch';
 			if ( isset( $nav['actions'][$mode] ) ) {
 				$nav['views'][$mode] = $nav['actions'][$mode];
 				$nav['views'][$mode]['class'] = rtrim( 'icon ' . $nav['views'][$mode]['class'], ' ' );
@@ -91,13 +83,21 @@ class MetrolookTemplate extends BaseTemplate {
 		$this->data['variant_urls'] = $nav['variants'];
 
 		// Reverse horizontally rendered navigation elements
-		if ( $this->data['rtl'] ) { 
+		if ( $this->data['rtl'] ) {
 			$this->data['view_urls'] =
 				array_reverse( $this->data['view_urls'] );
 			$this->data['namespace_urls'] =
 				array_reverse( $this->data['namespace_urls'] );
 			$this->data['personal_urls'] =
 				array_reverse( $this->data['personal_urls'] );
+		}
+		$personalTools = $this->getPersonalTools();
+		foreach ( $personalTools as $key => $item ) {
+			if ( $key !== 'notifications' ) {
+				$this->mPersonalTools .= $this->makeListItem( $key, $item );
+			} else {
+				$this->mPersonalToolsEcho .= $this->makeListItem( $key, $item );
+			}
 		}
 		// Output HTML Page
 		$this->html( 'headelement' );
@@ -151,7 +151,6 @@ z-index:102;
 	height:200px;
     }
     </style>
-
     <script>
 var openDiv;
 function toggleDiv(divID) {
@@ -202,152 +201,81 @@ $(function () {
 <script src="http://files.pidgi.net/overthrow.js"></script>
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
-		<div id="content" class="overthrow">
+		<div id="content" class="mw-body" class="overthrow" role="main">
 			<a id="top"></a>
 
-			<?php
-			if ( $this->data['sitenotice'] ) {
-				?>
-				<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
-			<?php
-			}
-			?>
+			<div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
+			<?php if ( $this->data['sitenotice'] ) { ?>
+			<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
+			<?php } ?>
 			<h1 id="firstHeading" class="firstHeading" lang="<?php
-			$this->data['pageLanguage'] =
-				$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
-			$this->text( 'pageLanguage' );
+				$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+				$this->text( 'pageLanguage' );
 			?>"><span dir="auto"><?php $this->html( 'title' ) ?></span></h1>
 			<?php $this->html( 'prebodyhtml' ) ?>
-			<div id="bodyContent" class="mw-body-content">
-				<?php
-				if ( $this->data['isarticle'] ) {
-					?>
-					<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
-				<?php
-				}
-				?>
-				<div id="contentSub"<?php
-				$this->html( 'userlangattributes' )
-				?>><?php $this->html( 'subtitle' ) ?></div>
-				<?php
-				if ( $this->data['undelete'] ) {
-					?>
-					<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
-				<?php
-				}
-				?>
-				<?php
-				if ( $this->data['newtalk'] ) {
-					?>
-					<div class="usermessage"><?php $this->html( 'newtalk' ) ?></div>
-				<?php
-				}
-				?>
+			<div id="bodyContent">
+				<?php if ( $this->data['isarticle'] ) { ?>
+				<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
+				<?php } ?>
+				<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
+				<?php if ( $this->data['undelete'] ) { ?>
+				<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div>
+				<?php } ?>
+				<?php if ( $this->data['newtalk'] ) { ?>
+				<div class="usermessage"><?php $this->html( 'newtalk' ) ?></div>
+				<?php } ?>
 				<div id="jump-to-nav" class="mw-jump">
 					<?php $this->msg( 'jumpto' ) ?>
-					<a href="#mw-navigation"><?php
-						$this->msg( 'jumptonavigation' )
-						?></a><?php
-					$this->msg( 'comma-separator' )
-					?>
+					<a href="#mw-navigation"><?php $this->msg( 'jumptonavigation' ) ?></a><?php $this->msg( 'comma-separator' ) ?>
 					<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
 				</div>
 				<?php $this->html( 'bodycontent' ) ?>
-				<?php
-				if ( $this->data['printfooter'] ) {
-					?>
-					<div class="printfooter">
-						<?php $this->html( 'printfooter' ); ?>
-					</div>
-				<?php
-				}
-				?>
-				<?php
-				if ( $this->data['catlinks'] ) {
-					?>
-					<?php
-					$this->html( 'catlinks' );
-					?>
-				<?php
-				}
-				?>
+				<?php if ( $this->data['printfooter'] ) { ?>
+				<div class="printfooter">
+				<?php $this->html( 'printfooter' ); ?>
+				</div>
+				<?php } ?>
+				<?php if ( $this->data['catlinks'] ) { ?>
+				<?php $this->html( 'catlinks' ); ?>
+				<?php } ?>
 <br clear="all" />
 		<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
 <hr />
-			<?php
-			foreach ( $this->getFooterLinks() as $category => $links ) {
-				?>
-				<ul id="footer-<?php
-				echo $category
-				?>">
-					<?php
-					foreach ( $links as $link ) {
-						?>
-						<li id="footer-<?php
-						echo $category
-						?>-<?php
-						echo $link
-						?>"><?php
-							$this->html( $link )
-							?></li>
-					<?php
-					}
-					?>
+			<?php foreach ( $this->getFooterLinks() as $category => $links ) { ?>
+				<ul id="footer-<?php echo $category ?>">
+					<?php foreach ( $links as $link ) { ?>
+						<li id="footer-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
+					<?php } ?>
 				</ul>
-			<?php
-			}
-			?>
+			<?php } ?>
 			<?php $footericons = $this->getFooterIcons( "icononly" );
-			if ( count( $footericons ) > 0 ) {
-				?>
+			if ( count( $footericons ) > 0 ) { ?>
 				<ul id="footer-icons" class="noprint">
-					<?php
-					foreach ( $footericons as $blockName => $footerIcons ) {
-						?>
-						<li id="footer-<?php
-						echo htmlspecialchars( $blockName ); ?>ico">
-							<?php
-							foreach ( $footerIcons as $icon ) {
-								?>
-								<?php
-								echo $this->getSkin()->makeFooterIcon( $icon );
-								?>
+<?php			foreach ( $footericons as $blockName => $footerIcons ) { ?>
+					<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
+<?php				foreach ( $footerIcons as $icon ) { ?>
+						<?php echo $this->getSkin()->makeFooterIcon( $icon ); ?>
 
-							<?php
-							}
-							?>
-						</li>
-					<?php
-					}
-					?>
+<?php				} ?>
+					</li>
+<?php			} ?>
 				</ul>
-			<?php
-			}
-			?>
+			<?php } ?>
 			<div style="clear:both"></div>
 		</div>
-		<?php $this->printTrail(); ?>
-
-	</body>
-</html>
-				<?php
-				if ( $this->data['dataAfterContent'] ) {
-					?>
-					<?php
-					$this->html( 'dataAfterContent' );
-					?>
-				<?php
-				}
-				?>
+				<?php if ( $this->data['dataAfterContent'] ) { ?>
+				<?php $this->html( 'dataAfterContent' ); ?>
+				<?php } ?>
 				<div class="visualClear"></div>
 				<?php $this->html( 'debughtml' ); ?>
 			</div>
 		</div>
+		<div id="mw-navigation">
+			<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
 
 		<div id="mw-head">
-			<div class="vectorMenu usermenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:absolute;top:0px;right:10px;width:auto;text-align:right;">
-  <div class="no-js">
-<a href="javascript:void(0);" style="text-decoration:none;"><span id="username-top"><?php
+			<div class="vectorMenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:relative;top:0px;right:10px;width:auto;text-align:right;">
+<a href="#" style="text-decoration:none;"><span id="username-top"><?php
 if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
 echo "Guest";
 }
@@ -363,9 +291,16 @@ echo $grav_url;
 <?php $this->renderNavigation( 'PERSONAL' ); ?>
 </div>
 </div>
+<div id="echoNotifications">
+	<ul>
+	<?php
+		echo $this->mPersonalToolsEcho;
+	?>
+	</ul>
 </div>
-<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><a href="http://www.pidgi.net/wiki/Main_Page"><img src="http://images.pidgi.net/pidgiwiki.png" /></a></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
+<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href=""><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
 	<div id="top-tile-bar" class="fixed-position">
+
 <div style="vertical-align:top;align:left;">
 <div class="topleft">
 <div style="align:left;margin-left:auto;margin-right:auto;display:none;height:200px;" class="tilebar" id="bartile"><div style="height:200px;display:table;"><div style="vertical-align:middle;display:table-cell;padding-left:36px;">
@@ -384,16 +319,16 @@ echo $grav_url;
 		</div>
 
 			<div id="mw-panel">
-				<div id="p-logo" role="banner"><a style="background-image: url(<?php
-					$this->text( 'logopath' )
-					?>);" href="<?php
-					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-					?>" <?php
-					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-					?>></a></div>
+					<div id="p-logo" role="banner"><a style="background-image: url(<?php $this->text( 'logopath' ) ?>);" href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>></a></div>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 			</div>
 		</div>
+
+		<?php $this->printTrail(); ?>
+
+	</body>
+</html>
+
 
 	<?php
 	}
@@ -480,7 +415,6 @@ echo $grav_url;
 <?php
 	}
 
-
 	/**
 	 * Render one or more navigations elements by name, automatically reveresed
 	 * when UI is in RTL mode
@@ -516,13 +450,13 @@ echo $grav_url;
 				case 'VARIANTS':
 ?>
 <div id="p-variants" role="navigation" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-variants-label">
-	<h4 id="mw-vector-current-variant">
+	<h5 id="mw-vector-current-variant">
 	<?php foreach ( $this->data['variant_urls'] as $link ) { ?>
 		<?php if ( stripos( $link['attributes'], 'selected' ) !== false ) { ?>
 			<?php echo htmlspecialchars( $link['text'] ) ?>
 		<?php } ?>
 	<?php } ?>
-	</h4>
+	</h5>
 	<h5 id="p-variants-label"><span><?php $this->msg( 'variants' ) ?></span><a href="#"></a></h5>
 	<div class="menu">
 		<ul>
@@ -554,7 +488,7 @@ echo $grav_url;
 				case 'ACTIONS':
 ?>
 <div id="p-cactions" role="navigation" class="vectorMenu<?php if ( count( $this->data['action_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-cactions-label">
-	<h5 id="p-cactions-label"><a href="javascript:void(0);"><span><?php $this->msg( 'actions' ) ?></span></a></h5>
+	<h5 id="p-cactions-label"><span><?php $this->msg( 'actions' ) ?></span><a href="#"></a></h5>
 	<div class="menu">
 		<ul<?php $this->html( 'userlangattributes' ) ?>>
 			<?php foreach ( $this->data['action_urls'] as $link ) { ?>
@@ -571,10 +505,7 @@ echo $grav_url;
 	<h5 id="p-personal-label"><?php $this->msg( 'personaltools' ) ?></h5>
 	<ul<?php $this->html( 'userlangattributes' ) ?>>
 <?php
-					$personalTools = $this->getPersonalTools();
-					foreach ( $personalTools as $key => $item ) {
-						echo $this->makeListItem( $key, $item );
-					}
+							echo $this->mPersonalTools;
 ?>
 	</ul>
 </div>
