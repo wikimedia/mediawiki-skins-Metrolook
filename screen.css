@@ -497,62 +497,65 @@ div#simpleSearch #mw-searchButton {
 }
 /* Panel */
 div#mw-panel {
-	position: absolute;
-	top: 40px;
-	bottom: 0px;
-	height:auto;
-	overflow:hidden;
-	padding-top: 0.25em;
-	width: 178px;
-	left: 0;
+  position: absolute;
+  top: 40px;
+  bottom: 0px;
+  padding-top: 1em;
+  width: 10em;
+  left: 0;
 }
-	div#mw-panel div.portal {
-		padding-bottom: 1em;
-		direction: ltr;
-	}
-	div#mw-panel div.portal h5 {
-		font-family: 'Segoe UI Light', Segoe UI, sans-serif;
-		font-weight: 100;
-		color: #444444;
-		padding: 0.25em;
-		padding-top: 0;
-		padding-left: 17px;
-		padding-bottom: 0;
-		margin-bottom:0;
-		cursor: default;
-		border: none;
-		font-size: 1.25em;
-	}
-	div#mw-panel div.portal div.body {
-		margin: 0;
-		padding-top: 0.5em;
-		margin-left: 17px;
-		/* @embed */
-		background-image: url(images/portal-break.png);
-		background-repeat: no-repeat;
-		background-position: top left;
-	}
-	div#mw-panel div.portal div.body ul {
-		list-style: none;
-		list-style-image: none;
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-	}
-	div#mw-panel div.portal div.body ul li {
-		line-height: 1.125em;
-		padding: 0;
-		padding-bottom: 0.5em;
-		margin: 0;
-		overflow: hidden;
-		font-size: 0.75em;
-	}
-	div#mw-panel div.portal div.body ul li a {
-		color: #0645ad;
-	}
-	div#mw-panel div.portal div.body ul li a:visited {
-		color: #0b0080;
-	}
+div#mw-panel div.portal {
+  margin: 0 0.6em 0 0.7em;
+  padding: 0.25em 0;
+  direction: ltr;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-image: url('images/portal-break.png');
+}
+div#mw-panel div.portal h5 {
+  font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+  font-weight: 100;
+  font-size: 1.25em;
+  color: #444444;
+  font-weight: normal;
+  margin: 0;
+  padding: 0.25em 0 0.25em 0.25em;
+  cursor: default;
+  border: none;
+}
+div#mw-panel div.portal div.body {
+  margin: 0 0 0 1.25em;
+  padding-top: 0;
+}
+div#mw-panel div.portal div.body ul {
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+}
+div#mw-panel div.portal div.body ul li {
+  line-height: 1.125em;
+  margin: 0;
+  padding: 0.25em 0;
+  font-size: 0.75em;
+  word-wrap: break-word;
+}
+div#mw-panel div.portal div.body ul li a {
+  color: #0645ad;
+}
+div#mw-panel div.portal div.body ul li a:visited {
+  color: #0b0080;
+}
+div#mw-panel div.portal.first {
+  background-image: none;
+  margin-top: 0;
+}
+div#mw-panel div.portal.first h5 {
+  display: none;
+}
+div#mw-panel div.portal.first div.body {
+  margin-left: 0.5em;
+}
 /* Panel right */
 div#mw-panel-right {
 	position: absolute;
