@@ -401,9 +401,9 @@ echo $grav_url;
 	/**
 	 * Render a series of portals
 	 *
-	 * @param $portals array
+	 * @param array $portals
 	 */
-	private function renderPortals( $portals ) {
+	protected function renderPortals( $portals ) {
 		// Force the rendering of the following portals
 		if ( !isset( $portals['SEARCH'] ) ) {
 			$portals['SEARCH'] = true;
@@ -416,26 +416,25 @@ echo $grav_url;
 		}
 		// Render portals
 		foreach ( $portals as $name => $content ) {
-			if ( $content === false )
+			if ( $content === false ) {
 				continue;
+			}
 
-			echo "\n<!-- {$name} -->\n";
-			switch( $name ) {
+			switch ( $name ) {
 				case 'SEARCH':
 					break;
 				case 'TOOLBOX':
 					$this->renderPortal( 'tb', $this->getToolbox(), 'toolbox', 'SkinTemplateToolboxEnd' );
 					break;
 				case 'LANGUAGES':
-					if ( $this->data['language_urls'] ) {
+					if ( $this->data['language_urls'] !== false ) {
 						$this->renderPortal( 'lang', $this->data['language_urls'], 'otherlanguages' );
 					}
 					break;
 				default:
 					$this->renderPortal( $name, $content );
-				break;
+					break;
 			}
-			echo "\n<!-- /{$name} -->\n";
 		}
 	}
 
@@ -463,131 +462,218 @@ echo $grav_url;
 			?>'><?php
 				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
 				?></h5>
-	<div class="body">
-<?php
-		if ( is_array( $content ) ): ?>
-		<ul>
-<?php
-			foreach( $content as $key => $val ): ?>
-			<?php echo $this->makeListItem( $key, $val ); ?>
 
-<?php
-			endforeach;
-			if ( isset( $hook ) ) {
-				wfRunHooks( $hook, array( &$this, true ) );
-			}
-			?>
-		</ul>
-<?php
-		else: ?>
-		<?php echo $content; /* Allow raw HTML block to be defined by extensions */ ?>
-<?php
-		endif; ?>
-	</div>
-</div>
-<?php
+			<div class="body">
+				<?php
+				if ( is_array( $content ) ) {
+					?>
+					<ul>
+						<?php
+						foreach ( $content as $key => $val ) {
+							?>
+							<?php echo $this->makeListItem( $key, $val ); ?>
+
+						<?php
+						}
+						if ( $hook !== null ) {
+							wfRunHooks( $hook, array( &$this, true ) );
+						}
+						?>
+					</ul>
+				<?php
+				} else {
+					?>
+					<?php
+					echo $content; /* Allow raw HTML block to be defined by extensions */
+				}
+
+				$this->renderAfterPortlet( $name );
+				?>
+			</div>
+		</div>
+	<?php
 	}
 
 	/**
 	 * Render one or more navigations elements by name, automatically reveresed
 	 * when UI is in RTL mode
+	 *
+	 * @param array $elements
 	 */
-	private function renderNavigation( $elements ) {
+	protected function renderNavigation( $elements ) {
 		global $wgVectorUseSimpleSearch, $wgVectorShowVariantName, $wgUser, $wgLang;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
 			$elements = array( $elements );
-		// If there's a series of elements, reverse them when in RTL mode
-		} elseif ( $wgLang->isRTL() ) {
+			// If there's a series of elements, reverse them when in RTL mode
+		} elseif ( $this->data['rtl'] ) {
 			$elements = array_reverse( $elements );
 		}
 		// Render elements
 		foreach ( $elements as $name => $element ) {
-			echo "\n<!-- {$name} -->\n";
 			switch ( $element ) {
 				case 'NAMESPACES':
-?>
-<div id="p-namespaces" class="vectorTabs<?php if ( count( $this->data['namespace_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-	<h5><?php $this->msg( 'namespaces' ) ?></h5>
-	<ul<?php $this->html( 'userlangattributes' ) ?>>
-		<?php foreach ( $this->data['namespace_urls'] as $link ): ?>
-			<li <?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></span></li>
-		<?php endforeach; ?>
-	</ul>
-</div>
-<?php
-				break;
+					?>
+					<div id="p-namespaces" role="navigation" class="vectorTabs<?php
+					if ( count( $this->data['namespace_urls'] ) == 0 ) {
+						echo ' emptyPortlet';
+					}
+					?>" aria-labelledby="p-namespaces-label">
+						<h5 id="p-namespaces-label"><?php $this->msg( 'namespaces' ) ?></h5>
+						<ul<?php $this->html( 'userlangattributes' ) ?>>
+							<?php
+							foreach ( $this->data['namespace_urls'] as $link ) {
+								?>
+								<li <?php
+								echo $link['attributes']
+								?>><span><a href="<?php
+										echo htmlspecialchars( $link['href'] )
+										?>" <?php
+										echo $link['key']
+										?>><?php
+											echo htmlspecialchars( $link['text'] )
+											?></a></span></li>
+							<?php
+							}
+							?>
+						</ul>
+					</div>
+					<?php
+					break;
 				case 'VARIANTS':
-?>
-<div id="p-variants" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-	<?php if ( $wgVectorShowVariantName ): ?>
-		<h4>
-		<?php foreach ( $this->data['variant_urls'] as $link ): ?>
-			<?php if ( stripos( $link['attributes'], 'selected' ) !== false ): ?>
-				<?php echo htmlspecialchars( $link['text'] ) ?>
-			<?php endif; ?>
-		<?php endforeach; ?>
-		</h4>
-	<?php endif; ?>
-	<h5><span><?php $this->msg( 'variants' ) ?></span><a href="#"></a></h5>
-	<div class="menu">
-		<ul<?php $this->html( 'userlangattributes' ) ?>>
-			<?php foreach ( $this->data['variant_urls'] as $link ): ?>
-				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
-			<?php endforeach; ?>
-		</ul>
-	</div>
-</div>
-<?php
-				break;
-				case 'VIEWS':
-?>
-<div id="p-views" class="vectorTabs<?php if ( count( $this->data['view_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>">
-	<h5><?php $this->msg('views') ?></h5>
-	<ul<?php $this->html('userlangattributes') ?>>
-		<?php foreach ( $this->data['view_urls'] as $link ): ?>
-			<li<?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php
-				// $link['text'] can be undefined - bug 27764
-				if ( array_key_exists( 'text', $link ) ) {
-					echo array_key_exists( 'img', $link ) ?  '<img src="' . $link['img'] . '" alt="' . $link['text'] . '" />' : htmlspecialchars( $link['text'] );
-				}
-				?></a></span></li>
-		<?php endforeach; ?>
-	</ul>
-</div>
-<?php
-				break;
-				case 'ACTIONS':
-?>
-<div id="p-cactions" class="vectorMenu actionmenu<?php if ( count( $this->data['action_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-   <div class="no-js">
-	<h5><a href="javascript:void(0);"><span><?php $this->msg( 'actions' ) ?></span></a></h5>
-	<div class="menu">
-		<ul<?php $this->html( 'userlangattributes' ) ?>>
-			<?php foreach ( $this->data['action_urls'] as $link ): ?>
-				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
-			<?php endforeach; ?>
-		</ul>
-	</div>
-   </div>
-</div>
-<?php
-				break;
-				case 'PERSONAL':
-?>
-<div id="p-personal" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-	<h5><?php $this->msg( 'personaltools' ) ?></h5>
-	<ul<?php $this->html( 'userlangattributes' ) ?>>
-<?php			foreach( $this->getPersonalTools() as $key => $item ) { ?>
-		<?php echo $this->makeListItem( $key, $item ); ?>
+					?>
+					<div id="p-variants" role="navigation" class="vectorMenu<?php
+					if ( count( $this->data['variant_urls'] ) == 0 ) {
+						echo ' emptyPortlet';
+					}
+					?>" aria-labelledby="p-variants-label">
+						<?php
+						// Replace the label with the name of currently chosen variant, if any
+						$variantLabel = $this->getMsg( 'variants' )->text();
+						foreach ( $this->data['variant_urls'] as $link ) {
+							if ( stripos( $link['attributes'], 'selected' ) !== false ) {
+								$variantLabel = $link['text'];
+								break;
+							}
+						}
+						?>
+						<h4 id="p-variants-label"><span
+							style="display: block;" <?php /* Temporary WMF deployment hack, to be removed before 1.24 release */ ?>
+							><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a></h4>
 
-<?php			} ?>
-	</ul>
-</div>
-<?php
-				break;
+						<div class="menu">
+							<ul>
+								<?php
+								foreach ( $this->data['variant_urls'] as $link ) {
+									?>
+									<li<?php
+									echo $link['attributes']
+									?>><a href="<?php
+										echo htmlspecialchars( $link['href'] )
+										?>" lang="<?php
+										echo htmlspecialchars( $link['lang'] )
+										?>" hreflang="<?php
+										echo htmlspecialchars( $link['hreflang'] )
+										?>" <?php
+										echo $link['key']
+										?>><?php
+											echo htmlspecialchars( $link['text'] )
+											?></a></li>
+								<?php
+								}
+								?>
+							</ul>
+						</div>
+					</div>
+					<?php
+					break;
+				case 'VIEWS':
+					?>
+					<div id="p-views" role="navigation" class="vectorTabs<?php
+					if ( count( $this->data['view_urls'] ) == 0 ) {
+						echo ' emptyPortlet';
+					}
+					?>" aria-labelledby="p-views-label">
+						<h5 id="p-views-label"><?php $this->msg( 'views' ) ?></h5>
+						<ul<?php
+						$this->html( 'userlangattributes' )
+						?>>
+							<?php
+							foreach ( $this->data['view_urls'] as $link ) {
+								?>
+								<li<?php
+								echo $link['attributes']
+								?>><span><a href="<?php
+										echo htmlspecialchars( $link['href'] )
+										?>" <?php
+										echo $link['key']
+										?>><?php
+											// $link['text'] can be undefined - bug 27764
+											if ( array_key_exists( 'text', $link ) ) {
+												echo array_key_exists( 'img', $link )
+													? '<img src="' . $link['img'] . '" alt="' . $link['text'] . '" />'
+													: htmlspecialchars( $link['text'] );
+											}
+											?></a></span></li>
+							<?php
+							}
+							?>
+						</ul>
+					</div>
+					<?php
+					break;
+				case 'ACTIONS':
+					?>
+					<div id="p-cactions" role="navigation" class="vectorMenu<?php
+					if ( count( $this->data['action_urls'] ) == 0 ) {
+						echo ' emptyPortlet';
+					}
+					?>" aria-labelledby="p-cactions-label">
+						<h5 id="p-cactions-label"><span><?php $this->msg( 'vector-more-actions' ) ?></span><a href="#"></a></h5>
+
+						<div class="menu">
+							<ul<?php $this->html( 'userlangattributes' ) ?>>
+								<?php
+								foreach ( $this->data['action_urls'] as $link ) {
+									?>
+									<li<?php
+									echo $link['attributes']
+									?>>
+										<a href="<?php
+										echo htmlspecialchars( $link['href'] )
+										?>" <?php
+										echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] )
+											?></a>
+									</li>
+								<?php
+								}
+								?>
+							</ul>
+						</div>
+					</div>
+					<?php
+					break;
+				case 'PERSONAL':
+					?>
+					<div id="p-personal" role="navigation" class="<?php
+					if ( count( $this->data['personal_urls'] ) == 0 ) {
+						echo ' emptyPortlet';
+					}
+					?>" aria-labelledby="p-personal-label">
+						<h5 id="p-personal-label"><?php $this->msg( 'personaltools' ) ?></h5>
+						<ul<?php $this->html( 'userlangattributes' ) ?>>
+							<?php
+							$personalTools = $this->getPersonalTools();
+							foreach ( $personalTools as $key => $item ) {
+								echo $this->makeListItem( $key, $item );
+							}
+							?>
+						</ul>
+					</div>
+					<?php
+					break;
 				case 'SEARCH':
 					?>
 					<div id="p-search" role="search">
@@ -597,7 +683,7 @@ echo $grav_url;
 
 						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
 							<?php
-							if ($wgVectorUseSimpleSearch) {
+							if ( $wgVectorUseSimpleSearch ) {
 							?>
 							<div id="simpleSearch">
 								<?php
@@ -637,8 +723,6 @@ echo $grav_url;
 
 					break;
 			}
-			echo "\n<!-- /{$name} -->\n";
 		}
 	}
 }
-
