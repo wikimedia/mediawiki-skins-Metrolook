@@ -27,22 +27,24 @@ body {
 }
 /* Content */
 div#content {
-	margin-left: 178px;
-	padding-bottom: 1em;
-	padding-top:0em;
-	/* @embed */
-	background-image: url(images/border.png);
-	background-position: top left;
-	background-repeat: repeat-y;
-	background-color: white;
-	color: black;
-	direction: ltr;
-	height:auto;
-	position:absolute;
-	bottom:0px;
-	top:40px;
-	overflow:auto;
-	-webkit-overflow-scrolling: touch;
+        margin-left: 10em;
+        padding:1em;
+        /* @embed */
+        background-image: url(images/border.png);
+        background-position: top left;
+        background-repeat: repeat-y;
+        background-color: white;
+        color: black;
+        direction: ltr;
+        height:auto;
+        position:absolute;
+        bottom:0px;
+        right:0px;
+        left:0px;
+        top:40px;
+        width:auto;
+        overflow:auto;
+        -webkit-overflow-scrolling: touch;
 }
 /* Head */
 #mw-page-base {
