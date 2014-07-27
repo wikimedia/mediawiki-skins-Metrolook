@@ -403,7 +403,7 @@ echo $grav_url;
 	 *
 	 * @param $portals array
 	 */
-	private function renderPortals( $portals ) {
+	protected function renderPortals( $portals ) {
 		// Force the rendering of the following portals
 		if ( !isset( $portals['SEARCH'] ) ) {
 			$portals['SEARCH'] = true;
@@ -416,18 +416,18 @@ echo $grav_url;
 		}
 		// Render portals
 		foreach ( $portals as $name => $content ) {
-			if ( $content === false )
+			if ( $content === false ) {
 				continue;
+			}
 
-			echo "\n<!-- {$name} -->\n";
-			switch( $name ) {
+			switch ( $name ) {
 				case 'SEARCH':
 					break;
 				case 'TOOLBOX':
 					$this->renderPortal( 'tb', $this->getToolbox(), 'toolbox', 'SkinTemplateToolboxEnd' );
 					break;
 				case 'LANGUAGES':
-					if ( $this->data['language_urls'] ) {
+					if ( $this->data['language_urls'] !== false ) {
 						$this->renderPortal( 'lang', $this->data['language_urls'], 'otherlanguages' );
 					}
 					break;
@@ -435,15 +435,14 @@ echo $grav_url;
 					$this->renderPortal( $name, $content );
 				break;
 			}
-			echo "\n<!-- /{$name} -->\n";
 		}
 	}
 
 	/**
-	 * @param string $name
-	 * @param array $content
-	 * @param null|string $msg
-	 * @param null|string|array $hook
+	 * @param $name string
+	 * @param $content array
+	 * @param $msg null|string
+	 * @param $hook null|string|array
 	 */
 	protected function renderPortal( $name, $content, $msg = null, $hook = null ) {
 		if ( $msg === null ) {
@@ -451,92 +450,85 @@ echo $grav_url;
 		}
 		$msgObj = wfMessage( $msg );
 		?>
-		<div class="portal" role="navigation" id='<?php
-		echo Sanitizer::escapeId( "p-$name" )
-		?>'<?php
-		echo Linker::tooltip( 'p-' . $name )
-		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
-			<h5<?php
-			$this->html( 'userlangattributes' )
-			?> id='<?php
-			echo Sanitizer::escapeId( "p-$name-label" )
-			?>'><?php
-				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
-				?></h5>
+<div class="portal" role="navigation" id='<?php echo Sanitizer::escapeId( "p-$name" ) ?>'<?php echo Linker::tooltip( 'p-' . $name ) ?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+	<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'><?php echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg ); ?></h5>
 	<div class="body">
 <?php
-		if ( is_array( $content ) ): ?>
+		if ( is_array( $content ) ) { ?>
 		<ul>
 <?php
-			foreach( $content as $key => $val ): ?>
+			foreach ( $content as $key => $val ) { ?>
 			<?php echo $this->makeListItem( $key, $val ); ?>
 
 <?php
-			endforeach;
-			if ( isset( $hook ) ) {
+			}
+			if ( $hook !== null ) {
 				wfRunHooks( $hook, array( &$this, true ) );
 			}
 			?>
 		</ul>
 <?php
-		else: ?>
-		<?php echo $content; /* Allow raw HTML block to be defined by extensions */ ?>
-<?php
-		endif; ?>
+		} else { ?>
+		<?php
+			echo $content; /* Allow raw HTML block to be defined by extensions */
+		}
+
+		$this->renderAfterPortlet( $name );
+		?>
 	</div>
 </div>
 <?php
 	}
 
+
 	/**
 	 * Render one or more navigations elements by name, automatically reveresed
 	 * when UI is in RTL mode
+	 *
+	 * @param $elements array
 	 */
-	private function renderNavigation( $elements ) {
-		global $wgVectorUseSimpleSearch, $wgVectorShowVariantName, $wgUser, $wgLang;
+	protected function renderNavigation( $elements ) {
+		global $wgVectorUseSimpleSearch;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
 			$elements = array( $elements );
 		// If there's a series of elements, reverse them when in RTL mode
-		} elseif ( $wgLang->isRTL() ) {
+		} elseif ( $this->data['rtl'] ) {
 			$elements = array_reverse( $elements );
 		}
 		// Render elements
 		foreach ( $elements as $name => $element ) {
-			echo "\n<!-- {$name} -->\n";
 			switch ( $element ) {
 				case 'NAMESPACES':
 ?>
-<div id="p-namespaces" class="vectorTabs<?php if ( count( $this->data['namespace_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-	<h5><?php $this->msg( 'namespaces' ) ?></h5>
+<div id="p-namespaces" role="navigation" class="vectorTabs<?php if ( count( $this->data['namespace_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-namespaces-label">
+	<h5 id="p-namespaces-label"><?php $this->msg( 'namespaces' ) ?></h5>
 	<ul<?php $this->html( 'userlangattributes' ) ?>>
-		<?php foreach ( $this->data['namespace_urls'] as $link ): ?>
+		<?php foreach ( $this->data['namespace_urls'] as $link ) { ?>
 			<li <?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></span></li>
-		<?php endforeach; ?>
+		<?php } ?>
 	</ul>
 </div>
 <?php
 				break;
 				case 'VARIANTS':
 ?>
-<div id="p-variants" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-	<?php if ( $wgVectorShowVariantName ): ?>
-		<h4>
-		<?php foreach ( $this->data['variant_urls'] as $link ): ?>
-			<?php if ( stripos( $link['attributes'], 'selected' ) !== false ): ?>
-				<?php echo htmlspecialchars( $link['text'] ) ?>
-			<?php endif; ?>
-		<?php endforeach; ?>
-		</h4>
-	<?php endif; ?>
-	<h5><span><?php $this->msg( 'variants' ) ?></span><a href="#"></a></h5>
+<div id="p-variants" role="navigation" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-variants-label">
+	<h4 id="mw-vector-current-variant">
+	<?php foreach ( $this->data['variant_urls'] as $link ) { ?>
+		<?php if ( stripos( $link['attributes'], 'selected' ) !== false ) { ?>
+			<?php echo htmlspecialchars( $link['text'] ) ?>
+		<?php } ?>
+	<?php } ?>
+	</h4>
+	<h5 id="p-variants-label"><span><?php $this->msg( 'variants' ) ?></span><a href="#"></a></h5>
 	<div class="menu">
-		<ul<?php $this->html( 'userlangattributes' ) ?>>
-			<?php foreach ( $this->data['variant_urls'] as $link ): ?>
-				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
-			<?php endforeach; ?>
+		<ul>
+			<?php foreach ( $this->data['variant_urls'] as $link ) { ?>
+				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" lang="<?php echo htmlspecialchars( $link['lang'] ) ?>" hreflang="<?php echo htmlspecialchars( $link['hreflang'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
+			<?php } ?>
 		</ul>
 	</div>
 </div>
@@ -544,101 +536,81 @@ echo $grav_url;
 				break;
 				case 'VIEWS':
 ?>
-<div id="p-views" class="vectorTabs<?php if ( count( $this->data['view_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>">
-	<h5><?php $this->msg('views') ?></h5>
-	<ul<?php $this->html('userlangattributes') ?>>
-		<?php foreach ( $this->data['view_urls'] as $link ): ?>
+<div id="p-views" role="navigation" class="vectorTabs<?php if ( count( $this->data['view_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-views-label">
+	<h5 id="p-views-label"><?php $this->msg( 'views' ) ?></h5>
+	<ul<?php $this->html( 'userlangattributes' ) ?>>
+		<?php foreach ( $this->data['view_urls'] as $link ) { ?>
 			<li<?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php
 				// $link['text'] can be undefined - bug 27764
 				if ( array_key_exists( 'text', $link ) ) {
-					echo array_key_exists( 'img', $link ) ?  '<img src="' . $link['img'] . '" alt="' . $link['text'] . '" />' : htmlspecialchars( $link['text'] );
+					echo array_key_exists( 'img', $link ) ? '<img src="' . $link['img'] . '" alt="' . $link['text'] . '" />' : htmlspecialchars( $link['text'] );
 				}
 				?></a></span></li>
-		<?php endforeach; ?>
+		<?php } ?>
 	</ul>
 </div>
 <?php
 				break;
 				case 'ACTIONS':
 ?>
-<div id="p-cactions" class="vectorMenu actionmenu<?php if ( count( $this->data['action_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-   <div class="no-js">
-	<h5><a href="javascript:void(0);"><span><?php $this->msg( 'actions' ) ?></span></a></h5>
+<div id="p-cactions" role="navigation" class="vectorMenu<?php if ( count( $this->data['action_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-cactions-label">
+	<h5 id="p-cactions-label"><a href="javascript:void(0);"><span><?php $this->msg( 'actions' ) ?></span></a></h5>
 	<div class="menu">
 		<ul<?php $this->html( 'userlangattributes' ) ?>>
-			<?php foreach ( $this->data['action_urls'] as $link ): ?>
+			<?php foreach ( $this->data['action_urls'] as $link ) { ?>
 				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
-			<?php endforeach; ?>
+			<?php } ?>
 		</ul>
 	</div>
-   </div>
 </div>
 <?php
 				break;
 				case 'PERSONAL':
 ?>
-<div id="p-personal" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
-	<h5><?php $this->msg( 'personaltools' ) ?></h5>
+<div id="p-personal" role="navigation" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-personal-label">
+	<h5 id="p-personal-label"><?php $this->msg( 'personaltools' ) ?></h5>
 	<ul<?php $this->html( 'userlangattributes' ) ?>>
-<?php			foreach( $this->getPersonalTools() as $key => $item ) { ?>
-		<?php echo $this->makeListItem( $key, $item ); ?>
-
-<?php			} ?>
+<?php
+					$personalTools = $this->getPersonalTools();
+					foreach ( $personalTools as $key => $item ) {
+						echo $this->makeListItem( $key, $item );
+					}
+?>
 	</ul>
 </div>
 <?php
 				break;
 				case 'SEARCH':
-					?>
-					<div id="p-search" role="search">
-						<h5<?php $this->html( 'userlangattributes' ) ?>>
-							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
-						</h5>
+?>
+<div id="p-search" role="search">
+	<h5<?php $this->html( 'userlangattributes' ) ?>><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h5>
+	<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+		<?php if ( $wgVectorUseSimpleSearch ) { ?>
+			<div id="simpleSearch">
+		<?php } else { ?>
+			<div>
+		<?php } ?>
+			<?php
+			echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+			echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+			// We construct two buttons (for 'go' and 'fulltext' search modes), but only one will be
+			// visible and actionable at a time (they are overlaid on top of each other in CSS).
+			// * Browsers will use the 'fulltext' one by default (as it's the first in tree-order), which
+			//   is desirable when they are unable to show search suggestions (either due to being broken
+			//   or having JavaScript turned off).
+			// * The mediawiki.searchSuggest module, after doing tests for the broken browsers, removes
+			//   the 'fulltext' button and handles 'fulltext' search itself; this will reveal the 'go'
+			//   button and cause it to be used.
+			echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ) );
+			echo $this->makeSearchButton( 'go', array( 'id' => 'searchButton', 'class' => 'searchButton' ) );
+			?>
+		</div>
+	</form>
+</div>
+<?php
 
-						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-							<?php
-							if ($wgVectorUseSimpleSearch) {
-							?>
-							<div id="simpleSearch">
-								<?php
-							} else {
-							?>
-								<div>
-									<?php
-							}
-							?>
-							<?php
-							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
-							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
-							// We construct two buttons (for 'go' and 'fulltext' search modes),
-							// but only one will be visible and actionable at a time (they are
-							// overlaid on top of each other in CSS).
-							// * Browsers will use the 'fulltext' one by default (as it's the
-							//   first in tree-order), which is desirable when they are unable
-							//   to show search suggestions (either due to being broken or
-							//   having JavaScript turned off).
-							// * The mediawiki.searchSuggest module, after doing tests for the
-							//   broken browsers, removes the 'fulltext' button and handles
-							//   'fulltext' search itself; this will reveal the 'go' button and
-							//   cause it to be used.
-							echo $this->makeSearchButton(
-								'fulltext',
-								array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
-							);
-							echo $this->makeSearchButton(
-								'go',
-								array( 'id' => 'searchButton', 'class' => 'searchButton' )
-							);
-							?>
-								</div>
-						</form>
-					</div>
-					<?php
-
-					break;
+				break;
 			}
-			echo "\n<!-- /{$name} -->\n";
 		}
 	}
 }
-
