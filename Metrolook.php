@@ -26,7 +26,7 @@ $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.0.2',
+	'version' => '2.1',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -42,8 +42,8 @@ $wgValidSkinNames['metrolook'] = 'Metrolook';
 // Register modules
 $wgResourceModules['skins.metrolook.styles'] = array(
 	'styles' => array(
-		'screen.css' => array( 'media' => 'screen' ),
-		'screen-hd.css' => array( 'media' => 'screen and (min-width: 982px)' ),
+		'screen.less' => array( 'media' => 'screen' ),
+		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
