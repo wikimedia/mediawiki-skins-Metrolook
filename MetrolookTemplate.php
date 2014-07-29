@@ -30,22 +30,12 @@ class MetrolookTemplate extends BaseTemplate {
 	/* Members */
 
 	/**
-	 * @var Skin Cached skin object
-	 */
-	var $skin;
-
-	/* Functions */
-
-	/**
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		global $wgLang, $wgVectorUseIconWatch;
-
-		$this->skin = $this->data['skin'];
+		global $wgVectorUseIconWatch;
 
 		// Build additional attributes for navigation urls
-		//$nav = $this->skin->buildNavigationUrls();
 		$nav = $this->data['content_navigation'];
 
 		if ( $wgVectorUseIconWatch ) {
@@ -101,7 +91,7 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 		// Output HTML Page
 		$this->html( 'headelement' );
-?>
+		?>
     <style>
         body {
 height:100%;
@@ -202,7 +192,7 @@ $(function () {
 <script src="http://files.pidgi.net/overthrow.js"></script>
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
-		<div id="content" class="overthrow">
+		<div id="content" class="mw-body" class="overthrow" role="main">
 			<a id="top"></a>
 
 			<?php
@@ -343,6 +333,8 @@ $(function () {
 				<?php $this->html( 'debughtml' ); ?>
 			</div>
 		</div>
+		<div id="mw-navigation">
+			<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
 
 		<div id="mw-head">
 			<div class="vectorMenu usermenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:absolute;top:0px;right:10px;width:auto;text-align:right;">
@@ -366,6 +358,7 @@ echo $grav_url;
 </div>
 <div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><a href="http://www.pidgi.net/wiki/Main_Page"><img src="http://images.pidgi.net/pidgiwiki.png" /></a></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
 	<div id="top-tile-bar" class="fixed-position">
+
 <div style="vertical-align:top;align:left;">
 <div class="topleft">
 <div style="align:left;margin-left:auto;margin-right:auto;display:none;height:200px;" class="tilebar" id="bartile"><div style="height:200px;display:table;"><div style="vertical-align:middle;display:table-cell;padding-left:36px;">
@@ -501,7 +494,7 @@ echo $grav_url;
 	 * @param array $elements
 	 */
 	protected function renderNavigation( $elements ) {
-		global $wgVectorUseSimpleSearch, $wgVectorShowVariantName, $wgUser, $wgLang;
+		global $wgVectorUseSimpleSearch;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -559,9 +552,9 @@ echo $grav_url;
 							}
 						}
 						?>
-						<h4 id="p-variants-label"><span
+						<h5 id="p-variants-label"><span
 							style="display: block;" <?php /* Temporary WMF deployment hack, to be removed before 1.24 release */ ?>
-							><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a></h4>
+							><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a></h5>
 
 						<div class="menu">
 							<ul>
@@ -631,7 +624,7 @@ echo $grav_url;
 						echo ' emptyPortlet';
 					}
 					?>" aria-labelledby="p-cactions-label">
-						<h5 id="p-cactions-label"><span><?php $this->msg( 'vector-more-actions' ) ?></span><a href="#"></a></h5>
+						<h5 id="p-cactions-label"><span><?php $this->msg( 'actions' ) ?></span><a href="#"></a></h5>
 
 						<div class="menu">
 							<ul<?php $this->html( 'userlangattributes' ) ?>>
