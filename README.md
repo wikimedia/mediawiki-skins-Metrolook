@@ -30,3 +30,4 @@ Known issues
 * Navigation text is shown on the sidebar.
 * Mobile view of desktop is not shown correcly.
 * There are problems causing some extensions to not work.
+* Preference does not display properly.
