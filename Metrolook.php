@@ -44,6 +44,8 @@ $wgResourceModules['skins.metrolook.styles'] = array(
 	'styles' => array(
 		'screen.less' => array( 'media' => 'screen' ),
 		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
+		'special.less',
+		'special.preferences.less',
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
