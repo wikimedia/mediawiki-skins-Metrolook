@@ -91,7 +91,7 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 		// Output HTML Page
 		$this->html( 'headelement' );
-		?>
+?>
     <style>
         body {
 height:100%;
@@ -316,10 +316,6 @@ $(function () {
 			?>
 			<div style="clear:both"></div>
 		</div>
-		<?php $this->printTrail(); ?>
-
-	</body>
-</html>
 				<?php
 				if ( $this->data['dataAfterContent'] ) {
 					?>
@@ -337,26 +333,7 @@ $(function () {
 			<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
 
 		<div id="mw-head">
-			<div class="vectorMenu usermenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:absolute;top:0px;right:10px;width:auto;text-align:right;">
-  <div class="no-js">
-<a href="javascript:void(0);" style="text-decoration:none;"><span id="username-top"><?php
-if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
-echo "Guest";
-}
-else {
-echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
-}
- ?><span style="word-spacing:4px;"> </span><img style="position:relative;top:-1px;" src="<?php
-$default = 'http://www.pidgi.net/wiki/skins/metrolook/images/user-icon.png';
-$grav_url = 'http://www.gravatar.com/avatar/' . md5( strtolower( trim( $this->getSkin()->getUser()->getEmail() ) ) ) . '?d=' . urlencode ( $default ) . '&s=' . 20;
-echo $grav_url;
-?>" /></span></a>
-<div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
-<?php $this->renderNavigation( 'PERSONAL' ); ?>
-</div>
-</div>
-</div>
-<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><a href="h"><img src="http://images.pidgi.net/pidgiwiki.png" /></a></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
+<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><a href="http://www.pidgi.net/wiki/Main_Page"><img src="http://images.pidgi.net/pidgiwiki.png" /></a></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
 	<div id="top-tile-bar" class="fixed-position">
 
 <div style="vertical-align:top;align:left;">
@@ -388,6 +365,31 @@ echo $grav_url;
 			</div>
 		</div>
 
+		<?php $this->printTrail(); ?>
+
+	</body>
+</html>
+		<div id="mw-head">
+			<div class="vectorMenu usermenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:absolute;top:0px;right:10px;width:auto;text-align:right;">
+  <div class="no-js">
+<a href="javascript:void(0);" style="text-decoration:none;"><span id="username-top"><?php
+if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
+echo "Guest";
+}
+else {
+echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
+}
+ ?><span style="word-spacing:4px;"> </span><img style="position:relative;top:-1px;" src="<?php
+$default = 'http://www.pidgi.net/wiki/skins/metrolook/images/user-icon.png';
+$grav_url = 'http://www.gravatar.com/avatar/' . md5( strtolower( trim( $this->getSkin()->getUser()->getEmail() ) ) ) . '?d=' . urlencode ( $default ) . '&s=' . 20;
+echo $grav_url;
+?>" /></span></a>
+<div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
+<?php $this->renderNavigation( 'PERSONAL' ); ?>
+</div>
+</div>
+</div>
+</div>
 	<?php
 	}
 
@@ -619,12 +621,12 @@ echo $grav_url;
 					break;
 				case 'ACTIONS':
 					?>
-					<div id="p-cactions" role="navigation" class="vectorMenu<?php
+					<div id="p-cactions" role="navigation" class="vectorMenu actionmenu<?php
 					if ( count( $this->data['action_urls'] ) == 0 ) {
 						echo ' emptyPortlet';
 					}
 					?>" aria-labelledby="p-cactions-label">
-						<h5 id="p-cactions-label"><span><?php $this->msg( 'actions' ) ?></span><a href="#"></a></h5>
+						<h5 id="p-cactions-label"><span><?php $this->msg( 'vector-more-actions' ) ?></span><a href="#"></a></h5>
 
 						<div class="menu">
 							<ul<?php $this->html( 'userlangattributes' ) ?>>

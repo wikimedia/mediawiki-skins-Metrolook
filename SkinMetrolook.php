@@ -27,9 +27,9 @@
  * @ingroup Skins
  */
 class SkinMetrolook extends SkinTemplate {
-/*	public $skinname = 'vector';
-	public $stylename = 'Vector';
-	public $template = 'VectorTemplate';
+/*	public $skinname = 'metrolook';
+	public $stylename = 'Metrolook';
+	public $template = 'MetrolookTemplate';
 */
 	var $skinname = 'metrolook', $stylename = 'Metrolook',
 		$template = 'MetrolookTemplate', $useHeadElement = true;
@@ -55,7 +55,7 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		$out->addModules( array( 'skins.metrolook.js' ) );
+		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav', ) );
 	}
 
 	/**
@@ -66,7 +66,7 @@ class SkinMetrolook extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
-		wfRunHooks( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
+		wfRunHooks( 'SkinVectorStyleModules', array( $this, &$styles ) );
 		$out->addModuleStyles( $styles );
 	}
 

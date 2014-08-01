@@ -26,7 +26,7 @@ $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.1.1',
+	'version' => '2.1.2',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -62,4 +62,20 @@ $wgResourceModules['skins.metrolook.js'] = array(
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
+);
+$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
+	'scripts' => array(
+		'collapsibleNav.js',
+	),
+	'messages' => array(
+		'vector-collapsiblenav-more',
+	),
+	'dependencies' => array(
+		'jquery.client',
+		'jquery.cookie',
+		'jquery.tabIndex',
+	),
+	'remoteSkinPath' => 'Metrolook',
+	'localBasePath' => __DIR__,
+	'position' => 'bottom',
 );
