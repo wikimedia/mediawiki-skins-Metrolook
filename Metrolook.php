@@ -26,7 +26,7 @@ $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.1.1',
+	'version' => '2.2',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -44,8 +44,6 @@ $wgResourceModules['skins.metrolook.styles'] = array(
 	'styles' => array(
 		'screen.less' => array( 'media' => 'screen' ),
 		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
-		'special.less',
-		'special.preferences.less',
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
@@ -60,6 +58,46 @@ $wgResourceModules['skins.metrolook.js'] = array(
 		'jquery.throttle-debounce',
 		'jquery.tabIndex',
 	),
+	'remoteSkinPath' => 'Metrolook',
+	'localBasePath' => __DIR__,
+);
+$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
+	'scripts' => array(
+		'collapsibleNav.js',
+	),
+	'messages' => array(
+		'vector-collapsiblenav-more',
+	),
+	'dependencies' => array(
+		'jquery.client',
+		'jquery.cookie',
+		'jquery.tabIndex',
+	),
+	'remoteSkinPath' => 'Metrolook',
+	'localBasePath' => __DIR__,
+	'position' => 'bottom',
+);
+
+// Apply module customizations
+$wgResourceModuleSkinStyles['metrolook'] = array(
+	'jquery.tipsy' => 'skinStyles/jquery.tipsy.less',
+	'jquery.ui.core' => array(
+		'skinStyles/jquery.ui/jquery.ui.core.css',
+		'skinStyles/jquery.ui/jquery.ui.theme.css',
+	),
+	'jquery.ui.accordion' => 'skinStyles/jquery.ui/jquery.ui.accordion.css',
+	'jquery.ui.autocomplete' => 'skinStyles/jquery.ui/jquery.ui.autocomplete.css',
+	'jquery.ui.button' => 'skinStyles/jquery.ui/jquery.ui.button.css',
+	'jquery.ui.datepicker' => 'skinStyles/jquery.ui/jquery.ui.datepicker.css',
+	'jquery.ui.dialog' => 'skinStyles/jquery.ui/jquery.ui.dialog.css',
+	'jquery.ui.progressbar' => 'skinStyles/jquery.ui/jquery.ui.progressbar.css',
+	'jquery.ui.resizable' => 'skinStyles/jquery.ui/jquery.ui.resizable.css',
+	'jquery.ui.selectable' => 'skinStyles/jquery.ui/jquery.ui.selectable.css',
+	'jquery.ui.slider' => 'skinStyles/jquery.ui/jquery.ui.slider.css',
+	'jquery.ui.tabs' => 'skinStyles/jquery.ui/jquery.ui.tabs.css',
+	'mediawiki.notification' => 'skinStyles/mediawiki.notification.less',
+	'mediawiki.special' => 'skinStyles/mediawiki.special.less',
+	'mediawiki.special.preferences' => 'skinStyles/mediawiki.special.preferences.less',
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
 );

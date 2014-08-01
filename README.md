@@ -24,10 +24,6 @@ https://github.com/paladox2015/Metrolook/tree/MediaWiki-1.21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
+Known Issues
 
-Known issues
-
-* Navigation text is shown on the sidebar.
-* Mobile view of desktop is not shown correcly.
-* There are problems causing some extensions to not work.
-* Preference does not display properly.
+Echo does not display properly. TODO Fix Echo.
