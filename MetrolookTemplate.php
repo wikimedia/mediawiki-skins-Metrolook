@@ -89,6 +89,7 @@ class MetrolookTemplate extends BaseTemplate {
 			$this->data['personal_urls'] =
 				array_reverse( $this->data['personal_urls'] );
 		}
+
 		// Output HTML Page
 		$this->html( 'headelement' );
 ?>
@@ -504,6 +505,20 @@ echo $grav_url;
 		} elseif ( $this->data['rtl'] ) {
 			$elements = array_reverse( $elements );
 		}
+		// seperate Echo notifications from personalTools
+		$personalToolsOrig = $this->getPersonalTools();
+		// $personalTools will contain all elements except Echo notification
+		$personalTools = '';
+		// $personalTools will contain the Echo notification as an array
+		$personalToolsEcho = array();
+		foreach ( $personalToolsOrig as $key => $item ) {
+			// You can extend this, if you want, but then better use an array and in_array()
+			if ( $key !== 'notifications' ) {
+				$personalTools .= $this->makeListItem( $key, $item );;
+			} else {
+				$personalToolsEcho[$key] = $item;
+			}
+		}
 		// Render elements
 		foreach ( $elements as $name => $element ) {
 			switch ( $element ) {
@@ -660,10 +675,7 @@ echo $grav_url;
 						<h5 id="p-personal-label"><?php $this->msg( 'personaltools' ) ?></h5>
 						<ul<?php $this->html( 'userlangattributes' ) ?>>
 							<?php
-							$personalTools = $this->getPersonalTools();
-							foreach ( $personalTools as $key => $item ) {
-								echo $this->makeListItem( $key, $item );
-							}
+							echo $personalTools;
 							?>
 						</ul>
 					</div>
