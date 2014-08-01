@@ -29,6 +29,11 @@
 class MetrolookTemplate extends BaseTemplate {
 	/* Members */
 
+	/** @var string $mPersonalTools Saves the personal Tools */
+	private $mPersonalTools = '';
+	/** @var string $mPersonalToolsEcho Saves Echo notifications */
+	private $mPersonalToolsEcho = '';
+
 	/**
 	 * Outputs the entire contents of the (X)HTML page
 	 */
@@ -88,6 +93,14 @@ class MetrolookTemplate extends BaseTemplate {
 				array_reverse( $this->data['namespace_urls'] );
 			$this->data['personal_urls'] =
 				array_reverse( $this->data['personal_urls'] );
+		}
+		$personalTools = $this->getPersonalTools();
+		foreach ( $personalTools as $key => $item ) {
+			if ( $key !== 'notifications' ) {
+				$this->mPersonalTools .= $this->makeListItem( $key, $item );
+			} else {
+				$this->mPersonalToolsEcho .= $this->makeListItem( $key, $item );
+			}
 		}
 		// Output HTML Page
 		$this->html( 'headelement' );
@@ -333,7 +346,7 @@ $(function () {
 			<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
 
 		<div id="mw-head">
-			<div class="vectorMenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:absolute;top:0px;right:10px;width:auto;text-align:right;">
+			<div class="vectorMenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:relative;top:0px;right:10px;width:auto;text-align:right;">
 <a href="#" style="text-decoration:none;"><span id="username-top"><?php
 if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
 echo "Guest";
@@ -349,6 +362,13 @@ echo $grav_url;
 <div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
 <?php $this->renderNavigation( 'PERSONAL' ); ?>
 </div>
+</div>
+<div id="echoNotifications">
+	<ul>
+	<?php
+		echo $this->mPersonalToolsEcho;
+	?>
+	</ul>
 </div>
 <div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href=""><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
 	<div id="top-tile-bar" class="fixed-position">
@@ -660,10 +680,7 @@ echo $grav_url;
 						<h5 id="p-personal-label"><?php $this->msg( 'personaltools' ) ?></h5>
 						<ul<?php $this->html( 'userlangattributes' ) ?>>
 							<?php
-							$personalTools = $this->getPersonalTools();
-							foreach ( $personalTools as $key => $item ) {
-								echo $this->makeListItem( $key, $item );
-							}
+							echo $this->mPersonalTools;
 							?>
 						</ul>
 					</div>
