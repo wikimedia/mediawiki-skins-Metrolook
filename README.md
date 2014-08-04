@@ -24,6 +24,8 @@ https://github.com/paladox2015/Metrolook/tree/MediaWiki-1.21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
+
 Known Issues
 
-Echo does not display properly. TODO Fix Echo.
+* Echo does not display properly. TODO Fix Echo.
+* Mobile view of desktop is not shown correcly.
