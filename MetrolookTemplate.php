@@ -350,7 +350,7 @@ echo $grav_url;
 <?php $this->renderNavigation( 'PERSONAL' ); ?>
 </div>
 </div>
-<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href=""><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;height:40px;color:white;max-width: auto;height:700px; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
+<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href=""><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
 	<div id="top-tile-bar" class="fixed-position">
 
 <div style="vertical-align:top;align:left;">
