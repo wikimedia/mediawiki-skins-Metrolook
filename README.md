@@ -29,5 +29,4 @@ A working demo of the skin is available at http://pidgi.net/metrolooktest/index.
 
 Known Issues
 
-* Echo does not display properly. TODO Fix Echo.
 * Mobile view of desktop is not shown correcly.
