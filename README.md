@@ -30,3 +30,10 @@ A working demo of the skin is available at http://pidgi.net/metrolooktest/index.
 Known Issues
 
 * Mobile view of desktop is not shown correcly.
+
+
+Version
+
+2.x.x requires MediaWiki 1.24.
+
+1.x.x requires MediaWiki 1.23.
