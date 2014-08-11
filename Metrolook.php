@@ -26,7 +26,7 @@ $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '1.1.1',
+	'version' => '1.2',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -38,6 +38,12 @@ $wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 
 // Register skin
 $wgValidSkinNames['metrolook'] = 'Metrolook';
+
+/* To enable logo. Note that if enabled it will not show properly.*/
+$Logoshow = false;
+
+/* to enable search bar on the sidebar and disables the search bar on the top bar */
+$SearchBar = false;
 
 // Register modules
 $wgResourceModules['skins.metrolook.styles'] = array(

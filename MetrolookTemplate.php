@@ -39,6 +39,8 @@ class MetrolookTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		global $wgVectorUseIconWatch;
+		global $Logoshow;
+		global $SearchBar;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -314,13 +316,27 @@ echo $grav_url;
 				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img src="http://images.pidgi.net/uploadlogo.png" /> <span style="color:#fff;position:relative;top:1px;"><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 			<div id="right-navigation">
+				<?php if ( $SearchBar ): ?>
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+				<?php else: ?>
+				<?php endif; ?>
 			</div>
 		</div>
 
+		    <?php if ( $SearchBar ): ?>
 			<div id="mw-panel">
+			<?php else: ?>
+			<div id="mw-panel-custom">
+			<?php endif; ?>	
+				<?php if ( $Logoshow ): ?>
 					<div id="p-logo" role="banner"><a style="background-image: url(<?php $this->text( 'logopath' ) ?>);" href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>></a></div>
+				<?php endif; ?>
+				<?php if ( $SearchBar ): ?>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				<?php else: ?>
+				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				<?php endif; ?>	
 			</div>
 		</div>
 
@@ -380,14 +396,24 @@ echo $grav_url;
 	 * @param $hook null|string|array
 	 */
 	protected function renderPortal( $name, $content, $msg = null, $hook = null ) {
+		global $SearchBar;
+		
 		if ( $msg === null ) {
 			$msg = $name;
 		}
 		$msgObj = wfMessage( $msg );
 		?>
+		<?php if ( $SearchBar ): ?>
 <div class="portal" role="navigation" id='<?php echo Sanitizer::escapeId( "p-$name" ) ?>'<?php echo Linker::tooltip( 'p-' . $name ) ?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+		<?php else: ?>
+<div class="portal-custom" role="navigation" id='<?php echo Sanitizer::escapeId( "p-$name" ) ?>'<?php echo Linker::tooltip( 'p-' . $name ) ?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+	    <?php endif; ?>
 	<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'><?php echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg ); ?></h5>
+	   <?php if ( $SearchBar ): ?>
 	<div class="body">
+	   <?php else: ?>
+	<div class="body-custom">
+	<?php endif; ?>
 <?php
 		if ( is_array( $content ) ) { ?>
 		<ul>
@@ -423,6 +449,7 @@ echo $grav_url;
 	 */
 	protected function renderNavigation( $elements ) {
 		global $wgVectorUseSimpleSearch;
+		global $SearchBar;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -512,7 +539,8 @@ echo $grav_url;
 <?php
 				break;
 				case 'SEARCH':
-?>
+					?>
+					<?php if ( $SearchBar ): ?>
 <div id="p-search" role="search">
 	<h5<?php $this->html( 'userlangattributes' ) ?>><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h5>
 	<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
@@ -538,6 +566,33 @@ echo $grav_url;
 		</div>
 	</form>
 </div>
+					<?php else: ?>
+<div id="p-searchSearch" role="search">
+	<h5<?php $this->html( 'userlangattributes' ) ?>><label for="searchInput"><?php $this->msg( 'search' ) ?></label></h5>
+	<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+		<?php if ( $wgVectorUseSimpleSearch ) { ?>
+			<div id="simpleSearchSearch">
+		<?php } else { ?>
+			<div>
+		<?php } ?>
+			<?php
+			echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+			echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+			// We construct two buttons (for 'go' and 'fulltext' search modes), but only one will be
+			// visible and actionable at a time (they are overlaid on top of each other in CSS).
+			// * Browsers will use the 'fulltext' one by default (as it's the first in tree-order), which
+			//   is desirable when they are unable to show search suggestions (either due to being broken
+			//   or having JavaScript turned off).
+			// * The mediawiki.searchSuggest module, after doing tests for the broken browsers, removes
+			//   the 'fulltext' button and handles 'fulltext' search itself; this will reveal the 'go'
+			//   button and cause it to be used.
+			echo $this->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ) );
+			echo $this->makeSearchButton( 'go', array( 'id' => 'searchButton', 'class' => 'searchButton' ) );
+			?>
+		</div>
+	</form>
+</div>
+					<?php endif; ?> 
 <?php
 
 				break;
