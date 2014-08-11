@@ -56,6 +56,24 @@ div#mw-head {
 	top: 0em;
 }
 
+/* Logo */
+#p-logo {
+	position: absolute;
+	top: -160px;
+	left: 0;
+	width: 10em;
+	height: 160px;
+
+	a {
+		display: block;
+		width: 10em;
+		height: 160px;
+		background-repeat: no-repeat;
+		background-position: center center;
+		text-decoration: none;
+	}
+}
+
 /* Panel */
 div#mw-panel {
 	font-size: @menu-main-font-size;
@@ -124,3 +142,72 @@ div#mw-panel {
 	}
 }
 
+/* Custom */
+
+/* Panel */
+div#mw-panel-custom {
+	font-size: @menu-main-font-size;
+	position: absolute;
+	top: 40px;
+	padding-top: 1em;
+	width: 10em;
+	left: 0;
+
+	div.portal-custom {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			margin: 0;
+			padding: @menu-main-heading-padding;
+			cursor: default;
+			border: none;
+		}
+
+		div.body-custom {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+
+		&.first {
+			background-image: none;
+			margin-top: 0;
+			h5 {
+				display: none;
+			}
+			div.body-custom {
+				margin-left: 0.5em;
+			}
+		}
+	}
+}
