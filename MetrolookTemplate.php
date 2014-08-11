@@ -383,7 +383,7 @@ echo $grav_url;
 
 </div></div>
 			<div id="left-navigation">
-				<a href="/index.php/Special:Upload"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img src="http://images.pidgi.net/uploadlogo.png" /> <span style="color:#fff;position:relative;top:1px;"><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img src="http://images.pidgi.net/uploadlogo.png" /> <span style="color:#fff;position:relative;top:1px;"><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 			<div id="right-navigation">
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
