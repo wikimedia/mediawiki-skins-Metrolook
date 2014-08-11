@@ -6,7 +6,7 @@ A skin for MediaWiki
 The author of the skin is http://www.pidgi.net/wiki/Main_Page
 
 
-Compatible with MediaWiki 1.24+
+Compatible with MediaWiki 1.23
 
 If you would like compatibility with mediawiki 1.23, 1.22 or 1.21 please visit 
 
