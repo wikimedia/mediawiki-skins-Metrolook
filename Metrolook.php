@@ -26,7 +26,7 @@ $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.2.5',
+	'version' => '2.2.6',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -101,3 +101,19 @@ $wgResourceModuleSkinStyles['metrolook'] = array(
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
 );
+
+// Configuration options
+
+/**
+ * Search form look.
+ *  - true = use an icon search button
+ *  - false = use Go & Search buttons
+ */
+$wgVectorUseSimpleSearch = true;
+
+/**
+ * Watch and unwatch as an icon rather than a link.
+ *  - true = use an icon watch/unwatch button
+ *  - false = use watch/unwatch text link
+ */
+$wgVectorUseIconWatch = true;
