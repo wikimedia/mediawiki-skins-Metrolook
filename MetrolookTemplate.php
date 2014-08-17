@@ -39,6 +39,7 @@ class MetrolookTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		global $wgVectorUseIconWatch;
+		global $Logoshow;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -391,6 +392,7 @@ echo $grav_url;
 		</div>
 
 			<div id="mw-panel">
+				<?php if ( $Logoshow ): ?>
 				<div id="p-logo" role="banner"><a style="background-image: url(<?php
 					$this->text( 'logopath' )
 					?>);" href="<?php
@@ -398,6 +400,7 @@ echo $grav_url;
 					?>" <?php
 					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 					?>></a></div>
+				<?php endif; ?>	
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 			</div>
 		</div>
@@ -407,9 +410,8 @@ echo $grav_url;
 	</body>
 </html>
 
-
-	<?php
-	}
+   <?php
+   }
 
 	/**
 	 * Render a series of portals
@@ -738,4 +740,3 @@ echo $grav_url;
 		}
 	}
 }
-
