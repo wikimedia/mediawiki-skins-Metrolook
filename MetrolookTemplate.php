@@ -38,13 +38,13 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		global $wgVectorUseIconWatch;
 		global $Logoshow;
+		global $SearchBar;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
-		if ( $wgVectorUseIconWatch ) {
+		if ( $this->config->get( 'VectorUseIconWatch' ) ) {
 			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() )
 				? 'unwatch'
 				: 'watch';
@@ -387,7 +387,10 @@ echo $grav_url;
 				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img src="http://images.pidgi.net/uploadlogo.png" /> <span style="color:#fff;position:relative;top:1px;"><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 			<div id="right-navigation">
+				<?php if ( $SearchBar ): ?>
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+				<?php else: ?>
+				<?php endif; ?>	
 			</div>
 		</div>
 
@@ -400,8 +403,13 @@ echo $grav_url;
 					?>" <?php
 					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 					?>></a></div>
-				<?php endif; ?>	
+				<?php endif; ?>
+				<?php if ( $SearchBar ): ?>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				<?php else: ?>
+				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				<?php endif; ?>	
 			</div>
 		</div>
 
@@ -516,7 +524,6 @@ echo $grav_url;
 	 * @param array $elements
 	 */
 	protected function renderNavigation( $elements ) {
-		global $wgVectorUseSimpleSearch;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -690,6 +697,7 @@ echo $grav_url;
 					break;
 				case 'SEARCH':
 					?>
+					<?php if ( $SearchBar ): ?>
 					<div id="p-search" role="search">
 						<h5<?php $this->html( 'userlangattributes' ) ?>>
 							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
@@ -697,7 +705,7 @@ echo $grav_url;
 
 						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
 							<?php
-							if ( $wgVectorUseSimpleSearch ) {
+							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
 							?>
 							<div id="simpleSearch">
 								<?php
@@ -733,6 +741,51 @@ echo $grav_url;
 								</div>
 						</form>
 					</div>
+					<?php else: ?>
+					<div id="p-searchSearch" role="search">
+						<h5<?php $this->html( 'userlangattributes' ) ?>>
+							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
+						</h5>
+
+						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+							<?php
+							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
+							?>
+							<div id="simpleSearchSearch">
+								<?php
+							} else {
+							?>
+								<div>
+									<?php
+							}
+							?>
+							<?php
+							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+							// We construct two buttons (for 'go' and 'fulltext' search modes),
+							// but only one will be visible and actionable at a time (they are
+							// overlaid on top of each other in CSS).
+							// * Browsers will use the 'fulltext' one by default (as it's the
+							//   first in tree-order), which is desirable when they are unable
+							//   to show search suggestions (either due to being broken or
+							//   having JavaScript turned off).
+							// * The mediawiki.searchSuggest module, after doing tests for the
+							//   broken browsers, removes the 'fulltext' button and handles
+							//   'fulltext' search itself; this will reveal the 'go' button and
+							//   cause it to be used.
+							echo $this->makeSearchButton(
+								'fulltext',
+								array( 'id' => 'mw-searchButtonSearch', 'class' => 'searchButtonSearch mw-fallbackSearchButton' )
+							);
+							echo $this->makeSearchButton(
+								'go',
+								array( 'id' => 'searchButtonSearch', 'class' => 'searchButtonSearch' )
+							);
+							?>
+								</div>
+						</form>
+					</div>
+					<?php endif; ?> 
 					<?php
 
 					break;
@@ -740,3 +793,4 @@ echo $grav_url;
 		}
 	}
 }
+
