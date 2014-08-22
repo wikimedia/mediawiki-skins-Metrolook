@@ -112,14 +112,14 @@ div#simpleSearch {
 	}
 }
 
-/* Custome */
+/* Custom */
 
 /* Search */
 #p-searchSearch {
 	/* @noflip */
 	float: left;
-	margin-right: 0.5em;
-	margin-left: 0.5em;
+	margin-right: 10px;
+	margin-left: 10px;
 
 	h5 {
 		display: none;
@@ -128,7 +128,7 @@ div#simpleSearch {
 	form,
 	input {
 		margin: 0;
-		margin-top: 0.4em;
+		margin-top: -4px;
 	}
 }
 
@@ -158,17 +158,17 @@ div#simpleSearchSearch {
 
 	// The search input
 	#searchInput {
-        position: absolute;
+		position: absolute;
 		top: 0;
 		left: 0;
-		width: 10.9em;
-        margin: 0;
+		width: 124px;
+		margin: 0;
 		padding: 0;
 		padding-left: 0.5em;
 		padding-top: 0.2em;
 		padding-bottom: 0.2em;
-		font-size: 13px;
-		direction: ltr;
+		outline: none;
+		border: none;
 
 		&:focus {
 			outline: none;
@@ -206,11 +206,11 @@ div#simpleSearchSearch {
 
 	// The buttons. They are displayed in the same position, and if both are
 	// present the fulltext search one obscures the 'Go' one.
-	#searchButtonSearch,
-	#mw-searchButtonSearch {
+	#searchButton,
+	#mw-searchButton {
 		top: 0;
 		right: 0;
-		width: 10%;
+		width: 24px;
 		height: 100%;
 		cursor: pointer;
 		/* Hide button text and replace it with the image. */
@@ -228,7 +228,7 @@ div#simpleSearchSearch {
 		background-repeat: no-repeat;
 	}
 
-	#mw-searchButtonSearch {
+	#mw-searchButton {
 		z-index: 1;
 	}
 }
