@@ -524,6 +524,7 @@ echo $grav_url;
 	 * @param array $elements
 	 */
 	protected function renderNavigation( $elements ) {
+		global $SearchBar;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -773,11 +774,11 @@ echo $grav_url;
 							//   cause it to be used.
 							echo $this->makeSearchButton(
 								'fulltext',
-								array( 'id' => 'mw-searchButtonSearch', 'class' => 'searchButtonSearch mw-fallbackSearchButton' )
+								array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
 							);
 							echo $this->makeSearchButton(
 								'go',
-								array( 'id' => 'searchButtonSearch', 'class' => 'searchButtonSearch' )
+								array( 'id' => 'searchButton', 'class' => 'searchButton' )
 							);
 							?>
 								</div>
