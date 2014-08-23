@@ -27,7 +27,7 @@ Please be aware that there are issues in the codes if you see any could you poin
 A working demo of the skin is available at http://pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.24wmf16 and version 2.3 beta 1 of the master branch of the skin.
 
 
-Settings
+## Settings
 
 1.24 only
 
@@ -47,12 +47,13 @@ Default is
 
 $SearchBar = true;
 
-Known Issues
+
+## Known Issues
 
 * Mobile view of desktop is not shown correcly.
 
 
-Version
+## Version
 
 2.x.x requires MediaWiki 1.24.
 
