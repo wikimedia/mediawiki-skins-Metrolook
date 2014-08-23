@@ -61,7 +61,7 @@ $wgVectorUseSimpleSearch = true;
 $wgVectorUseIconWatch = true;
 
 $Logoshow = false;
-$SearchBar = true;
+$SearchBar = false;
 
 // Register modules
 $wgResourceModules['skins.metrolook.styles'] = array(
