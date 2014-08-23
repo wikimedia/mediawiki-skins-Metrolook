@@ -393,8 +393,11 @@ echo $grav_url;
 				<?php endif; ?>	
 			</div>
 		</div>
-
+		    <?php if ( $SearchBar ): ?>
 			<div id="mw-panel">
+			<?php else: ?>
+			<div id="mw-panel-custom">
+			<?php endif; ?>	
 				<?php if ( $Logoshow ): ?>
 				<div id="p-logo" role="banner"><a style="background-image: url(<?php
 					$this->text( 'logopath' )
@@ -468,16 +471,26 @@ echo $grav_url;
 	 * @param null|string|array $hook
 	 */
 	protected function renderPortal( $name, $content, $msg = null, $hook = null ) {
+		global $SearchBar;
+		
 		if ( $msg === null ) {
 			$msg = $name;
 		}
 		$msgObj = wfMessage( $msg );
 		?>
+		<?php if ( $SearchBar ): ?>
 		<div class="portal" role="navigation" id='<?php
 		echo Sanitizer::escapeId( "p-$name" )
 		?>'<?php
 		echo Linker::tooltip( 'p-' . $name )
 		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+		<?php else: ?>
+		<div class="portal-custom" role="navigation" id='<?php
+		echo Sanitizer::escapeId( "p-$name" )
+		?>'<?php
+		echo Linker::tooltip( 'p-' . $name )
+		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+		<?php endif; ?>	
 			<h5<?php
 			$this->html( 'userlangattributes' )
 			?> id='<?php
@@ -486,7 +499,11 @@ echo $grav_url;
 				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
 				?></h5>
 
+			<?php if ( $SearchBar ): ?>
 			<div class="body">
+			<?php else: ?>
+			<div class="body-custom">
+			<?php endif; ?>	
 				<?php
 				if ( is_array( $content ) ) {
 					?>
