@@ -58,3 +58,4 @@ $SearchBar = true;
 2.x.x requires MediaWiki 1.24.
 
 1.x.x requires MediaWiki 1.23.
+
