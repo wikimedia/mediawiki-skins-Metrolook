@@ -22,19 +22,19 @@
  * @ingroup Skins
  */
 
-$wgExtensionCredits['skin'][] = array(
+$GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.3',
+	'version' => '2.3.1',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
 // Register files
-$wgAutoloadClasses['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
-$wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+$GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
+$GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 
 // Register skin
 SkinFactory::getDefaultInstance()->register( 'metrolook', 'Metrolook', function(){
@@ -43,7 +43,7 @@ SkinFactory::getDefaultInstance()->register( 'metrolook', 'Metrolook', function(
 } );
 
 // Register config
-$wgConfigRegistry['metrolook'] = 'GlobalVarConfig::newInstance';
+$GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
 
 // Configuration options
 /**
@@ -51,20 +51,23 @@ $wgConfigRegistry['metrolook'] = 'GlobalVarConfig::newInstance';
  *  - true = use an icon search button
  *  - false = use Go & Search buttons
  */
-$wgVectorUseSimpleSearch = true;
+$GLOBALS['wgVectorUseSimpleSearch'] = true;
 
 /**
  * Watch and unwatch as an icon rather than a link.
  *  - true = use an icon watch/unwatch button
  *  - false = use watch/unwatch text link
  */
-$wgVectorUseIconWatch = true;
+$GLOBALS['wgVectorUseIconWatch'] = true;
 
-$Logoshow = false;
-$SearchBar = true;
+/* To enable logo. Note that if enabled it will not show properly.*/
+$GLOBALS['Logoshow'] = false;
+
+/* to enable search bar on the sidebar and disables the search bar on the top bar */
+$GLOBALS['SearchBar'] = true;
 
 // Register modules
-$wgResourceModules['skins.metrolook.styles'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
 	'styles' => array(
 		'screen.less' => array( 'media' => 'screen' ),
 		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
@@ -72,7 +75,7 @@ $wgResourceModules['skins.metrolook.styles'] = array(
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
 );
-$wgResourceModules['skins.metrolook.js'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'collapsibleTabs.js',
 		'vector.js',
@@ -85,7 +88,7 @@ $wgResourceModules['skins.metrolook.js'] = array(
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
 );
-$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
 		'collapsibleNav.js',
 	),
@@ -103,7 +106,7 @@ $wgResourceModules['skins.metrolook.collapsibleNav'] = array(
 );
 
 // Apply module customizations
-$wgResourceModuleSkinStyles['metrolook'] = array(
+$GLOBALS['wgResourceModuleSkinStyles']['metrolook'] = array(
 	'jquery.tipsy' => 'skinStyles/jquery.tipsy.less',
 	'jquery.ui.core' => array(
 		'skinStyles/jquery.ui/jquery.ui.core.css',
