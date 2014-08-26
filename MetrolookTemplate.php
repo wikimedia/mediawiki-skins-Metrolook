@@ -107,57 +107,60 @@ class MetrolookTemplate extends BaseTemplate {
 		$this->html( 'headelement' );
 ?>
     <style>
-        body {
-height:100%;
-        }
-        html {
-height:100%;
-        }
-		html,
-		body {
-			margin: 0px 0px 0px 0px ;
-			padding: 0px 0px 0px 0px ;
-height:100%;
-			}
-		#top-tile-bar {
-			background:transparent ;
-			left: 0px ;
-			height: 200px;
-			position: fixed ;
-			z-index:100 ;
-			}
+body {
+    height:100%;
+}
+html {
+    height:100%;
+}
+html,
+body {
+	margin: 0px 0px 0px 0px ;
+	padding: 0px 0px 0px 0px ;
+    height:100%;
+}
+#top-tile-bar {
+	background:transparent ;
+	left: 0px ;
+	height: 200px;
+	position: fixed ;
+	z-index:100 ;
+}
 .tilebar {
-position: fixed;
-left: 0px;
-top: 0px;
-right: 0px;
-bottom: 0px;
-align:right;
-color:#fff;background:#1D1D1D;width:100%;height:400px;
-display:block;
-z-index:102;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    align:right;
+    color:#fff;
+    background:#1D1D1D;
+    width:100%;
+    height:400px;
+    display:block;
+    z-index:102;
 }
 .tile:hover {
-  outline: 3px #4A4A4A solid;
+    outline: 3px #4A4A4A solid;
 }
 .onhoverbg:hover {
-  background: #9F6F40;
+    background: #9F6F40;
 }
 .topleft {
-        display: inline;
-        position: relative;
-    }
-    .topright .hover {
-        display: none;
-        position: absolute;
-        left:0;
-        z-index: 2000;
+    display: inline;
+    position: relative;
+}
+.topright .hover {
+    display: none;
+    position: absolute;
+    left:0;
+    z-index: 2000;
 	height:200px;
-    }
+}
     </style>
 
     <script>
-var openDiv;
+var openDiv, $;
 function toggleDiv(divID) {
     $("#" + divID).fadeToggle(150, function() {
         openDiv = $(this).is(':visible') ? divID : null;
@@ -203,7 +206,7 @@ $(function () {
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
 <meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
 <meta name="msapplication-TileColor" content="#BE0027"/>
-<script src="http://files.pidgi.net/overthrow.js"></script>
+<script src="overthrow.js"></script>
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
 		<div id="content" class="mw-body" class="overthrow" role="main">
@@ -371,7 +374,7 @@ echo $grav_url;
 	?>
 	</ul>
 </div>
-<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
+<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><div class="custom2"><img class="upload-button" style="float:left;" /></div><img class="custom3" style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/></div></div>
 	<div id="top-tile-bar" class="fixed-position">
 
 <div style="vertical-align:top;align:left;">
@@ -384,7 +387,7 @@ echo $grav_url;
 
 </div></div>
 			<div id="left-navigation">
-				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img src="http://images.pidgi.net/uploadlogo.png" /> <span style="color:#fff;position:relative;top:1px;"><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><div class="custom"><img class="upload-button" /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 			<div id="right-navigation">
 				<?php if ( $SearchBar ): ?>
