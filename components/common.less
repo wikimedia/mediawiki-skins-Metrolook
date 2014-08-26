@@ -110,8 +110,9 @@ body {
 
 
 
-.custom img{
-            background-image: url('images/uploadlogo.png');
+img.custom {
+            position:inherit;
+            .background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
             width:26px; /*width of your image*/
             height:35px; /*height of your image*/
             margin:0; /* If you want no margin */
@@ -119,31 +120,31 @@ body {
             background-repeat: no-repeat;
 }
 
-.custom2 img{
-            background-image: url('images/line.png');
-            width:auto; /*width of your image*/
-            height:auto; /*height of your image*/
+img.custom2{
+            position:inherit;
+            .background-image-svg('images/line.svg', 'images/line.png'); 
+            width:28px; /*width of your image*/
+            height:35px; /*height of your image*/
             margin:0; /* If you want no margin */
             padding:0; /*if your want to padding */
             background-repeat: no-repeat;
 }
 
 img.custom3 {
-            background-image: url('images/downarrow.png');
+            position:inherit;
+            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
             margin:-26px; /* If you want no margin */
             padding:0; /*if your want to padding */
             background-repeat: no-repeat;
-            
             background-position: -0px 20px
 }
-
 img.custom3:hover{
+            position:inherit;
             background: #9F6F40;
-            background-image: url('images/downarrow.png');
+            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
             margin:-26px; /* If you want no margin */
             padding:0; /*if your want to padding */
             background-repeat: no-repeat;
-
             background-position: -0px 20px;
 }
 

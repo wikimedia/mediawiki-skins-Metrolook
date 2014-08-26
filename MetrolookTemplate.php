@@ -358,11 +358,7 @@ echo "Guest";
 else {
 echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 }
- ?><span style="word-spacing:4px;"> </span><img style="position:relative;top:-1px;" src="<?php
-$default = 'http://www.pidgi.net/wiki/skins/metrolook/images/user-icon.png';
-$grav_url = 'http://www.gravatar.com/avatar/' . md5( strtolower( trim( $this->getSkin()->getUser()->getEmail() ) ) ) . '?d=' . urlencode ( $default ) . '&s=' . 20;
-echo $grav_url;
-?>" /></span></a>
+ ?><span style="word-spacing:4px;"> </span><img style="position:relative;top:-1px;" src="/skins/Metrolook/images/user-icon.svg" /></span></a>
 <div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
 <?php $this->renderNavigation( 'PERSONAL' ); ?>
 </div>
@@ -374,7 +370,7 @@ echo $grav_url;
 	?>
 	</ul>
 </div>
-<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><div class="custom2"><img class="upload-button" style="float:left;" /></div><img class="custom3" style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/></div></div>
+<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img class="custom2" src="/skins/Metrolook/images/Transparent.gif" style="float:left;" /><img class="custom3" src="/skins/Metrolook/images/Transparent.gif" style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/></div></div>
 	<div id="top-tile-bar" class="fixed-position">
 
 <div style="vertical-align:top;align:left;">
@@ -387,7 +383,7 @@ echo $grav_url;
 
 </div></div>
 			<div id="left-navigation">
-				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><div class="custom"><img class="upload-button" /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="custom" src="/skins/Metrolook/images/Transparent.gif"/> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 			<div id="right-navigation">
 				<?php if ( $SearchBar ): ?>
