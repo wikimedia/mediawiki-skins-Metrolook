@@ -28,12 +28,16 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'description' => 'Metrolook skin for MediaWiki.',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	'version' => '2.3.4',
 =======
 	'version' => '2.3.5',
 >>>>>>> Update Metrolook
 =======
 	'version' => '2.3.6',
+>>>>>>> Update Metrolook
+=======
+	'version' => '2.3.7',
 >>>>>>> Update Metrolook
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
