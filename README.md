@@ -8,11 +8,8 @@ The author of the skin is http://www.pidgi.net/wiki/Main_Page
 
 Compatible with MediaWiki 1.24+
 
-If you would like compatibility with mediawiki 1.24, 1.23, 1.22 or 1.21 please visit 
+If you would like compatibility with mediawiki 1.23, 1.22 or 1.21 please visit 
 
-1.24
-
-https://github.com/paladox2015/Metrolook/tree/MediaWiki-1.24
 
 1.23
 
@@ -30,6 +27,15 @@ Please be aware that there are issues in the codes if you see any could you poin
 
 A working demo of the skin is available at http://pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.24wmf18 and version 2.3 of the master branch of the skin.
 
+## Installation
+
+Download and save in skins/ folder 
+
+Add this to LocalSettings.php
+
+<pre>
+require_once "$IP/skins/Metrolook/Metrolook.php";
+</pre>
 
 ## Settings
 
@@ -37,11 +43,15 @@ A working demo of the skin is available at http://pidgi.net/metrolooktest/index.
 
 To enable logo
 
-$Logoshow = true;
+//$Logoshow = true;
+
+$logo = true;
 
 Default is
 
-$Logoshow = false;
+//$Logoshow = false;
+
+$logo = false;
 
 To enable sidebar search bar
 
@@ -54,7 +64,6 @@ $SearchBar = true;
 Default is
 
 $DownArrow = true;
-
 
 To turn it off
 
@@ -160,9 +169,17 @@ $url6 = link of website;
 
 $picture6 = image link;
 
+To disable upload Button on top bar please add this to LocalSettings.php
+
+$UploadButton = false;
+
+Default is
+
+$UploadButton = true;
+
 ## Customizing top bar color
 
-To customise top bar colour add the following to MediaWiki:common.css
+To customise top bar colour ether add it to theme.css which is in metrolook skin folder or MediaWiki:Metrolook.css from web browser.
 
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
@@ -248,4 +265,17 @@ Please do not remove this section. it is for things that have been removed and u
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
 <meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
 <meta name="msapplication-TileColor" content="#BE0027"/>
+```
+
+```html
+				<?php if ( $Logoshow ): ?>
+				<div id="p-logo" role="banner"><a style="background-image: url(<?php
+					$this->text( 'logopath' )
+					?>);" href="<?php
+					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+					?>" <?php
+					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+					?>></a></div>
+					<?php else: ?>
+				<?php endif; ?>
 ```
