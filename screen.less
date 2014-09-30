@@ -13,25 +13,24 @@
 
 /* Framework */
 html {
-        font-size: @html-font-size;
+	font-size: @html-font-size;
 }
 html,
 body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: @content-font-family;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: @content-font-family;
 }
 body {
-        background-color: #f3f3f3;
-        /* @embed */
-        background-image: url(images/page-base.png);
+	background-color: #f3f3f3;
+	/* @embed */
+	background-image: url(images/page-base.png);
 }
 /* Content */
 div#content {
     margin-left: 10em;
-    padding-bottom: 1em;
-    padding-top:0em;
+    padding: 1.25em 1.5em 1.5em 1.5em;
     /* @embed */
     background-image: url(images/border.png);
     background-position: top left;
@@ -41,18 +40,17 @@ div#content {
     direction: ltr;
     height:auto;
     position:absolute;
-    bottom:0px;
-    right: 0px;
-    left: 0px;
+    bottom:0;
+    right: 0;
+    left: 0;
     top:40px;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
 }
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#content {
     margin-left: 11em;
-    padding-bottom: 1em;
-    padding-top:0em;
+    padding: 1.25em 1.5em 1.5em 1.5em;
     /* @embed */
     background-image: url(images/border.png);
     background-position: top left;
@@ -62,9 +60,9 @@ div#content {
     direction: ltr;
     height:auto;
     position:absolute;
-    bottom:0px;
+    bottom:0;
     right:-60px;
-    left:0px;
+    left:0;
     top:40px;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
@@ -122,50 +120,57 @@ img.custom4 {
 }
 /* Head */
 #mw-page-base {
-        height: 2.5em;
-        background-color: #CF8B54;
-        background-position: bottom left;
-        background-repeat: repeat-x;
-        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-        background-image: url('images/page-fade.png');
+	height: 2.5em;
+	background-color: #CF8B54;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	min-width: auto;
 }
-@media all and (max-width: 1000px) and (min-width: 700px) {
-   #mw-page-base {
-        height: 2.5em;
-        background-color: #CF8B54;
-        background-position: bottom left;
-        background-repeat: repeat-x;
-        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-        background-image: url('images/page-fade.png');
-        min-width:65em;
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+#mw-page-base {
+	height: 2.5em;
+	background-color: #CF8B54;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+    min-width: 65em;
 }
 }
+
 #mw-head-base {
 	margin-top: -5em;
 	margin-left: 10em;
 	height: 5em;
 }
+
 div#mw-head {
-	position: absolute;
-        top: -5px;
-        width: 100%;
-}
-div#mw-head h5 {
-        margin: 0;
-        padding: 0;
-}
-@media all and (max-width: 1000px) and (min-width: 700px) {
-    div#mw-head {
-        position: absolute;
-        top: -5px;
-        min-width: 106%;
+    position: absolute;
+    top: -5px;
+    min-width: 100%;
 
 	h5 {
-	        margin: 0;
-	        padding: 0;
+	    margin: 0;
+	    padding: 0;
+	}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    div#mw-head {
+	position: absolute;
+	top: -5px;
+	min-width: 106%;
+
+	h5 {
+		margin: 0;
+		padding: 0;
 	}
 }
 }
+
 /* Hide empty portlets */
 div.emptyPortlet {
 		display: none;
@@ -700,15 +705,15 @@ div#simpleSearchSearch button#searchButton > img {
 
 /* Panel */
 div#mw-panel {
-    position: absolute;
     font-size: @menu-main-font-size;
+    position: absolute;
     top: 40px;
+    bottom: 0;
     height: auto;
-    bottom: 0px;
+	overflow: hidden;
     padding-top: 1em;
     width: 11em;
     left: 0;
-	overflow: hidden;
 }
 div#mw-panel div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -752,18 +757,18 @@ div#mw-panel div.portal div.body ul li a {
 	}
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
 /* Panel */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#mw-panel {
-    position: absolute;
     font-size: @menu-main-font-size;
+    position: absolute;
     top: 40px;
+    bottom: 0;
     height: auto;
-    bottom: 0px;
+	overflow: hidden;
     padding-top: 1em;
     width: 9.5em;
     left: 0;
-	overflow: hidden;
 }
 div#mw-panel div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -810,15 +815,15 @@ div#mw-panel div.portal div.body ul li a {
 
 /* Panel */
 div#mw-panel-custom {
-    position: absolute;
     font-size: @menu-main-font-size;
+    position: absolute;
     top: 40px;
+    bottom: 0;
     height: auto;
-    bottom: 0px;
+	overflow: hidden;
     padding-top: 1em;
     width: 11em;
     left: 0;
-	overflow: hidden;
 }
 div#mw-panel-custom div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
@@ -865,18 +870,18 @@ div#mw-panel-custom div.portal-custom div.body-custom ul li a {
 	}
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
 /* Panel */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#mw-panel-custom {
-    position: absolute;
     font-size: @menu-main-font-size;
+    position: absolute;
     top: 40px;
+    bottom: 0;
     height: auto;
-    bottom: 0px;
+	overflow: hidden;
     padding-top: 1em;
     width: 11em;
     left: 0;
-	overflow: hidden;
 }
 div#mw-panel-custom div.portal-custom {
 		margin: 0 0.6em 0 0.7em;

@@ -67,7 +67,6 @@ class MetrolookTemplate extends BaseTemplate {
 		global $url6;
 		global $UploadButton;
 		global $logo;
-		global $transparent;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];

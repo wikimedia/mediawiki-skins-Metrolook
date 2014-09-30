@@ -179,27 +179,30 @@ To customise top bar colour ether add it to theme.css which is in metrolook skin
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
 This customise changes it to blue for background and dark blue for hover change the background colour to something you like.
+
 <pre>
+
 /* Top Bar colour and hover colour start */
 
 #mw-page-base {
-	height: 2.5em;
-	background-color: dodgerBlue;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
+    height: 2.5em;
+    background-color: dodgerBlue;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    min-width: auto;
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
-   #mw-page-base {
-	height: 2.5em;
-	background-color: dodgerBlue;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
-        min-width:65em;
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+#mw-page-base {
+    height: 2.5em;
+    background-color: dodgerBlue;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    min-width: 65em;
 }
 }
 
@@ -221,12 +224,12 @@ div.vectorMenu:hover h5 a {
 
 div.vectorMenu h5 a {
     display: inline-block;
-	width: 24px;
-	height: 2em;
-	background-color: dodgerBlue; 
-	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
-	background-position: 50% 50%; 
-	background-repeat: no-repeat;
+    width: 24px;
+    height: 2em;
+    background-color: dodgerBlue; 
+    .background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
+    background-position: 50% 50%; 
+    background-repeat: no-repeat;
 }
 
 div.vectorMenu:hover {
@@ -236,16 +239,17 @@ div.vectorMenu:hover {
 div.vectorMenu ul {
     position: absolute;
     background-color: white;
-	border: solid 2px dodgerBlue;
-	border-top-width: 0;
-	list-style-type: none;
-	list-style-image: none;
-	padding: 0;
-	padding-top:5px;
-	margin: 0;
-	margin-left: -6px;
-	text-align: left;
+    border: solid 2px dodgerBlue;
+    border-top-width: 0;
+    list-style-type: none;
+    list-style-image: none;
+    padding: 0;
+    padding-top:5px;
+    margin: 0;
+    margin-left: -6px;
+    text-align: left;
 }
+
 /* Top Bar colour and hover colour end */
 </pre>
 
