@@ -2,5 +2,9 @@
 host=gerrit.wikimedia.org
 port=29418
 project=mediawiki/skins/Metrolook.git
+<<<<<<< HEAD
 defaultbranch=MediaWiki-1.24
+=======
+defaultbranch=REL1_24
+>>>>>>> Add .gitreview file
 defaultrebase=0
