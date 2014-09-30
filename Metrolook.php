@@ -25,7 +25,7 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.4.3',
+	'version' => '2.4.4',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -94,6 +94,8 @@ $GLOBALS['image6'] = false;
 $GLOBALS['UploadButton'] = true;
 
 $GLOBALS['logo'] = false;
+
+$GLOBALS['transparent'] = __DIR__ . '/images/Transparent.gif';
 
 // Register modules
 $GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
