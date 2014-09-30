@@ -1,0 +1,1230 @@
+/*
+ * Any rules which should not be flipped automatically in right-to-left situations should be
+ * prepended with @noflip in a comment block.
+ *
+ * This stylesheet employs a few CSS trick to accomplish compatibility with a wide range of web
+ * browsers. The most common trick is to use some styles in IE6 only. This is accomplished by using
+ * a rule that makes things work in IE6, and then following it with a rule that begins with
+ * "html > body" or use a child selector ">", which is ignored by IE6 because it does not support
+ * the child selector. You can spot this by looking for the "OVERRIDDEN BY COMPLIANT BROWSERS" and
+ * "IGNORED BY IE6" comments.
+ */
+@import "mediawiki.mixins";
+
+/* Framework */
+html {
+        font-size: @html-font-size;
+}
+html,
+body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: @content-font-family;
+}
+body {
+        background-color: #f3f3f3;
+        /* @embed */
+        background-image: url(images/page-base.png);
+}
+/* Content */
+div#content {
+    margin-left: 10em;
+    padding-bottom: 1em;
+    padding-top:0em;
+    /* @embed */
+    background-image: url(images/border.png);
+    background-position: top left;
+    background-repeat: repeat-y;
+    background-color: white;
+    color: black;
+    direction: ltr;
+    height:auto;
+    position:absolute;
+    bottom:0px;
+    right: 0px;
+    left: 0px;
+    top:40px;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+}
+@media all and (max-width: 1000px) and (min-width: 700px) {
+div#content {
+    margin-left: 11em;
+    padding-bottom: 1em;
+    padding-top:0em;
+    /* @embed */
+    background-image: url(images/border.png);
+    background-position: top left;
+    background-repeat: repeat-y;
+    background-color: white;
+    color: black;
+    direction: ltr;
+    height:auto;
+    position:absolute;
+    bottom:0px;
+    right:-60px;
+    left:0px;
+    top:40px;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+}
+}
+img.custom {
+            position:inherit;
+            .background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
+            width:26px; /*width of your image*/
+            height:35px; /*height of your image*/
+            margin:0; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+}
+
+img.custom2{
+            position:inherit;
+            .background-image-svg('images/line.svg', 'images/line.png'); 
+            width:28px; /*width of your image*/
+            height:35px; /*height of your image*/
+            margin:0; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+}
+
+img.custom3 {
+            position:inherit;
+            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+            margin:-26px; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+            background-position: -0px 20px
+}
+img.custom3:hover{
+            position:inherit;
+            background: #9F6F40;
+            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+            margin:-26px; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+            background-position: -0px 20px;
+}
+img.custom4 {
+            .background-image-svg('images/user-icon.svg', 'images/user-icon.png');
+            width:26px; /*width of your image*/
+            height:35px; /*height of your image*/
+            margin:0; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+}
+/* Hide, but keep accessible for screen-readers */
+#mw-navigation h2 {
+	position: absolute;
+	top: -9999px;
+}
+/* Head */
+#mw-page-base {
+        height: 2.5em;
+        background-color: #CF8B54;
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+        background-image: url('images/page-fade.png');
+}
+@media all and (max-width: 1000px) and (min-width: 700px) {
+   #mw-page-base {
+        height: 2.5em;
+        background-color: #CF8B54;
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+        background-image: url('images/page-fade.png');
+        min-width:65em;
+}
+}
+#mw-head-base {
+	margin-top: -5em;
+	margin-left: 10em;
+	height: 5em;
+}
+div#mw-head {
+	position: absolute;
+        top: -5px;
+        width: 100%;
+}
+div#mw-head h5 {
+        margin: 0;
+        padding: 0;
+}
+@media all and (max-width: 1000px) and (min-width: 700px) {
+    div#mw-head {
+        position: absolute;
+        top: -5px;
+        min-width: 106%;
+
+	h5 {
+	        margin: 0;
+	        padding: 0;
+	}
+}
+}
+/* Hide empty portlets */
+div.emptyPortlet {
+		display: none;
+}
+/* Personal */
+#p-personal {
+	position: relative;
+	top: 0em;
+	right: 0.75em;
+	/* Display on top of page tabs - bugs 37158, 48078 */
+	z-index: 100;
+}
+#p-personal h5 {
+	display: none;
+}
+#p-personal ul {
+		list-style-type: none;
+        list-style-image: none;
+        margin-right:12px;
+        margin-left:0;
+        right:-12px;
+        position:absolute;
+}
+#p-personal li {
+		line-height: 20px;
+		/* @noflip */
+		float: left;
+		width: 100%;
+		margin-left: 0em;
+		margin-top: 0em;
+		font-size: 1em;
+		white-space: nowrap;
+}
+#username-top {
+	color: #fff;
+	height:40px;
+	display:table-cell;
+	vertical-align:middle;
+	font-size:9.5pt;
+	padding-top:1px;
+	font-family:sans-serif;
+}
+/* Navigation Containers */
+#left-navigation {
+   float: initial;
+    /* IE 6 double-margin bug fix */
+   display: inline; 
+}
+#right-navigation {
+float: right;
+}
+/* Navigation Labels */
+/*
+Styling for namespace tabs (page, discussion) and views (read, edit, view history, watch and other actions)
+*/
+
+/* Navigation Labels */
+div.vectorTabs h5,
+div.vectorMenu h5 span {
+	display: none;
+}
+
+/* Namespaces and Views */
+div.vectorTabs {
+	/* @noflip */
+	float: left;
+	height: 2.5em;
+	.background-image('images/tab-break.png');
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	padding-left: 1px;
+
+	ul {
+		/* @noflip */
+		float: left;
+		height: 100%;
+		list-style-type: none;
+		list-style-image: none;
+		margin: 0;
+		padding: 0;
+		.background-image('images/tab-break.png');
+		background-position: right bottom;
+		background-repeat: no-repeat;
+
+		li {
+			/* @noflip */
+			float: left;
+			line-height: 14px;
+			/* For IE6, overridden later to display:block by modern browsers */
+			display: inline-block;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background:transparent; 
+			.background-image('images/tab-normal-fade.png');
+			background-position: bottom left;
+			background-repeat: repeat-x;
+			white-space: nowrap;
+		}
+
+		/* IGNORED BY IE6 which doesn't support child selector */
+		> li {
+			display: block;
+		}
+	}
+
+	li {
+		&.new {
+			a,
+			a:visited{
+				color: #a55858;
+				text-decoration: none;
+			}
+		}
+
+		&.selected {
+			.background-image('images/tab-current-fade.png');
+			a,
+			a:visited{
+				color: #fff;
+				text-decoration: none;
+			}
+		}
+
+		&.icon {
+			a {
+				background-position: bottom right;
+				background-repeat: no-repeat;
+			}
+		}
+
+		a {
+			/* For IE6, overridden later to display:block by modern browsers */
+			display: inline-block;
+			height: 2.1em;
+			padding-left: 0.8em;
+			padding-right: 0.8em;
+			background-image: url(images/tab-break.png);
+			background-position: bottom right;
+			background-repeat: no-repeat;
+			color: #fff;
+			cursor: pointer;
+			font-size: 0.8em;
+			text-decoration: none;
+		}
+
+		/* Ignored by IE6 which doesn't support child selector */
+		> a {
+			display: block;
+		}
+	}
+	a:hover { 
+		background:#9F6F40;		 
+	}
+
+	span {
+		display: inline-block;
+		.background-image('images/tab-break.png');
+		background-position: bottom right;
+		background-repeat: no-repeat;
+
+		a  {
+			/* For IE6, overridden later to display:block by modern browsers */
+			display: inline-block;
+			padding-top: 1em;
+		}
+
+		/* Ignored by IE6 which doesn't support child selector */
+		> a {
+			/* @noflip */
+			float: left;
+			display: block;
+		}
+	}
+}
+
+/* Variants and Actions */
+div.vectorMenu {
+	/* @noflip */
+	direction: ltr;
+	/* @noflip */
+	float: left;
+	padding-left:5px;
+	padding-right:5px;
+	cursor: pointer;
+	z-index:10;
+}
+
+body.rtl div.vectorMenu {
+	/* @noflip */
+	direction: rtl;
+}
+
+div#mw-head div.vectorMenu h5 {
+	/* @noflip */
+	float: left;
+	.background-image('images/tab-break.png');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	margin-left: -1px;
+}
+
+
+div.vectorMenu h5 a {
+    display: inline-block;
+	width: 24px;
+	height: 2em;
+	background-color: #CF8B54; 
+	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
+	background-position: 50% 50%; 
+	background-repeat: no-repeat;
+	.transition(background-position 250ms);
+}
+
+div.vectorMenu:hover h5 a {
+    background-color: #9F6F40;
+}
+div.vectorMenu:hover {  
+	background-color: #9F6F40;
+	margin-top: 0px;
+}
+
+div.vectorMenu.menuForceShow h5 a{
+	background-position: 100% 100%;
+}
+
+div.vectorMenuFocus h5 a{
+	.background-image-svg('images/arrow-down-focus-icon.svg', 'images/arrow-down-focus-icon.png');
+	background-position: 100% 60%;
+}
+
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div#mw-head div.vectorMenu h5 {
+	/* @noflip */
+	float: left;
+	.background-image('images/tab-break.png');
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	margin-left: -1px;
+}
+
+/* IGNORED BY IE6 */
+div#mw-head div.vectorMenu > h5 {
+	background-image: none;
+}
+
+div#mw-head div.vectorMenu h4,
+div.vectorMenu#p-variants #mw-vector-current-variant {
+	display: inline-block;
+	float: left;
+	font-size: 0.8em;
+	padding-left: 0.5em;
+	padding-top: 1.375em;
+	font-weight: normal;
+	border: none;
+}
+
+div.vectorMenu div.menu {
+	position: relative;
+	display: none;
+	clear: both;
+	text-align: left;
+}
+
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+body.rtl div.vectorMenu div.menu {
+	/* @noflip */
+	margin-left: 24px;
+}
+
+/* IGNORED BY IE6 */
+body.rtl div.vectorMenu > div.menu {
+	/* @noflip */
+	margin-left: auto;
+}
+
+/* IGNORED BY IE6 */
+/* Also fixes old versions of FireFox */
+body.rtl div.vectorMenu > div.menu,
+x:-moz-any-link {
+	/* @noflip */
+	margin-left: 23px;
+}
+
+/* Enable forcing showing of the menu for accessibility */
+div.vectorMenu:hover div.menu,
+div.vectorMenu.menuForceShow div.menu {
+	display: block;
+}
+
+div.vectorMenu ul {
+	position: absolute;
+	background-color: white;
+	border: solid 2px #CF8B54;
+	border-top-width: 0;
+	list-style-type: none;
+	list-style-image: none;
+	padding: 0;
+	padding-top:5px;
+	margin: 0;
+	margin-left: -6px;
+	text-align: left;
+}
+
+/* Fixes old versions of FireFox */
+div.vectorMenu ul,
+x:-moz-any-link {
+	min-width: 5em;
+}
+
+/* Returns things back to normal in modern versions of FireFox */
+div.vectorMenu ul,
+x:-moz-any-link,
+x:default {
+	min-width: 0;
+}
+
+div.vectorMenu li {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	line-height: 1em;
+}
+
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div.vectorMenu li a {
+	display: inline-block;
+	padding: 0.5em;
+	padding-left: 1em;
+	padding-right: 2.5em;
+	white-space: nowrap;
+	color: #333;
+	cursor: pointer;
+	font-size: 0.8em;
+	text-decoration:none; 
+}
+
+div.vectorMenu li a:hover {
+  background-color:#f3f3f3; 
+}
+
+/* IGNORED BY IE6 */
+div.vectorMenu li > a {
+	display: block;
+}
+
+div.vectorMenu li.selected a,
+div.vectorMenu li.selected a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Search */
+#p-search h5 {
+	display: none;
+}
+#p-search {
+	/* @noflip */
+	float: left;
+}
+#p-search {
+	margin-right: 0.5em;
+	margin-left: 0.5em;
+}
+#p-search form,
+#p-search input {
+	margin: 0;
+	margin-top: 0.4em;
+}
+div#simpleSearch {
+	display: block;
+	width: 14em;
+	height: 1.4em;
+	margin-top: 0.65em;
+	position: relative;
+	min-height: 1px; /* Gotta trigger hasLayout for IE7 */
+	border: solid 1px #aaa;
+	color: black;
+	background-color: white;
+	.background-image('images/search-fade.png');
+	background-position: top left;
+	background-repeat: repeat-x;
+}
+div#simpleSearch input:focus {
+	outline: none;
+}
+div#simpleSearch input {
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background-color: transparent;
+		color: black;
+}
+div#simpleSearch input.placeholder {
+	color: #999;
+}
+div#simpleSearch input::-webkit-input-placeholder {
+	color: #999;
+}
+div#simpleSearch input:-moz-placeholder {
+	color: #999;
+}
+div#simpleSearch input:-ms-input-placeholder {
+	color: #999;
+}
+div#simpleSearch input#searchInput {
+		top: 0;
+		left: 0;
+		width: 90%;
+		padding: 0.2em 0 0.2em 0.2em;
+		font-size: 13px;
+		direction: ltr;
+}
+div#simpleSearch button#searchButton {
+	position: absolute;
+	width: 10%;
+	right: 0;
+	top: 0;
+	padding: 0;
+	padding-top: 0.3em;
+	padding-bottom: 0.2em;
+	padding-right: 0.4em;
+	margin: 0;
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+	background-image: none;
+}
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div#simpleSearch button#searchButton img {
+	border: none;
+	margin: 0;
+	margin-top: -3px;
+	padding: 0;
+}
+/* IGNORED BY IE6 */
+div#simpleSearch button#searchButton > img {
+	margin: 0;
+}
+
+/* Custom */
+/* Search */
+#p-searchSearch h5 {
+	display: none;
+}
+#p-searchSearch {
+	/* @noflip */
+	float: left;
+}
+#p-searchSearch {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+#p-searchSearch form,
+#p-searchSearch input {
+	margin: 0;
+	margin-top: 0.4em;
+}
+div#simpleSearchSearch {
+	display: block;
+	width: 156px;
+	height: 1.75em;
+	margin-top: 0.65em;
+	position: relative;
+	min-height: 1px; /* Gotta trigger hasLayout for IE7 */
+	border: solid 1px #aaa;
+	color: black;
+	background-color: white;
+	.background-image('images/search-fade.png');
+	background-position: top left;
+	background-repeat: repeat-x;
+	margin-bottom: 10px;
+}
+div#simpleSearchSearch input:focus {
+	outline: none;
+}
+div#simpleSearchSearch input {
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background-color: transparent;
+		color: black;
+}
+div#simpleSearchSearch input.placeholder {
+	color: #999;
+}
+div#simpleSearchSearch input::-webkit-input-placeholder {
+	color: #999;
+}
+div#simpleSearchSearch input:-moz-placeholder {
+	color: #999;
+}
+div#simpleSearchSearch input:-ms-input-placeholder {
+	color: #999;
+}
+div#simpleSearchSearch input#searchInput {
+		top: 0;
+		left: 0;
+		width: 90%;
+		padding: 0.2em 0 0.2em 0.2em;
+		font-size: 13px;
+		direction: ltr;
+}
+div#simpleSearchSearch button#searchButton {
+	position: absolute;
+	width: 10%;
+	right: 0;
+	top: 0;
+	padding: 0;
+	padding-top: 0.3em;
+	padding-bottom: 0.2em;
+	padding-right: 0.4em;
+	margin: 0;
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+	background-image: none;
+}
+/* OVERRIDDEN BY COMPLIANT BROWSERS */
+div#simpleSearchSearch button#searchButton img {
+	border: none;
+	margin: 0;
+	margin-top: -3px;
+	padding: 0;
+}
+/* IGNORED BY IE6 */
+div#simpleSearchSearch button#searchButton > img {
+	margin: 0;
+}
+
+/* Panel */
+div#mw-panel {
+    position: absolute;
+    font-size: @menu-main-font-size;
+    top: 40px;
+    height: auto;
+    bottom: 0px;
+    padding-top: 1em;
+    width: 11em;
+    left: 0;
+	overflow: hidden;
+}
+div#mw-panel div.portal {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+}
+div#mw-panel div.portal h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			margin: 0;
+			padding: @menu-main-heading-padding;
+			cursor: default;
+			border: none;
+}
+div#mw-panel div.portal div.body {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+}
+div#mw-panel div.portal div.body ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+}
+div#mw-panel div.portal div.body ul li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+}
+div#mw-panel div.portal div.body ul li a {
+	color: @menu-main-body-link-color;
+	&:visited {
+		color: @menu-main-body-link-visited-color;
+	}
+}
+
+@media all and (max-width: 1000px) and (min-width: 700px) {
+/* Panel */
+div#mw-panel {
+    position: absolute;
+    font-size: @menu-main-font-size;
+    top: 40px;
+    height: auto;
+    bottom: 0px;
+    padding-top: 1em;
+    width: 9.5em;
+    left: 0;
+	overflow: hidden;
+}
+div#mw-panel div.portal {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+}
+div#mw-panel div.portal h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			margin: 0;
+			padding: @menu-main-heading-padding;
+			cursor: default;
+			border: none;
+}
+div#mw-panel div.portal div.body {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+}
+div#mw-panel div.portal div.body ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+}
+div#mw-panel div.portal div.body ul li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+}
+div#mw-panel div.portal div.body ul li a {
+	color: @menu-main-body-link-color;
+	&:visited {
+		color: @menu-main-body-link-visited-color;
+	}
+}
+}
+
+/* Panel */
+div#mw-panel-custom {
+    position: absolute;
+    font-size: @menu-main-font-size;
+    top: 40px;
+    height: auto;
+    bottom: 0px;
+    padding-top: 1em;
+    width: 11em;
+    left: 0;
+	overflow: hidden;
+}
+div#mw-panel-custom div.portal-custom {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+}
+div#mw-panel-custom div.portal-custom h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+		    padding: 0.25em;
+		    padding-top: 0;
+		    padding-left: 17px;
+		    padding-bottom: 0;
+		    margin-bottom:0;
+			cursor: default;
+			border: none;
+}
+div#mw-panel-custom div.portal-custom div.body-custom {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+}
+div#mw-panel-custom div.portal-custom div.body-custom ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+}
+div#mw-panel-custom div.portal-custom div.body-custom ul li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+}
+div#mw-panel-custom div.portal-custom div.body-custom ul li a {
+	color: @menu-main-body-link-color;
+	&:visited {
+		color: @menu-main-body-link-visited-color;
+	}
+}
+
+@media all and (max-width: 1000px) and (min-width: 700px) {
+/* Panel */
+div#mw-panel-custom {
+    position: absolute;
+    font-size: @menu-main-font-size;
+    top: 40px;
+    height: auto;
+    bottom: 0px;
+    padding-top: 1em;
+    width: 11em;
+    left: 0;
+	overflow: hidden;
+}
+div#mw-panel-custom div.portal-custom {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+}
+div#mw-panel-custom div.portal-custom h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+		    padding: 0.25em;
+		    padding-top: 0;
+		    padding-left: 17px;
+		    padding-bottom: 0;
+		    margin-bottom:0;
+			cursor: default;
+			border: none;
+}
+div#mw-panel-custom div.portal-custom div.body-custom {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+}
+div#mw-panel-custom div.portal-custom div.body-custom ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+}
+div#mw-panel-custom div.portal-custom div.body-custom ul li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+}
+div#mw-panel-custom div.portal-custom div.body-custom ul li a {
+	color: @menu-main-body-link-color;
+	&:visited {
+		color: @menu-main-body-link-visited-color;
+	}
+}
+}
+
+/* Footer */
+div#footer {
+	margin-left: 0em;
+	margin-top: 0;
+	padding: 0.75em;
+	direction: ltr;
+
+	ul {
+		list-style-type: none;
+		list-style-image: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			margin: 0;
+			padding: 0;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+			color: #333;
+			font-size: 0.8em;
+		}
+	}
+
+	#footer-icons {
+		float: right;
+
+		li {
+			float: left;
+			margin-left: 0.5em;
+			line-height: 2em;
+			text-align: right;
+		}
+	}
+
+	#footer-info {
+		li {
+			line-height: 1.4em;
+		}
+	}
+
+	#footer-places {
+		li {
+			float: left;
+			margin-right: 1em;
+			line-height: 2em;
+		}
+	}
+}
+
+body.ltr {
+	div#footer {
+		#footer-places {
+			/* @noflip */
+			float: left;
+		}
+	}
+}
+/* Logo */
+#p-logo {
+	position: absolute;
+	top: -160px;
+	left: 0;
+	width: 10em;
+	height: 160px;
+}
+#p-logo a {
+	display: block;
+	width: 10em;
+	height: 160px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-decoration: none;
+}
+
+/*
+ *
+ * The following code is highly modified from monobook. It would be nice if the
+ * preftoc id was more human readable like preferences-toc for instance,
+ * howerver this would require backporting the other skins.
+ */
+
+/* Preferences */
+#preftoc {
+	/* Tabs */
+	width: 100%;
+	float: left;
+	clear: both;
+	margin: 0 !important;
+	padding: 0 !important;
+	.background-image('images/preferences-break.png');
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+	#preftoc li {
+		/* Tab */
+		float: left;
+		margin: 0;
+		padding: 0;
+		padding-right: 1px;
+		height: 2.25em;
+		white-space: nowrap;
+		list-style-type: none;
+		list-style-image: none;
+		.background-image('images/preferences-break.png');
+		background-position: bottom right;
+		background-repeat: no-repeat;
+	}
+	/* Sadly, IE6 won't understand this */
+	#preftoc li:first-child {
+		margin-left: 1px;
+	}
+	#preftoc a,
+	#preftoc a:active {
+		display: inline-block;
+		position: relative;
+		color: @menu-link-color;
+		padding: 0.5em;
+		text-decoration: none;
+		background-image: none;
+		font-size: 0.9em;
+	}
+	#preftoc a:hover,
+	#preftoc a:focus {
+		text-decoration: underline;
+	}
+	#preftoc li.selected a {
+		.background-image('images/preferences-fade.png');
+		background-position: bottom;
+		background-repeat: repeat-x;
+		color: #333;
+		text-decoration: none;
+	}
+#preferences {
+	float: left;
+	width: 100%;
+	margin: 0;
+	margin-top: -2px;
+	clear: both;
+	border: solid 1px #ccc;
+	background-color: #fafafa;
+}
+#preferences fieldset {
+	border: none;
+	border-top: solid 1px #ccc;
+}
+#preferences fieldset.prefsection {
+	border: none;
+	padding: 0;
+	margin: 1em;
+}
+#preferences legend {
+	color: #666;
+}
+#preferences fieldset.prefsection legend.mainLegend {
+	display: none;
+}
+#preferences td {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.htmlform-tip {
+	font-size: x-small;
+	padding: .2em 2em;
+	color: #666;
+}
+#preferences div.mw-prefs-buttons {
+	padding: 1em;
+}
+#preferences div.mw-prefs-buttons input {
+	margin-right: 0.25em;
+}
+
+ul {
+	list-style-type: disc;
+	.list-style-image('images/bullet-icon.png');
+}
+
+pre, .mw-code {
+	line-height: 1.3em;
+}
+
+/* Site Notice (includes notices from CentralNotice extension) */
+#siteNotice {
+	font-size: 0.8em;
+}
+#firstHeading {
+	padding-top: 0;
+	margin-top: 0;
+	font-size: @content-heading-font-size;
+}
+
+.redirectText {
+	font-size: 140%;
+}
+
+.redirectMsg img {
+	vertical-align: text-bottom;
+}
+
+#bodyContent {
+	position: relative;
+	width: 100%;
+	line-height: @content-line-height;
+	font-size: @content-font-size;
+}
+
+/* mediawiki.notification */
+.skin-vector .mw-notification-area {
+	font-size: 0.8em;
+}
+.skin-vector .mw-notification-area-layout {
+	top: 7em;
+}
+.skin-vector .mw-notification {
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, 0.93);
+	padding: 0.75em 1.5em;
+	border: solid 1px #a7d7f9;
+	border-radius: 0.75em;
+	-webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.125);
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.125);
+}
+
+/* Watch/Unwatch Icon Styling */
+#ca-unwatch.icon a,
+#ca-watch.icon a {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	display: block;
+	width: 26px;
+	/* This hides the text but shows the background image */
+	padding-top: 3.1em;
+	margin-top: 0;
+	/* Only applied in IE6 */
+	margin-top: -0.8em !ie;
+	height: 0;
+	overflow: hidden;
+	.background-image('images/watch-icons.png');
+}
+#ca-unwatch.icon a {
+	background-position: -43px 60%;
+}
+#ca-watch.icon a {
+	background-position: 5px 60%;
+}
+#ca-unwatch.icon a:hover,
+#ca-unwatch.icon a:focus {
+	background-position: -67px 60%;
+}
+#ca-watch.icon a:hover,
+#ca-watch.icon a:focus {
+	background-position: -19px 60%;
+}
+#ca-unwatch.icon a.loading,
+#ca-watch.icon a.loading {
+	.background-image('images/watch-icon-loading.gif');
+	background-position: 5px 60%;
+}
+#ca-unwatch.icon a span,
+#ca-watch.icon a span {
+	display: none;
+}
+
+/* Tooltips are outside of the normal body code, so this helps make the size of the text sensible */
+.tipsy {
+	font-size: 0.8em;
+}
+
+.hoverbox {
+background:#CF8B54;
+}
+.hoverbox:hover {
+background:#9F6F40;
+}
+
+/* Animate between standard and high definition layouts */
+body.vector-animateLayout {
+	div#content,
+	div#footer,
+	#left-navigation {
+		.transition(margin-left 250ms, padding 250ms;);
+	}
+
+	#p-logo {
+		.transition(left 250ms);
+	}
+
+	#mw-panel {
+		.transition(padding-right 250ms);
+	}
+
+	#p-search {
+		.transition(margin-right 250ms);
+	}
+
+	#p-personal {
+		.transition(right 250ms);
+	}
+
+	#mw-head-base {
+		.transition(margin-left 250ms);
+	}
+}
