@@ -19,17 +19,18 @@
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
 	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+	min-width: auto;
 }
-@media all and (max-width: 1000px) and (min-width: 700px) {
-   #mw-page-base {
-	height: 2.5em;
-	background-color: #CF8B54;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
-	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
-    width:65em;
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+#mw-page-base {
+    height: 2.5em;
+    background-color: #CF8B54;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    .vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+    min-width: 65em;
 }
 }
 
@@ -53,7 +54,8 @@ div#mw-head {
 		padding: 0;
 	}
 }
-@media all and (max-width: 1000px) and (min-width: 700px) {
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#mw-head {
 	 position: absolute;
 	 top: 0;
@@ -97,15 +99,15 @@ float: right;
 
 /* Panel */
 div#mw-panel {
-        position: absolute;
         font-size: @menu-main-font-size;
+        position: absolute;
         top: 40px;
+        bottom: 0;
         height: auto;
-        bottom: 0px;
+        overflow: hidden;
         padding-top: 1em;
         width: 11em;
         left: 0;
-        overflow: hidden;
 
 	div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -166,18 +168,18 @@ div#mw-panel {
 	}
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 /* Panel */
 div#mw-panel {
-        position: absolute;
         font-size: @menu-main-font-size;
+        position: absolute;
         top: 40px;
+        bottom: 0;
         height: auto;
-        bottom: 0px;
+        overflow: hidden;
         padding-top: 1em;
         width: 9.5em;
         left: 0;
-        overflow: hidden;
 
 	div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -243,15 +245,15 @@ div#mw-panel {
 
 /* Panel */
 div#mw-panel-custom {
-        position: absolute;
         font-size: @menu-main-font-size;
+        position: absolute;
         top: 40px;
+        bottom: 0;
         height: auto;
-        bottom: 0px;
+        overflow: hidden;
         padding-top: 1em;
         width: 11em;
         left: 0;
-        overflow: hidden;
 
 	div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
@@ -315,20 +317,20 @@ div#mw-panel-custom {
 	}
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
 /* Custom */
 
 /* Panel */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#mw-panel-custom {
-        position: absolute;
         font-size: @menu-main-font-size;
+        position: absolute;
         top: 40px;
+        bottom: 0;
         height: auto;
-        bottom: 0px;
+        overflow: hidden;
         padding-top: 1em;
         width: 11em;
         left: 0;
-        overflow: hidden;
 
 	div.portal-custom {
 		margin: 0 0.6em 0 0.7em;

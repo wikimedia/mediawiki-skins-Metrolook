@@ -31,8 +31,7 @@ body {
 /* Content */
 div#content {
     margin-left: 10em;
-    padding-bottom: 1em;
-    padding-top:0em;
+    padding: 1.25em 1.5em 1.5em 1.5em;
     /* @embed */
     background-image: url(images/border.png);
     background-position: top left;
@@ -42,9 +41,9 @@ div#content {
     direction: ltr;
     height:auto;
     position:absolute;
-    bottom:0px;
-    right: 0px;
-    left: 0px;
+    bottom:0;
+    right: 0;
+    left: 0;
     top:40px;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
@@ -112,11 +111,10 @@ div#content {
 
 /* Content */
 /* different screen sizes */
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#content {
     margin-left: 11em;
-    padding-bottom: 1em;
-    padding-top:0em;
+    padding: 1.25em 1.5em 1.5em 1.5em;
     /* @embed */
     background-image: url(images/border.png);
     background-position: top left;
@@ -126,9 +124,9 @@ div#content {
     direction: ltr;
     height:auto;
     position:absolute;
-    bottom:0px;
+    bottom:0;
     right:-60px;
-    left:0px;
+    left:0;
     top:40px;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
