@@ -56,7 +56,7 @@ div.vectorTabs {
 		&.new {
 			a,
 			a:visited{
-				color: #fff;
+				color: #a55858;
 				text-decoration: none;
 			}
 		}
@@ -130,31 +130,50 @@ div.vectorMenu {
 	float: left;
 	padding-left:5px;
 	padding-right:5px;
-	background-color: #CF8B54;
-	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
-	/* @noflip */
-	background-position:center;
-	background-repeat: no-repeat;
 	cursor: pointer;
 	z-index:10;
-}
-
-div.vectorMenu:hover {  
-	background-color: #9F6F40;  
-}
-
-div.vectorMenu.menuForceShow {
-	background-position: 100% 100%;
-}
-
-div.vectorMenuFocus {
-	.background-image-svg('images/arrow-down-focus-icon.svg', 'images/arrow-down-focus-icon.png');
-	background-position: 100% 60%;
 }
 
 body.rtl div.vectorMenu {
 	/* @noflip */
 	direction: rtl;
+}
+
+div#mw-head div.vectorMenu h5 {
+	/* @noflip */
+	float: left;
+	.background-image('images/tab-break.png');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	margin-left: -1px;
+}
+
+
+div.vectorMenu h5 a {
+    display: inline-block;
+	width: 24px;
+	height: 2em;
+	background-color: #CF8B54; 
+	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
+	background-position: 50% 50%; 
+	background-repeat: no-repeat;
+	.transition(background-position 250ms);
+}
+
+div.vectorMenu:hover h5 a {
+    background-color: #9F6F40;
+}
+div.vectorMenu:hover {  
+	background-color: #9F6F40;  
+}
+
+div.vectorMenu.menuForceShow h5 a{
+	background-position: 100% 100%;
+}
+
+div.vectorMenuFocus h5 a{
+	.background-image-svg('images/arrow-down-focus-icon.svg', 'images/arrow-down-focus-icon.png');
+	background-position: 100% 60%;
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
@@ -181,26 +200,6 @@ div.vectorMenu#p-variants #mw-vector-current-variant {
 	padding-top: 1.375em;
 	font-weight: normal;
 	border: none;
-}
-
-/* OVERRIDDEN BY COMPLIANT BROWSERS */
-div.vectorMenu h5 a {
-	display: inline-block;
-	width: 24px;
-	height: 2em;
-	text-decoration: none;
-	.background-image('images/tab-break.png');
-	background-repeat: no-repeat;
-	background-position: bottom right;
-}
-
-div.vectorMenu.menuForceShow h5 a {
-	background-position: 100% 100%;
-}
-
-/* IGNORED BY IE6 */
-div.vectorMenu h5 > a {
-	display: block;
 }
 
 div.vectorMenu div.menu {

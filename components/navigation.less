@@ -20,6 +20,18 @@
 	background-image: url('images/page-fade.png');
 	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
 }
+@media all and (max-width: 1000px) and (min-width: 700px) {
+   #mw-page-base {
+	height: 2.5em;
+	background-color: #CF8B54;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+    width:65em;
+}
+}
 
 #mw-head-base {
 	margin-top: -5em;
@@ -34,7 +46,6 @@
 div#mw-head {
 	position: absolute;
 	top: 0;
-	right: 0;
 	width: 100%;
 
 	h5 {
@@ -42,18 +53,28 @@ div#mw-head {
 		padding: 0;
 	}
 }
+@media all and (max-width: 1000px) and (min-width: 700px) {
+    div#mw-head {
+	position: absolute;
+	top: 0;
+	width: 106%;
+
+	h5 {
+		margin: 0;
+		padding: 0;
+	}
+}
+}
 
 /* Navigation Containers */
 #left-navigation {
-	position: absolute;
-	left: 190px;
-	top: 0em;
+   float: initial;
+    /* IE 6 double-margin bug fix */
+   display: inline; 
 }
 
 #right-navigation {
-	position: absolute;
-	right: 190px;
-	top: 0em;
+float: right;
 }
 
 /* Logo */
@@ -77,7 +98,6 @@ div#mw-head {
 /* Panel */
 div#mw-panel {
 	font-size: @menu-main-font-size;
-	position: absolute;
 	top: 40px;
 	padding-top: 1em;
 	width: 10em;
@@ -147,7 +167,6 @@ div#mw-panel {
 /* Panel */
 div#mw-panel-custom {
 	font-size: @menu-main-font-size;
-	position: absolute;
 	top: 40px;
 	padding-top: 1em;
 	width: 10em;
@@ -166,8 +185,11 @@ div#mw-panel-custom {
 			font-weight: 100;
 			font-size: 1em;
 			color: #444444;
-			margin: 0;
-			padding: @menu-main-heading-padding;
+		    padding: 0.25em;
+		    padding-top: 0;
+		    padding-left: 17px;
+		    padding-bottom: 0;
+		    margin-bottom:0;
 			cursor: default;
 			border: none;
 		}

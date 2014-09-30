@@ -1,5 +1,5 @@
 /**
- * Collapsible navigation for Vector
+ * Collapsible navigation for Metrolook
  */
 ( function ( mw, $ ) {
 	'use strict';
