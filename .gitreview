@@ -1,0 +1,6 @@
+[gerrit]
+host=gerrit.wikimedia.org
+port=29418
+project=mediawiki/skins/Metrolook.git
+defaultbranch=MediaWiki-1.23
+defaultrebase=0
