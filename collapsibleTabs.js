@@ -9,7 +9,7 @@
 			return this;
 		}
 		// Merge options into the defaults
-		var settings = $.extend( {}, $.collapsibleTabs.defaults, options );
+		var $settings = $.extend( {}, $.collapsibleTabs.defaults, options );
 
 		this.each( function () {
 			var $el = $( this );
@@ -17,25 +17,52 @@
 			$.collapsibleTabs.instances = ( $.collapsibleTabs.instances.length === 0 ?
 				$el : $.collapsibleTabs.instances.add( $el ) );
 			// attach the settings to the elements
-			$el.data( 'collapsibleTabsSettings', settings );
+			$el.data( 'collapsibleTabsSettings', $settings );
 			// attach data to our collapsible elements
-			$el.children( settings.collapsible ).each( function () {
+			$el.children( $settings.collapsible ).each( function () {
 				$.collapsibleTabs.addData( $( this ) );
 			} );
 		} );
 
-		// if we haven't already bound our resize handler, bind it now
+		// if we haven't already bound our resize hanlder, bind it now
 		if ( !$.collapsibleTabs.boundEvent ) {
-			$( window ).on( 'resize', $.debounce( 500, function () {
-				$.collapsibleTabs.handleResize();
-			} ) );
-			$.collapsibleTabs.boundEvent = true;
+			$( window )
+				.delayedBind( 500, 'resize', function () {
+					$.collapsibleTabs.handleResize();
+				} );
 		}
-
 		// call our resize handler to setup the page
 		$.collapsibleTabs.handleResize();
 		return this;
 	};
+	/**
+	 * Returns the amount of horizontal distance between the two tabs groups
+	 * (#left-navigation and #right-navigation), in pixels. If negative, this
+	 * means that the tabs overlap, and the value is the width of overlapping
+	 * parts.
+	 *
+	 * Used in default expandCondition and collapseCondition.
+	 *
+	 * @return {Numeric} distance/overlap in pixels
+	 */
+	function calculateTabDistance() {
+		var $leftTab, $rightTab, leftEnd, rightStart;
+
+		// In RTL, #right-navigation is actually on the left and vice versa.
+		// Hooray for descriptive naming.
+		if ( !rtl ) {
+			$leftTab = $( '#left-navigation' );
+			$rightTab = $( '#right-navigation' );
+		} else {
+			$leftTab = $( '#right-navigation' );
+			$rightTab = $( '#left-navigation' );
+		}
+
+		leftEnd = $leftTab.offset().left + $leftTab.width();
+		rightStart = $rightTab.offset().left;
+
+		return rightStart - leftEnd;
+	}
 	$.collapsibleTabs = {
 		instances: [],
 		boundEvent: null,
@@ -45,34 +72,36 @@
 			collapsible: 'li.collapsible',
 			shifting: false,
 			expandCondition: function ( eleWidth ) {
-				// If there are at least eleWidth + 1 pixels of free space, expand.
-				// We add 1 because .width() will truncate fractional values but .offset() will not.
-				return $.collapsibleTabs.calculateTabDistance() >= eleWidth + 1;
+				// If there's at least eleWidth pixels free space, expand.
+				return calculateTabDistance() >= eleWidth;
 			},
 			collapseCondition: function () {
 				// If there's an overlap, collapse.
-				return $.collapsibleTabs.calculateTabDistance() < 0;
+				return calculateTabDistance() < 0;
 			}
 		},
 		addData: function ( $collapsible ) {
-			var settings = $collapsible.parent().data( 'collapsibleTabsSettings' );
-			if ( settings ) {
+			var $settings = $collapsible.parent().data( 'collapsibleTabsSettings' );
+			if ( $settings !== null ) {
 				$collapsible.data( 'collapsibleTabsSettings', {
-					expandedContainer: settings.expandedContainer,
-					collapsedContainer: settings.collapsedContainer,
+					expandedContainer: $settings.expandedContainer,
+					collapsedContainer: $settings.collapsedContainer,
 					expandedWidth: $collapsible.width(),
 					prevElement: $collapsible.prev()
 				} );
 			}
 		},
 		getSettings: function ( $collapsible ) {
-			var settings = $collapsible.data( 'collapsibleTabsSettings' );
-			if ( !settings ) {
+			var $settings = $collapsible.data( 'collapsibleTabsSettings' );
+			if ( $settings === undefined ) {
 				$.collapsibleTabs.addData( $collapsible );
-				settings = $collapsible.data( 'collapsibleTabsSettings' );
+				$settings = $collapsible.data( 'collapsibleTabsSettings' );
 			}
-			return settings;
+			return $settings;
 		},
+		/**
+		 * @param {jQuery.Event} e
+		 */
 		handleResize: function () {
 			$.collapsibleTabs.instances.each( function () {
 				var $el = $( this ),
@@ -103,21 +132,21 @@
 			} );
 		},
 		moveToCollapsed: function ( ele ) {
-			var outerData, expContainerSettings, target,
+			var data, expContainerSettings, target,
 				$moving = $( ele );
 
-			outerData = $.collapsibleTabs.getSettings( $moving );
-			if ( !outerData ) {
+			data = $.collapsibleTabs.getSettings( $moving );
+			if ( !data ) {
 				return;
 			}
-			expContainerSettings = $.collapsibleTabs.getSettings( $( outerData.expandedContainer ) );
+			expContainerSettings = $.collapsibleTabs.getSettings( $( data.expandedContainer ) );
 			if ( !expContainerSettings ) {
 				return;
 			}
 			expContainerSettings.shifting = true;
 
 			// Remove the element from where it's at and put it in the dropdown menu
-			target = outerData.collapsedContainer;
+			target = data.collapsedContainer;
 			$moving.css( 'position', 'relative' )
 				.css( ( rtl ? 'left' : 'right' ), 0 )
 				.animate( { width: '1px' }, 'normal', function () {
@@ -125,7 +154,9 @@
 					$( this ).hide();
 					// add the placeholder
 					$( '<span class="placeholder" style="display: none;"></span>' ).insertAfter( this );
-					$( this ).detach().prependTo( target ).data( 'collapsibleTabsSettings', outerData );
+					// XXX: 'data' is undefined here, should the 'data' from the outer scope have
+					// a different name?
+					$( this ).detach().prependTo( target ).data( 'collapsibleTabsSettings', data );
 					$( this ).attr( 'style', 'display: list-item;' );
 					data = $.collapsibleTabs.getSettings( $( ele ) );
 					if ( data ) {
@@ -173,34 +204,6 @@
 					}
 				} )
 			);
-		},
-		/**
-		 * Returns the amount of horizontal distance between the two tabs groups
-		 * (#left-navigation and #right-navigation), in pixels. If negative, this
-		 * means that the tabs overlap, and the value is the width of overlapping
-		 * parts.
-		 *
-		 * Used in default expandCondition and collapseCondition.
-		 *
-		 * @return {Numeric} distance/overlap in pixels
-		 */
-		calculateTabDistance: function () {
-			var $leftTab, $rightTab, leftEnd, rightStart;
-
-			// In RTL, #right-navigation is actually on the left and vice versa.
-			// Hooray for descriptive naming.
-			if ( !rtl ) {
-				$leftTab = $( '#left-navigation' );
-				$rightTab = $( '#right-navigation' );
-			} else {
-				$leftTab = $( '#right-navigation' );
-				$rightTab = $( '#left-navigation' );
-			}
-
-			leftEnd = $leftTab.offset().left + $leftTab.width();
-			rightStart = $rightTab.offset().left;
-
-			return rightStart - leftEnd;
 		}
 	};
 

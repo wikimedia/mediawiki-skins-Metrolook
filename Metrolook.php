@@ -1,7 +1,6 @@
 <?php
 /**
- * Vector - Modern version of MonoBook with fresh look and many usability
- * improvements.
+ * Metrolook - Metro look for website.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +25,7 @@ $wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '1.0.3',
+	'version' => '0.3.1',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -39,10 +38,62 @@ $wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 // Register skin
 $wgValidSkinNames['metrolook'] = 'Metrolook';
 
+/* To enable logo. Note that if enabled it will not show properly.*/
+$Logoshow = false;
+
+/* to enable search bar on the sidebar and disables the search bar on the top bar */
+$SearchBar = true;
+
+$DownArrow = true;
+
+$link1 = true;
+
+$image1 = true;
+
+$link2 = true;
+
+$image2 = true;
+
+$link3 = true;
+
+$image3 = true;
+
+$link4 = true;
+
+$image4 = true;
+
+$link5 = false;
+
+$image5 = false;
+
+$link6 = false;
+
+$image6 = false;
+
+$UploadButton = true;
+
+$logo = false;
+
+$transparent = __DIR__ . '/images/Transparent.gif';
+
+
 // Register modules
-$wgResourceModules['skins.metrolook.styles'] = array(
+$wgResourceModules['skins.metrolook'] = array(
 	'styles' => array(
-		'Metrolook/screen.css' => array( 'media' => 'screen' ),
+		'common/commonElements.css' => array( 'media' => 'screen' ),
+		'common/commonContent.css' => array( 'media' => 'screen' ),
+		'common/commonInterface.css' => array( 'media' => 'screen' ),
+		'Metrolook/styles.less',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
+);
+$wgResourceModules['skins.metrolook.beta'] = array(
+	'styles' => array(
+		'common/commonElements.css' => array( 'media' => 'screen' ),
+		'common/commonContent.css' => array( 'media' => 'screen' ),
+		'common/commonInterface.css' => array( 'media' => 'screen' ),
+	    'Metrolook/styles-beta.less',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
@@ -54,9 +105,21 @@ $wgResourceModules['skins.metrolook.js'] = array(
 	),
 	'position' => 'top',
 	'dependencies' => array(
-		'jquery.throttle-debounce',
-		'jquery.tabIndex',
+		'jquery.delayedBind',
 	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
+);
+$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
+	'scripts' => array(
+		'Metrolook/collapsibleNav.js',
+	),
+	'position' => 'bottom',
+	'dependencies' => array(
+			'jquery.client',
+			'jquery.cookie',
+			'jquery.tabIndex',
+		),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
