@@ -31,7 +31,8 @@ body {
 /* Content */
 div#content {
 	margin-left: 10em;
-    padding: 1em;
+    padding-bottom: 1em;
+    padding-top:0em;
     /* @embed */
     background-image: url(images/border.png);
     background-position: top left;
@@ -45,7 +46,6 @@ div#content {
 	right: 0px;
 	left: 0px;
     top:40px;
-	width: auto;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
 
@@ -108,6 +108,137 @@ div#content {
 		font-size: 100%; /* (reset) */
 		font-family: @content-font-family;
 	}
+}
+
+/* Content */
+/* different screen sizes */
+@media all and (max-width: 1000px) and (min-width: 700px) {
+div#content {
+	margin-left: 10em;
+    padding-bottom: 1em;
+    padding-top:0em;
+    /* @embed */
+    background-image: url(images/border.png);
+    background-position: top left;
+    background-repeat: repeat-y;
+    background-color: white;
+    color: black;
+    direction: ltr;
+    height:auto;
+    position:absolute;
+    bottom:0px;
+	right:-60px;
+	left:0px;
+    top:40px;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+
+	.mw-editsection,
+	.mw-editsection-like {
+		font-family: @content-font-family;
+	}
+
+	p {
+		line-height: inherit;
+		margin: 0.5em 0;
+	}
+
+	h1,
+	h2,
+	#firstHeading {
+		font-family: @content-heading-font-family;
+		line-height: @heading-line-height;
+		margin-bottom: 0.25em;
+		padding: 0;
+	}
+
+	h1,
+	#firstHeading {
+		font-size: @content-heading-font-size;
+	}
+
+	h2 {
+		font-size: 1.5em;
+		margin-top: 1em;
+	}
+
+	h3,
+	h4,
+	h5,
+	h6 {
+		line-height: @content-line-height;
+		margin-top: 0.3em;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	h3 {
+		font-size: 1.17em;
+	}
+
+	h3,
+	h4 {
+		font-weight: bold;
+	}
+
+	h4,
+	h5,
+	h6 {
+		font-size: 100%; /* (reset) */
+	}
+
+	#toc h2,
+	.toc h2 {
+		font-size: 100%; /* (reset) */
+		font-family: @content-font-family;
+	}
+}
+}
+
+img.custom {
+            position:inherit;
+            .background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
+            width:26px; /*width of your image*/
+            height:35px; /*height of your image*/
+            margin:0; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+}
+
+img.custom2{
+            position:inherit;
+            .background-image-svg('images/line.svg', 'images/line.png'); 
+            width:28px; /*width of your image*/
+            height:35px; /*height of your image*/
+            margin:0; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+}
+
+img.custom3 {
+            position:inherit;
+            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+            margin:-26px; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+            background-position: -0px 20px
+}
+img.custom3:hover{
+            position:inherit;
+            background: #9F6F40;
+            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+            margin:-26px; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
+            background-position: -0px 20px;
+}
+img.custom4 {
+            .background-image-svg('images/user-icon.svg', 'images/user-icon.png');
+            width:26px; /*width of your image*/
+            height:35px; /*height of your image*/
+            margin:0; /* If you want no margin */
+            padding:0; /*if your want to padding */
+            background-repeat: no-repeat;
 }
 
 /* Hide empty portlets */
