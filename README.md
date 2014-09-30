@@ -24,7 +24,7 @@ https://github.com/paladox2015/Metrolook/tree/REL1_21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
-A working demo of the skin is available at http://pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.24wmf18 and version 2.3 of the master branch of the skin.
+A working demo of the skin is available at http://pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf3 and version 3.0 beta 9 of the master branch of the skin.
 
 ## Installation
 
@@ -38,17 +38,13 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 
 ## Settings
 
-1.24 only
+1.25 only
 
 To enable logo
-
-//$Logoshow = true;
 
 $logo = true;
 
 Default is
-
-//$Logoshow = false;
 
 $logo = false;
 
@@ -60,10 +56,6 @@ Default is
 
 $SearchBar = true;
 
-Default is
-
-$DownArrow = true;
-
 To turn it off
 
 $DownArrow = false;
@@ -71,6 +63,14 @@ $DownArrow = false;
 Default is
 
 $DownArrow = true;
+
+To turn it off
+
+$Line = false;
+
+Default is
+
+$Line = true;
 
 to change link
 
@@ -183,81 +183,90 @@ To customise top bar colour ether add it to theme.css which is in metrolook skin
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
 <pre>
+
 /* Top Bar colour and hover colour start */
 
 #mw-page-base {
-	height: 2.5em;
-	background-color: dodgerBlue;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
+        height: 2.5em;
+        background-color: dodgerBlue;
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+        background-image: url('images/page-fade.png');
+        min-width: auto;
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
-   #mw-page-base {
-	height: 2.5em;
-	background-color: dodgerBlue;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
-    min-width:65em;
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+#mw-page-base {
+        height: 2.5em;
+        background-color: dodgerBlue;
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+        background-image: url('images/page-fade.png');
+        min-width:65em;
 }
 }
 
 div.vectorTabs a:hover {
-         background-color: blue;
+        background-color: blue;
 }
 
 div.onhoverbg:hover {
-         background-color: blue;
+        background-color: blue;
 }
 
 img.custom3:hover{
-            background-color: blue;
+        background-color: blue;
 }
 
 div.vectorMenu:hover h5 a {
-           background-color: blue;
+        background-color: blue;
 }
 
 div.vectorMenu h5 a {
         display: inline-block;
-	width: 24px;
-	height: 2em;
-	background-color: dodgerBlue; 
-	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
-	background-position: 50% 50%; 
-	background-repeat: no-repeat;
-	.transition(background-position 250ms);
+        width: 24px;
+        height: 2em;
+        background-color: dodgerBlue; 
+        .background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
+        background-position: 50% 50%; 
+        background-repeat: no-repeat;
+        .transition(background-position 250ms);
 }
-
 div.vectorMenu:hover {
-           background-color: blue;
+        background-color: blue;
 }
 
 div.vectorMenu ul {
         position: absolute;
         background-color: white;
-	border: solid 2px dodgerBlue;
-	border-top-width: 0;
-	list-style-type: none;
-	list-style-image: none;
-	padding: 0;
-	padding-top:5px;
-	margin: 0;
-	margin-left: -6px;
-	text-align: left;
+        border: solid 2px dodgerBlue;
+        border-top-width: 0;
+        list-style-type: none;
+        list-style-image: none;
+        padding: 0;
+        padding-top:5px;
+        margin: 0;
+        margin-left: -6px;
+        text-align: left;
 }
 
 /* Top Bar colour and hover colour end */
+
 </pre>
 
 ## Known Issues
 
 * Mobile view of desktop is not shown correcly.
 
+## Support comming soon
+
+Note plans may change.
+
+Comming soon support for 
+
+* MediaWiki 1.21
 
 ## Version
 
@@ -266,6 +275,8 @@ div.vectorMenu ul {
 2.x.x requires MediaWiki 1.24.
 
 1.x.x requires MediaWiki 1.23.
+
+0.3.x requires MediaWiki 1.22.
 
 
 ## Removed things
