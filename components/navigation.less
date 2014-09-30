@@ -6,11 +6,22 @@
 
 /* Hide, but keep accessible for screen-readers */
 #mw-navigation h2 {
-	position: absolute;
-	top: -9999px;
+    position: absolute;
+    top: -9999px;
 }
 
 /* Head */
+#mw-page-base {
+    height: 2.5em;
+    background-color: #CF8B54;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    .vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+    min-width: auto;
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 #mw-page-base {
 	height: 2.5em;
 	background-color: #CF8B54;
@@ -19,49 +30,39 @@
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
 	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
-}
-@media all and (max-width: 1000px) and (min-width: 700px) {
-   #mw-page-base {
-	height: 2.5em;
-	background-color: #CF8B54;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
-	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
-        min-width:65em;
+    min-width:65em;
 }
 }
 #mw-head-base {
-	margin-top: -5em;
-	margin-left: 10em;
-	height: 5em;
-	/* @embed */
-	background-image: url(images/border.png);
-	background-position: bottom left;
-	background-repeat: repeat-x;
+    margin-top: -5em;
+    margin-left: 10em;
+    height: 5em;
+    /* @embed */
+    background-image: url(images/border.png);
+    background-position: bottom left;
+    background-repeat: repeat-x;
 }
 
 div#mw-head {
-	position: absolute;
-	top: 0;
-	width: 100%;
+    position: absolute;
+    top: 0;
+    min-width: 100%;
 
 	h5 {
-		margin: 0;
-		padding: 0;
+	    margin: 0;
+	    padding: 0;
 	}
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     div#mw-head {
-	position: absolute;
-	top: 0;
+        position: absolute;
+        top: 0;
         min-width:106%;
 
 	h5 {
-		margin: 0;
-		padding: 0;
+	    margin: 0;
+	    padding: 0;
 	}
 }
 }
@@ -69,7 +70,7 @@ div#mw-head {
 /* Navigation Containers */
 #left-navigation {
    float: initial;
-    /* IE 6 double-margin bug fix */
+   /* IE 6 double-margin bug fix */
    display: inline; 
 }
 
@@ -98,23 +99,23 @@ div#mw-head {
 
 /* Panel */
 div#mw-panel {
+        font-size: @menu-main-font-size;
         position: absolute;
-	font-size: @menu-main-font-size;
-	top: 40px;
-        height: auto;
+        top: 40px;
         bottom: 0px;
-	padding-top: 1em;
-	width: 11em;
-        left: 0;
+        height: auto;
         overflow: hidden;
+        padding-top: 1em;
+        width: 11em;
+        left: 0;
 
 	div.portal {
-		margin: 0 0.6em 0 0.7em;
-		padding: 0.25em 0;
-		direction: ltr;
-		background-position: top left;
-		background-repeat: no-repeat;
-		.background-image('images/portal-break.png');
+	    margin: 0 0.6em 0 0.7em;
+	    padding: 0.25em 0;
+	    direction: ltr;
+	    background-position: top left;
+	    background-repeat: no-repeat;
+	    .background-image('images/portal-break.png');
 
 		h5 {
 		        font-family: 'Segoe UI Light', Segoe UI, sans-serif;
@@ -167,18 +168,18 @@ div#mw-panel {
 	}
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     /* Panel */
 div#mw-panel {
+        font-size: @menu-main-font-size;
         position: absolute;
-	font-size: @menu-main-font-size;
-	top: 40px;
+        top: 40px;
+        bottom: 0;
         height: auto;
-        bottom: 0px;
-	padding-top: 1em;
-	width: 9.5em;
-	left: 0;
         overflow: hidden;
+        padding-top: 1em;
+        width: 9.5em;
+        left: 0;
 
 	div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -189,7 +190,7 @@ div#mw-panel {
 		.background-image('images/portal-break.png');
 
 		h5 {
-		        font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
 			font-weight: 100;
 			font-size: 1em;
 			color: #444444;
@@ -244,15 +245,15 @@ div#mw-panel {
 
 /* Panel */
 div#mw-panel-custom {
+        font-size: @menu-main-font-size;
         position: absolute;
-	font-size: @menu-main-font-size;
-	top: 40px;
+        top: 40px;
+        bottom: 0;
         height: auto;
-        bottom: 0px;
-	padding-top: 1em;
-	width: 11em;
-	left: 0;
         overflow: hidden;
+        padding-top: 1em;
+        width: 11em;
+        left: 0;
 
 	div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
@@ -263,15 +264,15 @@ div#mw-panel-custom {
 		.background-image('images/portal-break.png');
 
 		h5 {
-		        font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
 			font-weight: 100;
 			font-size: 1em;
 			color: #444444;
-		        padding: 0.25em;
-		        padding-top: 0;
-		        padding-left: 17px;
-		        padding-bottom: 0;
-		        margin-bottom:0;
+		    padding: 0.25em;
+		    padding-top: 0;
+		    padding-left: 17px;
+		    padding-bottom: 0;
+		    margin-bottom:0;
 			cursor: default;
 			border: none;
 		}
@@ -319,17 +320,17 @@ div#mw-panel-custom {
 /* custom */
 
 /* Panel */
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#mw-panel-custom {
+        font-size: @menu-main-font-size;
         position: absolute;
-	font-size: @menu-main-font-size;
-	top: 40px;
+        top: 40px;
+        bottom: 0;
         height: auto;
-        bottom: 0px;
-	padding-top: 1em;
-	width: 11em;
-	left: 0;
         overflow: hidden;
+        padding-top: 1em;
+        width: 11em;
+        left: 0;
 
 	div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
@@ -340,17 +341,17 @@ div#mw-panel-custom {
 		.background-image('images/portal-break.png');
 
 		h5 {
-                        font-family: 'Segoe UI Light', Segoe UI, sans-serif;
-			font-weight: 100;
-			font-size: 1em;
-			color: #444444;
-                        padding: 0.25em;
-                        padding-top: 0;
-                        padding-left: 17px;
-                        padding-bottom: 0;
-                        margin-bottom:0;
-			cursor: default;
-			border: none;
+                    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+		    font-weight: 100;
+		    font-size: 1em;
+		    color: #444444;
+                    padding: 0.25em;
+                    padding-top: 0;
+                    padding-left: 17px;
+                    padding-bottom: 0;
+                    margin-bottom:0;
+		    cursor: default;
+		    border: none;
 		}
 
 		div.body-custom {
