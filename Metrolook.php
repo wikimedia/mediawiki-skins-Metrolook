@@ -26,7 +26,7 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.3.8',
+	'version' => '2.4',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -65,6 +65,32 @@ $GLOBALS['Logoshow'] = false;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
 $GLOBALS['SearchBar'] = true;
+
+$GLOBALS['DownArrow'] = true;
+
+$GLOBALS['link1'] = true;
+
+$GLOBALS['image1'] = true;
+
+$GLOBALS['link2'] = true;
+
+$GLOBALS['image2'] = true;
+
+$GLOBALS['link3'] = true;
+
+$GLOBALS['image3'] = true;
+
+$GLOBALS['link4'] = true;
+
+$GLOBALS['image4'] = true;
+
+$GLOBALS['link5'] = false;
+
+$GLOBALS['image5'] = false;
+
+$GLOBALS['link6'] = false;
+
+$GLOBALS['image6'] = false;
 
 // Register modules
 $GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
