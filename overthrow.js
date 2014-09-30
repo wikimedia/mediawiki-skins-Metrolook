@@ -1,5 +1,5 @@
-/*! overthrow - An overflow:auto polyfill for responsive design. - v0.6.6 - 2013-10-25
-* Copyright (c) 2013 Scott Jehl, Filament Group, Inc.; Licensed MIT */
+/*! overthrow - An overflow:auto polyfill for responsive design. - v0.7.0 - 2014-04-11
+* Copyright (c) 2014 Scott Jehl, Filament Group, Inc.; Licensed MIT */
 /*! Overthrow. An overflow:auto polyfill for responsive design. (c) 2012: Scott Jehl, Filament Group, Inc. http://filamentgroup.github.com/Overthrow/license.txt */
 (function( w, undefined ){
 	
@@ -101,7 +101,7 @@
 	if( o === undefined ){
 		return;
 	}
-	
+
 	// Easing can use any of Robert Penner's equations (http://www.robertpenner.com/easing_terms_of_use.html). By default, overthrow includes ease-out-cubic
 	// arguments: t = current iteration, b = initial value, c = end value, d = total iterations
 	// use w.overthrow.easing to provide a custom function externally, or pass an easing function as a callback to the toss method
@@ -114,15 +114,15 @@
 
 	// Keeper of intervals
 	var timeKeeper;
-			
+
 	/* toss scrolls and element with easing
-	
+
 	// elem is the element to scroll
 	// options hash:
 		* left is the desired horizontal scroll. Default is "+0". For relative distances, pass a string with "+" or "-" in front.
 		* top is the desired vertical scroll. Default is "+0". For relative distances, pass a string with "+" or "-" in front.
 		* duration is the number of milliseconds the throw will take. Default is 100.
-		* easing is an optional custom easing function. Default is w.overthrow.easing. Must follow the easing function signature 
+		* easing is an optional custom easing function. Default is w.overthrow.easing. Must follow the easing function signature
 
 	*/
 	o.toss = function( elem, options ){
@@ -135,10 +135,11 @@
 				top: "+0",
 				left: "+0",
 				duration: 50,
-				easing: o.easing
+				easing: o.easing,
+				finished: function() {}
 			},
-			endLeft, endTop;
-		
+			endLeft, endTop, finished = false;
+
 		// Mixin based on predefined defaults
 		if( options ){
 			for( var j in op ){
@@ -147,7 +148,7 @@
 				}
 			}
 		}
-		
+
 		// Convert relative values to ints
 		// First the left val
 		if( typeof op.left === "string" ){
@@ -168,9 +169,9 @@
 			endTop = op.top;
 			op.top = op.top - sTop;
 		}
-		
+
 		o.tossing = true;
-		timeKeeper = setInterval(function(){					
+		timeKeeper = setInterval(function(){
 			if( i++ < op.duration ){
 				elem.scrollLeft = op.easing( i, sLeft, op.left, op.duration );
 				elem.scrollTop = op.easing( i, sTop, op.top, op.duration );
@@ -178,14 +179,31 @@
 			else{
 				if( endLeft !== elem.scrollLeft ){
 					elem.scrollLeft = endLeft;
+				} else {
+					// if the end of the vertical scrolling has taken place
+					// we know that we're done here call the callback
+					// otherwise signal that horizontal scrolling is complete
+					if( finished ) {
+						op.finished();
+					}
+					finished = true;
 				}
+
 				if( endTop !== elem.scrollTop ){
 					elem.scrollTop = endTop;
+				} else {
+					// if the end of the horizontal scrolling has taken place
+					// we know that we're done here call the callback
+					if( finished ) {
+						op.finished();
+					}
+					finished = true;
 				}
+
 				o.intercept();
 			}
 		}, 1 );
-		
+
 		// Return the values, post-mixin, with end values specified
 		return { top: endTop, left: endLeft, duration: o.duration, easing: o.easing };
 	};
@@ -195,8 +213,9 @@
 		clearInterval( timeKeeper );
 		o.tossing = false;
 	};
-	
+
 })( this, this.overthrow );
+
 /*! Overthrow. An overflow:auto polyfill for responsive design. (c) 2012: Scott Jehl, Filament Group, Inc. http://filamentgroup.github.com/Overthrow/license.txt */
 (function( w, o, undefined ){
 
