@@ -46,7 +46,7 @@
 div#mw-head {
 	position: absolute;
 	top: 0;
-	width: 100%;
+	min-width: 100%;
 
 	h5 {
 		margin: 0;
@@ -54,10 +54,10 @@ div#mw-head {
 	}
 }
 @media all and (max-width: 1000px) and (min-width: 700px) {
-    div#mw-head {
-	position: absolute;
-	top: 0;
-	width: 106%;
+div#mw-head {
+	 position: absolute;
+	 top: 0;
+	 min-width: 106%;
 
 	h5 {
 		margin: 0;
@@ -97,11 +97,15 @@ float: right;
 
 /* Panel */
 div#mw-panel {
-	font-size: @menu-main-font-size;
-	top: 40px;
-	padding-top: 1em;
-	width: 10em;
-	left: 0;
+        position: absolute;
+        font-size: @menu-main-font-size;
+        top: 40px;
+        height: auto;
+        bottom: 0px;
+        padding-top: 1em;
+        width: 11em;
+        left: 0;
+        overflow: hidden;
 
 	div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -162,15 +166,92 @@ div#mw-panel {
 	}
 }
 
+@media all and (max-width: 1000px) and (min-width: 700px) {
+/* Panel */
+div#mw-panel {
+        position: absolute;
+        font-size: @menu-main-font-size;
+        top: 40px;
+        height: auto;
+        bottom: 0px;
+        padding-top: 1em;
+        width: 9.5em;
+        left: 0;
+        overflow: hidden;
+
+	div.portal {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			margin: 0;
+			padding: @menu-main-heading-padding;
+			cursor: default;
+			border: none;
+		}
+
+		div.body {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+
+		&.first {
+			background-image: none;
+			margin-top: 0;
+			h5 {
+				display: none;
+			}
+			div.body {
+				margin-left: 0.5em;
+			}
+		}
+	}
+}
+}
+
 /* Custom */
 
 /* Panel */
 div#mw-panel-custom {
-	font-size: @menu-main-font-size;
-	top: 40px;
-	padding-top: 1em;
-	width: 10em;
-	left: 0;
+        position: absolute;
+        font-size: @menu-main-font-size;
+        top: 40px;
+        height: auto;
+        bottom: 0px;
+        padding-top: 1em;
+        width: 11em;
+        left: 0;
+        overflow: hidden;
 
 	div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
@@ -232,4 +313,82 @@ div#mw-panel-custom {
 			}
 		}
 	}
+}
+
+@media all and (max-width: 1000px) and (min-width: 700px) {
+/* Custom */
+
+/* Panel */
+div#mw-panel-custom {
+        position: absolute;
+        font-size: @menu-main-font-size;
+        top: 40px;
+        height: auto;
+        bottom: 0px;
+        padding-top: 1em;
+        width: 11em;
+        left: 0;
+        overflow: hidden;
+
+	div.portal-custom {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+		    padding: 0.25em;
+		    padding-top: 0;
+		    padding-left: 17px;
+		    padding-bottom: 0;
+		    margin-bottom:0;
+			cursor: default;
+			border: none;
+		}
+
+		div.body-custom {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+
+		&.first {
+			background-image: none;
+			margin-top: 0;
+			h5 {
+				display: none;
+			}
+			div.body-custom {
+				margin-left: 0.5em;
+			}
+		}
+	}
+}
 }

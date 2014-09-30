@@ -152,7 +152,7 @@ body {
 	z-index:100;
 }
 .tilebar {
-    position: fixed;
+    position: relative;
     left: 0px;
     top: 0px;
     right: 0px;
@@ -160,10 +160,10 @@ body {
     align:right;
     color:#fff;
     background:#1D1D1D;
-    width:100%;
+    width:21474836.47em;
     height:400px;
     display:block;
-    z-index:102;
+    z-index:9999999;
 }
 .tile:hover {
     outline: 3px #4A4A4A solid;
@@ -333,7 +333,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 
 <div style="vertical-align:top;align:left;">
 <div class="topleft">
-<div style="align:left;margin-left:auto;margin-right:auto;display:none;height:200px;" class="tilebar" id="bartile"><div style="height:200px;display:table;"><div style="vertical-align:middle;display:table-cell;padding-left:36px;">
+<div style="align:left;display:none;height:200px;" class="tilebar" id="bartile"><div style="height:200px;display:table;"><div style="vertical-align:middle;display:table-cell;padding-left:36px;">
 <div style="float:left;padding:5px;"><div class="tile"><?php if ( $link1 ): ?><a href="http://www.pidgi.net/wiki/"><?php else: ?><a href="<?php echo $GLOBALS['$url1'] ?>"><?php endif; ?><?php if ( $image1 ): ?><img src="http://images.pidgi.net/pidgiwikitiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture1'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link2 ): ?><a href="http://www.pidgi.net/press/"><?php else: ?><a href="<?php echo $GLOBALS['$url2'] ?>"><?php endif; ?><?php if ( $image2 ): ?><img src="http://images.pidgi.net/pidgipresstiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture2'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link3 ): ?><a href="http://www.pidgi.net/jcc/"><?php else: ?><a href="<?php echo $GLOBALS['$url3'] ?>"><?php endif; ?><?php if ( $image3 ): ?><img src="http://images.pidgi.net/jcctiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture3'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link4 ): ?><a href="http://www.petalburgwoods.com/"><?php else: ?><a href="<?php echo $GLOBALS['$url4'] ?>"><?php endif; ?><?php if ( $image4 ): ?><img src="http://images.pidgi.net/pwntiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture4'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link5 ): ?><a href="<?php echo $GLOBALS['$url5'] ?>"><?php else: ?><?php endif; ?><?php if ( $image5 ): ?><img src="<?php echo $GLOBALS['$picture5'] ?>" /><?php else: ?><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link6 ): ?><a href="<?php echo $GLOBALS['$url6'] ?>"><?php else: ?><?php endif; ?><?php if ( $image6 ): ?><img src="<?php echo $GLOBALS['$picture6'] ?>" /><?php else: ?><?php endif; ?></a></div></div>
 
 </div></div></div>
