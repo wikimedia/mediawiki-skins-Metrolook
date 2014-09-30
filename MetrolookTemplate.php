@@ -37,9 +37,10 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		global $Logoshow;
+		global $logo;
 		global $SearchBar;
 		global $DownArrow;
+		global $Line;		
 		global $image1;
 		global $link1;
 		global $picture1;
@@ -65,7 +66,6 @@ class MetrolookTemplate extends BaseTemplate {
 		global $picture6;
 		global $url6;
 		global $UploadButton;
-		global $logo;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -393,7 +393,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	?>
 	</ul>
 </div>
-<?php if ( $logo ): ?><div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><img alt="<?php echo $this->text('sitename'); ?>" src="<?php echo $this->text('logopath') ?>" style="max-width: 65px;height:auto; max-height:36px; display: inline-block; vertical-align:middle; padding-right:5px; padding-left:5px;"></div></h4></a><?php else: ?><div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php endif; ?><img class="custom2" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="float:left;" /><?php if ( $DownArrow ): ?><img class="custom3" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/><?php else: ?><?php endif; ?></div></div>
+<?php if ( $logo ): ?><div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><img alt="<?php echo $this->text('sitename'); ?>" src="<?php echo $this->text('logopath') ?>" style="max-width: 65px;height:auto; max-height:36px; display: inline-block; vertical-align:middle; padding-right:5px; padding-left:5px;"></div></h4></a><?php else: ?><div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php endif; ?><?php if ( $Line ): ?><img class="custom2" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="float:left;" /><?php else: ?><?php endif; ?><?php if ( $DownArrow ): ?><img class="custom3" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/><?php else: ?><?php endif; ?></div></div>
 <?php if ( $DownArrow ): ?>
 	<div id="top-tile-bar" class="fixed-position">
 
@@ -436,9 +436,8 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 
 	</body>
 </html>
-
-   <?php
-   }
+<?php
+	}
 
 	/**
 	 * Render a series of portals
