@@ -29,8 +29,7 @@ body {
 /* Content */
 .mw-body {
     margin-left: 10em;
-    padding-bottom: 1em;
-    padding-top:0em;
+    padding: 1.25em 1.5em 1.5em 1.5em;
     /* @embed */
     background-image: url(images/border.png);
     background-position: top left;
@@ -40,9 +39,9 @@ body {
     direction: ltr;
     height:auto;
     position:absolute;
-    bottom:0px;
-    right:0px;
-    left:0px;
+    bottom:0;
+    right:0;
+    left:0;
     top:40px;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
@@ -57,17 +56,14 @@ body {
 		margin: 0.5em 0;
 	}
 
-	h1,
-	h2,
-	#firstHeading {
+	h2 {
 		font-family: @content-heading-font-family;
 		line-height: @heading-line-height;
 		margin-bottom: 0.25em;
 		padding: 0;
 	}
 
-	h1,
-	#firstHeading {
+	h1 {
 		font-size: @content-heading-font-size;
 	}
 
@@ -105,16 +101,36 @@ body {
 	.toc h2 {
 		font-size: 100%; /* (reset) */
 		font-family: @content-font-family;
+	}
+
+    .firstHeading {
+        /* Change the default from mediawiki.skinning CSS to let indicators float into heading area */
+        overflow: visible;
+	}
+
+    .mw-indicators {
+        float: right;
+        line-height: @content-line-height;
+        font-size: @content-font-size;
+        /* Ensure that this is displayed on top of .mw-body-content and clickable */
+        position: relative;
+        z-index: 1;
+    }
+
+    .mw-indicator {
+        display: -moz-inline-block;
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
 	}
 }
 
 /* Content */
 /* different screen sizes */
-@media all and (max-width: 1000px) and (min-width: 700px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 .mw-body {
     margin-left: 11em;
-    padding-bottom: 1em;
-    padding-top:0em;
+    padding: 1.25em 1.5em 1.5em 1.5em;
     /* @embed */
     background-image: url(images/border.png);
     background-position: top left;
@@ -124,9 +140,9 @@ body {
     direction: ltr;
     height:auto;
     position:absolute;
-    bottom:0px;
+    bottom:0;
     right:-60px;
-    left:0px;
+    left:0;
     top:40px;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
@@ -141,17 +157,14 @@ body {
 		margin: 0.5em 0;
 	}
 
-	h1,
-	h2,
-	#firstHeading {
+	h2 {
 		font-family: @content-heading-font-family;
 		line-height: @heading-line-height;
 		margin-bottom: 0.25em;
 		padding: 0;
 	}
 
-	h1,
-	#firstHeading {
+	h1 {
 		font-size: @content-heading-font-size;
 	}
 
@@ -189,6 +202,27 @@ body {
 	.toc h2 {
 		font-size: 100%; /* (reset) */
 		font-family: @content-font-family;
+	}
+
+    .firstHeading {
+        /* Change the default from mediawiki.skinning CSS to let indicators float into heading area */
+        overflow: visible;
+	}
+
+    .mw-indicators {
+        float: right;
+        line-height: @content-line-height;
+        font-size: @content-font-size;
+        /* Ensure that this is displayed on top of .mw-body-content and clickable */
+        position: relative;
+        z-index: 1;
+    }
+
+    .mw-indicator {
+        display: -moz-inline-block;
+        display: inline-block;
+        zoom: 1;
+        *display: inline;
 	}
 }
 }
