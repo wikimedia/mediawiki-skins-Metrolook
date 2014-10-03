@@ -307,7 +307,7 @@ $(function () {
 			<div class="vectorMenu" style="float:right;background-image:none;vertical-align:middle;height:40px;padding-left:10px;padding-right:10px;position:relative;top:0px;right:10px;width:auto;text-align:right;">
 <a href="#" style="text-decoration:none;"><span id="username-top"><?php
 if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
-echo "Guest";
+echo wfMessage( 'metrolook-guest' )->text();
 }
 else {
 echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
