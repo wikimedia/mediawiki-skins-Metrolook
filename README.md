@@ -189,6 +189,7 @@ To customise top bar colour ether add it to theme.css which is in metrolook skin
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
 <pre>
+
 /* Top Bar colour and hover colour start */
 
 #mw-page-base {
@@ -198,6 +199,18 @@ and all you need to do is edit background-colour and the top bar should change c
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
+}
+
+@media all and (max-width: 1000px) and (min-width: 700px) {
+   #mw-page-base {
+	height: 2.5em;
+	background-color: dodgerBlue;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+    min-width:65em;
+}
 }
 
 div.vectorTabs a:hover {
@@ -226,7 +239,6 @@ div.vectorMenu h5 a {
 	background-repeat: no-repeat;
 	.transition(background-position 250ms);
 }
-
 div.vectorMenu:hover {
            background-color: blue;
 }
@@ -246,6 +258,7 @@ div.vectorMenu ul {
 }
 
 /* Top Bar colour and hover colour end */
+
 </pre>
 
 ## Known Issues
@@ -256,9 +269,8 @@ div.vectorMenu ul {
 
 Note plans may change.
 
-Cumming soon support for 
+Comming soon support for 
 
-* MediaWiki 1.22
 * MediaWiki 1.21
 
 ## Version
@@ -268,6 +280,8 @@ Cumming soon support for
 2.x.x requires MediaWiki 1.24.
 
 1.x.x requires MediaWiki 1.23.
+
+0.3.x requires MediaWiki 1.22.
 
 
 ## Removed things
