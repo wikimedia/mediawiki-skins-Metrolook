@@ -8,17 +8,14 @@ div#content {
 	left: 0.5em;
 }
 div#footer {
-	margin-left: 11em;
+	margin-left: 0;
 	padding: 1.25em;
 }
 #mw-panel {
 	padding-left: 0.5em;
 }
-#p-search {
-	margin-right: 1em;
-}
 #left-navigation {
-	left: 11em;
+	left: 190px;
 }
 #p-personal {
 	right: 1em;
@@ -26,4 +23,3 @@ div#footer {
 #mw-head-base {
 	margin-left: 11em;
 }
-
