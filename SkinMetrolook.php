@@ -1,6 +1,6 @@
 <?php
 /**
- * Vector - Modern version of MonoBook with fresh look and many usability
+ * Metrolook - Modern version of MonoBook with fresh look and many usability
  * improvements.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,19 +23,16 @@
  */
 
 /**
- * SkinTemplate class for Vector skin
+ * SkinTemplate class for Metrolook skin
  * @ingroup Skins
  */
 class SkinMetrolook extends SkinTemplate {
-/*	public $skinname = 'vector';
-	public $stylename = 'Vector';
-	public $template = 'VectorTemplate';
-*/
+
 	var $skinname = 'metrolook', $stylename = 'Metrolook',
 		$template = 'MetrolookTemplate', $useHeadElement = true;
 
-    protected static $bodyClasses = array( 'vector-animateLayout' );
-    
+	protected static $bodyClasses = array( 'vector-animateLayout' );
+	
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param OutputPage $out Object to initialize
@@ -55,20 +52,19 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		$out->addModules( array( 'skins.metrolook.js' ) );
+		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
 	}
 
 	/**
-	 * Loads skin and user CSS files.
-	 * @param OutputPage $out
+	 * Load skin and user CSS files in the correct order
+	 * fixes bug 22916
+	 * @param $out OutputPage object
 	 */
 	function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
-
-		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
-		wfRunHooks( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
-		$out->addModuleStyles( $styles );
+		$out->addModuleStyles( 'skins.metrolook' );
 	}
+
 
 	/**
 	 * Adds classes to the body element.
