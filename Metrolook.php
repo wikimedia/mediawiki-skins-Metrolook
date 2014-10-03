@@ -24,8 +24,8 @@
 $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
-	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.4.10',
+	'descriptionmsg' => 'metrolook-desc',
+	'version' => '2.4.11',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -34,6 +34,9 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 // Register files
 $GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
 $GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+
+$GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
+$GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
 
 // Register skin
 SkinFactory::getDefaultInstance()->register( 'metrolook', 'Metrolook', function(){
