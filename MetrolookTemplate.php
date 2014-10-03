@@ -130,18 +130,18 @@ class MetrolookTemplate extends BaseTemplate {
 		// Output HTML Page
 		$this->html( 'headelement' );
 ?>
-    <style>
+	<style>
 body {
-    height:100%;
+	height:100%;
 }
 html {
-    height:100%;
+	height:100%;
 }
 html,
 body {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
-    height:100%;
+	height:100%;
 }
 #top-tile-bar {
 	background:transparent;
@@ -151,63 +151,63 @@ body {
 	z-index:100;
 }
 .tilebar {
-    position: relative;
-    left: 0px;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    align:right;
-    color:#fff;
-    background:#1D1D1D;
-    width:21474836.47em;
-    height:400px;
-    display:block;
-    z-index:9999999;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	align:right;
+	color:#fff;
+	background:#1D1D1D;
+	width:21474836.47em;
+	height:400px;
+	display:block;
+	z-index:9999999;
 }
 .tile:hover {
-    outline: 3px #4A4A4A solid;
+	outline: 3px #4A4A4A solid;
 }
 .onhoverbg:hover {
-    background: #9F6F40;
+	background: #9F6F40;
 }
 .topleft {
-    display: inline;
-    position: relative;
+	display: inline;
+	position: relative;
 }
 .topright .hover {
-    display: none;
-    position: absolute;
-    left:0;
-    z-index: 2000;
+	display: none;
+	position: absolute;
+	left:0;
+	z-index: 2000;
 	height:200px;
 }
-    </style>
+	</style>
 
-    <script>
+	<script>
 var openDiv, $;
 function toggleDiv(divID) {
-    $("#" + divID).fadeToggle(150, function() {
-        openDiv = $(this).is(':visible') ? divID : null;
-    });
+	$("#" + divID).fadeToggle(150, function() {
+		openDiv = $(this).is(':visible') ? divID : null;
+	});
 }
 $(document).click(function(e) {
-    if (!$(e.target).closest('#'+openDiv).length) {
-        toggleDiv(openDiv);
-    }
+	if (!$(e.target).closest('#'+openDiv).length) {
+		toggleDiv(openDiv);
+	}
 });
 $(function () {
   $('.usermenu > div').toggleClass('no-js js');
   $('.usermenu .js div').hide();
   $('.usermenu .js').click(function(e) {
-    $('.usermenu .js div').fadeToggle(150);
-    $('.usermenu').toggleClass('active');
-    e.stopPropagation();
+	$('.usermenu .js div').fadeToggle(150);
+	$('.usermenu').toggleClass('active');
+	e.stopPropagation();
   });
   $(document).click(function() {
-    if ($('.usermenu .js div').is(':visible')) {
-      $('.usermenu .js div', this).fadeOut(150);
-      $('.usermenu').removeClass('active');
-    }
+	if ($('.usermenu .js div').is(':visible')) {
+	  $('.usermenu .js div', this).fadeOut(150);
+	  $('.usermenu').removeClass('active');
+	}
   });
 });
 
@@ -215,18 +215,18 @@ $(function () {
   $('.actionmenu > div').toggleClass('no-js js');
   $('.actionmenu .js div').hide();
   $('.actionmenu .js').click(function(e) {
-    $('.actionmenu .js div').fadeToggle(150);
-    $('.clicker').toggleClass('active');
-    e.stopPropagation();
+	$('.actionmenu .js div').fadeToggle(150);
+	$('.clicker').toggleClass('active');
+	e.stopPropagation();
   });
   $(document).click(function() {
-    if ($('.actionmenu .js div').is(':visible')) {
-      $('.actionmenu .js div', this).fadeOut(150);
-      $('.clicker').removeClass('active');
-    }
+	if ($('.actionmenu .js div').is(':visible')) {
+	  $('.actionmenu .js div', this).fadeOut(150);
+	  $('.clicker').removeClass('active');
+	}
   });
 });
-    </script>
+	</script>
 
 <script src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'overthrow.js' ) ) ?>"></script>
 		<div id="mw-page-base" class="noprint"></div>
@@ -349,7 +349,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 			</div>
 		</div>
 
-		    <?php if ( $SearchBar ): ?>
+			<?php if ( $SearchBar ): ?>
 			<div id="mw-panel">
 			<?php else: ?>
 			<div id="mw-panel-custom">
@@ -430,7 +430,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 <div class="portal" role="navigation" id='<?php echo Sanitizer::escapeId( "p-$name" ) ?>'<?php echo Linker::tooltip( 'p-' . $name ) ?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
 		<?php else: ?>
 <div class="portal-custom" role="navigation" id='<?php echo Sanitizer::escapeId( "p-$name" ) ?>'<?php echo Linker::tooltip( 'p-' . $name ) ?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
-	    <?php endif; ?>
+		<?php endif; ?>
 	<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'><?php echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg ); ?></h5>
 	   <?php if ( $SearchBar ): ?>
 	<div class="body">
