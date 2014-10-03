@@ -21,61 +21,61 @@
  * @ingroup Skins
  */
 
-$wgExtensionCredits['skin'][] = array(
+$GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '0.3.4',
+	'version' => '0.3.5',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
 // Register files
-$wgAutoloadClasses['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
-$wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+$GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
+$GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 
 // Register skin
-$wgValidSkinNames['metrolook'] = 'Metrolook';
+$GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 
-/* To enable logo. Note that if enabled it will not show properly.*/
-$Logoshow = false;
+/* Logo is off by default to turn it on plase see README.md. Note that if enabled it will not show properly.*/
+$GLOBALS['logo'] = false;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
-$SearchBar = true;
+$GLOBALS['SearchBar'] = true;
 
-$DownArrow = true;
+$GLOBALS['DownArrow'] = true;
 
-$link1 = true;
+$GLOBALS['Line'] = true;
 
-$image1 = true;
+$GLOBALS['link1'] = true;
 
-$link2 = true;
+$GLOBALS['image1'] = true;
 
-$image2 = true;
+$GLOBALS['link2'] = true;
 
-$link3 = true;
+$GLOBALS['image2'] = true;
 
-$image3 = true;
+$GLOBALS['link3'] = true;
 
-$link4 = true;
+$GLOBALS['image3'] = true;
 
-$image4 = true;
+$GLOBALS['link4'] = true;
 
-$link5 = false;
+$GLOBALS['image4'] = true;
 
-$image5 = false;
+$GLOBALS['link5'] = false;
 
-$link6 = false;
+$GLOBALS['image5'] = false;
 
-$image6 = false;
+$GLOBALS['link6'] = false;
 
-$UploadButton = true;
+$GLOBALS['image6'] = false;
 
-$logo = false;
+$GLOBALS['UploadButton'] = false;
 
 // Register modules
-$wgResourceModules['skins.metrolook'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook'] = array(
 	'styles' => array(
 		'common/commonElements.css' => array( 'media' => 'screen' ),
 		'common/commonContent.css' => array( 'media' => 'screen' ),
@@ -85,7 +85,7 @@ $wgResourceModules['skins.metrolook'] = array(
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
-$wgResourceModules['skins.metrolook.beta'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.beta'] = array(
 	'styles' => array(
 		'common/commonElements.css' => array( 'media' => 'screen' ),
 		'common/commonContent.css' => array( 'media' => 'screen' ),
@@ -95,7 +95,7 @@ $wgResourceModules['skins.metrolook.beta'] = array(
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
-$wgResourceModules['skins.metrolook.js'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'Metrolook/collapsibleTabs.js',
 		'Metrolook/vector.js',
@@ -107,7 +107,7 @@ $wgResourceModules['skins.metrolook.js'] = array(
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
-$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
 		'Metrolook/collapsibleNav.js',
 	),
