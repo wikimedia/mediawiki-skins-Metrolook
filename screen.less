@@ -29,89 +29,89 @@ body {
 }
 /* Content */
 div#content {
-    margin-left: 10em;
-    padding: 1.25em 1.5em 1.5em 1.5em;
-    /* @embed */
-    background-image: url(images/border.png);
-    background-position: top left;
-    background-repeat: repeat-y;
-    background-color: white;
-    color: black;
-    direction: ltr;
-    height:auto;
-    position:absolute;
-    bottom:0;
-    right: 0;
-    left: 0;
-    top:40px;
-    overflow:auto;
-    -webkit-overflow-scrolling: touch;
+	margin-left: 10em;
+	padding: 1.25em 1.5em 1.5em 1.5em;
+	/* @embed */
+	background-image: url(images/border.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+	background-color: white;
+	color: black;
+	direction: ltr;
+	height: auto;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	top: 40px;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#content {
-    margin-left: 11em;
-    padding: 1.25em 1.5em 1.5em 1.5em;
-    /* @embed */
-    background-image: url(images/border.png);
-    background-position: top left;
-    background-repeat: repeat-y;
-    background-color: white;
-    color: black;
-    direction: ltr;
-    height:auto;
-    position:absolute;
-    bottom:0;
-    right:-60px;
-    left:0;
-    top:40px;
-    overflow:auto;
-    -webkit-overflow-scrolling: touch;
+	margin-left: 11em;
+	padding: 1.25em 1.5em 1.5em 1.5em;
+	/* @embed */
+	background-image: url(images/border.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+	background-color: white;
+	color: black;
+	direction: ltr;
+	height: auto;
+	position: absolute;
+	bottom: 0;
+	right: -60px;
+	left: 0;
+	top: 40px;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 }
 img.custom {
-            position:inherit;
-            .background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
-            width:26px; /*width of your image*/
-            height:35px; /*height of your image*/
-            margin:0; /* If you want no margin */
-            padding:0; /*if your want to padding */
-            background-repeat: no-repeat;
+	position:inherit;
+	.background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
+	width:26px; /* width of your image */
+	height:35px; /* height of your image */
+	margin:0; /* If you want no margin */
+	padding:0; /* if your want to padding */
+	background-repeat: no-repeat;
 }
 
 img.custom2{
-            position:inherit;
-            .background-image-svg('images/line.svg', 'images/line.png'); 
-            width:28px; /*width of your image*/
-            height:35px; /*height of your image*/
-            margin:0; /* If you want no margin */
-            padding:0; /*if your want to padding */
-            background-repeat: no-repeat;
+	position:inherit;
+	.background-image-svg('images/line.svg', 'images/line.png'); 
+	width:28px; /* width of your image */
+	height:35px; /*height of your image */
+	margin:0; /* If you want no margin */
+	padding:0; /* if your want to padding */
+	background-repeat: no-repeat;
 }
 
 img.custom3 {
-            position:inherit;
-            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
-            margin:-26px; /* If you want no margin */
-            padding:0; /*if your want to padding */
-            background-repeat: no-repeat;
-            background-position: -0px 20px
+	position:inherit;
+	.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+	margin:-26px; /* If you want no margin */
+	padding:0; /*if your want to padding */
+	background-repeat: no-repeat;
+	background-position: -0px 20px
 }
 img.custom3:hover{
-            position:inherit;
-            background: #9F6F40;
-            .background-image-svg('images/downarrow.svg', 'images/downarrow.png');
-            margin:-26px; /* If you want no margin */
-            padding:0; /*if your want to padding */
-            background-repeat: no-repeat;
-            background-position: -0px 20px;
+	position:inherit;
+	background: #9F6F40;
+	.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+	margin:-26px; /* If you want no margin */
+	padding:0; /*if your want to padding */
+	background-repeat: no-repeat;
+	background-position: -0px 20px;
 }
 img.custom4 {
-            .background-image-svg('images/user-icon.svg', 'images/user-icon.png');
-            width:26px; /*width of your image*/
-            height:35px; /*height of your image*/
-            margin:0; /* If you want no margin */
-            padding:0; /*if your want to padding */
-            background-repeat: no-repeat;
+	.background-image-svg('images/user-icon.svg', 'images/user-icon.png');
+	width:26px; /* width of your image */
+	height:35px; /* height of your image */
+	margin:0; /* If you want no margin */
+	padding:0; /* if your want to padding */
+	background-repeat: no-repeat;
 }
 /* Hide, but keep accessible for screen-readers */
 #mw-navigation h2 {
@@ -129,7 +129,7 @@ img.custom4 {
 	min-width: auto;
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 #mw-page-base {
 	height: 2.5em;
 	background-color: #CF8B54;
@@ -137,7 +137,20 @@ img.custom4 {
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-    min-width: 65em;
+	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+	min-width:65em;
+}
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+#mw-page-base {
+	height: 2.5em;
+	background-color: #CF8B54;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+	min-width:65em;
 }
 }
 
@@ -148,18 +161,18 @@ img.custom4 {
 }
 
 div#mw-head {
-    position: absolute;
-    top: -5px;
-    min-width: 100%;
+	position: absolute;
+	top: -5px;
+	min-width: 100%;
 
 	h5 {
-	    margin: 0;
-	    padding: 0;
+		margin: 0;
+		padding: 0;
 	}
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    div#mw-head {
+	div#mw-head {
 	position: absolute;
 	top: -5px;
 	min-width: 106%;
@@ -173,7 +186,7 @@ div#mw-head {
 
 /* Hide empty portlets */
 div.emptyPortlet {
-		display: none;
+	display: none;
 }
 /* Personal */
 #p-personal {
@@ -188,11 +201,11 @@ div.emptyPortlet {
 }
 #p-personal ul {
 		list-style-type: none;
-        list-style-image: none;
-        margin-right:12px;
-        margin-left:0;
-        right:-12px;
-        position:absolute;
+		list-style-image: none;
+		margin-right:12px;
+		margin-left:0;
+		right:-12px;
+		position:absolute;
 }
 #p-personal li {
 		line-height: 20px;
@@ -215,12 +228,12 @@ div.emptyPortlet {
 }
 /* Navigation Containers */
 #left-navigation {
-   float: initial;
-    /* IE 6 double-margin bug fix */
-   display: inline; 
+	float: initial;
+	/* IE 6 double-margin bug fix */
+	display: inline; 
 }
 #right-navigation {
-float: right;
+	float: right;
 }
 /* Navigation Labels */
 /*
@@ -375,7 +388,7 @@ div#mw-head div.vectorMenu h5 {
 
 
 div.vectorMenu h5 a {
-    display: inline-block;
+	display: inline-block;
 	width: 24px;
 	height: 2em;
 	background-color: #CF8B54; 
@@ -386,7 +399,7 @@ div.vectorMenu h5 a {
 }
 
 div.vectorMenu:hover h5 a {
-    background-color: #9F6F40;
+	background-color: #9F6F40;
 }
 div.vectorMenu:hover {  
 	background-color: #9F6F40;
@@ -705,15 +718,16 @@ div#simpleSearchSearch button#searchButton > img {
 
 /* Panel */
 div#mw-panel {
-    font-size: @menu-main-font-size;
-    position: absolute;
-    top: 40px;
-    bottom: 0;
-    height: auto;
-	overflow: hidden;
-    padding-top: 1em;
-    width: 11em;
-    left: 0;
+	font-size: @menu-main-font-size;
+	position: absolute;
+	top: 40px;
+	bottom: 0;
+	height: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding-top: 1em;
+	width: 11em;
+	left: 0;
 }
 div#mw-panel div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -724,7 +738,7 @@ div#mw-panel div.portal {
 		.background-image('images/portal-break.png');
 }
 div#mw-panel div.portal h5 {
-		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
 			font-weight: 100;
 			font-size: 1em;
 			color: #444444;
@@ -760,15 +774,16 @@ div#mw-panel div.portal div.body ul li a {
 /* Panel */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#mw-panel {
-    font-size: @menu-main-font-size;
-    position: absolute;
-    top: 40px;
-    bottom: 0;
-    height: auto;
-	overflow: hidden;
-    padding-top: 1em;
-    width: 9.5em;
-    left: 0;
+	font-size: @menu-main-font-size;
+	position: absolute;
+	top: 40px;
+	bottom: 0;
+	height: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding-top: 1em;
+	width: 9.5em;
+	left: 0;
 }
 div#mw-panel div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -779,7 +794,7 @@ div#mw-panel div.portal {
 		.background-image('images/portal-break.png');
 }
 div#mw-panel div.portal h5 {
-		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
 			font-weight: 100;
 			font-size: 1em;
 			color: #444444;
@@ -815,15 +830,15 @@ div#mw-panel div.portal div.body ul li a {
 
 /* Panel */
 div#mw-panel-custom {
-    font-size: @menu-main-font-size;
-    position: absolute;
-    top: 40px;
-    bottom: 0;
-    height: auto;
+	font-size: @menu-main-font-size;
+	position: absolute;
+	top: 40px;
+	bottom: 0;
+	height: auto;
 	overflow: hidden;
-    padding-top: 1em;
-    width: 11em;
-    left: 0;
+	padding-top: 1em;
+	width: 11em;
+	left: 0;
 }
 div#mw-panel-custom div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
@@ -834,15 +849,15 @@ div#mw-panel-custom div.portal-custom {
 		.background-image('images/portal-break.png');
 }
 div#mw-panel-custom div.portal-custom h5 {
-		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
 			font-weight: 100;
 			font-size: 1em;
 			color: #444444;
-		    padding: 0.25em;
-		    padding-top: 0;
-		    padding-left: 17px;
-		    padding-bottom: 0;
-		    margin-bottom:0;
+			padding: 0.25em;
+			padding-top: 0;
+			padding-left: 17px;
+			padding-bottom: 0;
+			margin-bottom:0;
 			cursor: default;
 			border: none;
 }
@@ -873,15 +888,15 @@ div#mw-panel-custom div.portal-custom div.body-custom ul li a {
 /* Panel */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 div#mw-panel-custom {
-    font-size: @menu-main-font-size;
-    position: absolute;
-    top: 40px;
-    bottom: 0;
-    height: auto;
+	font-size: @menu-main-font-size;
+	position: absolute;
+	top: 40px;
+	bottom: 0;
+	height: auto;
 	overflow: hidden;
-    padding-top: 1em;
-    width: 11em;
-    left: 0;
+	padding-top: 1em;
+	width: 11em;
+	left: 0;
 }
 div#mw-panel-custom div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
@@ -892,15 +907,15 @@ div#mw-panel-custom div.portal-custom {
 		.background-image('images/portal-break.png');
 }
 div#mw-panel-custom div.portal-custom h5 {
-		    font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
 			font-weight: 100;
 			font-size: 1em;
 			color: #444444;
-		    padding: 0.25em;
-		    padding-top: 0;
-		    padding-left: 17px;
-		    padding-bottom: 0;
-		    margin-bottom:0;
+			padding: 0.25em;
+			padding-top: 0;
+			padding-left: 17px;
+			padding-bottom: 0;
+			margin-bottom:0;
 			cursor: default;
 			border: none;
 }
@@ -1199,10 +1214,10 @@ pre, .mw-code {
 }
 
 .hoverbox {
-background:#CF8B54;
+	background:#CF8B54;
 }
 .hoverbox:hover {
-background:#9F6F40;
+	background:#9F6F40;
 }
 
 /* Animate between standard and high definition layouts */

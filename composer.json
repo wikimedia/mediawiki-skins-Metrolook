@@ -10,18 +10,18 @@
 	"homepage"   : "https://www.mediawiki.org/wiki/Skin:Metrolook",
 	"license"    : "GPL-2.0+",
 	"authors"    : [
-                {
+		{
 			"name" : "immewnity"
-                },
-                {
-                        "name" : "paladox2015"
-                },
-                {
-                        "name": "Craig Davison"
-                },
-                {
-                        "name" : "lagleki"
-                }
+		},
+		{
+			"name" : "paladox2015"
+		},
+		{
+			"name" : "Craig Davison"
+		},
+		{
+			"name" : "lagleki"
+		}
 	],
 	"support"    : {
 		"wiki"  : "https://www.mediawiki.org/wiki/Skin:Metrolook",
