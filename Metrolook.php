@@ -1,7 +1,6 @@
 <?php
 /**
- * Vector - Modern version of MonoBook with fresh look and many usability
- * improvements.
+ * Metrolook - Metro look for website.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +25,7 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.4',
+	'version' => '3.0 beta 4',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -61,7 +60,7 @@ $GLOBALS['wgVectorUseSimpleSearch'] = true;
 $GLOBALS['wgVectorUseIconWatch'] = true;
 
 /* To enable logo. Note that if enabled it will not show properly.*/
-$GLOBALS['Logoshow'] = false;
+$GLOBALS['Logoshow'] = true;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
 $GLOBALS['SearchBar'] = true;
@@ -92,11 +91,18 @@ $GLOBALS['link6'] = false;
 
 $GLOBALS['image6'] = false;
 
+$GLOBALS['UploadButton'] = true;
+
+$GLOBALS['logo'] = false;
+
+$GLOBALS['transparent'] = __DIR__ . '/images/Transparent.gif';
+
 // Register modules
 $GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
 	'styles' => array(
 		'screen.less' => array( 'media' => 'screen' ),
 		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
+		'theme.css' => array( 'media' => 'screen' ),
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
