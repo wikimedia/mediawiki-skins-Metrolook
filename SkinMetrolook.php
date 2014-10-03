@@ -34,6 +34,8 @@ class SkinMetrolook extends SkinTemplate {
 	var $skinname = 'metrolook', $stylename = 'Metrolook',
 		$template = 'MetrolookTemplate', $useHeadElement = true;
 
+    protected static $bodyClasses = array( 'vector-animateLayout' );
+    
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param OutputPage $out Object to initialize
@@ -66,5 +68,19 @@ class SkinMetrolook extends SkinTemplate {
 		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
 		wfRunHooks( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
 		$out->addModuleStyles( $styles );
+	}
+
+	/**
+	 * Adds classes to the body element.
+	 *
+	 * @param OutputPage $out
+	 * @param array &$bodyAttrs Array of attributes that will be set on the body element
+	 */
+	function addToBodyAttributes( $out, &$bodyAttrs ) {
+		if ( isset( $bodyAttrs['class'] ) && strlen( $bodyAttrs['class'] ) > 0 ) {
+			$bodyAttrs['class'] .= ' ' . implode( ' ', static::$bodyClasses );
+		} else {
+			$bodyAttrs['class'] = implode( ' ', static::$bodyClasses );
+		}
 	}
 }
