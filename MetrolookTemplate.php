@@ -40,6 +40,31 @@ class MetrolookTemplate extends BaseTemplate {
 	public function execute() {
 		global $Logoshow;
 		global $SearchBar;
+		global $DownArrow;
+		global $image1;
+		global $link1;
+		global $picture1;
+		global $url1;
+		global $image2;
+		global $link2;
+		global $picture2;
+		global $url2;
+		global $image3;
+		global $link3;
+		global $picture3;
+		global $url3;
+		global $image4;
+		global $link4;
+		global $picture4;
+		global $url4;
+		global $image5;
+		global $link5;
+		global $picture5;
+		global $url5;
+		global $image6;
+		global $link6;
+		global $picture6;
+		global $url6;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -115,16 +140,16 @@ html {
 }
 html,
 body {
-	margin: 0px 0px 0px 0px ;
-	padding: 0px 0px 0px 0px ;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
     height:100%;
 }
 #top-tile-bar {
-	background:transparent ;
-	left: 0px ;
+	background:transparent;
+	left: 0px;
 	height: 200px;
-	position: fixed ;
-	z-index:100 ;
+	position: fixed;
+	z-index:100;
 }
 .tilebar {
     position: fixed;
@@ -203,10 +228,7 @@ $(function () {
   });
 });
     </script>
-<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
-<meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
-<meta name="msapplication-TileColor" content="#BE0027"/>
-<script src="overthrow.js"></script>
+<script src="/skins/Metrolook/overthrow.js"></script>
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
 		<div id="content" class="mw-body" class="overthrow" role="main">
@@ -358,7 +380,7 @@ echo "Guest";
 else {
 echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 }
- ?><span style="word-spacing:4px;"> </span><img style="position:relative;top:-1px;" src="/skins/Metrolook/images/user-icon.svg" /></span></a>
+ ?><span style="word-spacing:4px;"> </span><img class="custom4" style="position:relative;top:0.4em;" src="/skins/Metrolook/images/Transparent.gif" /></span></a>
 <div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
 <?php $this->renderNavigation( 'PERSONAL' ); ?>
 </div>
@@ -370,18 +392,21 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	?>
 	</ul>
 </div>
-<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img class="custom2" src="/skins/Metrolook/images/Transparent.gif" style="float:left;" /><img class="custom3" src="/skins/Metrolook/images/Transparent.gif" style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/></div></div>
+<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img class="custom2" src="/skins/Metrolook/images/Transparent.gif" style="float:left;" /><?php if ( $DownArrow ): ?><img class="custom3" src="/skins/Metrolook/images/Transparent.gif" style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/><?php else: ?><?php endif; ?></div></div>
+<?php if ( $DownArrow ): ?>
 	<div id="top-tile-bar" class="fixed-position">
 
 <div style="vertical-align:top;align:left;">
 <div class="topleft">
 <div style="align:left;margin-left:auto;margin-right:auto;display:none;height:200px;" class="tilebar" id="bartile"><div style="height:200px;display:table;"><div style="vertical-align:middle;display:table-cell;padding-left:36px;">
-<div style="float:left;padding:5px;"><span class="tile"><a href="http://www.pidgi.net/wiki/"><img src="http://images.pidgi.net/pidgiwikitiletop.png" /></a></span></div><div style="float:left;padding:5px;"><span class="tile"><a href="http://www.pidgi.net/press/"><img src="http://images.pidgi.net/pidgipresstiletop.png" /></a></span></div><div style="float:left;padding:5px;"><span class="tile"><a href="http://www.pidgi.net/jcc/"><img src="http://images.pidgi.net/jcctiletop.png" /></a></span></div><div style="float:left;padding:5px;"><span class="tile"><a href="http://www.petalburgwoods.com/"><img src="http://images.pidgi.net/pwntiletop.png" /></a></span></div>
+<div style="float:left;padding:5px;"><div class="tile"><?php if ( $link1 ): ?><a href="http://www.pidgi.net/wiki/"><?php else: ?><a href="<?php echo $GLOBALS['$url1'] ?>"><?php endif; ?><?php if ( $image1 ): ?><img src="http://images.pidgi.net/pidgiwikitiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture1'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link2 ): ?><a href="http://www.pidgi.net/press/"><?php else: ?><a href="<?php echo $GLOBALS['$url2'] ?>"><?php endif; ?><?php if ( $image2 ): ?><img src="http://images.pidgi.net/pidgipresstiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture2'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link3 ): ?><a href="http://www.pidgi.net/jcc/"><?php else: ?><a href="<?php echo $GLOBALS['$url3'] ?>"><?php endif; ?><?php if ( $image3 ): ?><img src="http://images.pidgi.net/jcctiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture3'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link4 ): ?><a href="http://www.petalburgwoods.com/"><?php else: ?><a href="<?php echo $GLOBALS['$url4'] ?>"><?php endif; ?><?php if ( $image4 ): ?><img src="http://images.pidgi.net/pwntiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture4'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link5 ): ?><a href="<?php echo $GLOBALS['$url5'] ?>"><?php else: ?><?php endif; ?><?php if ( $image5 ): ?><img src="<?php echo $GLOBALS['$picture5'] ?>" /><?php else: ?><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link6 ): ?><a href="<?php echo $GLOBALS['$url6'] ?>"><?php else: ?><?php endif; ?><?php if ( $image6 ): ?><img src="<?php echo $GLOBALS['$picture6'] ?>" /><?php else: ?><?php endif; ?></a></div></div>
 
 </div></div></div>
 </div>
 
 </div></div>
+<?php else: ?>
+<?php endif; ?>
 			<div id="left-navigation">
 				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="custom" src="/skins/Metrolook/images/Transparent.gif"/> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
