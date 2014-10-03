@@ -66,7 +66,6 @@ class MetrolookTemplate extends BaseTemplate {
 		global $url6;
 		global $UploadButton;
 		global $logo;
-		global $transparent;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -243,6 +242,7 @@ $(function () {
 			<?php
 			}
 			?>
+			<?php echo $this->getIndicators(); ?>
 			<h1 id="firstHeading" class="firstHeading" lang="<?php
 			$this->data['pageLanguage'] =
 				$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();

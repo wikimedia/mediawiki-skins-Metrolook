@@ -6,7 +6,7 @@ A skin for MediaWiki
 The author of the skin is http://www.pidgi.net/wiki/Main_Page
 
 
-Compatible with MediaWiki 1.24+
+Compatible with MediaWiki 1.25+
 
 If you would like compatibility with mediawiki 1.24, 1.23, 1.22 or 1.21 please visit 
 
@@ -30,7 +30,7 @@ https://github.com/paladox2015/Metrolook/tree/REL1_21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
-A working demo of the skin is available at http://pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf3 and version 3.0 beta 6 of the master branch of the skin.
+A working demo of the skin is available at http://pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf3 and version 3.0 beta 9 of the master branch of the skin.
 
 ## Installation
 
@@ -193,22 +193,23 @@ and all you need to do is edit background-colour and the top bar should change c
 /* Top Bar colour and hover colour start */
 
 #mw-page-base {
-	height: 2.5em;
-	background-color: dodgerBlue;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
+    height: 2.5em;
+    background-color: dodgerBlue;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    min-width: auto;
 }
 
-@media all and (max-width: 1000px) and (min-width: 700px) {
-   #mw-page-base {
-	height: 2.5em;
-	background-color: dodgerBlue;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+#mw-page-base {
+    height: 2.5em;
+    background-color: dodgerBlue;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
     min-width:65em;
 }
 }
@@ -230,7 +231,7 @@ div.vectorMenu:hover h5 a {
 }
 
 div.vectorMenu h5 a {
-        display: inline-block;
+    display: inline-block;
 	width: 24px;
 	height: 2em;
 	background-color: dodgerBlue; 
@@ -244,8 +245,8 @@ div.vectorMenu:hover {
 }
 
 div.vectorMenu ul {
-        position: absolute;
-        background-color: white;
+    position: absolute;
+    background-color: white;
 	border: solid 2px dodgerBlue;
 	border-top-width: 0;
 	list-style-type: none;
