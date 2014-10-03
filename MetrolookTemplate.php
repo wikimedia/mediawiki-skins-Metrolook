@@ -1,7 +1,6 @@
 <?php
 /**
- * Vector - Modern version of MonoBook with fresh look and many usability
- * improvements.
+ * Metrolook - Metro look for website.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,12 +37,40 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		global $wgVectorUseIconWatch;
+		global $Logoshow;
+		global $SearchBar;
+		global $DownArrow;
+		global $image1;
+		global $link1;
+		global $picture1;
+		global $url1;
+		global $image2;
+		global $link2;
+		global $picture2;
+		global $url2;
+		global $image3;
+		global $link3;
+		global $picture3;
+		global $url3;
+		global $image4;
+		global $link4;
+		global $picture4;
+		global $url4;
+		global $image5;
+		global $link5;
+		global $picture5;
+		global $url5;
+		global $image6;
+		global $link6;
+		global $picture6;
+		global $url6;
+		global $UploadButton;
+		global $logo;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
-		if ( $wgVectorUseIconWatch ) {
+		if ( $this->config->get( 'VectorUseIconWatch' ) ) {
 			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() )
 				? 'unwatch'
 				: 'watch';
@@ -106,57 +133,60 @@ class MetrolookTemplate extends BaseTemplate {
 		$this->html( 'headelement' );
 ?>
     <style>
-        body {
-height:100%;
-        }
-        html {
-height:100%;
-        }
-		html,
-		body {
-			margin: 0px 0px 0px 0px ;
-			padding: 0px 0px 0px 0px ;
-height:100%;
-			}
-		#top-tile-bar {
-			background:transparent ;
-			left: 0px ;
-			height: 200px;
-			position: fixed ;
-			z-index:100 ;
-			}
+body {
+    height:100%;
+}
+html {
+    height:100%;
+}
+html,
+body {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+    height:100%;
+}
+#top-tile-bar {
+	background:transparent;
+	left: 0px;
+	height: 200px;
+	position: fixed;
+	z-index:100;
+}
 .tilebar {
-position: fixed;
-left: 0px;
-top: 0px;
-right: 0px;
-bottom: 0px;
-align:right;
-color:#fff;background:#1D1D1D;width:100%;height:400px;
-display:block;
-z-index:102;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    align:right;
+    color:#fff;
+    background:#1D1D1D;
+    width:100%;
+    height:400px;
+    display:block;
+    z-index:102;
 }
 .tile:hover {
-  outline: 3px #4A4A4A solid;
+    outline: 3px #4A4A4A solid;
 }
 .onhoverbg:hover {
-  background: #9F6F40;
+    background: #9F6F40;
 }
 .topleft {
-        display: inline;
-        position: relative;
-    }
-    .topright .hover {
-        display: none;
-        position: absolute;
-        left:0;
-        z-index: 2000;
+    display: inline;
+    position: relative;
+}
+.topright .hover {
+    display: none;
+    position: absolute;
+    left:0;
+    z-index: 2000;
 	height:200px;
-    }
+}
     </style>
 
     <script>
-var openDiv;
+var openDiv, $;
 function toggleDiv(divID) {
     $("#" + divID).fadeToggle(150, function() {
         openDiv = $(this).is(':visible') ? divID : null;
@@ -199,10 +229,8 @@ $(function () {
   });
 });
     </script>
-<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
-<meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
-<meta name="msapplication-TileColor" content="#BE0027"/>
-<script src="http://files.pidgi.net/overthrow.js"></script>
+<script src="skins/Metrolook/overthrow.js"></script>
+<script src="../skins/Metrolook/overthrow.js"></script>
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
 		<div id="content" class="mw-body" class="overthrow" role="main">
@@ -354,11 +382,7 @@ echo "Guest";
 else {
 echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 }
- ?><span style="word-spacing:4px;"> </span><img style="position:relative;top:-1px;" src="<?php
-$default = 'http://www.pidgi.net/wiki/skins/metrolook/images/user-icon.png';
-$grav_url = 'http://www.gravatar.com/avatar/' . md5( strtolower( trim( $this->getSkin()->getUser()->getEmail() ) ) ) . '?d=' . urlencode ( $default ) . '&s=' . 20;
-echo $grav_url;
-?>" /></span></a>
+ ?><span style="word-spacing:4px;"> </span><img class="custom4" style="position:relative;top:0.4em;" src="skins/Metrolook/images/Transparent.gif" onerror='this.onerror = null; this.src="../skins/Metrolook/images/Transparent.gif"' /></span></a>
 <div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
 <?php $this->renderNavigation( 'PERSONAL' ); ?>
 </div>
@@ -370,35 +394,42 @@ echo $grav_url;
 	?>
 	</ul>
 </div>
-<div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><img src="http://images.pidgi.net/line.png" style="float:left;" /><div class="onhoverbg" style="height:40px;float:left;"><img src="http://images.pidgi.net/downarrow.png" style="cursor:pointer;" onclick="toggleDiv('bartile');"></div></div></div>
+<?php if ( $logo ): ?><div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><img alt="<?php echo $this->text('sitename'); ?>" src="<?php echo $this->text('logopath') ?>" style="max-width: 65px;height:auto; max-height:36px; display: inline-block; vertical-align:middle; padding-right:5px; padding-left:5px;"></div></h4></a><?php else: ?><div style="padding-left:10px;"><div class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php endif; ?><img class="custom2" src="skins/Metrolook/images/Transparent.gif" onerror='this.onerror = null; this.src="../skins/Metrolook/images/Transparent.gif"' style="float:left;" /><?php if ( $DownArrow ): ?><img class="custom3" src="skins/Metrolook/images/Transparent.gif" onerror='this.onerror = null; this.src="../skins/Metrolook/images/Transparent.gif"' style="height:60px;width:27px;cursor:pointer;" onclick="toggleDiv('bartile');"/><?php else: ?><?php endif; ?></div></div>
+<?php if ( $DownArrow ): ?>
 	<div id="top-tile-bar" class="fixed-position">
 
 <div style="vertical-align:top;align:left;">
 <div class="topleft">
 <div style="align:left;margin-left:auto;margin-right:auto;display:none;height:200px;" class="tilebar" id="bartile"><div style="height:200px;display:table;"><div style="vertical-align:middle;display:table-cell;padding-left:36px;">
-<div style="float:left;padding:5px;"><span class="tile"><a href="http://www.pidgi.net/wiki/"><img src="http://images.pidgi.net/pidgiwikitiletop.png" /></a></span></div><div style="float:left;padding:5px;"><span class="tile"><a href="http://www.pidgi.net/press/"><img src="http://images.pidgi.net/pidgipresstiletop.png" /></a></span></div><div style="float:left;padding:5px;"><span class="tile"><a href="http://www.pidgi.net/jcc/"><img src="http://images.pidgi.net/jcctiletop.png" /></a></span></div><div style="float:left;padding:5px;"><span class="tile"><a href="http://www.petalburgwoods.com/"><img src="http://images.pidgi.net/pwntiletop.png" /></a></span></div>
+<div style="float:left;padding:5px;"><div class="tile"><?php if ( $link1 ): ?><a href="http://www.pidgi.net/wiki/"><?php else: ?><a href="<?php echo $GLOBALS['$url1'] ?>"><?php endif; ?><?php if ( $image1 ): ?><img src="http://images.pidgi.net/pidgiwikitiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture1'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link2 ): ?><a href="http://www.pidgi.net/press/"><?php else: ?><a href="<?php echo $GLOBALS['$url2'] ?>"><?php endif; ?><?php if ( $image2 ): ?><img src="http://images.pidgi.net/pidgipresstiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture2'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link3 ): ?><a href="http://www.pidgi.net/jcc/"><?php else: ?><a href="<?php echo $GLOBALS['$url3'] ?>"><?php endif; ?><?php if ( $image3 ): ?><img src="http://images.pidgi.net/jcctiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture3'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link4 ): ?><a href="http://www.petalburgwoods.com/"><?php else: ?><a href="<?php echo $GLOBALS['$url4'] ?>"><?php endif; ?><?php if ( $image4 ): ?><img src="http://images.pidgi.net/pwntiletop.png" /><?php else: ?><img src="<?php echo $GLOBALS['$picture4'] ?>" /><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link5 ): ?><a href="<?php echo $GLOBALS['$url5'] ?>"><?php else: ?><?php endif; ?><?php if ( $image5 ): ?><img src="<?php echo $GLOBALS['$picture5'] ?>" /><?php else: ?><?php endif; ?></a></div></div><div style="float:left;padding:5px;"><div class="tile"><?php if ( $link6 ): ?><a href="<?php echo $GLOBALS['$url6'] ?>"><?php else: ?><?php endif; ?><?php if ( $image6 ): ?><img src="<?php echo $GLOBALS['$picture6'] ?>" /><?php else: ?><?php endif; ?></a></div></div>
 
 </div></div></div>
 </div>
 
 </div></div>
+<?php else: ?>
+<?php endif; ?>
 			<div id="left-navigation">
-				<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img src="http://images.pidgi.net/uploadlogo.png" /> <span style="color:#fff;position:relative;top:1px;"><?php $this->msg('uploadbtn') ?></span></div></a><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+				<?php if ( $UploadButton ): ?><a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="custom" src="skins/Metrolook/images/Transparent.gif" onerror='this.onerror = null; this.src="../skins/Metrolook/images/Transparent.gif"' /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php else: ?><?php endif; ?><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 			<div id="right-navigation">
+				<?php if ( $SearchBar ): ?>
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+				<?php else: ?>
+				<?php endif; ?>	
 			</div>
 		</div>
-
+		    <?php if ( $SearchBar ): ?>
 			<div id="mw-panel">
-				<div id="p-logo" role="banner"><a style="background-image: url(<?php
-					$this->text( 'logopath' )
-					?>);" href="<?php
-					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-					?>" <?php
-					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-					?>></a></div>
+			<?php else: ?>
+			<div id="mw-panel-custom">
+			<?php endif; ?>
+				<?php if ( $SearchBar ): ?>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				<?php else: ?>
+				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				<?php endif; ?>	
 			</div>
 		</div>
 
@@ -407,9 +438,8 @@ echo $grav_url;
 	</body>
 </html>
 
-
-	<?php
-	}
+   <?php
+   }
 
 	/**
 	 * Render a series of portals
@@ -458,16 +488,26 @@ echo $grav_url;
 	 * @param null|string|array $hook
 	 */
 	protected function renderPortal( $name, $content, $msg = null, $hook = null ) {
+		global $SearchBar;
+		
 		if ( $msg === null ) {
 			$msg = $name;
 		}
 		$msgObj = wfMessage( $msg );
 		?>
+		<?php if ( $SearchBar ): ?>
 		<div class="portal" role="navigation" id='<?php
 		echo Sanitizer::escapeId( "p-$name" )
 		?>'<?php
 		echo Linker::tooltip( 'p-' . $name )
 		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+		<?php else: ?>
+		<div class="portal-custom" role="navigation" id='<?php
+		echo Sanitizer::escapeId( "p-$name" )
+		?>'<?php
+		echo Linker::tooltip( 'p-' . $name )
+		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+		<?php endif; ?>	
 			<h5<?php
 			$this->html( 'userlangattributes' )
 			?> id='<?php
@@ -476,7 +516,11 @@ echo $grav_url;
 				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
 				?></h5>
 
+			<?php if ( $SearchBar ): ?>
 			<div class="body">
+			<?php else: ?>
+			<div class="body-custom">
+			<?php endif; ?>	
 				<?php
 				if ( is_array( $content ) ) {
 					?>
@@ -514,7 +558,7 @@ echo $grav_url;
 	 * @param array $elements
 	 */
 	protected function renderNavigation( $elements ) {
-		global $wgVectorUseSimpleSearch;
+		global $SearchBar;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -572,9 +616,7 @@ echo $grav_url;
 							}
 						}
 						?>
-						<h5 id="p-variants-label"><span
-							style="display: block;" <?php /* Temporary WMF deployment hack, to be removed before 1.24 release */ ?>
-							><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a></h5>
+						<h5 id="p-variants-label"><span><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a></h5>
 
 						<div class="menu">
 							<ul>
@@ -688,6 +730,7 @@ echo $grav_url;
 					break;
 				case 'SEARCH':
 					?>
+					<?php if ( $SearchBar ): ?>
 					<div id="p-search" role="search">
 						<h5<?php $this->html( 'userlangattributes' ) ?>>
 							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
@@ -695,7 +738,7 @@ echo $grav_url;
 
 						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
 							<?php
-							if ( $wgVectorUseSimpleSearch ) {
+							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
 							?>
 							<div id="simpleSearch">
 								<?php
@@ -731,6 +774,51 @@ echo $grav_url;
 								</div>
 						</form>
 					</div>
+					<?php else: ?>
+					<div id="p-searchSearch" role="search">
+						<h5<?php $this->html( 'userlangattributes' ) ?>>
+							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
+						</h5>
+
+						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+							<?php
+							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
+							?>
+							<div id="simpleSearchSearch">
+								<?php
+							} else {
+							?>
+								<div>
+									<?php
+							}
+							?>
+							<?php
+							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+							// We construct two buttons (for 'go' and 'fulltext' search modes),
+							// but only one will be visible and actionable at a time (they are
+							// overlaid on top of each other in CSS).
+							// * Browsers will use the 'fulltext' one by default (as it's the
+							//   first in tree-order), which is desirable when they are unable
+							//   to show search suggestions (either due to being broken or
+							//   having JavaScript turned off).
+							// * The mediawiki.searchSuggest module, after doing tests for the
+							//   broken browsers, removes the 'fulltext' button and handles
+							//   'fulltext' search itself; this will reveal the 'go' button and
+							//   cause it to be used.
+							echo $this->makeSearchButton(
+								'fulltext',
+								array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
+							);
+							echo $this->makeSearchButton(
+								'go',
+								array( 'id' => 'searchButton', 'class' => 'searchButton' )
+							);
+							?>
+								</div>
+						</form>
+					</div>
+					<?php endif; ?> 
 					<?php
 
 					break;
