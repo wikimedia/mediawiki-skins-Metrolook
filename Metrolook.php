@@ -1,6 +1,7 @@
 <?php
 /**
- * Metrolook - Metro look for website.
+ * Vector - Modern version of MonoBook with fresh look and many usability
+ * improvements.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,91 +22,33 @@
  * @ingroup Skins
  */
 
-$GLOBALS['wgExtensionCredits']['skin'][] = array(
+$wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'description' => 'Metrolook skin for MediaWiki.',
-	'version' => '2.4.3',
+	'version' => '2.2.5',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
 // Register files
-$GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
-$GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+$wgAutoloadClasses['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
+$wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 
 // Register skin
-SkinFactory::getDefaultInstance()->register( 'metrolook', 'Metrolook', function(){
-	$config = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
-	return new SkinMetrolook( $config );
-} );
-
-// Register config
-$GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
-
-// Configuration options
-/**
- * Search form look.
- *  - true = use an icon search button
- *  - false = use Go & Search buttons
- */
-$GLOBALS['wgVectorUseSimpleSearch'] = true;
-
-/**
- * Watch and unwatch as an icon rather than a link.
- *  - true = use an icon watch/unwatch button
- *  - false = use watch/unwatch text link
- */
-$GLOBALS['wgVectorUseIconWatch'] = true;
-
-/* To enable logo. Note that if enabled it will not show properly.*/
-$GLOBALS['Logoshow'] = true;
-
-/* to enable search bar on the sidebar and disables the search bar on the top bar */
-$GLOBALS['SearchBar'] = true;
-
-$GLOBALS['DownArrow'] = true;
-
-$GLOBALS['link1'] = true;
-
-$GLOBALS['image1'] = true;
-
-$GLOBALS['link2'] = true;
-
-$GLOBALS['image2'] = true;
-
-$GLOBALS['link3'] = true;
-
-$GLOBALS['image3'] = true;
-
-$GLOBALS['link4'] = true;
-
-$GLOBALS['image4'] = true;
-
-$GLOBALS['link5'] = false;
-
-$GLOBALS['image5'] = false;
-
-$GLOBALS['link6'] = false;
-
-$GLOBALS['image6'] = false;
-
-$GLOBALS['UploadButton'] = true;
-
-$GLOBALS['logo'] = false;
+$wgValidSkinNames['metrolook'] = 'Metrolook';
 
 // Register modules
-$GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
+$wgResourceModules['skins.metrolook.styles'] = array(
 	'styles' => array(
 		'screen.less' => array( 'media' => 'screen' ),
 		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
-		'theme.css' => array( 'media' => 'screen' ),
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
 );
-$GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
+$wgResourceModules['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'collapsibleTabs.js',
 		'vector.js',
@@ -118,7 +61,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
 );
-$GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
+$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
 		'collapsibleNav.js',
 	),
@@ -136,7 +79,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 );
 
 // Apply module customizations
-$GLOBALS['wgResourceModuleSkinStyles']['metrolook'] = array(
+$wgResourceModuleSkinStyles['metrolook'] = array(
 	'jquery.tipsy' => 'skinStyles/jquery.tipsy.less',
 	'jquery.ui.core' => array(
 		'skinStyles/jquery.ui/jquery.ui.core.css',

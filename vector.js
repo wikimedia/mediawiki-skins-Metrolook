@@ -37,7 +37,6 @@ jQuery( function ( $ ) {
 	 * Sidebar
 	 */
 	$( '#mw-panel > .portal:first' ).addClass( 'first' );
-	$( '#mw-panel-custom > .portal-custom:first' ).addClass( 'first' );
 
 	/**
 	 * Collapsible tabs
@@ -54,7 +53,7 @@ jQuery( function ( $ ) {
 			if ( $cactions.hasClass( 'emptyPortlet' ) ) {
 				$cactions
 					.removeClass( 'emptyPortlet' )
-					.find( 'h5' )
+					.find( 'h3' )
 						.css( 'width', '1px' ).animate( { 'width': originalDropdownWidth }, 'normal' );
 			}
 		} )
