@@ -10,8 +10,6 @@ Compatible with MediaWiki 1.25+
 
 If you would like compatibility with mediawiki 1.24, 1.23, 1.22 or 1.21 please visit 
 
-currently we have a branch for mediawiki 1.22 and 1.21 but we doint support just yet please upgrade to mediawiki 1.23 or 1.24 to either 1.3 or 2.4.3.
-
 1.24
 
 https://github.com/paladox2015/Metrolook/tree/REL1_24
@@ -48,13 +46,9 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 
 To enable logo
 
-//$Logoshow = true;
-
 $logo = true;
 
 Default is
-
-//$Logoshow = false;
 
 $logo = false;
 
@@ -76,7 +70,11 @@ $DownArrow = false;
 
 Default is
 
-$DownArrow = true;
+$Line = true;
+
+To turn it off
+
+$Line = false;
 
 to change link
 
@@ -193,69 +191,69 @@ and all you need to do is edit background-colour and the top bar should change c
 /* Top Bar colour and hover colour start */
 
 #mw-page-base {
-    height: 2.5em;
-    background-color: dodgerBlue;
-    background-position: bottom left;
-    background-repeat: repeat-x;
-    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-    background-image: url('images/page-fade.png');
-    min-width: auto;
+        height: 2.5em;
+        background-color: dodgerBlue;
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+        background-image: url('images/page-fade.png');
+        min-width: auto;
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 #mw-page-base {
-    height: 2.5em;
-    background-color: dodgerBlue;
-    background-position: bottom left;
-    background-repeat: repeat-x;
-    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-    background-image: url('images/page-fade.png');
-    min-width:65em;
+        height: 2.5em;
+        background-color: dodgerBlue;
+        background-position: bottom left;
+        background-repeat: repeat-x;
+        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+        background-image: url('images/page-fade.png');
+        min-width:65em;
 }
 }
 
 div.vectorTabs a:hover {
-         background-color: blue;
+        background-color: blue;
 }
 
 div.onhoverbg:hover {
-         background-color: blue;
+        background-color: blue;
 }
 
 img.custom3:hover{
-            background-color: blue;
+        background-color: blue;
 }
 
 div.vectorMenu:hover h5 a {
-           background-color: blue;
+        background-color: blue;
 }
 
 div.vectorMenu h5 a {
-    display: inline-block;
-	width: 24px;
-	height: 2em;
-	background-color: dodgerBlue; 
-	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
-	background-position: 50% 50%; 
-	background-repeat: no-repeat;
-	.transition(background-position 250ms);
+        display: inline-block;
+        width: 24px;
+        height: 2em;
+        background-color: dodgerBlue; 
+        .background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
+        background-position: 50% 50%; 
+        background-repeat: no-repeat;
+        .transition(background-position 250ms);
 }
 div.vectorMenu:hover {
-           background-color: blue;
+        background-color: blue;
 }
 
 div.vectorMenu ul {
-    position: absolute;
-    background-color: white;
-	border: solid 2px dodgerBlue;
-	border-top-width: 0;
-	list-style-type: none;
-	list-style-image: none;
-	padding: 0;
-	padding-top:5px;
-	margin: 0;
-	margin-left: -6px;
-	text-align: left;
+        position: absolute;
+        background-color: white;
+        border: solid 2px dodgerBlue;
+        border-top-width: 0;
+        list-style-type: none;
+        list-style-image: none;
+        padding: 0;
+        padding-top:5px;
+        margin: 0;
+        margin-left: -6px;
+        text-align: left;
 }
 
 /* Top Bar colour and hover colour end */
@@ -266,7 +264,7 @@ div.vectorMenu ul {
 
 * Mobile view of desktop is not shown correcly.
 
-## Version
+## Support comming soon
 
 Note plans may change.
 
