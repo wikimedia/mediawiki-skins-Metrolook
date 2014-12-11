@@ -192,24 +192,34 @@ and all you need to do is edit background-colour and the top bar should change c
 /* Top Bar colour and hover colour start */
 
 #mw-page-base {
-        height: 2.5em;
-        background-color: dodgerBlue;
-        background-position: bottom left;
-        background-repeat: repeat-x;
-        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-        background-image: url('images/page-fade.png');
-        min-width: auto;
+    height: 2.5em;
+    background-color: dodgerBlue;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    min-width: auto;
 }
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 #mw-page-base {
-        height: 2.5em;
-        background-color: dodgerBlue;
-        background-position: bottom left;
-        background-repeat: repeat-x;
-        /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-        background-image: url('images/page-fade.png');
-        min-width:65em;
+    height: 2.5em;
+    background-color: dodgerBlue;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    min-width:65em;
+}
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+#mw-page-base {
+    height: 2.5em;
+    background-color: dodgerBlue;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    min-width:65em;
 }
 }
 

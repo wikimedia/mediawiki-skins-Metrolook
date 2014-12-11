@@ -276,7 +276,7 @@ $(function () {
 				?>
 				<div id="jump-to-nav" class="mw-jump">
 					<?php $this->msg( 'jumpto' ) ?>
-					<a href="#mw-navigation"><?php
+					<a href="#mw-head"><?php
 						$this->msg( 'jumptonavigation' )
 						?></a><?php
 					$this->msg( 'comma-separator' )
