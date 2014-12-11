@@ -21,16 +21,28 @@
     .vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
     min-width: auto;
 }
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 #mw-page-base {
-	height: 2.5em;
-	background-color: #CF8B54;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
-	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
-	min-width:65em;
+    height: 2.5em;
+    background-color: #CF8B54;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    .vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+    min-width:65em;
+}
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+#mw-page-base {
+    height: 2.5em;
+    background-color: #CF8B54;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    /* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+    background-image: url('images/page-fade.png');
+    .vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+    min-width:65em;
 }
 }
 #mw-head-base {
