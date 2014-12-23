@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"metrolook-desc": "Giao diện Metrolook dành cho MediaWiki",
+	"metrolook-guest": "Khách"
+}
