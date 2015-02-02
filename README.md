@@ -58,6 +58,12 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 |`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
 |`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
 
+## Mobile desgn
+
+To test out the new mobile desgn please visit https://github.com/paladox/Metrolook/tree/test
+
+It is in preview meaning there will be bugs and problems. Please report any bugs or suggestion for the desgn.
+
 
 $wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
 
@@ -77,6 +83,9 @@ To customise top bar colour ether add it to theme.css which is in metrolook skin
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
 ```css
+
+/* Add your custom theme overrides here */
+
 /* Top Bar colour and hover colour start */
 
 @import "mediawiki.mixins";
@@ -123,7 +132,7 @@ and all you need to do is edit background-colour and the top bar should change c
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width: 67.800em;
+	min-width: 64.7em;
 }
 }
 
@@ -186,7 +195,7 @@ div.actionmenu ul {
 }
 }
 
-/* Top Bar colour and hover colour end */
+/* Top Bar colour and hover colour */
 ```
 
 ## Known Issues
@@ -220,23 +229,4 @@ Please do not remove this section. it is for things that have been removed and u
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
 <meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
 <meta name="msapplication-TileColor" content="#BE0027"/>
-```
-
-```html
-<?php if ( $Logoshow ): ?>
-	<div id="p-logo" role="banner">
-		<a 
-			style="background-image: url(<?php
-				$this->text( 'logopath' )
-			?>);"
-			href="<?php
-				echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-			?>">
-				<?php
-					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-				?>
-		</a>
-	</div>
-	<?php else: ?>
-<?php endif; ?>
 ```
