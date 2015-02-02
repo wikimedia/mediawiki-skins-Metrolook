@@ -292,7 +292,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 
 <div style="vertical-align:top;align:left;">
 <div class="topleft">
-<div style="align:left;margin-left:auto;margin-right:auto;display:none;" class="tilebar" id="bartile"><div id="tilegrouptable"><div id="tilegroup">
+<div style="align:left;margin-right:auto;display:none;" class="tilebar" id="bartile"><div id="tilegrouptable"><div id="tilegroup">
 <?php if ( $wgMetrolookBartile ): ?>
 
 <?php if ( $wgMetrolookTile1 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/wiki/"><img src="http://images.pidgi.net/pidgiwikitiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile2 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/press/"><img src="http://images.pidgi.net/pidgipresstiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile3 ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="http://www.pidgi.net/jcc/"><img src="http://images.pidgi.net/jcctiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile4 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.petalburgwoods.com/"><img src="http://images.pidgi.net/pwntiletop.png" /></a></div></div><?php else: ?><?php endif; ?>
@@ -313,11 +313,11 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 				<?php if ( $wgMetrolookUploadButton ): ?><a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="uploadbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php else: ?><?php endif; ?><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 
-				<div id="editbutton"><img class="editbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /></div>
 				<?php if ( $wgMetrolookSearchBar ): ?>
 				<img class="searchbar" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 				<?php else: ?>
 				<?php endif; ?>
+				<img class="editbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 
 			<div id="right-navigation">
 				<?php if ( $wgMetrolookSearchBar ): ?>
