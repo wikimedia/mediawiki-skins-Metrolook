@@ -6,25 +6,29 @@ A skin for MediaWiki
 The author of the skin is http://www.pidgi.net/wiki/Main_Page
 
 
-Compatible with MediaWiki 1.25+
+Compatible with MediaWiki 1.26+.
 
-If you would like compatibility with mediawiki 1.24, 1.23, 1.22 or 1.21 please visit 
+If you would like compatibility with mediawiki 1.25, 1.24, 1.23, 1.22 or 1.21 please visit 
+
+1.25
+
+https://github.com/paladox/Metrolook/tree/REL1_25
 
 1.24
 
-https://github.com/paladox2015/Metrolook/tree/REL1_24
+https://github.com/paladox/Metrolook/tree/REL1_24
 
 1.23
 
-https://github.com/paladox2015/Metrolook/tree/REL1_23
+https://github.com/paladox/Metrolook/tree/REL1_23
 
 1.22
 
-https://github.com/paladox2015/Metrolook/tree/REL1-22
+https://github.com/paladox/Metrolook/tree/REL1_22
 
 1.21
 
-https://github.com/paladox2015/Metrolook/tree/REL1_21
+https://github.com/paladox/Metrolook/tree/REL1_21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
@@ -40,9 +44,15 @@ Add this to LocalSettings.php
 require_once "$IP/skins/Metrolook/Metrolook.php";
 ```
 
+MediaWiki 1.25+ (optional)
+
+```php
+wfLoadSkin( 'Metrolook' );
+```
+
 ## Settings
 
-1.25 only
+1.26 only
 
 |Setting|Default|To Enable|To Disable|
 |-------|-------|---------|----------|
@@ -58,7 +68,6 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 |`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
 |`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
 
-
 $wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
 
 $link and $picture were removed in favour of using $wgMetrolookBartile and $wgMetrolookURL1 and $wgMetrolookImage1
@@ -70,6 +79,14 @@ Note: Tile 5 to 10 is for when you disable bartile.
 
 Note: Image setting should be set like this for example $wgMetrolookImage1 = file/to/image or can be set like http://example.com/image.png;
 
+
+## Mobile desgn
+
+Mobile desgn now included in the latest release for MediaWiki 1.24+. Mobile desgn for MediaWiki 1.23 and 1.22 coming soon. Also to get mobile desgn please download Metrolook release 2.5 or 3.0 beta 16 or higher please.
+
+And please report feedback in the issues tab. And if you could help fix the problem and or improve the desgn please open and pull task.
+
+
 ## Customizing top bar color
 
 To customise top bar colour ether add it to theme.css which is in metrolook skin folder or MediaWiki:Metrolook.css from web browser.
@@ -77,6 +94,9 @@ To customise top bar colour ether add it to theme.css which is in metrolook skin
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
 ```css
+
+/* Add your custom theme overrides here */
+
 /* Top Bar colour and hover colour start */
 
 @import "mediawiki.mixins";
@@ -123,7 +143,7 @@ and all you need to do is edit background-colour and the top bar should change c
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width: 67.800em;
+	min-width: 64.7em;
 }
 }
 
@@ -160,6 +180,7 @@ div.vectorMenu:hover {
 
 div.vectorMenu ul {
 	border: solid 2px dodgerBlue;
+	border-top: none;
 
 }
 
@@ -186,22 +207,22 @@ div.actionmenu ul {
 }
 }
 
-/* Top Bar colour and hover colour end */
+/* Top Bar colour and hover colour */
 ```
 
 ## Known Issues
 
-* When i recent changes and are in mobile view or on a mobile device bartitle will show but is harder to click off it.
+* Sometimes clicking of bartitle on mobile, it wont let you click off sometimes.
 
-## Support coming soon
+## Comming soon
 
 Note plans may change.
 
-Coming soon support for 
-
-* MediaWiki 1.21
+Mobile desgn for MediaWiki 1.22 and 1.23.
 
 ## Version
+
+4.x.x requires MediaWiki 1.26.
 
 3.x.x requires MediaWiki 1.25.
 
@@ -210,6 +231,8 @@ Coming soon support for
 1.x.x requires MediaWiki 1.23.
 
 0.3.x requires MediaWiki 1.22.
+
+0.2.x requires MediaWiki 1.21.
 
 
 ## Removed things
@@ -220,23 +243,4 @@ Please do not remove this section. it is for things that have been removed and u
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
 <meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
 <meta name="msapplication-TileColor" content="#BE0027"/>
-```
-
-```html
-<?php if ( $Logoshow ): ?>
-	<div id="p-logo" role="banner">
-		<a 
-			style="background-image: url(<?php
-				$this->text( 'logopath' )
-			?>);"
-			href="<?php
-				echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-			?>">
-				<?php
-					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-				?>
-		</a>
-	</div>
-	<?php else: ?>
-<?php endif; ?>
 ```

@@ -1,102 +1,11 @@
 Changelog
 =========
 
-### 3.0 beta 16
 
-Big release with new desgn for mobile and minor improvements to desktop desgn.
+### 4.0 alpha 1
 
-Please see test branch for updates to beta 16 release once it looks like there arnt many issues and all things have been added to it, it will be released to the master branch.
+First release of Metrolook to support MediaWiki 1.26.
 
-Bump required mediawiki version to mediawiki 1.25 wmf 18
+Includes improvements to mobile desgn and desktop desgn.
 
-
-Mainly new features and desgn are
-
-
-* Mobile desgn (This is a preview of mobile desgn please report bug in issue section and fix bugs if you know how to thanks. and please also suggest improvements to the desktop and mobile desgn.)
-
-* Full logo support.
-
-* Cleaned up MetrolookTemplate.php file.
-
-* Cleaned up setting names.
-
-* Settings that were renamed
-
-$logo renamed to $wgMetrolookLogo<br>$SearchBar renamed to $wgMetrolookSearchBar<br>$DownArrow renamed to $wgMetrolookDownArrow<br>$Line renamed to $wgMetrolookLine<br>$UploadButton renamed to $wgMetrolookUploadButton<br>$wgURL1 and $wgImage1 where renamed to $wgMetrolookURL1 and $wgMetrolookImage1 and there settings were changed. for url you put in the url to website for image you put in the path to image or url to image.
-
-* Settings that were removed.
-
- $link and  $picture
-
-* New settings that were added
-
-$wgMetrolookBartile
-
-$wgMetrolookTile1<br>$wgMetrolookTile2<br>$wgMetrolookTile3<br>$wgMetrolookTile4<br>$wgMetrolookTile5<br>$wgMetrolookTile6<br>$wgMetrolookTile7<br>$wgMetrolookTile8<br>$wgMetrolookTile9<br>$wgMetrolookTile10
-
-$wgMetrolookSiteName
-
-$wgMetrolookMobile
-
-
-
-Fixes
-
-Fix for ipad.
-
-Fix for desktop view.
-
-Fix for mobile view.
-
-
-
-Note: Please see settings section in README.md for more information on how to enable and disable it.
-
-* Remove styles and js from the main MetrolookTemplate.php and seperated it into own files.
-
-* More new things and changes comming soon to this release. /* This will be removed once this is ready to be published */
-
-
-
-Revision 3 brings these fixes /* This may be removed near to time of release. */
-
-* Fixes for ipad desgn.
-
-* Disabled searchbar js for ipad.
-
-* Fixes for mobile desgn.
-
-* Fixes for desktop desgn.
-
-
-### 3.0 beta 15
-
-* Adding copying file for license.
-
-* Adding namemsg for skin name.
-
-* Localisation updates.
-
-* Update license to GPL-2.0+ in Metrolook.php.
-
-
-### 3.0 beta 14
-
-* Added scroll for sidebar. Will automatically show if content goes out of screen. Note this will only work for people who do not have the search bar in the sidebar enabled. Reason because width is a problem and maybe in future releases it will be added to search bar in sidebar.
-
-* Updated collapsiblenav css code.
-
-* Updated i18n and added some more languges.
-
-* Added bullet-circle-icon.png and svg.
-
-* Added bullet-icon.svg.
-
-* Updated Metrolook.php, SkinMetrolook and MetrolookTemplate.php.
-
-* Updated SkinStyles/jquery.ui.
-
-* Added changelog.
-
-* Convert space to tabs.
+Includes skin.json. New extension/skin registration in mediawiki starting from mediawiki 1.25. Please read the README.md on how to do it. when using extension.json please remove require_once from localsettings.php for metrolook.

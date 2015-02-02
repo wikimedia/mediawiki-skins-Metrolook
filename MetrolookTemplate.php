@@ -318,20 +318,21 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 				<?php if ( $wgMetrolookUploadButton ): ?><a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="uploadbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php else: ?><?php endif; ?><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 
-				<div id="editbutton"><img class="editbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" ></img></div>
 				<?php if ( $wgMetrolookSearchBar ): ?>
-				<img class="searchbar" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" ></img>
+				<img class="searchbar" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 				<?php else: ?>
 				<?php endif; ?>
+				<img class="editbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+
 
 			<div id="right-navigation">
 				<?php if ( $wgMetrolookSearchBar ): ?>
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
-
 				<?php else: ?>
 				<?php endif; ?>
 			</div>
 		</div>
+
 			<?php if ( $wgMetrolookSearchBar ): ?>
 			<div id="mw-panel">
 			<?php if ( $wgMetrolookLogo ): ?>
