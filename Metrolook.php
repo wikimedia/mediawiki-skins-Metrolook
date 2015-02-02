@@ -26,15 +26,21 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '2.5.2',
+	'version' => '2.5.3',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
 // Register files
+$GLOBALS['wgAutoloadClasses']['MetrolookHooks'] = __DIR__ . '/SkinMetrolookHooks.php';
 $GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
 $GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+
+$GLOBALS['wgHooks']['BeforePageDisplay'][] = 'MetrolookHooks::beforePageDisplay';
+$GLOBALS['wgHooks']['GetPreferences'][] = 'MetrolookHooks::getPreferences';
+$GLOBALS['wgHooks']['ResourceLoaderGetConfigVars'][] = 'MetrolookHooks::resourceLoaderGetConfigVars';
+$GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'MetrolookHooks::makeGlobalVariablesScript';
 
 $GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
 $GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
@@ -46,6 +52,23 @@ $GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 $GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
 
 // Configuration options
+
+// Each module may be configured individually to be globally on/off or user preference based
+$GLOBALS['wgMetrolookFeature'] = array(
+	'collapsiblenav' => array( 'global' => false, 'user' => true ),
+);
+
+/* 
+ * Setting default option.
+ *
+ * Do not remove this.
+ *
+ * Bug T76314
+ *
+ * You can add this to your localsettings.php file and change from 1 to 0 to disbale it globaly.
+ */
+$GLOBALS['wgDefaultUserOptions']['skinmetrolook-collapsiblenav'] = 1;
+
 /**
  * Search form look.
  *  - true = use an icon search button
@@ -122,17 +145,18 @@ $GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
 		'js/collapsibleNav.js',
 	),
-	'messages' => array(
-		'vector-collapsiblenav-more',
+	'styles' => array(
+		'components/collapsibleNav.less',
 	),
+	'position' => 'bottom',
 	'dependencies' => array(
+		'jquery.throttle-debounce',
 		'jquery.client',
 		'jquery.cookie',
 		'jquery.tabIndex',
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
-	'position' => 'bottom',
 );
 
 // Apply module customizations

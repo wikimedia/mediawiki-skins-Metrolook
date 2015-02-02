@@ -1,11 +1,15 @@
 @import "mediawiki.mixins";
 @import "personalMenu";
-@import "collapsibleNav";
 @import "search";
 @import "tabs";
 
 /* Hide, but keep accessible for screen-readers */
 #mw-navigation h2 {
+	position: absolute;
+	top: -9999px;
+}
+
+#p-navigation-label{
 	position: absolute;
 	top: -9999px;
 }
