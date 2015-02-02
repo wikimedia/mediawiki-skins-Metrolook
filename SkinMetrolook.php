@@ -56,7 +56,7 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav', ) );
+		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
 	}
 
 	/**
