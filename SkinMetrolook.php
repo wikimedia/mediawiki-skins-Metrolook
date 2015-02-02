@@ -1,7 +1,6 @@
 <?php
 /**
- * Vector - Modern version of MonoBook with fresh look and many usability
- * improvements.
+ * Metrolook - Metro look for website.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +22,7 @@
  */
 
 /**
- * SkinTemplate class for Vector skin
+ * SkinTemplate class for Metrolook skin
  * @ingroup Skins
  */
 class SkinMetrolook extends SkinTemplate {
@@ -38,7 +37,7 @@ class SkinMetrolook extends SkinTemplate {
 	 * @param OutputPage $out Object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgLocalStylePath;
+		global $wgLocalStylePath, $wgMetrolookMobile;
 
 		parent::initPage( $out );
 
@@ -52,14 +51,20 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav', ) );
+		if ( $wgMetrolookMobile ) {
+		$viewport_meta = 'width=device-width, initial-scale=1';
+		$out->addMeta('viewport', $viewport_meta);
+		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+		} else {
+			$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+		}
 	}
 
 	/**
 	 * Loads skin and user CSS files.
 	 * @param OutputPage $out
 	 */
-	function setupSkinUserCss( OutputPage $out ) {
+	public function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
 
 		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
