@@ -35,11 +35,11 @@ class SkinMetrolook extends SkinTemplate {
 	private $vectorConfig;
 
 	public function __construct( Config $config ) {
-		$this->vectorConfig = $config;
+			$this->vectorConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
 	}
 
-    protected static $bodyClasses = array( 'vector-animateLayout' );
-    
+	protected static $bodyClasses = array( 'vector-animateLayout' );
+	
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param OutputPage $out Object to initialize
