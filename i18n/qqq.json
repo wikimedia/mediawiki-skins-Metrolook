@@ -5,7 +5,6 @@
 			"Liuxinyu970226"
 		]
 	},
-	"skinname-metrolook": "{{optional}}",
 	"metrolook-desc": "{{desc|name=Metrolook|url=http://www.mediawiki.org/wiki/Skin:Metrolook}}",
 	"metrolook-guest": "Used for descbribing you as a guest editing the wiki.\n{{Identical|Guest}}"
 }
