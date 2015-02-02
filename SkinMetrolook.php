@@ -31,8 +31,8 @@ class SkinMetrolook extends SkinTemplate {
 	var $skinname = 'metrolook', $stylename = 'Metrolook',
 		$template = 'MetrolookTemplate', $useHeadElement = true;
 
-    protected static $bodyClasses = array( 'vector-animateLayout' );
-    
+	protected static $bodyClasses = array( 'vector-animateLayout' );
+	
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param OutputPage $out Object to initialize
