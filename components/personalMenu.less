@@ -30,6 +30,7 @@
 		white-space: nowrap;
 	}
 }
+
 #username-top {
 	color: #fff;
 	height:40px;
@@ -39,12 +40,59 @@
 	padding-top:1px;
 	font-family:sans-serif;
 }
+
+#usermenu {
+	float:right;
+	background-image:none;
+	vertical-align:middle;
+	height:40px;
+	padding-left:10px;
+	padding-right:10px;
+	position:relative;
+	top:0px;
+	right:10px;
+	width:auto;
+	text-align:right;
+}
+
+img.userIcon20 {
+	.background-image-svg('images/user-icon-20.svg', 'images/user-icon-20.png');
+	width:20px; /*width of your image*/
+	height:37px; /*height of your image*/
+	margin:0; /* If you want no margin */
+	padding:0; /*if your want to padding */
+	background-repeat: no-repeat;
+}
+
+img.userIcon40 {
+	margin:0; /* If you want no margin */
+	padding:0; /*if your want to padding */
+	background-repeat: no-repeat;
+}
+
+#userIcon20 {
+	position:relative;
+	top:2px;
+	background-repeat: no-repeat;
+}
+
+#userIcon40 {
+	position:relative;
+	top:-0.4px;
+	display:none;
+	.background-image-svg('images/user-icon-40.svg', 'images/user-icon-40.png');
+	width:34px; /*width of your image*/
+	height:38px; /*height of your image*/
+	background-repeat: no-repeat;
+}
+
 #echoNotifications {
 	float: right;
 	top: 0.3em;
 	position: relative;
 	margin-right: 20px;
 }
+
 #echoNotifications ul {
 	list-style: none;
 }
