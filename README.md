@@ -28,7 +28,7 @@ https://github.com/paladox2015/Metrolook/tree/REL1_21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
-A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf12 and version 3.0 beta 13 of the master branch of the skin.
+A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf18 and a snapshot of the test branch of the skin.
 
 ## Installation
 
@@ -44,15 +44,34 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 
 1.24 only
 
-|Setting|Default|To Enable|
-|-------|-------|---------|
-|logo| `false` | `$logo = true;`|
-|SearchBar| `false` | `$SearchBar = true;`|
-|DownArrow| `false` | `$DownArrow = true;`|
-|Line| `false` | `$Line = true;`|
-|UploadButton| `false` | `$UploadButton = true;`|
-|`$linkN`, `$imageN`<br>Where `N` is between 1 to 6. | `true` | `$link1 = false;`<br>`$image1 = false;`<br>`$url1 = link of website;`<br>`$picture1 = image link;`|
+|Setting|Default|To Enable|To Disable|
+|-------|-------|---------|----------|
+|wgMetrolookLogo| `false` | `$wgMetrolookLogo = true;`| `$wgMetrolookLogo = false;`|
+|wgMetrolookSiteName| `true` | `$wgMetrolookSiteName = true;`| `$wgMetrolookSiteName = false;`|
+|wgMetrolookSearchBar| `true` | `$wgMetrolookSearchBar = true;`| `$wgMetrolookSearchBar = false;`|
+|wgMetrolookDownArrow| `true` | `$wgMetrolookDownArrow = true;`| `$wgMetrolookDownArrow = false;`|
+|wgMetrolookLine| `true` | `$wgMetrolookLine = true;`| `$wgMetrolookLine = false;`|
+|wgMetrolookUploadButton| `true` | `$wgMetrolookUploadButton = true;`| `$wgMetrolookUploadButton = false;`|
+|wgMetrolookMobile| `true` | `$wgMetrolookMobile = true;`| `$wgMetrolookMobile = false;`|
+|wgMetrolookBartile| `true` | `$wgMetrolookBartile = true;`| `$wgMetrolookBartile = false;`|
+|`$wgMetrolookTileN`<br>Where `N` is between 1 to 4. | `true` | `$wgMetrolookTile1 = true;`| `$wgMetrolookTile1 = false;` |
+|`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
+|`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
 
+$wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
+
+$link and $picture were removed in favour of using $wgMetrolookBartile and $wgMetrolookURL1 and $wgMetrolookImage1
+
+$logo was removed in favour of $wgMetrolookLogo and $wgMetrolookSiteName.
+
+
+Note: Tile 5 to 10 is for when you disable bartile.
+
+Note: Image setting should be set like this for example $wgMetrolookImage1 = file/to/image or can be set like http://example.com/image.png;
+
+## Mobile desgn
+
+Mobile is now out of preview and can be downloaded now.
 
 ## Customizing top bar color
 
@@ -61,7 +80,12 @@ To customise top bar colour ether add it to theme.css which is in metrolook skin
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
 ```css
+
+/* Add your custom theme overrides here */
+
 /* Top Bar colour and hover colour start */
+
+@import "mediawiki.mixins";
 
 #mw-page-base {
 	height: 2.5em;
@@ -73,6 +97,18 @@ and all you need to do is edit background-colour and the top bar should change c
 	min-width: auto;
 }
 
+@media (max-width:768px) {
+#mw-page-base {
+	height: 2.5em;
+	background-color: dodgerBlue;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	min-width: 24em;
+}
+}
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 #mw-page-base {
 	height: 2.5em;
@@ -81,9 +117,10 @@ and all you need to do is edit background-colour and the top bar should change c
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width:65em;
+	min-width: 25em;
 }
 }
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
 #mw-page-base {
 	height: 2.5em;
@@ -92,7 +129,7 @@ and all you need to do is edit background-colour and the top bar should change c
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width:65em;
+	min-width: 64.7em;
 }
 }
 
@@ -104,7 +141,7 @@ div.onhoverbg:hover {
 	background-color: blue;
 }
 
-img.custom3:hover{
+img.downarrow:hover{
 	background-color: blue;
 }
 
@@ -122,30 +159,41 @@ div.vectorMenu h5 a {
 	background-repeat: no-repeat;
 	.transition(background-position 250ms);
 }
+
 div.vectorMenu:hover {
 	background-color: blue;
 }
 
 div.vectorMenu ul {
-	position: absolute;
-	background-color: white;
 	border: solid 2px dodgerBlue;
-	border-top-width: 0;
-	list-style-type: none;
-	list-style-image: none;
-	padding: 0;
-	padding-top:5px;
-	margin: 0;
-	margin-left: -6px;
-	text-align: left;
+	border-top: none;
+
 }
 
-/* Top Bar colour and hover colour end */
+@media (max-width: 768px) {
+#hamburgerIcon:hover {
+	background-color: blue;
+}
+
+img.editbutton:hover {
+	background-color: blue;
+}
+
+div.actionmenu ul {
+	border-top: solid 2px dodgerBlue;
+}
+
+#left-navigation {
+	background-color: dodgerBlue;
+}
+}
+
+/* Top Bar colour and hover colour */
 ```
 
 ## Known Issues
 
-* Mobile view of desktop is not shown correctly.
+* When i recent changes and are in mobile view or on a mobile device bartitle will show but is harder to click off it.
 
 ## Support coming soon
 
@@ -174,23 +222,4 @@ Please do not remove this section. it is for things that have been removed and u
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
 <meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
 <meta name="msapplication-TileColor" content="#BE0027"/>
-```
-
-```html
-<?php if ( $Logoshow ): ?>
-	<div id="p-logo" role="banner">
-		<a 
-			style="background-image: url(<?php
-				$this->text( 'logopath' )
-			?>);"
-			href="<?php
-				echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-			?>">
-				<?php
-					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-				?>
-		</a>
-	</div>
-	<?php else: ?>
-<?php endif; ?>
 ```

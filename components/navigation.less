@@ -21,30 +21,6 @@
 	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
 	min-width: auto;
 }
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-#mw-page-base {
-	height: 2.5em;
-	background-color: #CF8B54;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
-	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
-	min-width:65em;
-}
-}
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-#mw-page-base {
-	height: 2.5em;
-	background-color: #CF8B54;
-	background-position: bottom left;
-	background-repeat: repeat-x;
-	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-	background-image: url('images/page-fade.png');
-	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
-	min-width:65em;
-}
-}
 
 #mw-head-base {
 	margin-top: -5em;
@@ -67,37 +43,23 @@ div#mw-head {
 	}
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-	div#mw-head {
-		position: absolute;
-		top: 0;
-		min-width:106%;
-
-	h5 {
-		margin: 0;
-		padding: 0;
-	}
-}
-}
-
 /* Navigation Containers */
 #left-navigation {
-   float: initial;
-   /* IE 6 double-margin bug fix */
-   display: inline; 
+	float: initial;
+	/* IE 6 double-margin bug fix */
+	display: inline; 
 }
 
 #right-navigation {
-   float: right;
+	float: right;
 }
 
 /* Logo */
 #p-logo {
-	position: absolute;
-	top: -160px;
 	left: 0;
 	width: 10em;
 	height: 160px;
+	margin-bottom: 1em; 
 
 	a {
 		display: block;
@@ -182,80 +144,6 @@ div#mw-panel {
 	}
 }
 
-/* Panel */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-div#mw-panel {
-		font-size: @menu-main-font-size;
-		position: absolute;
-		top: 40px;
-		bottom: 0;
-		height: auto;
-		overflow-y: auto;
-		overflow-x: hidden;
-		padding-top: 1em;
-		width: 9.5em;
-		left: 0;
-
-	div.portal {
-		margin: 0 0.6em 0 0.7em;
-		padding: 0.25em 0;
-		direction: ltr;
-		background-position: top left;
-		background-repeat: no-repeat;
-		.background-image('images/portal-break.png');
-
-		h5 {
-			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
-			font-weight: 100;
-			font-size: 1em;
-			color: #444444;
-			margin: 0;
-			padding: @menu-main-heading-padding;
-			cursor: default;
-			border: none;
-		}
-
-		div.body {
-			margin: @menu-main-body-margin;
-			padding-top: 0;
-
-			ul {
-				list-style-type: none;
-				list-style-image: none;
-				margin: 0;
-				padding: @menu-main-body-padding;
-
-				li {
-					line-height: 1.125em;
-					margin: 0;
-					padding: 0.25em 0;
-					font-size: @menu-main-body-font-size;
-					word-wrap: break-word;
-
-					a {
-						color: @menu-main-body-link-color;
-						&:visited {
-							color: @menu-main-body-link-visited-color;
-						}
-					}
-				}
-			}
-		}
-
-		&.first {
-			background-image: none;
-			margin-top: 0;
-			h5 {
-				display: none;
-			}
-			div.body {
-				margin-left: 0.5em;
-			}
-		}
-	}
-}
-}
-
 /* custom */
 
 /* Panel */
@@ -330,82 +218,4 @@ div#mw-panel-custom {
 			}
 		}
 	}
-}
-
-/* custom */
-
-/* Panel */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-div#mw-panel-custom {
-		font-size: @menu-main-font-size;
-		position: absolute;
-		top: 40px;
-		bottom: 0;
-		height: auto;
-		overflow: hidden;
-		padding-top: 1em;
-		width: 11em;
-		left: 0;
-
-	div.portal-custom {
-		margin: 0 0.6em 0 0.7em;
-		padding: 0.25em 0;
-		direction: ltr;
-		background-position: top left;
-		background-repeat: no-repeat;
-		.background-image('images/portal-break.png');
-
-		h5 {
-					font-family: 'Segoe UI Light', Segoe UI, sans-serif;
-			font-weight: 100;
-			font-size: 1em;
-			color: #444444;
-					padding: 0.25em;
-					padding-top: 0;
-					padding-left: 17px;
-					padding-bottom: 0;
-					margin-bottom:0;
-			cursor: default;
-			border: none;
-		}
-
-		div.body-custom {
-			margin: @menu-main-body-margin;
-			padding-top: 0;
-
-			ul {
-				list-style-type: none;
-				list-style-image: none;
-				margin: 0;
-				padding: @menu-main-body-padding;
-
-				li {
-					line-height: 1.125em;
-					margin: 0;
-					padding: 0.25em 0;
-					font-size: @menu-main-body-font-size;
-					word-wrap: break-word;
-
-					a {
-						color: @menu-main-body-link-color;
-						&:visited {
-							color: @menu-main-body-link-visited-color;
-						}
-					}
-				}
-			}
-		}
-
-		&.first {
-			background-image: none;
-			margin-top: 0;
-			h5 {
-				display: none;
-			}
-			div.body-custom {
-				margin-left: 0.5em;
-			}
-		}
-	}
-}
 }
