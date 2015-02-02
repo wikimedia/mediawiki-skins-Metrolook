@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Linedwell"
+			"Linedwell",
+			"Nicolapps"
 		]
 	},
+	"metrolook-desc": "Skin Metrolook pour MediaWiki",
 	"metrolook-guest": "Invité"
 }
