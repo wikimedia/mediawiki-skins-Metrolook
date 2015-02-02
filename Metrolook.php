@@ -24,11 +24,12 @@
 $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
+	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '3.0 beta 13',
+	'version' => '3.0 beta 15',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
-	'license-name' => 'GPLv2+',
+	'license-name' => 'GPL-2.0+',
 );
 
 // Register files
@@ -39,10 +40,7 @@ $GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.
 $GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
 
 // Register skin
-SkinFactory::getDefaultInstance()->register( 'metrolook', 'Metrolook', function(){
-	$config = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
-	return new SkinMetrolook( $config );
-} );
+$GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 
 // Register config
 $GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
@@ -149,11 +147,14 @@ $GLOBALS['wgResourceModuleSkinStyles']['metrolook'] = array(
 	'jquery.ui.button' => 'skinStyles/jquery.ui/jquery.ui.button.css',
 	'jquery.ui.datepicker' => 'skinStyles/jquery.ui/jquery.ui.datepicker.css',
 	'jquery.ui.dialog' => 'skinStyles/jquery.ui/jquery.ui.dialog.css',
+	'jquery.ui.menu' => 'skinStyles/jquery.ui/jquery.ui.menu.css',
 	'jquery.ui.progressbar' => 'skinStyles/jquery.ui/jquery.ui.progressbar.css',
 	'jquery.ui.resizable' => 'skinStyles/jquery.ui/jquery.ui.resizable.css',
 	'jquery.ui.selectable' => 'skinStyles/jquery.ui/jquery.ui.selectable.css',
 	'jquery.ui.slider' => 'skinStyles/jquery.ui/jquery.ui.slider.css',
+	'jquery.ui.spinner' => 'skinStyles/jquery.ui/jquery.ui.spinner.css',
 	'jquery.ui.tabs' => 'skinStyles/jquery.ui/jquery.ui.tabs.css',
+	'jquery.ui.tooltips' => 'skinStyles/jquery.ui/jquery.ui.tooltips.css',
 	'mediawiki.notification' => 'skinStyles/mediawiki.notification.less',
 	'mediawiki.special' => 'skinStyles/mediawiki.special.less',
 	'mediawiki.special.preferences' => 'skinStyles/mediawiki.special.preferences.less',
