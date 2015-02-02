@@ -28,7 +28,7 @@ https://github.com/paladox2015/Metrolook/tree/REL1_21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
-A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf12 and version 3.0 beta 13 of the master branch of the skin.
+A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf18 and a snapshot of the test branch of the skin.
 
 ## Installation
 
@@ -46,27 +46,29 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 
 |Setting|Default|To Enable|To Disable|
 |-------|-------|---------|----------|
-|wgLogoImage| `false` | `$wgLogoImage = true;`| `$wgLogoImage = false;`|
-|wgSearchBar| `true` | `$wgSearchBar = true;`| `$wgSearchBar = false;`|
-|wgDownArrow| `true` | `$wgDownArrow = true;`| `$wgDownArrow = false;`|
-|wgLine| `true` | `$wgLine = true;`| `$wgLine = false;`|
-|wgUploadButton| `true` | `$wgUploadButton = true;`| `$wgUploadButton = false;`|
-|wgBartile| `true` | `$wgBartile = true;`| `$wgBartile = false;`|
-|`$wgTileN`<br>Where `N` is between 1 to 4. | `true` | `$wgTile1 = true;`| `$wgTile1 = false;` |
-|`$wgTileN`<br>Where `N` is between 5 to 10. | | `$wgTile5 = true;`| `$wgTile5 = false;` |
-|`$wgURLN`, `$imageN`<br>Where `N` is between 1 to 6. |  | `$wgURL1 = link of website;`<br>`$wgImage1 = image link;`| |
+|wgMetrolookLogo| `false` | `$wgMetrolookLogo = true;`| `$wgMetrolookLogo = false;`|
+|wgMetrolookSiteName| `true` | `$wgMetrolookSiteName = true;`| `$wgMetrolookSiteName = false;`|
+|wgMetrolookSearchBar| `true` | `$wgMetrolookSearchBar = true;`| `$wgMetrolookSearchBar = false;`|
+|wgMetrolookDownArrow| `true` | `$wgMetrolookDownArrow = true;`| `$wgMetrolookDownArrow = false;`|
+|wgMetrolookLine| `true` | `$wgMetrolookLine = true;`| `$wgMetrolookLine = false;`|
+|wgMetrolookUploadButton| `true` | `$wgMetrolookUploadButton = true;`| `$wgMetrolookUploadButton = false;`|
+|wgMetrolookMobile| `true` | `$wgMetrolookMobile = true;`| `$wgMetrolookMobile = false;`|
+|wgMetrolookBartile| `true` | `$wgMetrolookBartile = true;`| `$wgMetrolookBartile = false;`|
+|`$wgMetrolookTileN`<br>Where `N` is between 1 to 4. | `true` | `$wgMetrolookTile1 = true;`| `$wgMetrolookTile1 = false;` |
+|`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
+|`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
 
 
 $wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
 
-$link and $picture were removed in favour of using $wgBartile and $wgURL1 and $wgImage1
+$link and $picture were removed in favour of using $wgMetrolookBartile and $wgMetrolookURL1 and $wgMetrolookImage1
 
-$logo was removed in favour of $wgLogoImage
+$logo was removed in favour of $wgMetrolookLogo and $wgMetrolookSiteName.
 
 
 Note: Tile 5 to 10 is for when you disable bartile.
 
-Note: Image setting should be set like this for example $wgImage1 = file/to/image or can be set like http://example.com/image.png;
+Note: Image setting should be set like this for example $wgMetrolookImage1 = file/to/image or can be set like http://example.com/image.png;
 
 ## Customizing top bar color
 
@@ -133,7 +135,7 @@ div.onhoverbg:hover {
 	background-color: blue;
 }
 
-img.custom3:hover{
+img.downarrow:hover{
 	background-color: blue;
 }
 
@@ -161,13 +163,18 @@ div.vectorMenu ul {
 
 }
 
+ul {
+	list-style-type: disc;
+	.list-style-image-svg('images/bullet-circle-icon.svg', 'images/bullet-circle-icon.png');
+}
+
 @media (max-width: 768px) {
 #hamburgerIcon:hover {
 	background-color: blue;
 }
 
 img.editbutton:hover {
-	background-color:blue;
+	background-color: blue;
 }
 
 div.actionmenu ul {
@@ -184,7 +191,7 @@ div.actionmenu ul {
 
 ## Known Issues
 
-* When in portrait and you go to landscape the search bar will go out of place on the ipad. If you refresh in landscape then go into portrait it wont cause problems.
+* When i recent changes and are in mobile view or on a mobile device bartitle will show but is harder to click off it.
 
 ## Support coming soon
 
