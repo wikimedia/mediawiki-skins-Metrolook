@@ -6,25 +6,29 @@ A skin for MediaWiki
 The author of the skin is http://www.pidgi.net/wiki/Main_Page
 
 
-Compatible with MediaWiki 1.24+
+Compatible with MediaWiki 1.24+.
 
-If you would like compatibility with mediawiki 1.25, 1.23, 1.22 or 1.21 please visit 
+If you would like compatibility with mediawiki 1.26, 1.25, 1.23, 1.22 or 1.21 please visit 
+
+1.26
+
+https://github.com/paladox/Metrolook/tree/master
 
 1.25
 
-https://github.com/paladox2015/Metrolook/tree/master
+https://github.com/paladox/Metrolook/tree/REL1_25
 
 1.23
 
-https://github.com/paladox2015/Metrolook/tree/REL1_23
+https://github.com/paladox/Metrolook/tree/REL1_23
 
 1.22
 
-https://github.com/paladox2015/Metrolook/tree/REL1-22
+https://github.com/paladox/Metrolook/tree/REL1_22
 
 1.21
 
-https://github.com/paladox2015/Metrolook/tree/REL1_21
+https://github.com/paladox/Metrolook/tree/REL1_21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
@@ -69,9 +73,13 @@ Note: Tile 5 to 10 is for when you disable bartile.
 
 Note: Image setting should be set like this for example $wgMetrolookImage1 = file/to/image or can be set like http://example.com/image.png;
 
+
 ## Mobile desgn
 
-Mobile is now out of preview and can be downloaded now.
+Mobile desgn now included in the latest release for MediaWiki 1.21+. Also to get mobile desgn please download Metrolook release 0.2.0, 0.3.10, 1.4, 2.5 or 3.0 beta 16 or higher please.
+
+And please report feedback in the issues tab. And if you could help fix the problem and or improve the desgn please open and pull task.
+
 
 ## Customizing top bar color
 
@@ -187,23 +195,27 @@ div.actionmenu ul {
 	background-color: dodgerBlue;
 }
 }
+/* To change bullet icon to a circle */
 
-/* Top Bar colour and hover colour */
+ul {
+	list-style-type: disc;
+	.list-style-image-svg('images/bullet-circle-icon.png');
+}
+
+/* Top Bar colour and hover colour end */
 ```
 
 ## Known Issues
 
-* When i recent changes and are in mobile view or on a mobile device bartitle will show but is harder to click off it.
+* Sometimes clicking of bartitle on mobile, it wont let you click off sometimes.
 
-## Support coming soon
+## Comming soon
 
 Note plans may change.
 
-Coming soon support for 
-
-* MediaWiki 1.21
-
 ## Version
+
+4.x.x requires MediaWiki 1.26.
 
 3.x.x requires MediaWiki 1.25.
 
@@ -212,6 +224,8 @@ Coming soon support for
 1.x.x requires MediaWiki 1.23.
 
 0.3.x requires MediaWiki 1.22.
+
+0.2.x requires MediaWiki 1.21.
 
 
 ## Removed things

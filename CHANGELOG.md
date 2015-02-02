@@ -1,6 +1,15 @@
 Changelog
 =========
 
+### 2.5.2
+
+More improvements to mobile desgn on ipad.
+
+### 2.5.1
+
+Improve Metrolook.
+
+
 ### 2.5
 
 Big release with new desgn for mobile and minor improvements to desktop desgn.
