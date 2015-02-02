@@ -117,7 +117,7 @@ $(function () {
 
 $(function () {
   $('img.downarrow').click(function(e) {
-	  $( 'img.custom3' ).on( 'click', toggleDiv( 'bartile' ) );
+	  $( 'img.downarrow' ).on( 'click', toggleDiv( 'bartile' ) );
 	e.stopPropagation();
   });
   $('img.downarrow').click(function() {
