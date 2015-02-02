@@ -156,6 +156,7 @@ $GLOBALS['wgResourceModuleSkinStyles']['metrolook'] = array(
 	'jquery.ui.tabs' => 'skinStyles/jquery.ui/jquery.ui.tabs.css',
 	'jquery.ui.tooltips' => 'skinStyles/jquery.ui/jquery.ui.tooltips.css',
 	'mediawiki.notification' => 'skinStyles/mediawiki.notification.less',
+	'+mediawiki.sectionAnchor' => 'skinStyles/mediawiki.sectionAnchor.less',
 	'mediawiki.special' => 'skinStyles/mediawiki.special.less',
 	'mediawiki.special.preferences' => 'skinStyles/mediawiki.special.preferences.less',
 	'remoteSkinPath' => 'Metrolook',

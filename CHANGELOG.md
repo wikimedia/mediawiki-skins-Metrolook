@@ -1,19 +1,17 @@
 Changelog
 =========
 
+
 ### 3.0 beta 16
 
 Big release with new desgn for mobile and minor improvements to desktop desgn.
 
-Please see test branch for updates to beta 16 release once it looks like there arnt many issues and all things have been added to it, it will be released to the master branch.
 
 Bump required mediawiki version to mediawiki 1.25 wmf 18
 
-
 Mainly new features and desgn are
 
-
-* Mobile desgn (This is a preview of mobile desgn please report bug in issue section and fix bugs if you know how to thanks. and please also suggest improvements to the desktop and mobile desgn.)
+* Mobile desgn
 
 * Full logo support.
 
@@ -41,16 +39,6 @@ $wgMetrolookMobile
 
 
 
-Fixes
-
-Fix for ipad.
-
-Fix for desktop view.
-
-Fix for mobile view.
-
-
-
 Note: Please see settings section in README.md for more information on how to enable and disable it.
 
 * Remove styles and js from the main MetrolookTemplate.php and seperated it into own files.
@@ -58,16 +46,12 @@ Note: Please see settings section in README.md for more information on how to en
 * More new things and changes comming soon to this release. /* This will be removed once this is ready to be published */
 
 
+Improvements to ipad desgn.
 
-Revision 3 brings these fixes /* This may be removed near to time of release. */
-
-* Fixes for ipad desgn.
-
-* Disabled searchbar js for ipad.
-
-* Fixes for mobile desgn.
+* Bug fixes.
 
 * Fixes for desktop desgn.
+
 
 
 ### 3.0 beta 15

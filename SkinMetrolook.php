@@ -32,10 +32,10 @@ class SkinMetrolook extends SkinTemplate {
 	/**
 	 * @var Config
 	 */
-	private $vectorConfig;
+	private $metrolookConfig;
 
 	public function __construct() {
-			$this->vectorConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
+			$this->metrolookConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
 	}
 	
 	/**
@@ -67,7 +67,7 @@ class SkinMetrolook extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
-		wfRunHooks( 'SkinVectorStyleModules', array( $this, &$styles ) );
+		wfRunHooks( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
 		$out->addModuleStyles( $styles );
 	}
 
@@ -75,6 +75,6 @@ class SkinMetrolook extends SkinTemplate {
 	 * Override to pass our Config instance to it
 	 */
 	public function setupTemplate( $classname, $repository = false, $cache_dir = false ) {
-		return new $classname( $this->vectorConfig );
+		return new $classname( $this->metrolookConfig );
 	}
 }

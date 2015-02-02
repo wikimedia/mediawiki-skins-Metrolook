@@ -2,24 +2,161 @@
 
 /* different screen sizes */
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
 
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
 img.searchbar {
 	display: none;
 }
 
+div#mw-panel {
+		font-size: @menu-main-font-size;
+		position: absolute;
+		top: 40px;
+		bottom: 0;
+		height: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		padding-top: 1em;
+		width: 9.5em;
+		left: 0;
+
+	div.portal {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			margin: 0;
+			padding: @menu-main-heading-padding;
+			cursor: default;
+			border: none;
+		}
+
+		div.body {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
+	#p-logo + div.portal {
+		background-image: none;
+		margin-top: 0;
+		h5 {
+			display: none;
+		}
+		div.body {
+			margin-left: 0.5em;
+		}
+	}
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+div#mw-panel-custom {
+		font-size: @menu-main-font-size;
+		position: absolute;
+		top: 40px;
+		bottom: 0;
+		height: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		padding-right: 1em;
+		padding-top: 1em;
+		width: 11em;
+		left: 0;
 
-img.searchbar {
-	display: none;
+	div.portal-custom {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			padding: 0.25em;
+			padding-top: 0;
+			padding-left: 17px;
+			padding-bottom: 0;
+			margin-bottom:0;
+			cursor: default;
+			border: none;
+		}
+
+		div.body-custom {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
+	#p-logo + div.portal-custom {
+		background-image: none;
+		margin-top: 0;
+		h5 {
+			display: none;
+		}
+		div.body-custom {
+			margin-left: 0.5em;
+		}
+	}
 }
-
-}
-
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
 
 .mw-body {
 	margin-left: 11em;
@@ -34,7 +171,7 @@ img.searchbar {
 	height: auto;
 	position: absolute;
 	bottom: 0;
-	right: -60px;
+	right: -0.7em;
 	left: 0;
 	top: 40px;
 	overflow: auto;
@@ -122,7 +259,7 @@ img.searchbar {
 div#mw-head {
 	position: absolute;
 	top: 0;
-	min-width: 106%;
+	min-width: 101%;
 
 	h5 {
 		margin: 0;
@@ -130,9 +267,39 @@ div#mw-head {
 	}
 }
 
+#mw-page-base {
+	height: 2.5em;
+	background-color: CF8B54;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	min-width: 64.7em;
+}
+
+#p-search {
+	/* @noflip */
+	float: left;
+	margin-right: 0.5em;
+	margin-left: 0.5em;
+
+	h5 {
+		display: none;
+	}
+
+	form,
+	input {
+		margin: 0;
+		margin-top: 0.4em;
+	}
+}
+
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+img.searchbar {
+	display: none;
+}
 
 #echoNotifications {
 	float: right;
@@ -140,6 +307,156 @@ div#mw-head {
 	position: relative;
 	margin-right: 30px;
 	margin-left: 1em;
+}
+
+div#mw-panel {
+		font-size: @menu-main-font-size;
+		position: absolute;
+		top: 40px;
+		bottom: 0;
+		height: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		padding-top: 1em;
+		width: 9.5em;
+		left: 0;
+
+	div.portal {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			margin: 0;
+			padding: @menu-main-heading-padding;
+			cursor: default;
+			border: none;
+		}
+
+		div.body {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
+	#p-logo + div.portal {
+		background-image: none;
+		margin-top: 0;
+		h5 {
+			display: none;
+		}
+		div.body {
+			margin-left: 0.5em;
+		}
+	}
+}
+
+div#mw-panel-custom {
+		font-size: @menu-main-font-size;
+		position: absolute;
+		top: 40px;
+		bottom: 0;
+		height: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		padding-right: 1em;
+		padding-top: 1em;
+		width: 11em;
+		left: 0;
+
+	div.portal-custom {
+		margin: 0 0.6em 0 0.7em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			padding: 0.25em;
+			padding-top: 0;
+			padding-left: 17px;
+			padding-bottom: 0;
+			margin-bottom:0;
+			cursor: default;
+			border: none;
+		}
+
+		div.body-custom {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
+	#p-logo + div.portal-custom {
+		background-image: none;
+		margin-top: 0;
+		h5 {
+			display: none;
+		}
+		div.body-custom {
+			margin-left: 0.5em;
+		}
+	}
 }
 
 .mw-body {
@@ -155,7 +472,7 @@ div#mw-head {
 	height: auto;
 	position: absolute;
 	bottom: 0;
-	right: -60;
+	right: 0;
 	left: 0;
 	top: 40px;
 	overflow: auto;
@@ -256,7 +573,6 @@ div#mw-head {
 	float: left;
 	margin-right: 0.5em;
 	margin-left: 0.5em;
-	margin-top: 0;
 	padding-right: 4em;
 
 	h5 {
@@ -269,7 +585,6 @@ div#mw-head {
 		margin-top: 0.4em;
 	}
 }
-
 }
 
 @media (max-width: 768px) {
@@ -325,7 +640,7 @@ img.editbutton:hover {
 	margin: 8px;
 	margin-left: 0em;
 	margin-top: -0;
-	background-color: #CF8B54;
+	background-color: #9F6F40;
 }
 
 .tilebar {
@@ -369,7 +684,6 @@ img.editbutton:hover {
 	float: left;
 	margin-right: 1em;
 	margin-left: 0.5em;
-	margin-top:0;
 
 	h5 {
 		display: none;
