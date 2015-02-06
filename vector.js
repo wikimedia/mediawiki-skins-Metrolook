@@ -2,14 +2,6 @@
  * Vector-specific scripts
  */
 jQuery( function ( $ ) {
-	/**
-	 * Focus search input at the very end
-	 */
-	$( '#searchInput' ).attr( 'tabindex', $( document ).lastTabIndex() + 1 );
-
-	/**
-	 * Dropdown menu accessibility
-	 */
 	$( 'div.vectorMenu' ).each( function () {
 		var $el = $( this );
 		$el.find( '> h5 > a' ).parent()
@@ -34,76 +26,30 @@ jQuery( function ( $ ) {
 	} );
 
 	/**
-	 * Sidebar
+	 * Collapsible tabs for Vector
 	 */
-	$( '#mw-panel > .portal:first' ).addClass( 'first' );
-	$( '#mw-panel-custom > .portal-custom:first' ).addClass( 'first' );
-
-	/**
-	 * Collapsible tabs
-	 */
-	var $cactions = $( '#p-cactions' ),
-		$tabContainer = $( '#p-views ul' ),
-		originalDropdownWidth = $cactions.width();
+	var $cactions = $( '#p-cactions' );
 
 	// Bind callback functions to animate our drop down menu in and out
 	// and then call the collapsibleTabs function on the menu
-	$tabContainer
+	$( '#p-views ul' )
 		.bind( 'beforeTabCollapse', function () {
 			// If the dropdown was hidden, show it
 			if ( $cactions.hasClass( 'emptyPortlet' ) ) {
 				$cactions
 					.removeClass( 'emptyPortlet' )
 					.find( 'h5' )
-						.css( 'width', '1px' ).animate( { 'width': originalDropdownWidth }, 'normal' );
+						.css( 'width', '1px' ).animate( { 'width': '24px' }, 390 );
 			}
 		} )
 		.bind( 'beforeTabExpand', function () {
 			// If we're removing the last child node right now, hide the dropdown
 			if ( $cactions.find( 'li' ).length === 1 ) {
-				$cactions.find( 'h5' ).animate( { 'width': '1px' }, 'normal', function () {
+				$cactions.find( 'h5' ).animate( { 'width': '1px' }, 390, function () {
 					$( this ).attr( 'style', '' )
 						.parent().addClass( 'emptyPortlet' );
 				});
 			}
 		} )
-		.collapsibleTabs( {
-			expandCondition: function ( eleWidth ) {
-				// (This looks a bit awkward because we're doing expensive queries as late as possible.)
-
-				var distance = $.collapsibleTabs.calculateTabDistance();
-				// If there are at least eleWidth + 1 pixels of free space, expand.
-				// We add 1 because .width() will truncate fractional values but .offset() will not.
-				if ( distance >= eleWidth + 1 ) {
-					return true;
-				} else {
-					// Maybe we can still expand? Account for the width of the "Actions" dropdown if the
-					// expansion would hide it.
-					if ( $cactions.find( 'li' ).length === 1 ) {
-						return distance >= eleWidth + 1 - originalDropdownWidth;
-					} else {
-						return false;
-					}
-				}
-			},
-			collapseCondition: function () {
-				// (This looks a bit awkward because we're doing expensive queries as late as possible.)
-				// TODO The dropdown itself should probably "fold" to just the down-arrow (hiding the text)
-				// if it can't fit on the line?
-
-				// If there's an overlap, collapse.
-				if ( $.collapsibleTabs.calculateTabDistance() < 0 ) {
-					// But only if the width of the tab to collapse is smaller than the width of the dropdown
-					// we would have to insert. An example language where this happens is Lithuanian (lt).
-					if ( $cactions.hasClass( 'emptyPortlet' ) ) {
-						return $tabContainer.children( 'li.collapsible:last' ).width() > originalDropdownWidth;
-					} else {
-						return true;
-					}
-				} else {
-					return false;
-				}
-			}
-		} );
+		.collapsibleTabs();
 } );
-
