@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 0.3.11
+
+More improvements to mobile desgn on ipad.
+
 
 ### 0.3.10
 

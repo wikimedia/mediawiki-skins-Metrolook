@@ -26,9 +26,9 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.3.10',
+	'version' => '0.3.11',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
-	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
+	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 

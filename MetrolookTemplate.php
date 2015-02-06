@@ -40,7 +40,7 @@ class MetrolookTemplate extends BaseTemplate {
 		global $wgMetrolookLogo, $wgMetrolookSearchBar, $wgMetrolookDownArrow, $wgMetrolookLine,
 		$wgMetrolookUploadButton, $wgMetrolookSiteName, $wgMetrolookBartile, $wgMetrolookTile1, 
 		$wgMetrolookTile2, $wgMetrolookTile3, $wgMetrolookTile4, $wgMetrolookTile5, $wgMetrolookTile6, 
-		$wgMetrolookTile7, $MetrolookwgTile8, $wgMetrolookTile9, $wgMetrolookTile10, $wgMetrolookImage1, 
+		$wgMetrolookTile7, $wgMetrolookTile8, $wgMetrolookTile9, $wgMetrolookTile10, $wgMetrolookImage1, 
 		$wgMetrolookURL1, $wgMetrolookImage2, $wgMetrolookURL2, $wgMetrolookImage3, $wgMetrolookURL3, 
 		$wgMetrolookImage4, $wgMetrolookURL4, $wgMetrolookImage5, $wgMetrolookURL5, $wgMetrolookImage6, 
 		$wgMetrolookURL6, $wgMetrolookMobile, $wgVectorUseIconWatch;
@@ -107,11 +107,6 @@ class MetrolookTemplate extends BaseTemplate {
 		// Output HTML Page
 		$this->html( 'headelement' );
 ?>
-
-<?php if ( $wgMetrolookMobile ): ?>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<?php else: ?>
-<?php endif; ?>
 
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
@@ -192,8 +187,7 @@ class MetrolookTemplate extends BaseTemplate {
 <a href="#" style="text-decoration:none;"><span id="username-top"><span id="username-text"><?php
 if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
 echo wfMessage( 'metrolook-guest' )->text();
-}
-else {
+} else {
 echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 }
  ?></span><span style="word-spacing:4px;"> </span><span id="userIcon20"><img class="userIcon20" style="position:relative;top:0.3em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /></span>

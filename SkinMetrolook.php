@@ -37,7 +37,7 @@ class SkinMetrolook extends SkinTemplate {
 	 * @param OutputPage $out Object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgLocalStylePath;
+		global $wgLocalStylePath, $wgMetrolookMobile; 
 
 		parent::initPage( $out );
 
@@ -51,14 +51,20 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
+		if ( $wgMetrolookMobile ) {
+		$viewport_meta = 'width=device-width, initial-scale=1';
+		$out->addMeta('viewport', $viewport_meta);
 		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+		} else {
+			$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+		}
 	}
 
 	/**
 	 * Loads skin and user CSS files.
 	 * @param OutputPage $out
 	 */
-	function setupSkinUserCss( OutputPage $out ) {
+	public function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
 
 		$styles = array( 'skins.metrolook' );
