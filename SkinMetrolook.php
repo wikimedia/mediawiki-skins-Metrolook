@@ -1,6 +1,7 @@
 <?php
 /**
- * Metrolook - Metro look for website
+ * Metrolook - Modern version of MonoBook with fresh look and many usability
+ * improvements.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,29 +23,22 @@
  */
 
 /**
- * SkinTemplate class for Vector skin
+ * SkinTemplate class for Metrolook skin
  * @ingroup Skins
  */
 class SkinMetrolook extends SkinTemplate {
-	public $skinname = 'metrolook';
-	public $stylename = 'Metrolook';
-	public $template = 'MetrolookTemplate';
-	/**
-	 * @var Config
-	 */
-	private $vectorConfig;
 
-	public function __construct( Config $config ) {
-		$this->vectorConfig = $config;
-	}
+	var $skinname = 'metrolook', $stylename = 'Metrolook',
+		$template = 'MetrolookTemplate', $useHeadElement = true;
 
-    protected static $bodyClasses = array( 'vector-animateLayout' );
-    
+	protected static $bodyClasses = array( 'vector-animateLayout' );
+	
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param OutputPage $out Object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
+		global $wgLocalStylePath;
 
 		parent::initPage( $out );
 
@@ -54,31 +48,23 @@ class SkinMetrolook extends SkinTemplate {
 		$min = $this->getRequest()->getFuzzyBool( 'debug' ) ? '' : '.min';
 		$out->addHeadItem( 'csshover',
 			'<!--[if lt IE 7]><style type="text/css">body{behavior:url("' .
-				htmlspecialchars( $this->getConfig()->get( 'LocalStylePath' ) ) .
+				htmlspecialchars( $wgLocalStylePath ) .
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav', ) );
+		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
 	}
 
 	/**
-	 * Loads skin and user CSS files.
-	 * @param OutputPage $out
+	 * Load skin and user CSS files in the correct order
+	 * fixes bug 22916
+	 * @param $out OutputPage object
 	 */
 	function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
-
-		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
-		wfRunHooks( 'SkinVectorStyleModules', array( $this, &$styles ) );
-		$out->addModuleStyles( $styles );
+		$out->addModuleStyles( 'skins.metrolook' );
 	}
 
-	/**
-	 * Override to pass our Config instance to it
-	 */
-	public function setupTemplate( $classname, $repository = false, $cache_dir = false ) {
-		return new $classname( $this->vectorConfig );
-	}
 
 	/**
 	 * Adds classes to the body element.

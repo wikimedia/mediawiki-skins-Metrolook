@@ -1,0 +1,25 @@
+/* Metrolook screen styles for high definition displays */
+
+div#content {
+	margin-left: 11em;
+	padding: 1.25em 1.5em 1.5em 1.5em;
+}
+#p-logo {
+	left: 0.5em;
+}
+div#footer {
+	margin-left: 0;
+	padding: 1.25em;
+}
+#mw-panel {
+	padding-left: 0.5em;
+}
+#left-navigation {
+	left: 190px;
+}
+#p-personal {
+	right: 1em;
+}
+#mw-head-base {
+	margin-left: 11em;
+}
