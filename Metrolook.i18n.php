@@ -102,6 +102,7 @@ $messages['en-gb'] = array(
  */
 $messages['en'] = array(
 	'skinname-metrolook' => 'Metrolook',
+	'skinmetrolook-collapsiblenav-preference' => 'Enable collapsing of items in the sidebar in Metrolook skin',
 	'metrolook-desc' => 'Metrolook skin for MediaWiki',
 	'metrolook-guest' => 'Guest',
 );
@@ -303,6 +304,7 @@ $messages['pt-br'] = array(
  */
 $messages['qqq'] = array(
 	'skinname-metrolook' => '{{optional}}',
+	'skinmetrolook-collapsiblenav-preference' => 'The message refers to the sidebar, whose sections a re collapsible in Metrolook skin (some of them collapsed by default and some no); the preference disables collapsing entirely and is among \"Advanced options\" in the \"Appearence\" section.',
 	'metrolook-desc' => '{{desc|name=Metrolook|url=https://www.mediawiki.org/wiki/Skin:Metrolook}}',
 	'metrolook-guest' => 'Used for descbribing you as a guest editing the wiki.\n{{Identical|Guest}}',
 );
