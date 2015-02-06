@@ -26,7 +26,7 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.3.9',
+	'version' => '0.3.10',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -41,41 +41,52 @@ $GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.
 // Register skin
 $GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 
-/* Logo is off by default to turn it on plase see README.md. Note that if enabled it will not show properly.*/
-$GLOBALS['logo'] = false;
+// Configuration options
+/**
+ * Search form look.
+ *  - true = use an icon search button
+ *  - false = use Go & Search buttons
+ */
+$GLOBALS['wgVectorUseSimpleSearch'] = true;
+
+/**
+ * Watch and unwatch as an icon rather than a link.
+ *  - true = use an icon watch/unwatch button
+ *  - false = use watch/unwatch text link
+ */
+$GLOBALS['wgVectorUseIconWatch'] = true;
+
+/**
+ * Logo
+ *  - true = Logo will show
+ *  - false = Logo will not show
+ */
+
+$GLOBALS['wgMetrolookLogo'] = true;
+
+$GLOBALS['wgMetrolookSiteName'] = true;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
-$GLOBALS['SearchBar'] = true;
+$GLOBALS['wgMetrolookSearchBar'] = true;
 
-$GLOBALS['DownArrow'] = true;
+$GLOBALS['wgMetrolookDownArrow'] = true;
 
-$GLOBALS['Line'] = true;
+$GLOBALS['wgMetrolookLine'] = true;
 
-$GLOBALS['link1'] = true;
+$GLOBALS['wgMetrolookUploadButton'] = true;
 
-$GLOBALS['image1'] = true;
+$GLOBALS['wgMetrolookMobile'] = true;
 
-$GLOBALS['link2'] = true;
+/* To use tile 5 to 10 please diable this */
+$GLOBALS['wgMetrolookBartile'] = true;
 
-$GLOBALS['image2'] = true;
+$GLOBALS['wgMetrolookTile1'] = true;
 
-$GLOBALS['link3'] = true;
+$GLOBALS['wgMetrolookTile2'] = true;
 
-$GLOBALS['image3'] = true;
+$GLOBALS['wgMetrolookTile3'] = true;
 
-$GLOBALS['link4'] = true;
-
-$GLOBALS['image4'] = true;
-
-$GLOBALS['link5'] = false;
-
-$GLOBALS['image5'] = false;
-
-$GLOBALS['link6'] = false;
-
-$GLOBALS['image6'] = false;
-
-$GLOBALS['UploadButton'] = false;
+$GLOBALS['wgMetrolookTile4'] = true;
 
 // Register modules
 $GLOBALS['wgResourceModules']['skins.metrolook'] = array(
@@ -100,19 +111,23 @@ $GLOBALS['wgResourceModules']['skins.metrolook.beta'] = array(
 );
 $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
-		'Metrolook/collapsibleTabs.js',
-		'Metrolook/vector.js',
+		'Metrolook/js/collapsibleTabs.js',
+		'Metrolook/js/metrolook.js',
+		'Metrolook/js/vector.js',
+		'Metrolook/js/mediawiki.searchSuggest.custom.js',
+		'Metrolook/js/overthrow.js',
 	),
 	'position' => 'top',
 	'dependencies' => array(
 		'jquery.delayedBind',
+		'mediawiki.searchSuggest',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
 $GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
-		'Metrolook/collapsibleNav.js',
+		'Metrolook/js/collapsibleNav.js',
 	),
 	'position' => 'bottom',
 	'dependencies' => array(
