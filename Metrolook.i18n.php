@@ -18,6 +18,14 @@ $messages['ar'] = array(
 );
 
 /** 
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'metrolook-desc' => 'Aspeutu Metrolook pa MediaWiki',
+	'metrolook-guest' => 'Invitáu',
+);
+
+/** 
  * @author Gazimagomedov
  */
 $messages['av'] = array(
@@ -49,6 +57,22 @@ $messages['br'] = array(
 	'metrolook-guest' => 'Den pedet',
 );
 
+/**
+ * @author Juandev
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'metrolook-desc' => 'Vzhled Metrolook pro MediaWiki',
+	'metrolook-guest' => 'Host',
+);
+
+/**
+ * @author Chuvash2014
+ */
+$messages['cv'] = array(
+	'metrolook-guest' => 'Хăна',
+);
+
 /** 
  * @author Metalhead64
  * @author Purodha
@@ -65,13 +89,12 @@ $messages['diq'] = array(
 	'metrolook-guest' => 'Meyman',
 );
 
-/** 
- * @author Juandev
- * @author Mormegil
+/**
+ * @author Caliburn
  */
-$messages['en'] = array(
-	'metrolook-desc' => 'Vzhled Metrolook pro MediaWiki',
-	'metrolook-guest' => 'Host',
+$messages['en-gb'] = array(
+	'metrolook-desc' => 'Metrolook skin for MediaWiki',
+	'metrolook-guest' => 'Guest',
 );
 
 /** English
@@ -107,18 +130,21 @@ $messages['fa'] = array(
 );
 
 /** 
- * @author Linedwell
- */
-$messages['fr'] = array(
-	'metrolook-guest' => 'Invité',
-);
-
-/**
- * @author Elisardojm
+ * @author McSalama
  */
 $messages['fi'] = array(
 	'metrolook-desc' => 'Metrolook-teema MediaWikiin',
 	'metrolook-guest' => 'Vieras',
+);
+
+
+/** 
+ * @author Linedwell
+ * @author Nicolapps
+ */
+$messages['fr'] = array(
+	'metrolook-desc' => 'Skin Metrolook pour MediaWiki',
+	'metrolook-guest' => 'Invité',
 );
 
 /** 
@@ -145,12 +171,30 @@ $messages['he'] = array(
 );
 
 /** 
+ * @author Siddhartha Ghai
+ */
+$messages['hi'] = array(
+	'metrolook-desc' => 'मीडियाविकि के लिए मेट्रोलुक त्वचा',
+	'metrolook-guest' => 'अतिथि',
+);
+
+
+/** 
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'metrolook-desc' => 'Apparentia Metrolook pro MediaWiki',
 	'metrolook-guest' => 'Hospite',
 );
+
+/** 
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'metrolook-desc' => 'Skin Metrolook per MediaWiki',
+	'metrolook-guest' => 'Ospite',
+);
+
 
 /** 
  * @author MIKHEIL
@@ -163,6 +207,7 @@ $messages['ka'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
+	'skinname-metrolook' => '메트로룩',
 	'metrolook-desc' => '미디어위키를 위한 메트로룩 스킨',
 	'metrolook-guest' => '손님',
 );
@@ -198,6 +243,13 @@ $messages['nap'] = array(
 	'metrolook-desc' => "Skin Metrolook pe' MediaWiki",
 	'metrolook-guest' => 'Mmitato',
 );
+/**
+ *
+ */
+$messages['nb'] = array(
+	'metrolook-desc' => 'Metrolook-drakt for MediaWiki',
+	'metrolook-guest' => 'Gjest',
+);
 
 /** 
  * @author Sjoerddebruin
@@ -206,10 +258,11 @@ $messages['nl'] = array(
 	'metrolook-guest' => 'Gast',
 );
 
-
-$messages['nb'] = array(
-	'metrolook-desc' => 'Metrolook-drakt for MediaWiki',
-	'metrolook-guest' => 'Gjest',
+/** 
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'metrolook-guest' => 'Convidat',
 );
 
 /** 
@@ -219,6 +272,15 @@ $messages['pl'] = array(
 	'metrolook-desc' => 'Skórka Metrolook dla MediaWiki',
 	'metrolook-guest' => 'Gość',
 );
+
+/** 
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'metrolook-desc' => 'د مېډياويکي مېټرولوک پوښۍ',
+	'metrolook-guest' => 'مېلمه',
+);
+
 
 /** 
  * @author Vitorvicentevalente
@@ -237,9 +299,11 @@ $messages['pt-br'] = array(
 /** qqq
  * @author paladox
  * @author Liuxinyu970226
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'metrolook-desc' => '{{desc|name=Metrolook|url=http://www.mediawiki.org/wiki/Skin:Metrolook}}',
+	'skinname-metrolook' => '{{optional}}',
+	'metrolook-desc' => '{{desc|name=Metrolook|url=https://www.mediawiki.org/wiki/Skin:Metrolook}}',
 	'metrolook-guest' => 'Used for descbribing you as a guest editing the wiki.\n{{Identical|Guest}}',
 );
 
@@ -276,11 +340,18 @@ $messages['sv'] = array(
 );
 
 /** 
- * @author Okras
+ * @author ElangoRamanujam
  */
 $messages['ta'] = array(
-	'metrolook-desc' => 'Тема оформления MediaWiki Metrolook',
-	'metrolook-guest' => 'விருந்தினர்'
+	'metrolook-guest' => 'விருந்தினர்',
+);
+
+/** 
+ * @author Ата
+ */
+$messages['uk'] = array(
+	'metrolook-desc' => 'Тема оформлення MediaWiki Metrolook',
+	'metrolook-guest' => 'Гість',
 );
 
 /** 
@@ -288,7 +359,7 @@ $messages['ta'] = array(
  */
 $messages['vi'] = array(
 	'metrolook-desc' => 'Giao diện Metrolook dành cho MediaWiki',
-	'metrolook-guest' => 'Khách'
+	'metrolook-guest' => 'Khách',
 );
 
 
@@ -297,7 +368,7 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'metrolook-desc' => '用于MediaWiki的Metrolook皮肤',
-	'metrolook-guest' => '访客'
+	'metrolook-guest' => '访客',
 );
 
 /** 
@@ -305,5 +376,5 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'metrolook-desc' => 'MediaWiki 的 Metrolook 外觀',
-	'metrolook-guest' => '訪客'
+	'metrolook-guest' => '訪客',
 );

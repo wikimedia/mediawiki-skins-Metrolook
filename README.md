@@ -6,29 +6,33 @@ A skin for MediaWiki
 The author of the skin is http://www.pidgi.net/wiki/Main_Page
 
 
-Compatible with MediaWiki 1.22
+Compatible with MediaWiki 1.22.
 
-If you would like compatibility with mediawiki 1.25, 1.24, 1.23 or 1.21 please visit 
+If you would like compatibility with mediawiki 1.26, 1.25, 1.24, 1.23, or 1.21 please visit 
+
+1.26
+
+https://github.com/paladox/Metrolook/tree/master
 
 1.25
 
-https://github.com/paladox2015/Metrolook/tree/master
+https://github.com/paladox/Metrolook/tree/REL1_25
 
 1.24
 
-https://github.com/paladox2015/Metrolook/tree/REL1_24
+https://github.com/paladox/Metrolook/tree/REL1_24
 
 1.23
 
-https://github.com/paladox2015/Metrolook/tree/REL1_23
+https://github.com/paladox/Metrolook/tree/REL1_23
 
 1.21
 
-https://github.com/paladox2015/Metrolook/tree/REL1_21
+https://github.com/paladox/Metrolook/tree/REL1_21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
-A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf12 and version 3.0 beta 13 of the master branch of the skin.
+A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page . This is currently using MediaWiki 1.25wmf18 and a snapshot of the test branch of the skin.
 
 ## Installation
 
@@ -44,14 +48,37 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 
 1.22 only
 
-|Setting|Default|To Enable|
-|-------|-------|---------|
-|logo| `false` | `$logo = true;`|
-|SearchBar| `false` | `$SearchBar = true;`|
-|DownArrow| `false` | `$DownArrow = true;`|
-|Line| `false` | `$Line = true;`|
-|UploadButton| `false` | `$UploadButton = true;`|
-|`$linkN`, `$imageN`<br>Where `N` is between 1 to 6. | `true` | `$link1 = false;`<br>`$image1 = false;`<br>`$url1 = link of website;`<br>`$picture1 = image link;`|
+|Setting|Default|To Enable|To Disable|
+|-------|-------|---------|----------|
+|wgMetrolookLogo| `false` | `$wgMetrolookLogo = true;`| `$wgMetrolookLogo = false;`|
+|wgMetrolookSiteName| `true` | `$wgMetrolookSiteName = true;`| `$wgMetrolookSiteName = false;`|
+|wgMetrolookSearchBar| `true` | `$wgMetrolookSearchBar = true;`| `$wgMetrolookSearchBar = false;`|
+|wgMetrolookDownArrow| `true` | `$wgMetrolookDownArrow = true;`| `$wgMetrolookDownArrow = false;`|
+|wgMetrolookLine| `true` | `$wgMetrolookLine = true;`| `$wgMetrolookLine = false;`|
+|wgMetrolookUploadButton| `true` | `$wgMetrolookUploadButton = true;`| `$wgMetrolookUploadButton = false;`|
+|wgMetrolookMobile| `true` | `$wgMetrolookMobile = true;`| `$wgMetrolookMobile = false;`|
+|wgMetrolookBartile| `true` | `$wgMetrolookBartile = true;`| `$wgMetrolookBartile = false;`|
+|`$wgMetrolookTileN`<br>Where `N` is between 1 to 4. | `true` | `$wgMetrolookTile1 = true;`| `$wgMetrolookTile1 = false;` |
+|`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
+|`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
+
+$wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
+
+$link and $picture were removed in favour of using $wgMetrolookBartile and $wgMetrolookURL1 and $wgMetrolookImage1
+
+$logo was removed in favour of $wgMetrolookLogo and $wgMetrolookSiteName.
+
+
+Note: Tile 5 to 10 is for when you disable bartile.
+
+Note: Image setting should be set like this for example $wgMetrolookImage1 = file/to/image or can be set like http://example.com/image.png;
+
+
+## Mobile desgn
+
+Mobile desgn now included in the latest release for MediaWiki 1.21, 1.22, 1.24+. Mobile desgn for MediaWiki 1.23 coming soon. Also to get mobile desgn please download Metrolook release 0.2.0 or 0.3.10 or 3.0 beta 16 or higher please.
+
+And please report feedback in the issues tab. And if you could help fix the problem and or improve the desgn please open and pull task.
 
 
 ## Customizing top bar color
@@ -60,10 +87,13 @@ To customise top bar colour ether add it to theme.css which is in metrolook skin
 
 and all you need to do is edit background-colour and the top bar should change colour but please remember there is also hover which is when you hover it goes a different colour.
 
-This customise changes it to blue for background and dark blue for hover change the background colour to something you like.
-
 ```css
+
+/* Add your custom theme overrides here */
+
 /* Top Bar colour and hover colour start */
+
+@import "mediawiki.mixins";
 
 #mw-page-base {
 	height: 2.5em;
@@ -75,6 +105,18 @@ This customise changes it to blue for background and dark blue for hover change 
 	min-width: auto;
 }
 
+@media (max-width:768px) {
+#mw-page-base {
+	height: 2.5em;
+	background-color: dodgerBlue;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	min-width: 24em;
+}
+}
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 #mw-page-base {
 	height: 2.5em;
@@ -83,9 +125,10 @@ This customise changes it to blue for background and dark blue for hover change 
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width:65em;
+	min-width: 25em;
 }
 }
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
 #mw-page-base {
 	height: 2.5em;
@@ -94,7 +137,7 @@ This customise changes it to blue for background and dark blue for hover change 
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width:65em;
+	min-width: 64.7em;
 }
 }
 
@@ -106,7 +149,7 @@ div.onhoverbg:hover {
 	background-color: blue;
 }
 
-img.custom3:hover{
+img.downarrow:hover{
 	background-color: blue;
 }
 
@@ -122,6 +165,7 @@ div.vectorMenu h5 a {
 	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
 	background-position: 50% 50%; 
 	background-repeat: no-repeat;
+	.transition(background-position 250ms);
 }
 
 div.vectorMenu:hover {
@@ -129,17 +173,34 @@ div.vectorMenu:hover {
 }
 
 div.vectorMenu ul {
-	position: absolute;
-	background-color: white;
 	border: solid 2px dodgerBlue;
-	border-top-width: 0;
-	list-style-type: none;
-	list-style-image: none;
-	padding: 0;
-	padding-top:5px;
-	margin: 0;
-	margin-left: -6px;
-	text-align: left;
+	border-top: none;
+
+}
+
+@media (max-width: 768px) {
+#hamburgerIcon:hover {
+	background-color: blue;
+}
+
+img.editbutton:hover {
+	background-color: blue;
+}
+
+div.actionmenu ul {
+	border-top: solid 2px dodgerBlue;
+}
+
+#left-navigation {
+	background-color: dodgerBlue;
+}
+}
+
+/* To change bullet icon to a circle */
+
+ul {
+	list-style-type: disc;
+	.list-style-image('images/bullet-circle-icon.png');
 }
 
 /* Top Bar colour and hover colour end */
@@ -147,17 +208,17 @@ div.vectorMenu ul {
 
 ## Known Issues
 
-* Mobile view of desktop is not shown correctly.
+* Sometimes clicking of bartitle on mobile, it wont let you click off sometimes.
 
-## Support coming soon
+## Comming soon
 
 Note plans may change.
 
-Coming soon support for 
-
-* MediaWiki 1.21
+Mobile desgn for MediaWiki 1.23.
 
 ## Version
+
+4.x.x requires MediaWiki 1.26.
 
 3.x.x requires MediaWiki 1.25.
 
@@ -166,6 +227,8 @@ Coming soon support for
 1.x.x requires MediaWiki 1.23.
 
 0.3.x requires MediaWiki 1.22.
+
+0.2.x requires MediaWiki 1.21.
 
 
 ## Removed things
@@ -176,10 +239,4 @@ Please do not remove this section. it is for things that have been removed and u
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700' defer="defer" rel='stylesheet' type='text/css'>
 <meta name="msapplication-TileImage" content="http://www.pidgi.net/new/public/images/pidgiwiki.png"/>
 <meta name="msapplication-TileColor" content="#BE0027"/>
-```
-
-```html
-				<?php if ( $Logoshow ): ?>
-					<div id="p-logo" role="banner"><a style="background-image: url(<?php $this->text( 'logopath' ) ?>);" href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>></a></div>
-				<?php endif; ?>
 ```
