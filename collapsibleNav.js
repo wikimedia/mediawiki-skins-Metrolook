@@ -1,5 +1,5 @@
 /**
- * Collapsible navigation for Vector
+ * Collapsible navigation for Metrolook
  */
 ( function ( mw, $ ) {
 	'use strict';
@@ -121,8 +121,16 @@
 
 		$headings = $( '#mw-panel > .portal:not(.persistent) > h5' );
 
+		// Get the highest tab index
+		tabIndex = $( document ).lastTabIndex() + 1;
+
+		// Fix the search not having a tabindex
+		$( '#searchInput' ).attr( 'tabindex', tabIndex++ );
+
 		// Make it keyboard accessible
-		$headings.attr( 'tabindex', '0' );
+		$headings.attr( 'tabindex', function () {
+			return tabIndex++;
+		});
 
 		// Toggle the selected menu's class and expand or collapse the menu
 		$( '#mw-panel' )
@@ -276,8 +284,16 @@
 
 		$headings = $( '#mw-panel-custom > .portal-custom:not(.persistent) > h5' );
 
+		// Get the highest tab index
+		tabIndex = $( document ).lastTabIndex() + 1;
+
+		// Fix the search not having a tabindex
+		$( '#searchInput' ).attr( 'tabindex', tabIndex++ );
+
 		// Make it keyboard accessible
-		$headings.attr( 'tabindex', '0' );
+		$headings.attr( 'tabindex', function () {
+			return tabIndex++;
+		});
 
 		// Toggle the selected menu's class and expand or collapse the menu
 		$( '#mw-panel-custom' )
