@@ -24,8 +24,9 @@
 $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
+	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '3.0 beta 13',
+	'version' => '0.3.10',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -36,16 +37,9 @@ $GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
 $GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 
 $GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
-$GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
 
 // Register skin
-SkinFactory::getDefaultInstance()->register( 'metrolook', 'Metrolook', function(){
-	$config = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
-	return new SkinMetrolook( $config );
-} );
-
-// Register config
-$GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
+$GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 
 // Configuration options
 /**
@@ -62,101 +56,85 @@ $GLOBALS['wgVectorUseSimpleSearch'] = true;
  */
 $GLOBALS['wgVectorUseIconWatch'] = true;
 
-/* Logo is off by default to turn it on plase see README.md. Note that if enabled it will not show properly.*/
-$GLOBALS['logo'] = false;
+/**
+ * Logo
+ *  - true = Logo will show
+ *  - false = Logo will not show
+ */
+
+$GLOBALS['wgMetrolookLogo'] = true;
+
+$GLOBALS['wgMetrolookSiteName'] = true;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
-$GLOBALS['SearchBar'] = true;
+$GLOBALS['wgMetrolookSearchBar'] = true;
 
-$GLOBALS['DownArrow'] = true;
+$GLOBALS['wgMetrolookDownArrow'] = true;
 
-$GLOBALS['Line'] = true;
+$GLOBALS['wgMetrolookLine'] = true;
 
-$GLOBALS['link1'] = true;
+$GLOBALS['wgMetrolookUploadButton'] = true;
 
-$GLOBALS['image1'] = true;
+$GLOBALS['wgMetrolookMobile'] = true;
 
-$GLOBALS['link2'] = true;
+/* To use tile 5 to 10 please diable this */
+$GLOBALS['wgMetrolookBartile'] = true;
 
-$GLOBALS['image2'] = true;
+$GLOBALS['wgMetrolookTile1'] = true;
 
-$GLOBALS['link3'] = true;
+$GLOBALS['wgMetrolookTile2'] = true;
 
-$GLOBALS['image3'] = true;
+$GLOBALS['wgMetrolookTile3'] = true;
 
-$GLOBALS['link4'] = true;
-
-$GLOBALS['image4'] = true;
-
-$GLOBALS['link5'] = false;
-
-$GLOBALS['image5'] = false;
-
-$GLOBALS['link6'] = false;
-
-$GLOBALS['image6'] = false;
-
-$GLOBALS['UploadButton'] = true;
+$GLOBALS['wgMetrolookTile4'] = true;
 
 // Register modules
-$GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook'] = array(
 	'styles' => array(
-		'screen.less' => array( 'media' => 'screen' ),
-		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
+		'common/commonElements.css' => array( 'media' => 'screen' ),
+		'common/commonContent.css' => array( 'media' => 'screen' ),
+		'common/commonInterface.css' => array( 'media' => 'screen' ),
+		'Metrolook/styles.less',
 	),
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
+);
+$GLOBALS['wgResourceModules']['skins.metrolook.beta'] = array(
+	'styles' => array(
+		'common/commonElements.css' => array( 'media' => 'screen' ),
+		'common/commonContent.css' => array( 'media' => 'screen' ),
+		'common/commonInterface.css' => array( 'media' => 'screen' ),
+		'Metrolook/styles-beta.less',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
 $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
-		'collapsibleTabs.js',
-		'vector.js',
+		'Metrolook/js/collapsibleTabs.js',
+		'Metrolook/js/metrolook.js',
+		'Metrolook/js/vector.js',
+		'Metrolook/js/mediawiki.searchSuggest.custom.js',
+		'Metrolook/js/overthrow.js',
 	),
 	'position' => 'top',
 	'dependencies' => array(
-		'jquery.throttle-debounce',
-		'jquery.tabIndex',
+		'jquery.delayedBind',
+		'mediawiki.searchSuggest',
 	),
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
 $GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
-		'collapsibleNav.js',
+		'Metrolook/js/collapsibleNav.js',
 	),
-	'messages' => array(
-		'vector-collapsiblenav-more',
-	),
-	'dependencies' => array(
-		'jquery.client',
-		'jquery.cookie',
-		'jquery.tabIndex',
-	),
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
 	'position' => 'bottom',
-);
-
-// Apply module customizations
-$GLOBALS['wgResourceModuleSkinStyles']['metrolook'] = array(
-	'jquery.tipsy' => 'skinStyles/jquery.tipsy.less',
-	'jquery.ui.core' => array(
-		'skinStyles/jquery.ui/jquery.ui.core.css',
-		'skinStyles/jquery.ui/jquery.ui.theme.css',
-	),
-	'jquery.ui.accordion' => 'skinStyles/jquery.ui/jquery.ui.accordion.css',
-	'jquery.ui.autocomplete' => 'skinStyles/jquery.ui/jquery.ui.autocomplete.css',
-	'jquery.ui.button' => 'skinStyles/jquery.ui/jquery.ui.button.css',
-	'jquery.ui.datepicker' => 'skinStyles/jquery.ui/jquery.ui.datepicker.css',
-	'jquery.ui.dialog' => 'skinStyles/jquery.ui/jquery.ui.dialog.css',
-	'jquery.ui.progressbar' => 'skinStyles/jquery.ui/jquery.ui.progressbar.css',
-	'jquery.ui.resizable' => 'skinStyles/jquery.ui/jquery.ui.resizable.css',
-	'jquery.ui.selectable' => 'skinStyles/jquery.ui/jquery.ui.selectable.css',
-	'jquery.ui.slider' => 'skinStyles/jquery.ui/jquery.ui.slider.css',
-	'jquery.ui.tabs' => 'skinStyles/jquery.ui/jquery.ui.tabs.css',
-	'mediawiki.notification' => 'skinStyles/mediawiki.notification.less',
-	'mediawiki.special' => 'skinStyles/mediawiki.special.less',
-	'mediawiki.special.preferences' => 'skinStyles/mediawiki.special.preferences.less',
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
+	'dependencies' => array(
+			'jquery.client',
+			'jquery.cookie',
+			'jquery.tabIndex',
+		),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
