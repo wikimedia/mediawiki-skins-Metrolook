@@ -10,6 +10,7 @@
 $messages = array();
 
 /** 
+<<<<<<< HEAD   (094085 Update Metrolook and bump version)
  * @author Khaled
  */
 $messages['ar'] = array(
@@ -72,6 +73,29 @@ $messages['diq'] = array(
 $messages['en'] = array(
 	'metrolook-desc' => 'Vzhled Metrolook pro MediaWiki',
 	'metrolook-guest' => 'Host',
+=======
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'metrolook-desc' => 'Тэма афармленьня Metrolook для MediaWiki',
+	'metrolook-guest' => 'Госьць',
+);
+
+/** 
+ * @author Metalhead64
+ * @author Purodha
+ */
+$messages['de'] = array(
+	'metrolook-desc' => 'Fügt die Benutzeroberfläche „Metrolook“ zu MediaWiki hinzu',
+	'metrolook-guest' => 'Gast',
+);
+
+/** 
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'metrolook-guest' => 'Meyman',
+>>>>>>> BRANCH (884212 Update Metrolook)
 );
 
 /** English
@@ -107,6 +131,7 @@ $messages['fa'] = array(
 );
 
 /** 
+<<<<<<< HEAD   (094085 Update Metrolook and bump version)
  * @author Linedwell
  */
 $messages['fr'] = array(
@@ -224,6 +249,82 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'metrolook-guest' => 'Visitante',
+=======
+ * @author Elisardojm
+ */
+$messages['gl'] = array(
+	'metrolook-desc' => 'Aparencia Metrolook para MediaWiki',
+	'metrolook-guest' => 'Invitado',
+);
+
+/** 
+ * @author Yona b
+ */
+$messages['he'] = array(
+	'metrolook-desc' => 'עיצוב מטרולוק למדיה־ויקי',
+	'metrolook-guest' => 'אורח',
+);
+
+/** 
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'metrolook-desc' => 'Apparentia Metrolook pro MediaWiki',
+	'metrolook-guest' => 'Hospite',
+);
+
+/** 
+ * @author MIKHEIL
+ */
+$messages['ka'] = array(
+	'metrolook-guest' => 'სტუმარი',
+);
+
+/** 
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'metrolook-desc' => 'De Bovverfläsch „Metrolook“ för et MehdijaWikki.',
+	'metrolook-guest' => 'Jaß',
+);
+
+/** 
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'metrolook-guest' => 'Gaascht',
+);
+
+/** 
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'metrolook-desc' => 'Руво „Метроизглед“ за МедијаВики',
+	'metrolook-guest' => 'Гостин',
+);
+
+/** 
+ * @author C.R.
+ */
+$messages['nap'] = array(
+	'metrolook-desc' => "Skin Metrolook pe' MediaWiki",
+	'metrolook-guest' => 'Mmitato',
+);
+
+/** 
+ * @author Sjoerddebruin
+ */
+$messages['nl'] = array(
+	'metrolook-guest' => 'Gast',
+);
+
+/** 
+ * @author Chrumps
+ */
+$messages['pl'] = array(
+	'metrolook-desc' => 'Skórka Metrolook dla MediaWiki',
+	'metrolook-guest' => 'Gość',
+>>>>>>> BRANCH (884212 Update Metrolook)
 );
 
 /** 
@@ -242,6 +343,7 @@ $messages['qqq'] = array(
 	'metrolook-guest' => 'Used for descbribing you as a guest editing the wiki.\n{{Identical|Guest}}',
 );
 
+<<<<<<< HEAD   (094085 Update Metrolook and bump version)
 /**
  * @author Joetaras
  */
@@ -290,6 +392,23 @@ $messages['vi'] = array(
 	'metrolook-guest' => 'Khách'
 );
 
+=======
+/** 
+ * @author Okras
+ */
+$messages['ru'] = array(
+	'metrolook-desc' => 'Тема оформления MediaWiki Metrolook',
+	'metrolook-guest' => 'Гость',
+);
+
+/** 
+ * @author Okras
+ */
+$messages['ta'] = array(
+	'metrolook-desc' => 'Тема оформления MediaWiki Metrolook',
+	'metrolook-guest' => 'விருந்தினர்'
+);
+>>>>>>> BRANCH (884212 Update Metrolook)
 
 /** 
  * @author Liuxinyu970226

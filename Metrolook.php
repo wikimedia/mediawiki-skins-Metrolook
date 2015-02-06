@@ -26,7 +26,11 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
+<<<<<<< HEAD   (094085 Update Metrolook and bump version)
 	'version' => '0.3.9',
+=======
+	'version' => '0.3.7',
+>>>>>>> BRANCH (884212 Update Metrolook)
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
