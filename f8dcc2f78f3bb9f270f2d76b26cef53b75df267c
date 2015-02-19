@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e7c4fa4_dc0fee38",
+        "filename": "Metrolook.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "all settings should be prefixed with the extension/skin name, so it\u0027s clear, that this aren\u0027t mediawiki core config options.",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e7c4fa4_3ffe1402",
+        "filename": "Metrolook.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "use meaningful namens, where is it used for what?",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e7c4fa4_ff03bc0d",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "use \"global\" just one time and write down all globals (maybe with line breaks after 100 chars, but without a new \"global\" key word.\n\nDon\u0027t use globals, if you have the config object!",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e7c4fa4_1f09d82e",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "trailling whitespace",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e7c4fa4_3f25b4a9",
+        "filename": "js/mediawiki.searchSuggest.custom.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "missing attribution",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e7c4fa4_5f2af07a",
+        "filename": "js/metrolook.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "use spaces in braces",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e7c4fa4_ff1adc6d",
+        "filename": "js/metrolook.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "use tabs instead of whitespaces",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e7c4fa4_1f20f894",
+        "filename": "theme.less",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 890
+      },
+      "writtenOn": "2015-02-19T17:14:38Z",
+      "side": 1,
+      "message": "trailing whitespaces",
+      "revId": "f8dcc2f78f3bb9f270f2d76b26cef53b75df267c",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
