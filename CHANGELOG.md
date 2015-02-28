@@ -9,9 +9,13 @@ Please see test branch for updates to beta 16 release once it looks like there a
 
 Bump required mediawiki version to mediawiki 1.25 wmf 18
 
+
 Mainly new features and desgn are
 
+
 * Mobile desgn (This is a preview of mobile desgn please report bug in issue section and fix bugs if you know how to thanks. and please also suggest improvements to the desktop and mobile desgn.)
+
+* Full logo support.
 
 * Cleaned up MetrolookTemplate.php file.
 
@@ -19,7 +23,7 @@ Mainly new features and desgn are
 
 * Settings that were renamed
 
-$logo renamed to $wgLogoImage<br>$SearchBar renamed to $wgSearchBar<br>$DownArrow renamed to $wgDownArrow<br>$Line renamed to $wgLine<br>$UploadButton renamed to $wgUploadButton<br>$wgURL1 and $wgImage1 where not renamed instead there settings were changed for url you put in the url to website for image you put in the path to image or url to image.
+$logo renamed to $wgMetrolookLogo<br>$SearchBar renamed to $wgMetrolookSearchBar<br>$DownArrow renamed to $wgMetrolookDownArrow<br>$Line renamed to $wgMetrolookLine<br>$UploadButton renamed to $wgMetrolookUploadButton<br>$wgURL1 and $wgImage1 where renamed to $wgMetrolookURL1 and $wgMetrolookImage1 and there settings were changed. for url you put in the url to website for image you put in the path to image or url to image.
 
 * Settings that were removed.
 
@@ -27,9 +31,25 @@ $logo renamed to $wgLogoImage<br>$SearchBar renamed to $wgSearchBar<br>$DownArro
 
 * New settings that were added
 
-$wgBartile
+$wgMetrolookBartile
 
-$wgTile1<br>$wgTile2<br>$wgTile3<br>$wgTile4<br>$wgTile5<br>$wgTile6<br>$wgTile7<br>$wgTile8<br>$wgTile9<br>$wgTile10
+$wgMetrolookTile1<br>$wgMetrolookTile2<br>$wgMetrolookTile3<br>$wgMetrolookTile4<br>$wgMetrolookTile5<br>$wgMetrolookTile6<br>$wgMetrolookTile7<br>$wgMetrolookTile8<br>$wgMetrolookTile9<br>$wgMetrolookTile10
+
+$wgMetrolookSiteName
+
+$wgMetrolookMobile
+
+
+
+Fixes
+
+Fix for ipad.
+
+Fix for desktop view.
+
+Fix for mobile view.
+
+
 
 Note: Please see settings section in README.md for more information on how to enable and disable it.
 

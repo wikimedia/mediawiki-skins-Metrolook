@@ -60,28 +60,37 @@ $GLOBALS['wgVectorUseSimpleSearch'] = true;
  */
 $GLOBALS['wgVectorUseIconWatch'] = true;
 
-/* Logo is off by default to turn it on plase see README.md. Note that if enabled it will not show properly.*/
-$GLOBALS['wgLogoImage'] = false;
+/**
+ * Logo
+ *  - true = Logo will show
+ *  - false = Logo will not show
+ */
+
+$GLOBALS['wgMetrolookLogo'] = true;
+
+$GLOBALS['wgMetrolookSiteName'] = true;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
-$GLOBALS['wgSearchBar'] = true;
+$GLOBALS['wgMetrolookSearchBar'] = true;
 
-$GLOBALS['wgDownArrow'] = true;
+$GLOBALS['wgMetrolookDownArrow'] = true;
 
-$GLOBALS['wgLine'] = true;
+$GLOBALS['wgMetrolookLine'] = true;
 
-$GLOBALS['wgUploadButton'] = true;
+$GLOBALS['wgMetrolookUploadButton'] = true;
+
+$GLOBALS['wgMetrolookMobile'] = true;
 
 /* To use tile 5 to 10 please diable this */
-$GLOBALS['wgBartile'] = true;
+$GLOBALS['wgMetrolookBartile'] = true;
 
-$GLOBALS['wgTile1'] = true;
+$GLOBALS['wgMetrolookTile1'] = true;
 
-$GLOBALS['wgTile2'] = true;
+$GLOBALS['wgMetrolookTile2'] = true;
 
-$GLOBALS['wgTile3'] = true;
+$GLOBALS['wgMetrolookTile3'] = true;
 
-$GLOBALS['wgTile4'] = true;
+$GLOBALS['wgMetrolookTile4'] = true;
 
 // Register modules
 $GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
@@ -110,6 +119,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'localBasePath' => __DIR__,
 );
 $GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
+	'position' => 'bottom',
 	'scripts' => array(
 		'js/collapsibleNav.js',
 	),
@@ -123,7 +133,6 @@ $GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 	),
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
-	'position' => 'bottom',
 );
 
 // Apply module customizations

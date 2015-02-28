@@ -116,11 +116,11 @@ $(function () {
 });
 
 $(function () {
-  $('img.custom3').click(function(e) {
+  $('img.downarrow').click(function(e) {
 	  $( 'img.custom3' ).on( 'click', toggleDiv( 'bartile' ) );
 	e.stopPropagation();
   });
-  $('img.custom3').click(function() {
+  $('img.downarrow').click(function() {
 	if ($('#bartile').is(':visible')) {
 	  $('#bartile', this).fadeOut(150);
 	  $('.clicker').removeClass('active');
