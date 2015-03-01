@@ -1,6 +1,59 @@
 Changelog
 =========
 
+
+### 3.0 beta 16
+
+Big release with new desgn for mobile and minor improvements to desktop desgn.
+
+
+Bump required mediawiki version to mediawiki 1.25 wmf 18
+
+Mainly new features and desgn are
+
+* Mobile desgn
+
+* Full logo support.
+
+* Cleaned up MetrolookTemplate.php file.
+
+* Cleaned up setting names.
+
+* Settings that were renamed
+
+$logo renamed to $wgMetrolookLogo<br>$SearchBar renamed to $wgMetrolookSearchBar<br>$DownArrow renamed to $wgMetrolookDownArrow<br>$Line renamed to $wgMetrolookLine<br>$UploadButton renamed to $wgMetrolookUploadButton<br>$wgURL1 and $wgImage1 where renamed to $wgMetrolookURL1 and $wgMetrolookImage1 and there settings were changed. for url you put in the url to website for image you put in the path to image or url to image.
+
+* Settings that were removed.
+
+ $link and  $picture
+
+* New settings that were added
+
+$wgMetrolookBartile
+
+$wgMetrolookTile1<br>$wgMetrolookTile2<br>$wgMetrolookTile3<br>$wgMetrolookTile4<br>$wgMetrolookTile5<br>$wgMetrolookTile6<br>$wgMetrolookTile7<br>$wgMetrolookTile8<br>$wgMetrolookTile9<br>$wgMetrolookTile10
+
+$wgMetrolookSiteName
+
+$wgMetrolookMobile
+
+
+
+Note: Please see settings section in README.md for more information on how to enable and disable it.
+
+* Remove styles and js from the main MetrolookTemplate.php and seperated it into own files.
+
+* More new things and changes comming soon to this release. /* This will be removed once this is ready to be published */
+
+
+Improvements to ipad desgn.
+
+* Bug fixes.
+
+* Fixes for desktop desgn.
+
+
+
 ### 3.0 beta 15
 
 * Adding copying file for license.
