@@ -62,6 +62,7 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 |`$wgMetrolookTileN`<br>Where `N` is between 1 to 4. | `true` | `$wgMetrolookTile1 = true;`| `$wgMetrolookTile1 = false;` |
 |`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
 |`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
+|wgMetrolookFeatures| `$wgMetrolookFeatures'] = array( 'collapsiblenav' => array( 'global' => false, 'user' => true ), );` | default is enabled | `$wgDefaultUserOptions['skinmetrolook-collapsiblenav'] = 0;` to disable it but allow users in preference to enable it. or `$wgMetrolookFeatures = array( 'collapsiblenav' => array( 'global' => false, 'user' => false ), );` to disable everywhere|
 
 $wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
 
@@ -77,7 +78,7 @@ Note: Image setting should be set like this for example $wgMetrolookImage1 = fil
 
 ## Mobile desgn
 
-Mobile desgn now included in the latest release for Mediawiki 1.21 and MediaWiki 1.24+. Mobile desgn for MediaWiki 1.23 and 1.22 coming soon. Also to get mobile desgn please download Metrolook release 2.5 or 3.0 beta 16 or higher please.
+Mobile desgn now included in the latest release for Mediawiki 1.21+. Also to get mobile desgn please download Metrolook release 0.2.0, 0.3.10, 1.4, 2.5 or 3.0 beta 16 or higher please.
 
 And please report feedback in the issues tab. And if you could help fix the problem and or improve the desgn please open and pull task.
 
@@ -216,8 +217,6 @@ ul {
 ## Comming soon
 
 Note plans may change.
-
-Mobile desgn for MediaWiki 1.23.
 
 ## Version
 

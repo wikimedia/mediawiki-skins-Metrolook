@@ -26,20 +26,45 @@ $wgExtensionCredits['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.2.0',
+	'version' => '0.2.2',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
 // Register files
+$wgAutoloadClasses['MetrolookHooks'] = __DIR__ . '/SkinMetrolookHooks.php';
 $wgAutoloadClasses['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
 $wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+
+$wgHooks['BeforePageDisplay'][] = 'MetrolookHooks::beforePageDisplay';
+$wgHooks['GetPreferences'][] = 'MetrolookHooks::getPreferences';
+$wgHooks['ResourceLoaderGetConfigVars'][] = 'MetrolookHooks::resourceLoaderGetConfigVars';
+$wgHooks['MakeGlobalVariablesScript'][] = 'MetrolookHooks::makeGlobalVariablesScript';
 
 $wgExtensionMessagesFiles['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
 
 // Register skin
 $wgValidSkinNames['metrolook'] = 'Metrolook';
+
+
+/* Configuration */
+
+// Each module may be configured individually to be globally on/off or user preference based
+$wgMetrolookFeatures = array(
+	'collapsiblenav' => array( 'global' => false, 'user' => true ),
+);
+
+/* 
+ * Setting default option.
+ *
+ * Do not remove this.
+ *
+ * Bug T76314
+ *
+ * You can add this to your localsettings.php file and change from 1 to 0 to disbale it globaly.
+ */
+$wgDefaultUserOptions['skinmetrolook-collapsiblenav'] = 1;
 
 // Configuration options
 /**
@@ -117,6 +142,9 @@ $wgResourceModules['skins.metrolook.js'] = array(
 $wgResourceModules['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
 		'Metrolook/js/collapsibleNav.js',
+	),
+	'styles' => array(
+		'Metrolook/collapsibleNav.css',
 	),
 	'position' => 'bottom',
 	'dependencies' => array(
