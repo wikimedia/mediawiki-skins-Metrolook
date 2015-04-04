@@ -1,9 +1,9 @@
-/*!
+/**
  * Add search suggestions to the search form.
  */
 ( function ( mw, $ ) {
-	$( function () {
-		var api, map, resultRenderCache, searchboxesSelectors,
+	$( document ).ready( function ( $ ) {
+		var map, resultRenderCache, searchboxesSelectors,
 			// Region where the suggestions box will appear directly below
 			// (using the same width). Can be a container element or the input
 			// itself, depending on what suits best in the environment.
@@ -17,15 +17,25 @@
 
 		// Compatibility map
 		map = {
-			// SimpleSearch is broken in Opera < 9.6
-			opera: [['>=', 9.6]],
-			// Older Konquerors are unable to position the suggestions correctly (bug 50805)
-			konqueror: [['>=', '4.11']],
-			docomo: false,
-			blackberry: false,
-			// Support for iOS 6 or higher. It has not been tested on iOS 5 or lower
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]]
+			browsers: {
+				// Left-to-right languages
+				ltr: {
+					// SimpleSearch is broken in Opera < 9.6
+					opera: [['>=', 9.6]],
+					docomo: false,
+					blackberry: false,
+					ipod: [['>=', 6.0]],
+					iphone: [['>=', 6.0]]
+				},
+				// Right-to-left languages
+				rtl: {
+					opera: [['>=', 9.6]],
+					docomo: false,
+					blackberry: false,
+					ipod: [['>=', 6.0]],
+					iphone: [['>=', 6.0]]
+				}
+			}
 		};
 
 		if ( !$.client.test( map ) ) {
@@ -34,15 +44,18 @@
 
 		// Compute form data for search suggestions functionality.
 		function computeResultRenderCache( context ) {
-			var $form, baseHref, linkParams;
+			var $form, formAction, baseHref, linkParams;
 
 			// Compute common parameters for links' hrefs
 			$form = context.config.$region.closest( 'form' );
 
-			baseHref = $form.attr( 'action' );
-			baseHref += baseHref.indexOf( '?' ) > -1 ? '&' : '?';
+			formAction = $form.attr( 'action' );
+			baseHref = formAction + ( formAction.match(/\?/) ? '&' : '?' );
 
-			linkParams = $form.serializeObject();
+			linkParams = {};
+			$.each( $form.serializeArray(), function ( idx, obj ) {
+				linkParams[ obj.name ] = obj.value;
+			} );
 
 			return {
 				textParam: context.data.$textbox.attr( 'name' ),
@@ -94,11 +107,16 @@
 			resultRenderCache.linkParams[ resultRenderCache.textParam ] = text;
 
 			// this is the container <div>, jQueryfied
-			this.text( text )
+			this
+				.append(
+					// the <span> is needed for $.autoEllipsis to work
+					$( '<span>' )
+						.css( 'whiteSpace', 'nowrap' )
+						.text( text )
+				)
 				.wrap(
 					$( '<a>' )
 						.attr( 'href', resultRenderCache.baseHref + $.param( resultRenderCache.linkParams ) )
-						.attr( 'title', text )
 						.addClass( 'mw-searchSuggest-link' )
 				);
 		}
@@ -137,11 +155,13 @@
 						$( '<div>' )
 							.addClass( 'special-query' )
 							.text( query )
+							.autoEllipsis()
 					)
 					.show();
 			} else {
 				$el.find( '.special-query' )
-					.text( query );
+					.text( query )
+					.autoEllipsis();
 			}
 
 			if ( $el.parent().hasClass( 'mw-searchSuggest-link' ) ) {
@@ -155,67 +175,66 @@
 			}
 		}
 
-		// Generic suggestions functionality for all search boxes
+		// General suggestions functionality for all search boxes
 		searchboxesSelectors = [
 			// Primary searchbox on every page in standard skins
 			'#searchInput',
+			// Secondary searchbox in legacy skins (LegacyTemplate::searchForm uses id "searchInput + unique id")
+			'#searchInput2',
 			// Special:Search
 			'#powerSearchText',
 			'#searchText',
 			// Generic selector for skins with multiple searchboxes (used by CologneBlue)
-			// and for MediaWiki itself (special pages with page title inputs)
 			'.mw-searchInput'
 		];
-		$( searchboxesSelectors.join( ', ' ) )
+		$( searchboxesSelectors.join(', ') )
 			.suggestions( {
-				fetch: function ( query, response, maxRows ) {
-					var node = this[0];
+				fetch: function ( query ) {
+					var $el, jqXhr;
 
-					api = api || new mw.Api();
-
-					$.data( node, 'request', api.get( {
-						action: 'opensearch',
-						search: query,
-						namespace: 0,
-						limit: maxRows,
-						suggest: ''
-					} ).done( function ( data ) {
-						response( data[ 1 ] );
-					} ) );
+					if ( query.length !== 0 ) {
+						$el = $(this);
+						jqXhr = $.ajax( {
+							url: mw.util.wikiScript( 'api' ),
+							data: {
+								format: 'json',
+								action: 'opensearch',
+								search: query,
+								namespace: 0,
+								suggest: ''
+							},
+							dataType: 'json',
+							success: function ( data ) {
+								if ( $.isArray( data ) && data.length ) {
+									$el.suggestions( 'suggestions', data[1] );
+								}
+							}
+						});
+						$el.data( 'request', jqXhr );
+					}
 				},
 				cancel: function () {
-					var node = this[0],
-						request = $.data( node, 'request' );
-
-					if ( request ) {
-						request.abort();
-						$.removeData( node, 'request' );
+					var jqXhr = $(this).data( 'request' );
+					// If the delay setting has caused the fetch to have not even happened
+					// yet, the jqXHR object will have never been set.
+					if ( jqXhr && $.isFunction( jqXhr.abort ) ) {
+						jqXhr.abort();
+						$(this).removeData( 'request' );
 					}
 				},
 				result: {
 					render: renderFunction,
-					select: function () {
-						// allow the form to be submitted
-						return true;
+					select: function ( $input ) {
+						$input.closest( 'form' ).submit();
 					}
 				},
-				cache: true,
+				delay: 120,
 				highlightInput: true
 			} )
 			.bind( 'paste cut drop', function () {
 				// make sure paste and cut events from the mouse and drag&drop events
 				// trigger the keypress handler and cause the suggestions to update
 				$( this ).trigger( 'keypress' );
-			} )
-			// In most skins (at least Monobook and Vector), the font-size is messed up in <body>.
-			// (they use 2 elements to get a sane font-height). So, instead of making exceptions for
-			// each skin or adding more stylesheets, just copy it from the active element so auto-fit.
-			.each( function () {
-				var $this = $( this );
-				$this
-					.data( 'suggestions-context' )
-					.data.$container
-						.css( 'fontSize', $this.css( 'fontSize' ) );
 			} );
 
 		// Ensure that the thing is actually present!
@@ -226,6 +245,7 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		// Special suggestions functionality and tracking for skin-provided search box
 		$searchInput.suggestions( {
 			update: {
@@ -235,20 +255,41 @@
 			result: {
 				render: renderFunction,
 				select: selectFunction
+=======
+		// Placeholder text for search box
+		$searchInput
+			.attr( 'placeholder', mw.msg( 'searchsuggest-search' ) )
+			.placeholder();
+
+		// Special suggestions functionality for skin-provided search box
+		$searchInput.suggestions( {
+			result: {
+				render: renderFunction,
+				select: function ( $input ) {
+					$input.closest( 'form' ).submit();
+				}
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 			},
 			special: {
 				render: specialRenderFunction,
 				select: function ( $input ) {
-					$input.closest( 'form' )
-						.append( $( '<input type="hidden" name="fulltext" value="1"/>' ) );
-					return true; // allow the form to be submitted
+					$input.closest( 'form' ).append(
+						$( '<input type="hidden" name="fulltext" value="1"/>' )
+					);
+					$input.closest( 'form' ).submit();
 				}
 			},
 			$region: $searchRegion
 		} );
 
-		// If the form includes any fallback fulltext search buttons, remove them
-		$searchInput.closest( 'form' ).find( '.mw-fallbackSearchButton' ).remove();
+		// In most skins (at least Monobook and Vector), the font-size is messed up in <body>.
+		// (they use 2 elements to get a sane font-height). So, instead of making exceptions for
+		// each skin or adding more stylesheets, just copy it from the active element so auto-fit.
+		$searchInput
+			.data( 'suggestions-context' )
+			.data.$container
+				.css( 'fontSize', $searchInput.css( 'fontSize' ) );
+
 	} );
 
 }( mediaWiki, jQuery ) );

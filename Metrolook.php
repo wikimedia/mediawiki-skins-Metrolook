@@ -21,29 +21,29 @@
  * @ingroup Skins
  */
 
-$GLOBALS['wgExtensionCredits']['skin'][] = array(
+$wgExtensionCredits['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
+<<<<<<< HEAD
 	'version' => '4.0 alpha 1',
+=======
+	'version' => '0.2.0',
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
-	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
-	'license-name' => 'GPL-2.0+',
+	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
+	'license-name' => 'GPLv2+',
 );
 
 // Register files
-$GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
-$GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+$wgAutoloadClasses['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
+$wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 
-$GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
-$GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
+$wgExtensionMessagesFiles['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
 
 // Register skin
-$GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
-
-// Register config
-$GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
+$wgValidSkinNames['metrolook'] = 'Metrolook';
 
 // Configuration options
 /**
@@ -51,82 +51,80 @@ $GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
  *  - true = use an icon search button
  *  - false = use Go & Search buttons
  */
-$GLOBALS['wgVectorUseSimpleSearch'] = true;
+$wgVectorUseSimpleSearch = true;
 
 /**
  * Watch and unwatch as an icon rather than a link.
  *  - true = use an icon watch/unwatch button
  *  - false = use watch/unwatch text link
  */
-$GLOBALS['wgVectorUseIconWatch'] = true;
+$wgVectorUseIconWatch = true;
 
-/**
- * Logo
- *  - true = Logo will show
- *  - false = Logo will not show
- */
 
-$GLOBALS['wgMetrolookLogo'] = true;
+$wgMetrolookLogo = true;
 
-$GLOBALS['wgMetrolookSiteName'] = true;
+$wgMetrolookSiteName = true;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
-$GLOBALS['wgMetrolookSearchBar'] = true;
+$wgMetrolookSearchBar = true;
 
-$GLOBALS['wgMetrolookDownArrow'] = true;
+$wgMetrolookDownArrow = true;
 
-$GLOBALS['wgMetrolookLine'] = true;
+$wgMetrolookLine = true;
 
-$GLOBALS['wgMetrolookUploadButton'] = true;
+$wgMetrolookUploadButton = true;
 
-$GLOBALS['wgMetrolookMobile'] = true;
+$wgMetrolookMobile = true;
 
 /* To use tile 5 to 10 please diable this */
-$GLOBALS['wgMetrolookBartile'] = true;
+$wgMetrolookBartile = true;
 
-$GLOBALS['wgMetrolookTile1'] = true;
+$wgMetrolookTile1 = true;
 
-$GLOBALS['wgMetrolookTile2'] = true;
+$wgMetrolookTile2 = true;
 
-$GLOBALS['wgMetrolookTile3'] = true;
+$wgMetrolookTile3 = true;
 
-$GLOBALS['wgMetrolookTile4'] = true;
+$wgMetrolookTile4 = true;
 
 // Register modules
-$GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
+$wgResourceModules['skins.metrolook'] = array(
 	'styles' => array(
-		'screen.less' => array( 'media' => 'screen' ),
-		'screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
+		'common/commonElements.css' => array( 'media' => 'screen' ),
+		'common/commonContent.css' => array( 'media' => 'screen' ),
+		'common/commonInterface.css' => array( 'media' => 'screen' ),
+		'Metrolook/screen.css' => array( 'media' => 'screen' ),
+		'Metrolook/screen-hd.css' => array( 'media' => 'screen and (min-width: 982px)' ),
+		'Metrolook/collapsibleNav.css' => array( 'media' => 'screen' ),
+		'Metrolook/mobile.css',
+		'Metrolook/theme.css',
 	),
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
-$GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
+$wgResourceModules['skins.metrolook.js'] = array(
 	'scripts' => array(
-		'js/collapsibleTabs.js',
-		'js/metrolook.js',
-		'js/vector.js',
-		'js/mediawiki.searchSuggest.custom.js',
-		'js/overthrow.js',
+		'Metrolook/js/collapsibleTabs.js',
+		'Metrolook/js/metrolook.js',
+		'Metrolook/js/vector.js',
+		'Metrolook/js/mediawiki.searchSuggest.custom.js',
+		'Metrolook/js/overthrow.js',
 	),
 	'position' => 'top',
 	'dependencies' => array(
-		'jquery.throttle-debounce',
-		'jquery.tabIndex',
+		'jquery.delayedBind',
 		'mediawiki.searchSuggest',
 	),
-	'remoteSkinPath' => 'Metrolook',
-	'localBasePath' => __DIR__,
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
-$GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
-	'position' => 'bottom',
+$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
-		'js/collapsibleNav.js',
+		'Metrolook/js/collapsibleNav.js',
 	),
-	'messages' => array(
-		'vector-collapsiblenav-more',
-	),
+	'position' => 'bottom',
 	'dependencies' => array(
+<<<<<<< HEAD
 		'jquery.client',
 		'jquery.cookie',
 		'jquery.tabIndex',
@@ -161,4 +159,12 @@ $GLOBALS['wgResourceModuleSkinStyles']['metrolook'] = array(
 	'mediawiki.special.preferences' => 'skinStyles/mediawiki.special.preferences.less',
 	'remoteSkinPath' => 'Metrolook',
 	'localBasePath' => __DIR__,
+=======
+			'jquery.client',
+			'jquery.cookie',
+			'jquery.tabIndex',
+		),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 );

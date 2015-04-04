@@ -6,9 +6,19 @@ A skin for MediaWiki
 The author of the skin is http://www.pidgi.net/wiki/Main_Page
 
 
+<<<<<<< HEAD
 Compatible with MediaWiki 1.26+.
 
 If you would like compatibility with mediawiki 1.25, 1.24, 1.23, 1.22 or 1.21 please visit 
+=======
+Compatible with MediaWiki 1.21.
+
+If you would like compatibility with mediawiki 1.26, 1.25, 1.24, 1.23 and 1.22 please visit 
+
+1.26
+
+https://github.com/paladox/Metrolook/tree/master
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 
 1.25
 
@@ -26,9 +36,12 @@ https://github.com/paladox/Metrolook/tree/REL1_23
 
 https://github.com/paladox/Metrolook/tree/REL1_22
 
+<<<<<<< HEAD
 1.21
 
 https://github.com/paladox/Metrolook/tree/REL1_21
+=======
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 
 Please be aware that there are issues in the codes if you see any could you point it out it would help. and there are things like logos already set sorry i will put a setting there.
 
@@ -52,7 +65,11 @@ wfLoadSkin( 'Metrolook' );
 
 ## Settings
 
+<<<<<<< HEAD
 1.26 only
+=======
+1.21
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 
 |Setting|Default|To Enable|To Disable|
 |-------|-------|---------|----------|
@@ -82,7 +99,11 @@ Note: Image setting should be set like this for example $wgMetrolookImage1 = fil
 
 ## Mobile desgn
 
+<<<<<<< HEAD
 Mobile desgn now included in the latest release for MediaWiki 1.21+. Also to get mobile desgn please download Metrolook release 0.2.0, 0.3.10, 1.4, 2.5 or 3.0 beta 16 or higher please.
+=======
+Mobile desgn now included in the latest release for Mediawiki 1.21 and MediaWiki 1.24+. Mobile desgn for MediaWiki 1.23 and 1.22 coming soon. Also to get mobile desgn please download Metrolook release 2.5 or 3.0 beta 16 or higher please.
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 
 And please report feedback in the issues tab. And if you could help fix the problem and or improve the desgn please open and pull task.
 
@@ -98,8 +119,6 @@ and all you need to do is edit background-colour and the top bar should change c
 /* Add your custom theme overrides here */
 
 /* Top Bar colour and hover colour start */
-
-@import "mediawiki.mixins";
 
 #mw-page-base {
 	height: 2.5em;
@@ -147,7 +166,7 @@ and all you need to do is edit background-colour and the top bar should change c
 }
 }
 
-div.vectorTabs a:hover {
+div.vectorTabs li a:hover {
 	background-color: blue;
 }
 
@@ -167,8 +186,12 @@ div.vectorMenu h5 a {
 	display: inline-block;
 	width: 24px;
 	height: 2em;
-	background-color: dodgerBlue; 
-	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
+	background-color: dodgerBlue;
+	background-image: url('images/arrow-down-icon');
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('images/arrow-down-icon.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('images/arrow-down-icon.svg');
 	background-position: 50% 50%; 
 	background-repeat: no-repeat;
 	.transition(background-position 250ms);
@@ -179,7 +202,7 @@ div.vectorMenu:hover {
 }
 
 div.vectorMenu ul {
-	border: solid 2px dodgerBlue;
+	border: solid 2px blue;
 	border-top: none;
 
 }
@@ -203,9 +226,17 @@ div.actionmenu ul {
 }
 /* To change bullet icon to a circle */
 
+<<<<<<< HEAD
 ul {
 	list-style-type: disc;
 	.list-style-image-svg('images/bullet-circle-icon.svg', 'images/bullet-circle-icon.png');
+=======
+/* To change bullet icon to a circle */
+
+ul {
+	list-style-type: disc;
+	list-style-image: url('images/bullet-circle-icon.png');
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 }
 
 /* Top Bar colour and hover colour end */
@@ -219,6 +250,11 @@ ul {
 
 Note plans may change.
 
+<<<<<<< HEAD
+=======
+Mobile desgn for MediaWiki 1.23.
+
+>>>>>>> Improvements to Metrolook on MediaWiki 1.21
 ## Version
 
 4.x.x requires MediaWiki 1.26.
