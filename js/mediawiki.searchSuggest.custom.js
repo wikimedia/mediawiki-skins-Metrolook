@@ -195,4 +195,3 @@
 	} );
 
 }( mediaWiki, jQuery ) );
-
