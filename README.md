@@ -62,6 +62,7 @@ require_once "$IP/skins/Metrolook/Metrolook.php";
 |`$wgMetrolookTileN`<br>Where `N` is between 1 to 4. | `true` | `$wgMetrolookTile1 = true;`| `$wgMetrolookTile1 = false;` |
 |`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
 |`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
+|wgMetrolookFeatures| `$wgMetrolookFeatures'] = array( 'collapsiblenav' => array( 'global' => false, 'user' => true ), );` | default is enabled | `$wgDefaultUserOptions['skinmetrolook-collapsiblenav'] = 0;` to disable it but allow users in preference to enable it. or `$wgMetrolookFeatures = array( 'collapsiblenav' => array( 'global' => false, 'user' => false ), );` to disable everywhere|
 
 $wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
 

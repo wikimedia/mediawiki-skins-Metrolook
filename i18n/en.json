@@ -5,6 +5,7 @@
 		]
 	},
 	"skinname-metrolook": "Metrolook",
+	"skinmetrolook-collapsiblenav-preference": "Enable collapsing of items in the sidebar in Metrolook skin",
 	"metrolook-desc": "Metrolook skin for MediaWiki",
 	"metrolook-guest": "Guest"
 }

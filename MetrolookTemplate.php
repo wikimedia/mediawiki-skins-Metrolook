@@ -37,13 +37,11 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		global $wgVectorUseIconWatch, $wgMetrolookLogo, $wgMetrolookSearchBar, $wgMetrolookDownArrow, $wgMetrolookLine,
-		$wgMetrolookUploadButton, $wgMetrolookSiteName, $wgMetrolookBartile, $wgMetrolookTile1,
-		$wgMetrolookTile2, $wgMetrolookTile3, $wgMetrolookTile4, $wgMetrolookTile5, $wgMetrolookTile6,
-		$wgMetrolookTile7, $wgMetrolookTile8, $wgMetrolookTile9, $wgMetrolookTile10, $wgMetrolookImage1,
-		$wgMetrolookURL1, $wgMetrolookImage2, $wgMetrolookURL2, $wgMetrolookImage3, $wgMetrolookURL3,
-		$wgMetrolookImage4, $wgMetrolookURL4, $wgMetrolookImage5, $wgMetrolookURL5, $wgMetrolookImage6,
-		$wgMetrolookURL6, $wgMetrolookMobile;
+		global $wgVectorUseIconWatch, $wgMetrolookLogo, $wgMetrolookSearchBar, $wgMetrolookDownArrow,
+		$wgMetrolookLine, $wgMetrolookUploadButton, $wgMetrolookSiteName, $wgMetrolookBartile,
+		$wgMetrolookTile1, $wgMetrolookTile2, $wgMetrolookTile3, $wgMetrolookTile4, $wgMetrolookTile5,
+		$wgMetrolookTile6, $wgMetrolookTile7, $wgMetrolookTile8, $wgMetrolookTile9, $wgMetrolookTile10,
+		$wgMetrolookMobile;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -222,7 +220,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 
 <?php else: ?>
 
-<?php if ( $wgMetrolookTile5 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['$wgMetrolookURL1'] ?>"><img src="<?php echo $GLOBALS['$wgMetrolookImage1'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile6 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['$wgMetrolookURL2'] ?>"><img src="<?php echo $GLOBALS['$wgMetrolookImage2'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile7 ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="<?php echo $GLOBALS['$wgMetrolookURL3'] ?>"><img src="<?php echo $GLOBALS['$wgMetrolookImage4'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile8 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['$wgMetrolookURL4'] ?>"><img src="<?php echo $GLOBALS['$wgMetrolookImage4'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile9 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['$wgMetrolookURL5'] ?>"><img src="<?php echo $GLOBALS['$wgMetrolookImage5'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile10 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['$wgMetrolookURL6'] ?>"><img src="<?php echo $GLOBALS['$wgMetrolookImage6'] ?>" /></a></div></div><?php else: ?><?php endif; ?>
+<?php if ( $wgMetrolookTile5 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL1'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage1'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile6 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL2'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage2'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile7 ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL3'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile8 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL4'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile9 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL5'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage5'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile10 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL6'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage6'] ?>" /></a></div></div><?php else: ?><?php endif; ?>
 
 <?php endif; ?>
 
