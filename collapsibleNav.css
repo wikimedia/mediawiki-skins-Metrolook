@@ -1,0 +1,168 @@
+/**
+ * CSS Stylesheet for collapsible nav
+ */
+
+#mw-panel.collapsible-nav .portal h5 {
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-image: url('images/open.png');
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('images/open.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('images/open.svg');
+	padding: 4px 0 3px 1.1em;
+	margin-left: -0.5em;
+}
+
+#mw-panel.collapsible-nav .portal h5:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#mw-panel.collapsible-nav .portal h5 a {
+	color: #4d4d4d;
+	text-decoration: none;
+}
+
+#mw-panel.collapsible-nav .portal .body {
+	margin: 0 0 0 1.25em;
+	background-image: none !important;
+	padding-top: 0;
+	display: none;
+}
+
+#mw-panel.collapsible-nav .portal .body ul li {
+	padding: 0.25em 0;
+}
+
+
+/* First */
+#mw-panel.collapsible-nav .portal.first {
+	background-image: none;
+	margin-top: 0;
+}
+
+#mw-panel.collapsible-nav .portal.first h5 {
+	display: none;
+}
+
+/* Persistent */
+#mw-panel.collapsible-nav .portal.persistent .body {
+	display: block;
+	margin-left: 0.5em;
+}
+
+#mw-panel.collapsible-nav .portal.persistent h5 {
+	background-image: none !important;
+	padding-left: 0.7em;
+	cursor: default;
+}
+
+/* Collapsed */
+#mw-panel.collapsible-nav .portal.collapsed h5 {
+	color: #0645ad;
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-image: url('images/closed-ltr.png');
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('images/closed-ltr.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('images/closed-ltr.svg');
+	padding: 4px 0 3px 1.1em;
+	margin-left: -0.5em;
+}
+
+#mw-panel.collapsible-nav .portal.collapsed h5:hover {
+	text-decoration: underline;
+}
+#mw-panel.collapsible-nav .portal.collapsed h5 a {
+	color: #0645ad;
+}
+
+
+/*
+ *
+ * Custom
+ *
+ *
+ */
+
+
+/**
+ * CSS Stylesheet for collapsible nav
+ */
+
+#mw-panel-custom.collapsible-nav .portal-custom h5 {
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-image: url('images/open.png');
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('images/open.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('images/open.svg');
+	margin-left: -0.4em;
+}
+
+#mw-panel-custom.collapsible-nav .portal-custom h5:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#mw-panel-custom.collapsible-nav .portal-custom h5 a {
+	color: #4d4d4d;
+	text-decoration: none;
+}
+
+#mw-panel-custom.collapsible-nav .portal-custom .body-custom {
+	margin: 0 0 0 1.25em;
+	background-image: none !important;
+	padding-top: 0;
+	display: none;
+}
+
+#mw-panel-custom.collapsible-nav .portal-custom .body-custom ul li {
+	padding: 0.25em 0;
+}
+
+
+/* First */
+#mw-panel-custom.collapsible-nav .portal-custom.first {
+	background-image: none;
+	margin-top: 0;
+}
+
+#mw-panel-custom.collapsible-nav .portal-custom.first h5 {
+	display: none;
+}
+
+/* Persistent */
+#mw-panel-custom.collapsible-nav .portal-custom.persistent .body-custom {
+	display: block;
+	margin-left: 0.5em;
+}
+
+#mw-panel-custom.collapsible-nav .portal-custom.persistent h5 {
+	background-image: none !important;
+	padding-left: 0.7em;
+	cursor: default;
+}
+
+/* Collapsed */
+#mw-panel-custom.collapsible-nav .portal-custom.collapsed h5 {
+	color: #0645ad;
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-image: url('images/closed-ltr.png');
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('images/closed-ltr.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('images/closed-ltr.svg');
+	margin-left: -0.4em;
+}
+
+#mw-panel-custom.collapsible-nav .portal-custom.collapsed h5:hover {
+	text-decoration: underline;
+}
+#mw-panel-custom.collapsible-nav .portal-custom.collapsed h5 a {
+	color: #0645ad;
+}
