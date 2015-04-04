@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"paladox"
+		]
+	},
+	"skinname-metrolook": "Metrolook",
+	"metrolook-desc": "Metrolook skin for MediaWiki",
+	"metrolook-guest": "Guest"
+}

@@ -1,7 +1,6 @@
 <?php
 /**
- * Metrolook - Modern version of MonoBook with fresh look and many usability
- * improvements.
+ * Metrolook - Metro look for website.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +37,7 @@ class SkinMetrolook extends SkinTemplate {
 	 * @param OutputPage $out Object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgLocalStylePath;
+		global $wgLocalStylePath, $wgMetrolookMobile;
 
 		parent::initPage( $out );
 
@@ -52,19 +51,26 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
+		if ( $wgMetrolookMobile ) {
+		$viewport_meta = 'width=device-width, initial-scale=1';
+		$out->addMeta('viewport', $viewport_meta);
 		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+		} else {
+			$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+		}
 	}
 
 	/**
-	 * Load skin and user CSS files in the correct order
-	 * fixes bug 22916
-	 * @param $out OutputPage object
+	 * Loads skin and user CSS files.
+	 * @param OutputPage $out
 	 */
-	function setupSkinUserCss( OutputPage $out ) {
+	public function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
-		$out->addModuleStyles( 'skins.metrolook' );
-	}
 
+		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
+		wfRunHooks( 'SkinVectorStyleModules', array( $this, &$styles ) );
+		$out->addModuleStyles( $styles );
+	}
 
 	/**
 	 * Adds classes to the body element.
