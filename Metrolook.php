@@ -21,25 +21,26 @@
  * @ingroup Skins
  */
 
-$wgExtensionCredits['skin'][] = array(
+$GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'path' => __FILE__,
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.2.1',
+	'version' => '1.4.1',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
 // Register files
-$wgAutoloadClasses['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
-$wgAutoloadClasses['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
+$GLOBALS['wgAutoloadClasses']['SkinMetrolook'] = __DIR__ . '/SkinMetrolook.php';
+$GLOBALS['wgAutoloadClasses']['MetrolookTemplate'] = __DIR__ . '/MetrolookTemplate.php';
 
-$wgExtensionMessagesFiles['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
+$GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
+$GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
 
 // Register skin
-$wgValidSkinNames['metrolook'] = 'Metrolook';
+$GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 
 // Configuration options
 /**
@@ -47,58 +48,60 @@ $wgValidSkinNames['metrolook'] = 'Metrolook';
  *  - true = use an icon search button
  *  - false = use Go & Search buttons
  */
-$wgVectorUseSimpleSearch = true;
+$GLOBALS['wgVectorUseSimpleSearch'] = true;
 
 /**
  * Watch and unwatch as an icon rather than a link.
  *  - true = use an icon watch/unwatch button
  *  - false = use watch/unwatch text link
  */
-$wgVectorUseIconWatch = true;
+$GLOBALS['wgVectorUseIconWatch'] = true;
 
+/**
+ * Logo
+ *  - true = Logo will show
+ *  - false = Logo will not show
+ */
 
-$wgMetrolookLogo = true;
+$GLOBALS['wgMetrolookLogo'] = true;
 
-$wgMetrolookSiteName = true;
+$GLOBALS['wgMetrolookSiteName'] = true;
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
-$wgMetrolookSearchBar = true;
+$GLOBALS['wgMetrolookSearchBar'] = true;
 
-$wgMetrolookDownArrow = true;
+$GLOBALS['wgMetrolookDownArrow'] = true;
 
-$wgMetrolookLine = true;
+$GLOBALS['wgMetrolookLine'] = true;
 
-$wgMetrolookUploadButton = true;
+$GLOBALS['wgMetrolookUploadButton'] = true;
 
-$wgMetrolookMobile = true;
+$GLOBALS['wgMetrolookMobile'] = true;
 
 /* To use tile 5 to 10 please diable this */
-$wgMetrolookBartile = true;
+$GLOBALS['wgMetrolookBartile'] = true;
 
-$wgMetrolookTile1 = true;
+$GLOBALS['wgMetrolookTile1'] = true;
 
-$wgMetrolookTile2 = true;
+$GLOBALS['wgMetrolookTile2'] = true;
 
-$wgMetrolookTile3 = true;
+$GLOBALS['wgMetrolookTile3'] = true;
 
-$wgMetrolookTile4 = true;
+$GLOBALS['wgMetrolookTile4'] = true;
+
 
 // Register modules
-$wgResourceModules['skins.metrolook'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.styles'] = array(
 	'styles' => array(
-		'common/commonElements.css' => array( 'media' => 'screen' ),
-		'common/commonContent.css' => array( 'media' => 'screen' ),
-		'common/commonInterface.css' => array( 'media' => 'screen' ),
-		'Metrolook/screen.css' => array( 'media' => 'screen' ),
-		'Metrolook/screen-hd.css' => array( 'media' => 'screen and (min-width: 982px)' ),
-		'Metrolook/collapsibleNav.css' => array( 'media' => 'screen' ),
-		'Metrolook/mobile.css',
-		'Metrolook/theme.css',
+		'Metrolook/screen.less' => array( 'media' => 'screen' ),
+		'Metrolook/screen-hd.less' => array( 'media' => 'screen and (min-width: 982px)' ),
+		'Metrolook/components/special.less',
+		'Metrolook/components/special.preferences.less',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
-$wgResourceModules['skins.metrolook.js'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'Metrolook/js/collapsibleTabs.js',
 		'Metrolook/js/metrolook.js',
@@ -108,13 +111,13 @@ $wgResourceModules['skins.metrolook.js'] = array(
 	),
 	'position' => 'top',
 	'dependencies' => array(
-		'jquery.delayedBind',
+		'jquery.throttle-debounce',
 		'mediawiki.searchSuggest',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
-$wgResourceModules['skins.metrolook.collapsibleNav'] = array(
+$GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 	'scripts' => array(
 		'Metrolook/js/collapsibleNav.js',
 	),

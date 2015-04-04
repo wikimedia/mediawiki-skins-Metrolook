@@ -1,7 +1,6 @@
 <?php
 /**
- * Metrolook - Modern version of MonoBook with fresh look and many usability
- * improvements.
+ * Metrolook - Metro look for website.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,15 +61,16 @@ class SkinMetrolook extends SkinTemplate {
 	}
 
 	/**
-	 * Load skin and user CSS files in the correct order
-	 * fixes bug 22916
-	 * @param $out OutputPage object
+	 * Loads skin and user CSS files.
+	 * @param OutputPage $out
 	 */
 	public function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
-		$out->addModuleStyles( 'skins.metrolook' );
-	}
 
+		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
+		wfRunHooks( 'SkinVectorStyleModules', array( $this, &$styles ) );
+		$out->addModuleStyles( $styles );
+	}
 
 	/**
 	 * Adds classes to the body element.

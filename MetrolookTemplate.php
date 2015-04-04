@@ -37,13 +37,13 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		global $wgMetrolookLogo, $wgMetrolookSearchBar, $wgMetrolookDownArrow, $wgMetrolookLine,
-		$wgMetrolookUploadButton, $wgMetrolookSiteName, $wgMetrolookBartile, $wgMetrolookTile1, 
-		$wgMetrolookTile2, $wgMetrolookTile3, $wgMetrolookTile4, $wgMetrolookTile5, $wgMetrolookTile6, 
-		$wgMetrolookTile7, $wgMetrolookTile8, $wgMetrolookTile9, $wgMetrolookTile10, $wgMetrolookImage1, 
-		$wgMetrolookURL1, $wgMetrolookImage2, $wgMetrolookURL2, $wgMetrolookImage3, $wgMetrolookURL3, 
-		$wgMetrolookImage4, $wgMetrolookURL4, $wgMetrolookImage5, $wgMetrolookURL5, $wgMetrolookImage6, 
-		$wgMetrolookURL6, $wgMetrolookMobile, $wgVectorUseIconWatch;
+		global $wgVectorUseIconWatch, $wgMetrolookLogo, $wgMetrolookSearchBar, $wgMetrolookDownArrow, $wgMetrolookLine,
+		$wgMetrolookUploadButton, $wgMetrolookSiteName, $wgMetrolookBartile, $wgMetrolookTile1,
+		$wgMetrolookTile2, $wgMetrolookTile3, $wgMetrolookTile4, $wgMetrolookTile5, $wgMetrolookTile6,
+		$wgMetrolookTile7, $wgMetrolookTile8, $wgMetrolookTile9, $wgMetrolookTile10, $wgMetrolookImage1,
+		$wgMetrolookURL1, $wgMetrolookImage2, $wgMetrolookURL2, $wgMetrolookImage3, $wgMetrolookURL3,
+		$wgMetrolookImage4, $wgMetrolookURL4, $wgMetrolookImage5, $wgMetrolookURL5, $wgMetrolookImage6,
+		$wgMetrolookURL6, $wgMetrolookMobile;
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -121,6 +121,7 @@ class MetrolookTemplate extends BaseTemplate {
 				$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 				$this->text( 'pageLanguage' );
 			?>"><span dir="auto"><?php $this->html( 'title' ) ?></span></h1>
+			<?php $this->html( 'prebodyhtml' ) ?>
 			<div id="bodyContent">
 				<?php if ( $this->data['isarticle'] ) { ?>
 				<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
@@ -206,7 +207,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	</ul>
 </div>
 
-<div id="hamburgerIcon"><img class="hamburger" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" height="40px" width="40px" /></div>
+<div id="hamburgerIcon"><img class="hamburger" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" height="40px" width="40px"></img></div>
 <?php if ( $wgMetrolookSiteName ): ?><div style="padding-left:10px;"><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookLine ): ?><img class="line" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="float:left;" /><?php else: ?><?php endif; ?><?php if ( $wgMetrolookDownArrow ): ?><img class="downarrow" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="height:60px;width:27px;cursor:pointer;" /><?php else: ?><?php endif; ?><?php if ( $wgMetrolookSiteName ): ?></div></div><?php else: ?><?php endif; ?>
 
 <?php if ( $wgMetrolookDownArrow ): ?>
@@ -214,7 +215,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 
 <div style="vertical-align:top;align:left;">
 <div class="topleft">
-<div style="align:left;margin-left:auto;margin-right:auto;display:none;" class="tilebar" id="bartile"><div id="tilegrouptable"><div id="tilegroup">
+<div style="align:left;margin-right:auto;display:none;" class="tilebar" id="bartile"><div id="tilegrouptable"><div id="tilegroup">
 <?php if ( $wgMetrolookBartile ): ?>
 
 <?php if ( $wgMetrolookTile1 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/wiki/"><img src="http://images.pidgi.net/pidgiwikitiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile2 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/press/"><img src="http://images.pidgi.net/pidgipresstiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile3 ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="http://www.pidgi.net/jcc/"><img src="http://images.pidgi.net/jcctiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $wgMetrolookTile4 ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.petalburgwoods.com/"><img src="http://images.pidgi.net/pwntiletop.png" /></a></div></div><?php else: ?><?php endif; ?>
@@ -249,17 +250,16 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 			</div>
 		</div>
 
-
 			<?php if ( $wgMetrolookSearchBar ): ?>
 			<div id="mw-panel">
 			<?php if ( $wgMetrolookLogo ): ?>
 				<div id="p-logo" role="banner"><a style="background-image: url(<?php
-				    $this->text( 'logopath' )
-				    ?>);" href="<?php
-				    echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-				    ?>" <?php
-				    echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-				    ?>></a></div>
+					$this->text( 'logopath' )
+					?>);" href="<?php
+					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+					?>" <?php
+					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+					?>></a></div>
 				<?php else: ?>
 				<?php endif; ?>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
@@ -268,12 +268,12 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 			<div id="mw-panel-custom">
 			<?php if ( $wgMetrolookLogo ): ?>
 				<div id="p-logo" role="banner"><a style="background-image: url(<?php
-				    $this->text( 'logopath' )
-				    ?>);" href="<?php
-				    echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-				    ?>" <?php
-				    echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-				    ?>></a></div>
+					$this->text( 'logopath' )
+					?>);" href="<?php
+					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+					?>" <?php
+					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+					?>></a></div>
 				<?php else: ?>
 				<?php endif; ?>
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
@@ -320,7 +320,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 					$this->renderPortal( 'tb', $this->getToolbox(), 'toolbox', 'SkinTemplateToolboxEnd' );
 					break;
 				case 'LANGUAGES':
-					if ( $this->data['language_urls'] ) {
+					if ( $this->data['language_urls'] !== false ) {
 						$this->renderPortal( 'lang', $this->data['language_urls'], 'otherlanguages' );
 					}
 					break;
@@ -372,9 +372,12 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 		</ul>
 <?php
 		} else { ?>
-		<?php echo $content; /* Allow raw HTML block to be defined by extensions */ ?>
-<?php
-		} ?>
+		<?php
+			echo $content; /* Allow raw HTML block to be defined by extensions */
+		}
+
+		$this->renderAfterPortlet( $name );
+		?>
 	</div>
 </div>
 <?php
@@ -387,7 +390,8 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	 * @param $elements array
 	 */
 	protected function renderNavigation( $elements ) {
-		global $wgVectorUseSimpleSearch, $wgMetrolookSearchBar;
+		global $wgVectorUseSimpleSearch;
+		global $wgMetrolookSearchBar;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -498,6 +502,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							?>
 							<?php
 							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
 							// We construct two buttons (for 'go' and 'fulltext' search modes),
 							// but only one will be visible and actionable at a time (they are
 							// overlaid on top of each other in CSS).
@@ -541,6 +546,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							?>
 							<?php
 							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
 							// We construct two buttons (for 'go' and 'fulltext' search modes),
 							// but only one will be visible and actionable at a time (they are
 							// overlaid on top of each other in CSS).
@@ -554,20 +560,20 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							//   cause it to be used.
 							echo $this->makeSearchButton(
 								'fulltext',
-								array( 'id' => 'mw-searchButtonButton', 'class' => 'searchButtonButton mw-fallbackSearchButton' )
+								array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
 							);
 							echo $this->makeSearchButton(
 								'go',
-								array( 'id' => 'searchButtonButton', 'class' => 'searchButtonButton' )
+								array( 'id' => 'searchButton', 'class' => 'searchButton' )
 							);
 							?>
 								</div>
 						</form>
 					</div>
 					<?php endif; ?> 
-					<?php
+<?php
 
-					break;
+				break;
 			}
 		}
 	}

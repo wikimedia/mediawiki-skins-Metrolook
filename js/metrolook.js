@@ -1,4 +1,4 @@
-var openDiv;
+var openDiv, $;
 function toggleDiv(divID) {
 	$("#" + divID).fadeToggle(150, function() {
 		openDiv = $(this).is(':visible') ? divID : null;
