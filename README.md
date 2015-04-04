@@ -77,7 +77,7 @@ Note: Image setting should be set like this for example $wgMetrolookImage1 = fil
 
 ## Mobile desgn
 
-Mobile desgn now included in the latest release for Mediawiki 1.21 and MediaWiki 1.24+. Mobile desgn for MediaWiki 1.23 and 1.22 coming soon. Also to get mobile desgn please download Metrolook release 2.5 or 3.0 beta 16 or higher please.
+Mobile desgn now included in the latest release for Mediawiki 1.21+. Also to get mobile desgn please download Metrolook release 0.2.0, 0.3.10, 1.4, 2.5 or 3.0 beta 16 or higher please.
 
 And please report feedback in the issues tab. And if you could help fix the problem and or improve the desgn please open and pull task.
 
@@ -216,8 +216,6 @@ ul {
 ## Comming soon
 
 Note plans may change.
-
-Mobile desgn for MediaWiki 1.23.
 
 ## Version
 

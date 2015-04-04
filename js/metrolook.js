@@ -17,7 +17,7 @@ function is_touch_device() {
 
 $(document).ready(function() {
 	if(is_touch_device()) {
-		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
 			$( '#usermenu > div' ).toggleClass( 'no-js js' );
 			$( '#usermenu .js div' ).hide();
 			$( '#usermenu .js' ).click(function(e) {
@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 $(function () {
 	if(is_touch_device()) {
-		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
 			$( '.actionmenu > div' ).toggleClass('no-js js');
 			$( '.actionmenu .js div' ).hide();
 			$( '.actionmenu .js' ).click(function(e) {
@@ -87,7 +87,7 @@ $(function () {
 
 $(function () {
 	if(is_touch_device()) {
-		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
 			$( '#p-search' ).hide();
 			$( 'img.searchbar' ).click(function(e) {
 				$( '#p-search' ).fadeToggle(150);
