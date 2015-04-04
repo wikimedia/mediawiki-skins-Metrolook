@@ -16,8 +16,13 @@ function is_touch_device() {
 }
 
 $(document).ready(function() {
+<<<<<<< HEAD
 	if(is_touch_device()) {
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
+=======
+	if (is_touch_device()) {
+		if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
+>>>>>>> Release 0.2.1
 			$( '#usermenu > div' ).toggleClass( 'no-js js' );
 			$( '#usermenu .js div' ).hide();
 			$( '#usermenu .js' ).click(function(e) {
@@ -37,8 +42,13 @@ $(document).ready(function() {
 });
 
 $(function () {
+<<<<<<< HEAD
 	if(is_touch_device()) {
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
+=======
+	if (is_touch_device()) {
+		if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
+>>>>>>> Release 0.2.1
 			$( '.actionmenu > div' ).toggleClass('no-js js');
 			$( '.actionmenu .js div' ).hide();
 			$( '.actionmenu .js' ).click(function(e) {
@@ -86,6 +96,7 @@ $(function () {
 });
 
 $(function () {
+<<<<<<< HEAD
 	if(is_touch_device()) {
 		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
 			$( '#p-search' ).hide();
@@ -100,22 +111,48 @@ $(function () {
 					$( '.clicker' ).removeClass( 'active' );
 				}
 			});
+=======
+	if (is_touch_device()) {
+		if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
+			var $wgMetrolookMobile = true;
+			if ($wgMetrolookMobile) {
+			    $( '#p-search' ).hide();
+			    $( 'img.searchbar' ).click(function(e) {
+				    $( '#p-search' ).fadeToggle(150);
+				    $('.clicker').toggleClass( 'active' );
+				    e.stopPropagation();
+			    });
+			    $( 'img.searchbar').click(function() {
+				    if ($( '#p-search' ).is( ':visible' )) {
+				        $( '#p-search', this).fadeOut(150);
+					    $( '.clicker' ).removeClass( 'active' );
+				    }
+			    });
+			} else {
+				$( 'img.searchbar' ).hide();
+			}		
+>>>>>>> Release 0.2.1
 		}
 	}
 });
 
 $(function () {
-	$('img.editbutton').click(function(e) {
-		$('#left-navigation').fadeToggle(150);
-		$('.clicker').toggleClass('active');
-		e.stopPropagation();
-	});
-	$('img.editbutton').click(function() {
-		if ($('#left-navigation').is(':visible')) {
-			$('#left-navigation', this).fadeOut(150);
-			$('.clicker').removeClass('active');
-		}
-	});
+var $wgMetrolookMobile = true;
+	if ($wgMetrolookMobile) {
+	    $('img.editbutton').click(function(e) {
+		    $('#left-navigation').fadeToggle(150);
+		    $('.clicker').toggleClass('active');
+		    e.stopPropagation();
+	    });
+	    $('img.editbutton').click(function() {
+		    if ($('#left-navigation').is(':visible')) {
+			    $('#left-navigation', this).fadeOut(150);
+			    $('.clicker').removeClass('active');
+		    }
+	    });
+	} else {
+		$( 'img.editbutton' ).hide();
+	}
 });
 
 $(function () {

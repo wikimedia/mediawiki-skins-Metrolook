@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 0.2.1
+
+More improvements to mobile desgn on ipad.
+
 ### 0.2.0
 
 <<<<<<< HEAD
@@ -15,4 +19,7 @@ Includes skin.json. New extension/skin registration in mediawiki starting from m
 First release for MediaWiki 1.21.
 
 Includes mobile desgn.
+<<<<<<< HEAD
 >>>>>>> Improvements to Metrolook on MediaWiki 1.21
+=======
+>>>>>>> Release 0.2.1
