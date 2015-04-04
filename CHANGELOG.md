@@ -2,6 +2,12 @@ Changelog
 =========
 
 
+### 3.0 rc 1
+
+Improvement to mobile and desktop desgn.
+
+Includes skin.json. Requires MediaWiki 1.25+. Please read README.md on how to use new extension registration
+
 ### 3.0 beta 16
 
 Big release with new desgn for mobile and minor improvements to desktop desgn.
