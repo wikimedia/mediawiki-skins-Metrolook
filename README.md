@@ -184,11 +184,6 @@ div.vectorMenu ul {
 
 }
 
-ul {
-	list-style-type: disc;
-	.list-style-image-svg('images/bullet-circle-icon.svg', 'images/bullet-circle-icon.png');
-}
-
 @media (max-width: 768px) {
 #hamburgerIcon:hover {
 	background-color: blue;
@@ -207,7 +202,14 @@ div.actionmenu ul {
 }
 }
 
-/* Top Bar colour and hover colour */
+/* To change bullet icon to a circle */
+
+ul {
+	list-style-type: disc;
+	.list-style-image-svg('images/bullet-circle-icon.svg', 'images/bullet-circle-icon.png');
+}
+
+/* Top Bar colour and hover colour end */
 ```
 
 ## Known Issues
@@ -218,7 +220,7 @@ div.actionmenu ul {
 
 Note plans may change.
 
-Mobile desgn for MediaWiki 1.22 and 1.23.
+Mobile desgn for MediaWiki 1.23.
 
 ## Version
 

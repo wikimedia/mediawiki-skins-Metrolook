@@ -30,7 +30,6 @@
 		"SkinMetrolook": "SkinMetrolook.php",
 		"MetrolookTemplate": "MetrolookTemplate.php"
 	},
-	
 	"ResourceModules": {
 		"skins.metrolook.styles": {
 			"styles": {
