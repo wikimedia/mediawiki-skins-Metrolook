@@ -1,7 +1,7 @@
 {
 	"name": "Metrolook",
 	"namemsg": "skinname-metrolook",
-	"version": "3.0 rc 2",
+	"version": "3.0",
 	"author": [
 		"immewnity",
 		"Paladox",
@@ -13,6 +13,7 @@
 	"namemsg": "skinname-metrolook",
 	"license-name": "GPL-2.0+",
 	"type": "skin",
+	"callback": "MetrolookHooks::onRegistration",
 	"ConfigRegistry": {
 		"metrolook": "GlobalVarConfig::newInstance"
 	},
@@ -25,6 +26,7 @@
 		]
 	},
 	"AutoloadClasses": {
+		"MetrolookHooks": "SkinMetrolookHooks.php",
 		"SkinMetrolook": "SkinMetrolook.php",
 		"MetrolookTemplate": "MetrolookTemplate.php"
 	},
@@ -59,6 +61,9 @@
 			"position": "bottom",
 			"scripts": [
 				"js/collapsibleNav.js"
+			],
+			"styles": [
+				"components/collapsibleNav.less"
 			],
 			"dependencies": [
 				"jquery.throttle-debounce",

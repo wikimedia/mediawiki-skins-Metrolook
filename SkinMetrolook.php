@@ -35,7 +35,7 @@ class SkinMetrolook extends SkinTemplate {
 	private $metrolookConfig;
 
 	public function __construct() {
-			$this->metrolookConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
+		$this->metrolookConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
 	}
 	
 	/**
@@ -58,11 +58,11 @@ class SkinMetrolook extends SkinTemplate {
 		);
 
 		if ( $wgMetrolookMobile ) {
-		$viewport_meta = 'width=device-width, initial-scale=1';
-		$out->addMeta('viewport', $viewport_meta);
-		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+			$viewport_meta = 'width=device-width, initial-scale=1';
+			$out->addMeta('viewport', $viewport_meta);
+			$out->addModules( array( 'skins.metrolook.js' ) );
 		} else {
-			$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+			$out->addModules( array( 'skins.metrolook.js' ) );
 		}
 	}
 

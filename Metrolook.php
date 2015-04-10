@@ -1,5 +1,4 @@
 <?php
-
 if ( function_exists( 'wfLoadSkin' ) ) {
 	wfLoadSkin( 'Metrolook' );
 	// Keep i18n globals so mergeMessageFileList.php doesn't break
