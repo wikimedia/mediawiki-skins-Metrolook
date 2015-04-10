@@ -1,6 +1,13 @@
 Changelog
 =========
 
+### 3.0 rc 2
+
+More improvements to mobile desgn on ipad.
+
+Please note i18n shim are no longer avalible in this release.
+
+Skin.json is now used.
 
 ### 3.0 rc 1
 
