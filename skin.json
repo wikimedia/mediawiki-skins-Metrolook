@@ -3,7 +3,11 @@
 	"version": "3.0 rc 1",
 	"author": [
 		"immewnity",
+<<<<<<< HEAD   (e64213 Update author)
 		"Paladox",
+=======
+		"paladox2015",
+>>>>>>> BRANCH (2c7b8a Improvements to Metrolook skin and bump version)
 		"Craig Davison",
 		"lagleki"
 	],
