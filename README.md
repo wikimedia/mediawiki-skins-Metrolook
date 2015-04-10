@@ -220,8 +220,6 @@ ul {
 
 Note plans may change.
 
-Mobile desgn for MediaWiki 1.23.
-
 ## Version
 
 4.x.x requires MediaWiki 1.26.
