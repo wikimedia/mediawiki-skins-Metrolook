@@ -26,7 +26,7 @@
  * @ingroup Skins
  */
 class MetrolookTemplate extends BaseTemplate {
-	/* Members */
+	/* Functions */
 
 	/** @var string $mPersonalTools Saves the personal Tools */
 	private $mPersonalTools = '';
@@ -38,11 +38,11 @@ class MetrolookTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		global $wgMetrolookLogo, $wgMetrolookSearchBar, $wgMetrolookDownArrow, $wgMetrolookLine,
-		$wgMetrolookUploadButton, $wgMetrolookSiteName, $wgMetrolookBartile, $wgMetrolookTile1, 
-		$wgMetrolookTile2, $wgMetrolookTile3, $wgMetrolookTile4, $wgMetrolookTile5, $wgMetrolookTile6, 
-		$wgMetrolookTile7, $MetrolookwgTile8, $wgMetrolookTile9, $wgMetrolookTile10, $wgMetrolookImage1, 
-		$wgMetrolookURL1, $wgMetrolookImage2, $wgMetrolookURL2, $wgMetrolookImage3, $wgMetrolookURL3, 
-		$wgMetrolookImage4, $wgMetrolookURL4, $wgMetrolookImage5, $wgMetrolookURL5, $wgMetrolookImage6, 
+		$wgMetrolookUploadButton, $wgMetrolookSiteName, $wgMetrolookBartile, $wgMetrolookTile1,
+		$wgMetrolookTile2, $wgMetrolookTile3, $wgMetrolookTile4, $wgMetrolookTile5, $wgMetrolookTile6,
+		$wgMetrolookTile7, $wgMetrolookTile8, $wgMetrolookTile9, $wgMetrolookTile10, $wgMetrolookImage1,
+		$wgMetrolookURL1, $wgMetrolookImage2, $wgMetrolookURL2, $wgMetrolookImage3, $wgMetrolookURL3,
+		$wgMetrolookImage4, $wgMetrolookURL4, $wgMetrolookImage5, $wgMetrolookURL5, $wgMetrolookImage6,
 		$wgMetrolookURL6, $wgMetrolookMobile;
 
 		// Build additional attributes for navigation urls
@@ -91,7 +91,7 @@ class MetrolookTemplate extends BaseTemplate {
 		$this->data['variant_urls'] = $nav['variants'];
 
 		// Reverse horizontally rendered navigation elements
-		if ( $this->data['rtl'] ) { 
+		if ( $this->data['rtl'] ) {
 			$this->data['view_urls'] =
 				array_reverse( $this->data['view_urls'] );
 			$this->data['namespace_urls'] =
@@ -109,12 +109,7 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 		// Output HTML Page
 		$this->html( 'headelement' );
-?>
-
-<?php if ( $wgMetrolookMobile ): ?>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<?php else: ?>
-<?php endif; ?>
+		?>
 
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
@@ -130,14 +125,16 @@ class MetrolookTemplate extends BaseTemplate {
 			?>
 			<?php
 			if ( is_callable( array( $this, 'getIndicators' ) ) ) {
-					echo $this->getIndicators();
+				echo $this->getIndicators();
 			}
+			if ( !empty( $this->data['title'] ) ) {
 			?>
 			<h1 id="firstHeading" class="firstHeading" lang="<?php
 			$this->data['pageLanguage'] =
 				$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 			$this->text( 'pageLanguage' );
 			?>"><?php $this->html( 'title' ) ?></h1>
+			<?php } ?>
 			<?php $this->html( 'prebodyhtml' ) ?>
 			<div id="bodyContent" class="mw-body-content">
 				<?php
@@ -269,8 +266,7 @@ class MetrolookTemplate extends BaseTemplate {
 <a href="#" style="text-decoration:none;"><span id="username-top"><span id="username-text"><?php
 if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
 echo wfMessage( 'metrolook-guest' )->text();
-}
-else {
+} else {
 echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 }
  ?></span><span style="word-spacing:4px;"> </span><span id="userIcon20"><img class="userIcon20" style="position:relative;top:0.3em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /></span>
