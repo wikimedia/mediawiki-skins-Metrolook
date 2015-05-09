@@ -1,6 +1,13 @@
 Changelog
 =========
 
+### 4.0 alpha 2
+
+More improvements to mobile desgn on ipad.
+
+Please note i18n shim are no longer avalible in this release.
+
+Skin.json is now used.
 
 ### 4.0 alpha 1
 

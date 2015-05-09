@@ -63,8 +63,6 @@
 
 		/* General Portal Modification */
 
-		// Always show the first portal
-		$( '#mw-panel > .portal:first' ).addClass( 'first persistent' );
 		// Apply a class to the entire panel to activate styles
 		$( '#mw-panel' ).addClass( 'collapsible-nav' );
 		// Use cookie data to restore preferences of what to show and hide
@@ -218,8 +216,6 @@
 
 		/* General Portal Modification */
 
-		// Always show the first portal
-		$( '#mw-panel-custom > .portal-custom:first' ).addClass( 'first persistent' );
 		// Apply a class to the entire panel to activate styles
 		$( '#mw-panel-custom' ).addClass( 'collapsible-nav' );
 		// Use cookie data to restore preferences of what to show and hide
