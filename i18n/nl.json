@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Siebrand"
 		]
 	},
+	"metrolook-desc": "Metrolookuiterlijk voor MediaWiki",
 	"metrolook-guest": "Gast"
 }
