@@ -58,11 +58,11 @@ class SkinMetrolook extends SkinTemplate {
 		);
 
 		if ( $wgMetrolookMobile ) {
-		$viewport_meta = 'width=device-width, initial-scale=1';
-		$out->addMeta('viewport', $viewport_meta);
-		$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+			$viewport_meta = 'width=device-width, initial-scale=1';
+			$out->addMeta('viewport', $viewport_meta);
+			$out->addModules( array( 'skins.metrolook.js' ) );
 		} else {
-			$out->addModules( array( 'skins.metrolook.js', 'skins.metrolook.collapsibleNav' ) );
+			$out->addModules( array( 'skins.metrolook.js' ) );
 		}
 	}
 
@@ -74,7 +74,7 @@ class SkinMetrolook extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
-		wfRunHooks( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
+		Hooks::run( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
 		$out->addModuleStyles( $styles );
 	}
 

@@ -1,7 +1,7 @@
 {
 	"name": "Metrolook",
 	"namemsg": "skinname-metrolook",
-	"version": "4.0 alpha 2",
+	"version": "4.0 alpha 3",
 	"author": [
 		"immewnity",
 		"Paladox",
@@ -10,9 +10,9 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Skin:Metrolook",
 	"descriptionmsg": "metrolook-desc",
-	"namemsg": "skinname-metrolook",
 	"license-name": "GPL-2.0+",
 	"type": "skin",
+	"callback": "MetrolookHooks::onRegistration",
 	"ConfigRegistry": {
 		"metrolook": "GlobalVarConfig::newInstance"
 	},
@@ -24,7 +24,22 @@
 			"i18n"
 		]
 	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"MetrolookHooks::beforePageDisplay"
+		],
+		"GetPreferences": [
+			"MetrolookHooks::getPreferences"
+		],
+		"ResourceLoaderGetConfigVars": [
+			"MetrolookHooks::resourceLoaderGetConfigVars"
+		],
+		"MakeGlobalVariablesScript": [
+			"MetrolookHooks::makeGlobalVariablesScript"
+		]
+	},
 	"AutoloadClasses": {
+		"MetrolookHooks": "SkinMetrolookHooks.php",
 		"SkinMetrolook": "SkinMetrolook.php",
 		"MetrolookTemplate": "MetrolookTemplate.php"
 	},
@@ -60,8 +75,11 @@
 			"scripts": [
 				"js/collapsibleNav.js"
 			],
+			"styles": [
+				"components/collapsibleNav.less"
+			],
 			"dependencies": [
-				"jquery.throttle-debounce", 
+				"jquery.throttle-debounce",
 				"jquery.client",
 				"jquery.cookie",
 				"jquery.tabIndex"
