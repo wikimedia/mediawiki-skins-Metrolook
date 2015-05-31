@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yona b"
+			"Yona b",
+			"Amire80"
 		]
 	},
+	"skinmetrolook-collapsiblenav-preference": "הפעלת הסתרת פריטים בסרגל הצד בעיצוב מטרולוק",
 	"metrolook-desc": "עיצוב מטרולוק למדיה־ויקי",
 	"metrolook-guest": "אורח"
 }
