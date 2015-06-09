@@ -26,7 +26,7 @@ $wgExtensionCredits['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.2.2',
+	'version' => '0.2.3',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -42,7 +42,7 @@ $wgHooks['GetPreferences'][] = 'MetrolookHooks::getPreferences';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'MetrolookHooks::resourceLoaderGetConfigVars';
 $wgHooks['MakeGlobalVariablesScript'][] = 'MetrolookHooks::makeGlobalVariablesScript';
 
-$wgExtensionMessagesFiles['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
+$wgExtensionMessagesFiles['Metrolook'] = __DIR__.'/Metrolook.i18n.php';
 
 // Register skin
 $wgValidSkinNames['metrolook'] = 'Metrolook';
@@ -86,6 +86,10 @@ $wgMetrolookLogo = true;
 
 $wgMetrolookSiteName = true;
 
+$wgMetrolookSiteNameText = true;
+
+$wgMetrolookSiteText = '';
+
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
 $wgMetrolookSearchBar = true;
 
@@ -116,7 +120,7 @@ $wgResourceModules['skins.metrolook'] = array(
 		'common/commonInterface.css' => array( 'media' => 'screen' ),
 		'Metrolook/screen.css' => array( 'media' => 'screen' ),
 		'Metrolook/screen-hd.css' => array( 'media' => 'screen and (min-width: 982px)' ),
-		'Metrolook/collapsibleNav.css' => array( 'media' => 'screen' ),
+		'Metrolook/tablet.css',
 		'Metrolook/mobile.css',
 		'Metrolook/theme.css',
 	),
@@ -127,6 +131,7 @@ $wgResourceModules['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'Metrolook/js/collapsibleTabs.js',
 		'Metrolook/js/metrolook.js',
+		'Metrolook/js/metrolook.search.js',
 		'Metrolook/js/vector.js',
 		'Metrolook/js/mediawiki.searchSuggest.custom.js',
 		'Metrolook/js/overthrow.js',
