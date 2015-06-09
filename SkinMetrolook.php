@@ -45,9 +45,12 @@ class SkinMetrolook extends SkinTemplate {
 	 * @param OutputPage $out Object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgMetrolookMobile;
 
 		parent::initPage( $out );
+
+		if ( $GLOBALS['wgMetrolookMobile'] ) {
+			$out->addMeta( 'viewport', 'width=device-width;, initial-scale=1;' );
+		}
 
 		// Append CSS which includes IE only behavior fixes for hover support -
 		// this is better than including this in a CSS file since it doesn't
@@ -59,13 +62,7 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		if ( $wgMetrolookMobile ) {
-			$viewport_meta = 'width=device-width, initial-scale=1';
-			$out->addMeta('viewport', $viewport_meta);
-			$out->addModules( array( 'skins.metrolook.js' ) );
-		} else {
-			$out->addModules( array( 'skins.metrolook.js' ) );
-		}
+		$out->addModules( array( 'skins.metrolook.js' ) );
 	}
 
 	/**
