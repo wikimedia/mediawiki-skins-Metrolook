@@ -37,7 +37,6 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
@@ -100,6 +99,19 @@ class MetrolookTemplate extends BaseTemplate {
 				$this->mPersonalToolsEcho .= $this->makeListItem( $key, $item );
 			}
 		}
+
+		$this->data['pageLanguage'] =
+			$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+
+		// User name (or "Guest") to be displayed at the top right (on LTR
+		// interfaces) portion of the skin
+		$user = $this->getSkin()->getUser();
+		if ( !$user->isLoggedIn() ) {
+			$userNameTop = $this->getSkin()->msg( 'metrolook-guest' )->text();
+		} else {
+			$userNameTop = htmlspecialchars( $user->getName(), ENT_QUOTES );
+		}
+
 		// Output HTML Page
 		$this->html( 'headelement' );
 		?>
@@ -120,14 +132,14 @@ class MetrolookTemplate extends BaseTemplate {
 			if ( is_callable( array( $this, 'getIndicators' ) ) ) {
 				echo $this->getIndicators();
 			}
-			if ( !empty( $this->data['title'] ) ) {
+			// Loose comparison with '!=' is intentional, to catch null and false too, but not '0'
+			if ( $this->data['title'] != '' ) {
 			?>
-			<h1 id="firstHeading" class="firstHeading" lang="<?php
-			$this->data['pageLanguage'] =
-				$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
-			$this->text( 'pageLanguage' );
-			?>"><?php $this->html( 'title' ) ?></h1>
-			<?php } ?>
+			<h1 id="firstHeading" class="firstHeading" lang="<?php $this->text( 'pageLanguage' ); ?>"><?php
+				$this->html( 'title' )
+			?></h1>
+			<?php
+			} ?>
 			<?php $this->html( 'prebodyhtml' ) ?>
 			<div id="bodyContent" class="mw-body-content">
 				<?php
@@ -137,9 +149,9 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				}
 				?>
-				<div id="contentSub"<?php
-				$this->html( 'userlangattributes' )
-				?>><?php $this->html( 'subtitle' ) ?></div>
+				<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>><?php
+					$this->html( 'subtitle' )
+				?></div>
 				<?php
 				if ( $this->data['undelete'] ) {
 					?>
@@ -158,13 +170,21 @@ class MetrolookTemplate extends BaseTemplate {
 					<?php $this->msg( 'jumpto' ) ?>
 					<a href="#mw-head"><?php
 						$this->msg( 'jumptonavigation' )
-						?></a><?php
-					$this->msg( 'comma-separator' )
+					?></a><?php $this->msg( 'comma-separator' ) ?>
+					<?php
+					if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+						?>
+						<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
+					<?php
+					} else {
 					?>
-					<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
+						<a href="#p-searchSearch"><?php $this->msg( 'jumptosearch' ) ?></a>
+					<?php
+					}
+					?>
 				</div>
-				<?php $this->html( 'bodycontent' ) ?>
 				<?php
+				$this->html( 'bodycontent' );
 				if ( $this->data['printfooter'] ) {
 					?>
 					<div class="printfooter">
@@ -172,35 +192,21 @@ class MetrolookTemplate extends BaseTemplate {
 					</div>
 				<?php
 				}
-				?>
-				<?php
 				if ( $this->data['catlinks'] ) {
-					?>
-					<?php
 					$this->html( 'catlinks' );
-					?>
-				<?php
 				}
 				?>
 				<br clear="all" />
 					<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
-			<hr />
+				<hr />
 			<?php
 			foreach ( $this->getFooterLinks() as $category => $links ) {
 				?>
-				<ul id="footer-<?php
-				echo $category
-				?>">
+				<ul id="footer-<?php echo $category ?>">
 					<?php
 					foreach ( $links as $link ) {
 						?>
-						<li id="footer-<?php
-						echo $category
-						?>-<?php
-						echo $link
-						?>"><?php
-							$this->html( $link )
-							?></li>
+						<li id="footer-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
 					<?php
 					}
 					?>
@@ -215,16 +221,10 @@ class MetrolookTemplate extends BaseTemplate {
 					<?php
 					foreach ( $footericons as $blockName => $footerIcons ) {
 						?>
-						<li id="footer-<?php
-						echo htmlspecialchars( $blockName ); ?>ico">
+						<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
 							<?php
 							foreach ( $footerIcons as $icon ) {
-								?>
-								<?php
 								echo $this->getSkin()->makeFooterIcon( $icon );
-								?>
-
-							<?php
 							}
 							?>
 						</li>
@@ -239,11 +239,7 @@ class MetrolookTemplate extends BaseTemplate {
 		</div>
 				<?php
 				if ( $this->data['dataAfterContent'] ) {
-					?>
-					<?php
 					$this->html( 'dataAfterContent' );
-					?>
-				<?php
 				}
 				?>
 				<div class="visualClear"></div>
@@ -256,98 +252,383 @@ class MetrolookTemplate extends BaseTemplate {
 		<div id="mw-head">
 			<div class="vectorMenu" id="usermenu">
 				<div class="no-js">
-<a href="#" style="text-decoration:none;"><span id="username-top"><span id="username-text"><?php
-if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
-echo wfMessage( 'metrolook-guest' )->text();
-} else {
-echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
-}
- ?></span><span style="word-spacing:4px;"> </span><span id="userIcon20"><img class="userIcon20" style="position:relative;top:0.3em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /></span>
-<span style="word-spacing:4px;"> </span><span id="userIcon40"><img class="userIcon40" style="position:relative;top:0.4em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
-</span></span></a>
-<div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
-<?php $this->renderNavigation( 'PERSONAL' ); ?>
-</div>
-</div>
-</div>
-<div id="echoNotifications">
-	<ul>
-	<?php
-		echo $this->mPersonalToolsEcho;
-	?>
-	</ul>
-</div>
-
-<div id="hamburgerIcon"><img class="hamburger" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" height="40px" width="40px"></img></div>
-<?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?><div style="padding-left:10px;"><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookLine' ) ): ?><img class="line" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="float:left;" /><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?><img class="downarrow" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="height:60px;width:27px;cursor:pointer;" /><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?></div></div><?php else: ?><?php endif; ?>
-
-<?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?>
-	<div id="top-tile-bar" class="fixed-position">
-
-<div style="vertical-align:top;align:left;">
-<div class="topleft">
-<div style="align:left;margin-left:auto;margin-right:auto;display:none;" class="tilebar" id="bartile"><div id="tilegrouptable"><div id="tilegroup">
-<?php if ( $this->config->get( 'MetrolookBartile' ) ): ?>
-
-<?php if ( $this->config->get( 'MetrolookTile1' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/wiki/"><img src="http://images.pidgi.net/pidgiwikitiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile2' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/press/"><img src="http://images.pidgi.net/pidgipresstiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile3' ) ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="http://www.pidgi.net/jcc/"><img src="http://images.pidgi.net/jcctiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile4' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.petalburgwoods.com/"><img src="http://images.pidgi.net/pwntiletop.png" /></a></div></div><?php else: ?><?php endif; ?>
-
-<?php else: ?>
-
-<?php if ( $this->config->get( 'MetrolookTile5' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL1'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage1'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile6' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL2'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage2'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile7' ) ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL3'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage3'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile8' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL4'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile9' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL5'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage5'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile10' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL6'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage6'] ?>" /></a></div></div><?php else: ?><?php endif; ?>
-
-<?php endif; ?>
-
-</div></div></div>
-</div>
-
-</div></div>
-<?php else: ?>
-<?php endif; ?>
-			<div id="left-navigation">
-				<?php if ( $this->config->get( 'MetrolookUploadButton' ) ): ?><a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="uploadbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php else: ?><?php endif; ?><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+					<a href="#" style="text-decoration:none;">
+						<span id="username-top">
+							<span id="username-text"><?php echo $userNameTop ?></span>
+							<span class="username-space" style="word-spacing: 4px;"> </span>
+							<span id="userIcon20">
+								<img
+								class="userIcon20"
+								style="position:relative;top:0.3em;"
+								src="<?php
+								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
+								?>"
+								/>
+							</span>
+							<span style="word-spacing:4px;"> </span>
+							<span id="userIcon40">
+								<img
+								class="userIcon40"
+								style="position:relative;top:0.4em;"
+								src="<?php
+								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
+								?>"
+								/>
+							</span>
+						</span>
+					</a>
+					<div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
+						<?php $this->renderNavigation( 'PERSONAL' ); ?>
+					</div>
+				</div>
+			</div>
+			<div id="echoNotifications">
+				<ul>
+					<?php echo $this->mPersonalToolsEcho; ?>
+				</ul>
 			</div>
 
-				<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
-				<img class="searchbar" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
-				<?php else: ?>
-				<?php endif; ?>
-				<img class="editbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+			<div id="hamburgerIcon">
+				<img
+				class="hamburger"
+				src="<?php echo htmlspecialchars(
+					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
+				height="40px"
+				width="40px" />
+			</div>
+
+			<?php
+			if ( $this->config->get( 'MetrolookSiteName' ) ) {
+				?>
+				<div style="padding-left:10px;">
+					<div id="siteLogoBar" class="lighthover" style="height:40px;float:left;">
+						<div class="onhoverbg" style="height:40px;float:left;">
+							<h4 class="title-name">
+								<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
+									<div
+									class="title-name"
+									style="
+									font-size: 17px; padding-left: 0.4em; padding-right: 0.4em; color: white;
+									max-width: auto; height: auto; max-height: 700px; display: inline-block;
+									vertical-align:middle;
+									">
+										<?php
+										if ( $this->config->get( 'MetrolookSiteNameText' ) ) {
+											?>
+											<?php echo $GLOBALS['wgSitename'] ?>
+										<?php
+										} else {
+											?>
+											<?php echo $GLOBALS['wgMetrolookSiteText'] ?>
+										<?php
+										}
+										?>
+									</div>
+								</a>
+							</h4>
+						</div>
+					</div>
+				</div>
+			<?php
+			}
+			?>
+			<?php
+			if ( $this->config->get( 'MetrolookLine' ) ) {
+				?>
+				<?php
+				if ( $this->config->get( 'MetrolookSiteName' ) ) {
+					?>
+					<div id="siteLogoBar" class="lighthover" style="height:40px;float:left;">
+				<?php
+				}
+				?>
+				<img
+				class="line" 
+				src="<?php echo htmlspecialchars(
+					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
+				style="float:left;"
+				/>
+				<?php
+				if ( $this->config->get( 'MetrolookSiteName' ) ) {
+					?>
+					</div>
+				<?php
+				}
+				?>
+			<?php
+			}
+			?>
+			<?php
+			if ( $this->config->get( 'MetrolookDownArrow' ) ) {
+				?>
+				<?php
+				if ( $this->config->get( 'MetrolookSiteName' ) ){
+					?>
+					<div id="siteLogoBar" class="lighthover" style="height:40px;float:left;">
+				<?php
+				}
+				?>
+				<img
+				class="downarrow"
+				src="<?php echo htmlspecialchars(
+					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
+				style="cursor:pointer;" />
+				<?php
+				if ( $this->config->get( 'MetrolookSiteName' ) ) {
+					?>
+					</div>
+				<?php
+				}
+				?>
+			<?php
+			}
+			?>
+
+			<?php
+			if ( $this->config->get( 'MetrolookDownArrow' ) ) {
+				?>
+				<div id="top-tile-bar" class="fixed-position">
+					<div style="vertical-align:top;align:left;">
+						<div class="topleft">
+							<div style="align: left; margin-left: auto; margin-right: auto; display: none;"
+							class="tilebar" id="bartile">
+								<div id="tilegrouptable">
+									<div id="tilegroup">
+										<?php
+										if ( $this->config->get( 'MetrolookBartile' ) ) {
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile1' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="http://www.pidgi.net/wiki/">
+															<img src="http://images.pidgi.net/pidgiwikitiletop.png" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile2' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="http://www.pidgi.net/press/">
+															<img src="http://images.pidgi.net/pidgipresstiletop.png" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile3' ) ) {
+												?>
+												<div style="float:left;padding:5px;" id="jcctile">
+													<div class="tile">
+														<a href="http://www.pidgi.net/jcc/">
+															<img src="http://images.pidgi.net/jcctiletop.png" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile4' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="http://www.petalburgwoods.com/">
+															<img src="http://images.pidgi.net/pwntiletop.png" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+										<?php
+										} else {
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile5' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="<?php echo $GLOBALS['wgMetrolookURL1'] ?>">
+															<img src="<?php echo $GLOBALS['wgMetrolookImage1'] ?>" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile6' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="<?php echo $GLOBALS['wgMetrolookURL2'] ?>">
+															<img src="<?php echo $GLOBALS['wgMetrolookImage2'] ?>" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile7' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="<?php echo $GLOBALS['wgMetrolookURL3'] ?>">
+															<img src="<?php echo $GLOBALS['wgMetrolookImage3'] ?>" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile8' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="<?php echo $GLOBALS['wgMetrolookURL4'] ?>">
+															<img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile9' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="<?php echo $GLOBALS['wgMetrolookURL5'] ?>">
+															<img src="<?php echo $GLOBALS['wgMetrolookImage5'] ?>" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+											<?php
+											if ( $this->config->get( 'MetrolookTile10' ) ) {
+												?>
+												<div style="float:left;padding:5px;">
+													<div class="tile">
+														<a href="<?php echo $GLOBALS['wgMetrolookURL6'] ?>">
+															<img src="<?php echo $GLOBALS['wgMetrolookImage6'] ?>" />
+														</a>
+													</div>
+												</div>
+											<?php
+											}
+											?>
+										<?php
+										}
+										?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php
+			}
+			?>
+
+			<div id="left-navigation">
+				<?php
+				if ( $this->config->get( 'MetrolookUploadButton' ) ) {
+					?>
+					<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>">
+						<div
+						class="onhoverbg"
+						style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;">
+							<img
+							class="uploadbutton"
+							src="<?php echo htmlspecialchars(
+								$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+								<span style="color:#fff;position:relative;top:3px; ">
+									<?php $this->msg( 'uploadbtn' ) ?>
+								</span>
+						</div>
+					</a>
+				<?php
+				}
+				?>
+				<?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+			</div>
+
+				<?php
+				if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+					?>
+					<img
+					class="searchbar"
+					src="<?php echo htmlspecialchars(
+						$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+				<?php
+				}
+				?>
+				<img
+				class="editbutton"
+				src="<?php echo htmlspecialchars(
+					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 
 
 			<div id="right-navigation">
-				<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
-				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
-				<?php else: ?>
-				<?php endif; ?>
+				<?php
+				if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+					$this->renderNavigation( array( 'SEARCH' ) );
+				}
+				?>
 			</div>
 		</div>
 
-			<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
-			<div id="mw-panel">
-			<?php if ( $this->config->get( 'MetrolookLogo' ) ): ?>
-				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
-					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-					?>" <?php
-					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-					?>></a></div>
-				<?php else: ?>
-				<?php endif; ?>
-				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
-			</div>
-			<?php else: ?>
-			<div id="mw-panel-custom">
-			<?php if ( $this->config->get( 'MetrolookLogo' ) ): ?>
-				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
-					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-					?>" <?php
-					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-					?>></a></div>
-				<?php else: ?>
-				<?php endif; ?>
-				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
-				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
-			</div>
-			<?php endif; ?>
+			<?php
+			if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+				?>
+				<div id="mw-panel">
+					<?php
+					if ( $this->config->get( 'MetrolookLogo' ) ) {
+						?>
+						<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
+							echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+							?>" <?php
+							echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+							?>></a></div>
+					<?php
+					}
+					?>
+					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				</div>
+			<?php
+			} else {
+				?>
+				<div id="mw-panel-custom">
+					<?php
+					if ( $this->config->get( 'MetrolookLogo' ) ) {
+						?>
+						<div id="p-logo-custom" role="banner"><a class="mw-wiki-logo" href="<?php
+							echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+							?>" <?php
+							echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo-custom' ) )
+							?>></a></div>
+					<?php
+					}
+					?>
+					<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				</div>
+			<?php
+			}
+			?>
 		</div>
 
 		<?php $this->printTrail(); ?>
@@ -407,58 +688,63 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	 * @param null|string|array $hook
 	 */
 	protected function renderPortal( $name, $content, $msg = null, $hook = null ) {
-		
 		if ( $msg === null ) {
 			$msg = $name;
 		}
 		$msgObj = wfMessage( $msg );
+		$labelId = Sanitizer::escapeId( "p-$name-label" );
 		?>
-		<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
-		<div class="portal" role="navigation" id='<?php
-		echo Sanitizer::escapeId( "p-$name" )
-		?>'<?php
-		echo Linker::tooltip( 'p-' . $name )
-		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
-		<?php else: ?>
-		<div class="portal-custom" role="navigation" id='<?php
-		echo Sanitizer::escapeId( "p-$name" )
-		?>'<?php
-		echo Linker::tooltip( 'p-' . $name )
-		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
-		<?php endif; ?>	
-			<h5<?php
-			$this->html( 'userlangattributes' )
-			?> id='<?php
-			echo Sanitizer::escapeId( "p-$name-label" )
-			?>'><?php
-				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
-				?></h5>
-
-			<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
-			<div class="body">
-			<?php else: ?>
-			<div class="body-custom">
-			<?php endif; ?>	
+		<?php
+		if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+			?>
+			<div class="portal" role="navigation" id='<?php
+			echo Sanitizer::escapeId( "p-$name" )
+			?>'<?php
+			echo Linker::tooltip( 'p-' . $name )
+			?> aria-labelledby='<?php echo $labelId ?>'>
+				<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
+					echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
+					?></h5>
+		<?php
+		} else {
+			?>
+			<div class="portal-custom" role="navigation" id='<?php
+			echo Sanitizer::escapeId( "p-$name" )
+			?>'<?php
+			echo Linker::tooltip( 'p-' . $name )
+			?> aria-labelledby='<?php echo $labelId ?>'>
+				<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
+					echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
+					?></h5>
+		<?php
+		}
+		?>
+			<?php
+			if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+				?>
+				<div class="body">
+			<?php
+			} else {
+				?>
+				<div class="body-custom">
+			<?php
+			}
+			?>
 				<?php
 				if ( is_array( $content ) ) {
 					?>
 					<ul>
 						<?php
 						foreach ( $content as $key => $val ) {
-							?>
-							<?php echo $this->makeListItem( $key, $val ); ?>
-
-						<?php
+							echo $this->makeListItem( $key, $val );
 						}
 						if ( $hook !== null ) {
-							wfRunHooks( $hook, array( &$this, true ) );
+							Hooks::run( $hook, array( &$this, true ) );
 						}
 						?>
 					</ul>
 				<?php
 				} else {
-					?>
-					<?php
 					echo $content; /* Allow raw HTML block to be defined by extensions */
 				}
 
@@ -476,7 +762,6 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	 * @param array $elements
 	 */
 	protected function renderNavigation( $elements ) {
-
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
@@ -500,12 +785,13 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							<?php
 							foreach ( $this->data['namespace_urls'] as $link ) {
 								?>
-								<li <?php
-								echo $link['attributes']
-								?>><span><a href="<?php
+								<li <?php echo $link['attributes'] ?>><span><a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
-										echo $link['key']
+										echo $link['key'];
+										if ( isset ( $link['rel'] ) ) {
+											echo ' rel="' . htmlspecialchars( $link['rel'] ) . '"';
+										}
 										?>><?php
 											echo htmlspecialchars( $link['text'] )
 											?></a></span></li>
@@ -533,16 +819,16 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							}
 						}
 						?>
-						<h5 id="p-variants-label"><span><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a></h5>
+						<h5 id="p-variants-label">
+							<span><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a>
+						</h5>
 
 						<div class="menu">
 							<ul>
 								<?php
 								foreach ( $this->data['variant_urls'] as $link ) {
 									?>
-									<li<?php
-									echo $link['attributes']
-									?>><a href="<?php
+									<li<?php echo $link['attributes'] ?>><a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" lang="<?php
 										echo htmlspecialchars( $link['lang'] )
@@ -569,15 +855,11 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 					}
 					?>" aria-labelledby="p-views-label">
 						<h5 id="p-views-label"><?php $this->msg( 'views' ) ?></h5>
-						<ul<?php
-						$this->html( 'userlangattributes' )
-						?>>
+						<ul<?php $this->html( 'userlangattributes' ) ?>>
 							<?php
 							foreach ( $this->data['view_urls'] as $link ) {
 								?>
-								<li<?php
-								echo $link['attributes']
-								?>><span><a href="<?php
+								<li<?php echo $link['attributes'] ?>><span><a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
 										echo $link['key'];
@@ -615,9 +897,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 								<?php
 								foreach ( $this->data['action_urls'] as $link ) {
 									?>
-									<li<?php
-									echo $link['attributes']
-									?>>
+									<li<?php echo $link['attributes'] ?>>
 										<a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
@@ -650,95 +930,82 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 					break;
 				case 'SEARCH':
 					?>
-					<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
-					<div id="p-search" role="search">
-						<h5<?php $this->html( 'userlangattributes' ) ?>>
-							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
-						</h5>
+					<?php
+					if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+						?>
+						<div id="p-search" role="search">
+							<h5<?php $this->html( 'userlangattributes' ) ?>>
+								<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
+							</h5>
 
-						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-							<?php
-							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
-							?>
-							<div id="simpleSearch">
+							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+								<div<?php echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
 								<?php
-							} else {
-							?>
-								<div>
-									<?php
-							}
-							?>
-							<?php
-							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
-							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
-							// We construct two buttons (for 'go' and 'fulltext' search modes),
-							// but only one will be visible and actionable at a time (they are
-							// overlaid on top of each other in CSS).
-							// * Browsers will use the 'fulltext' one by default (as it's the
-							//   first in tree-order), which is desirable when they are unable
-							//   to show search suggestions (either due to being broken or
-							//   having JavaScript turned off).
-							// * The mediawiki.searchSuggest module, after doing tests for the
-							//   broken browsers, removes the 'fulltext' button and handles
-							//   'fulltext' search itself; this will reveal the 'go' button and
-							//   cause it to be used.
-							echo $this->makeSearchButton(
-								'fulltext',
-								array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
-							);
-							echo $this->makeSearchButton(
-								'go',
-								array( 'id' => 'searchButton', 'class' => 'searchButton' )
-							);
-							?>
+								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+								// We construct two buttons (for 'go' and 'fulltext' search modes),
+								// but only one will be visible and actionable at a time (they are
+								// overlaid on top of each other in CSS).
+								// * Browsers will use the 'fulltext' one by default (as it's the
+								//   first in tree-order), which is desirable when they are unable
+								//   to show search suggestions (either due to being broken or
+								//   having JavaScript turned off).
+								// * The mediawiki.searchSuggest module, after doing tests for the
+								//   broken browsers, removes the 'fulltext' button and handles
+								//   'fulltext' search itself; this will reveal the 'go' button and
+								//   cause it to be used.
+								echo $this->makeSearchButton(
+									'fulltext',
+									array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
+								);
+								echo $this->makeSearchButton(
+									'go',
+									array( 'id' => 'searchButton', 'class' => 'searchButton' )
+								);
+								?>
 								</div>
-						</form>
-					</div>
-					<?php else: ?>
-					<div id="p-searchSearch" role="search">
-						<h5<?php $this->html( 'userlangattributes' ) ?>>
-							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
-						</h5>
+							</form>
+						</div>
+					<?php
+					} else {
+						?>
+						<div id="p-searchSearch" role="search">
+							<h5<?php $this->html( 'userlangattributes' ) ?>>
+								<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
+							</h5>
 
-						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-							<?php
-							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
-							?>
-							<div id="simpleSearchSearch">
+							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+								<div<?php
+									echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearchSearch"' : '' ?>>
 								<?php
-							} else {
-							?>
-								<div>
-									<?php
-							}
-							?>
-							<?php
-							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
-							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
-							// We construct two buttons (for 'go' and 'fulltext' search modes),
-							// but only one will be visible and actionable at a time (they are
-							// overlaid on top of each other in CSS).
-							// * Browsers will use the 'fulltext' one by default (as it's the
-							//   first in tree-order), which is desirable when they are unable
-							//   to show search suggestions (either due to being broken or
-							//   having JavaScript turned off).
-							// * The mediawiki.searchSuggest module, after doing tests for the
-							//   broken browsers, removes the 'fulltext' button and handles
-							//   'fulltext' search itself; this will reveal the 'go' button and
-							//   cause it to be used.
-							echo $this->makeSearchButton(
-								'fulltext',
-								array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
-							);
-							echo $this->makeSearchButton(
-								'go',
-								array( 'id' => 'searchButton', 'class' => 'searchButton' )
-							);
-							?>
+								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+								// We construct two buttons (for 'go' and 'fulltext' search modes),
+								// but only one will be visible and actionable at a time (they are
+								// overlaid on top of each other in CSS).
+								// * Browsers will use the 'fulltext' one by default (as it's the
+								//   first in tree-order), which is desirable when they are unable
+								//   to show search suggestions (either due to being broken or
+								//   having JavaScript turned off).
+								// * The mediawiki.searchSuggest module, after doing tests for the
+								//   broken browsers, removes the 'fulltext' button and handles
+								//   'fulltext' search itself; this will reveal the 'go' button and
+								//   cause it to be used.
+								echo $this->makeSearchButton(
+									'fulltext',
+									array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
+								);
+								echo $this->makeSearchButton(
+									'go',
+									array( 'id' => 'searchButton', 'class' => 'searchButton' )
+								);
+								?>
 								</div>
-						</form>
-					</div>
-					<?php endif; ?> 
+							</form>
+						</div>
+					<?php
+					}
+					?>
 					<?php
 
 					break;

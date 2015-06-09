@@ -64,12 +64,6 @@ img.userIcon20 {
 	background-repeat: no-repeat;
 }
 
-img.userIcon40 {
-	margin:0; /* If you want no margin */
-	padding:0; /*if your want to padding */
-	background-repeat: no-repeat;
-}
-
 #userIcon20 {
 	position:relative;
 	top:2px;
@@ -77,13 +71,7 @@ img.userIcon40 {
 }
 
 #userIcon40 {
-	position:relative;
-	top:-0.4px;
-	display:none;
-	.background-image-svg('images/user-icon-40.svg', 'images/user-icon-40.png');
-	width:34px; /*width of your image*/
-	height:38px; /*height of your image*/
-	background-repeat: no-repeat;
+	background-image: none;
 }
 
 #echoNotifications {
@@ -95,4 +83,8 @@ img.userIcon40 {
 
 #echoNotifications ul {
 	list-style: none;
+}
+
+.username-space {
+	margin-right: 0.4em;
 }
