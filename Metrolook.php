@@ -26,7 +26,7 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.3.12',
+	'version' => '0.3.13',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -42,7 +42,7 @@ $GLOBALS['wgHooks']['GetPreferences'][] = 'MetrolookHooks::getPreferences';
 $GLOBALS['wgHooks']['ResourceLoaderGetConfigVars'][] = 'MetrolookHooks::resourceLoaderGetConfigVars';
 $GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'MetrolookHooks::makeGlobalVariablesScript';
 
-$GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
+$GLOBALS['wgExtensionMessagesFiles']['Metrolook'] = __DIR__.'/Metrolook.i18n.php';
 
 // Register skin
 $GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
@@ -50,7 +50,7 @@ $GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 // Configuration options
 
 // Each module may be configured individually to be globally on/off or user preference based
-$GLOBALS['wgMetrolookFeature'] = array(
+$GLOBALS['wgMetrolookFeatures'] = array(
 	'collapsiblenav' => array( 'global' => false, 'user' => true ),
 );
 
@@ -88,6 +88,10 @@ $GLOBALS['wgVectorUseIconWatch'] = true;
 $GLOBALS['wgMetrolookLogo'] = true;
 
 $GLOBALS['wgMetrolookSiteName'] = true;
+
+$GLOBALS['wgMetrolookSiteNameText'] = true;
+
+$GLOBALS['wgMetrolookSiteText'] = '';
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
 $GLOBALS['wgMetrolookSearchBar'] = true;
@@ -153,7 +157,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.collapsibleNav'] = array(
 		'Metrolook/js/collapsibleNav.js',
 	),
 	'styles' => array(
-		'Metrolook/collapsibleNav.css',
+		'Metrolook/collapsibleNav.less',
 	),
 	'position' => 'bottom',
 	'dependencies' => array(
