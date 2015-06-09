@@ -127,7 +127,7 @@ img.uploadbutton {
 img.line {
 	position: inherit;
 	.background-image-svg('images/line.svg', 'images/line.png'); 
-	width: 28px; /* width of your image */
+	width: 2px; /* width of your image */
 	height: 35px; /* height of your image */
 	margin: 0; /* If you want no margin */
 	padding: 0; /* if your want to padding */
@@ -137,56 +137,28 @@ img.line {
 img.downarrow {
 	position: inherit;
 	.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
-	margin: -26px; /* If you want no margin */
+	width: 28px; /* width of your image */
+	height: 40px; /* height of your image */
+	margin: 0; /* If you want no margin */
 	padding: 0; /* if your want to padding */
 	background-repeat: no-repeat;
-	background-position: -0px 20px;
 }
 
 img.downarrow:hover {
 	position: inherit;
 	background: #9F6F40;
 	.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
-	margin: -26px; /* If you want no margin */
+	width: 28px; /* width of your image */
+	height: 40px; /* height of your image */
+	margin: 0; /* If you want no margin */
 	padding: 0; /* if your want to padding */
 	background-repeat: no-repeat;
-	background-position: -0px 20px;
 }
 
 #hamburgerIcon {
 	position: fixed;
 	top: 40px;
 	z-index: 0;
-}
-
-img.userIcon20 {
-	.background-image-svg('images/user-icon-20.svg', 'images/user-icon-20.png');
-	width: 20px; /* width of your image */
-	height: 37px; /* height of your image */
-	margin: 0; /* If you want no margin */
-	padding: 0; /* if your want to padding */
-	background-repeat: no-repeat;
-}
-
-img.userIcon40 {
-	margin:0; /* If you want no margin */
-	padding:0; /*if your want to padding */
-	background-repeat: no-repeat;
-}
-
-#userIcon20 {
-	position: relative;
-	top: 2px;
-	background-repeat: no-repeat;
-}
-
-#userIcon40 {
-	position: relative;
-	display: none;
-	.background-image-svg('images/user-icon-40.svg', 'images/user-icon-40.png');
-	width: 34px; /* width of your image */
-	height: 38px; /* height of your image */
-	background-repeat: no-repeat;
 }
 
 /* Hide, but keep accessible for screen-readers */
@@ -219,7 +191,7 @@ img.userIcon40 {
 
 div#mw-head {
 	position: absolute;
-	top: -5px;
+	top: 0;
 	min-width: 100%;
 
 	h5 {
@@ -261,6 +233,7 @@ div.emptyPortlet {
 	font-size: 1em;
 	white-space: nowrap;
 }
+
 #username-top {
 	color: #fff;
 	height: 40px;
@@ -279,11 +252,46 @@ div.emptyPortlet {
 	padding-left: 10px;
 	padding-right: 10px;
 	position: relative;
-	top: 5px;
+	top: 0px;
 	right: 10px;
 	width: auto;
 	text-align: right;
 }
+
+img.userIcon20 {
+	.background-image-svg('images/user-icon-20.svg', 'images/user-icon-20.png');
+	width:20px; /*width of your image*/
+	height:37px; /*height of your image*/
+	margin:0; /* If you want no margin */
+	padding:0; /*if your want to padding */
+	background-repeat: no-repeat;
+}
+
+#userIcon20 {
+	position:relative;
+	top:2px;
+	background-repeat: no-repeat;
+}
+
+#userIcon40 {
+	background-image: none;
+}
+
+#echoNotifications {
+	float: right;
+	top: 0.3em;
+	position: relative;
+	margin-right: 1em;
+}
+
+#echoNotifications ul {
+	list-style: none;
+}
+
+.username-space {
+	margin-right: 0.4em;
+}
+
 /* Navigation Containers */
 #left-navigation {
 	float: initial;
@@ -544,6 +552,7 @@ div.vectorMenu ul {
 	margin: 0;
 	margin-left: -6px;
 	text-align: left;
+	z-index: 1;
 }
 
 /* Fixes old versions of FireFox */
@@ -901,7 +910,7 @@ div#mw-panel-custom {
 	overflow-y: auto;
 	overflow-x: hidden;
 	-webkit-overflow-scrolling: touch;
-	padding-right: 1em;
+	padding-right: 0.7em;
 	padding-top: 1em;
 	width: 11em;
 	left: 0;
@@ -1014,13 +1023,32 @@ body.ltr {
 		}
 	}
 }
+
 /* Logo */
 #p-logo {
 	left: 0;
 	width: 10em;
 	height: 160px;
+	margin-bottom: 1em;
 }
 #p-logo a {
+	display: block;
+	width: 10em;
+	height: 160px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-decoration: none;
+}
+
+/* Logo */
+#p-logo-custom {
+	left: 0;
+	width: 10em;
+	height: 160px;
+	margin-bottom: 1em;
+	margin-left: 0.5em;
+}
+#p-logo-custom a {
 	display: block;
 	width: 10em;
 	height: 160px;

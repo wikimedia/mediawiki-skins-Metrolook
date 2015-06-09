@@ -1,6 +1,38 @@
 Changelog
 =========
 
+0.3.13
+===
+
+### New features
+
+Refractured code in metrolook.js and MetrolookTemplate.php
+
+* New metrolook.search.js that holds search js that was in metrolook.js.
+
+New options
+
+$wgMetrolookSiteNameText
+
+and
+
+$wgMetrolookSiteText
+
+To use it please do the following
+
+$wgMetrolookSiteNameText = false;
+
+$wgMetrolookSiteText = 'Enter text here';
+
+
+### Bug Fixes
+
+* Fixed js issue with searchbar on iPad.
+
+* Some bug fixes.
+
+
+
 ### 0.3.12
 
 You can now disable CollapsibleNav new configuations and how to enable and disable it.
