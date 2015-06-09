@@ -26,7 +26,7 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '1.4.2',
+	'version' => '1.5.0',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -42,8 +42,8 @@ $GLOBALS['wgHooks']['GetPreferences'][] = 'MetrolookHooks::getPreferences';
 $GLOBALS['wgHooks']['ResourceLoaderGetConfigVars'][] = 'MetrolookHooks::resourceLoaderGetConfigVars';
 $GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'MetrolookHooks::makeGlobalVariablesScript';
 
-$GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
-$GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
+$GLOBALS['wgMessagesDirs']['Metrolook'] =  __DIR__ . '/i18n';
+$GLOBALS['wgExtensionMessagesFiles']['Metrolook'] = __DIR__.'/Metrolook.i18n.php';
 
 // Register skin
 $GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
@@ -51,7 +51,7 @@ $GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
 // Configuration options
 
 // Each module may be configured individually to be globally on/off or user preference based
-$GLOBALS['wgMetrolookFeature'] = array(
+$GLOBALS['wgMetrolookFeatures'] = array(
 	'collapsiblenav' => array( 'global' => false, 'user' => true ),
 );
 
@@ -89,6 +89,10 @@ $GLOBALS['wgVectorUseIconWatch'] = true;
 $GLOBALS['wgMetrolookLogo'] = true;
 
 $GLOBALS['wgMetrolookSiteName'] = true;
+
+$GLOBALS['wgMetrolookSiteNameText'] = true;
+
+$GLOBALS['wgMetrolookSiteText'] = '';
 
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
 $GLOBALS['wgMetrolookSearchBar'] = true;
@@ -128,6 +132,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'Metrolook/js/collapsibleTabs.js',
 		'Metrolook/js/metrolook.js',
+		'Metrolook/js/metrolook.search.js',
 		'Metrolook/js/vector.js',
 		'Metrolook/js/mediawiki.searchSuggest.custom.js',
 		'Metrolook/js/overthrow.js',
@@ -135,6 +140,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'position' => 'top',
 	'dependencies' => array(
 		'jquery.throttle-debounce',
+		'jquery.tabIndex',
 		'mediawiki.searchSuggest',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
