@@ -1,6 +1,34 @@
 Changelog
 =========
 
+### 3.1
+
+Refractured code in metrolook.js and MetrolookTemplate.php
+
+* New metrolook.search.js that holds search js that was in metrolook.js.
+
+New options
+
+$wgMetrolookSiteNameText
+
+and
+
+$wgMetrolookSiteText
+
+To use it please do the following
+
+$wgMetrolookSiteNameText = false;
+
+$wgMetrolookSiteText = 'Enter text here';
+
+
+Bug Fixes
+===
+
+* Fix collapsibleNav.
+
+* Some bug fixes.
+
 ### 3.0
 
 First stable release for MediaWiki 1.25
