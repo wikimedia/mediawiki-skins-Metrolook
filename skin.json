@@ -1,7 +1,7 @@
 {
 	"name": "Metrolook",
 	"namemsg": "skinname-metrolook",
-	"version": "3.0",
+	"version": "3.1.0",
 	"author": [
 		"immewnity",
 		"Paladox",
@@ -10,7 +10,6 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Skin:Metrolook",
 	"descriptionmsg": "metrolook-desc",
-	"namemsg": "skinname-metrolook",
 	"license-name": "GPL-2.0+",
 	"type": "skin",
 	"callback": "MetrolookHooks::onRegistration",
@@ -23,6 +22,20 @@
 	"MessagesDirs": {
 		"Metrolook": [
 			"i18n"
+		]
+	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"MetrolookHooks::beforePageDisplay"
+		],
+		"GetPreferences": [
+			"MetrolookHooks::getPreferences"
+		],
+		"ResourceLoaderGetConfigVars": [
+			"MetrolookHooks::resourceLoaderGetConfigVars"
+		],
+		"MakeGlobalVariablesScript": [
+			"MetrolookHooks::makeGlobalVariablesScript"
 		]
 	},
 	"AutoloadClasses": {
@@ -46,6 +59,7 @@
 			"scripts": [
 				"js/collapsibleTabs.js",
 				"js/metrolook.js",
+				"js/metrolook.search.js",
 				"js/vector.js",
 				"js/mediawiki.searchSuggest.custom.js",
 				"js/overthrow.js"
@@ -108,6 +122,8 @@
 		"VectorUseIconWatch": true,
 		"MetrolookLogo": true,
 		"MetrolookSiteName": true,
+		"MetrolookSiteNameText": true,
+		"MetrolookSiteText": "",
 		"MetrolookSearchBar": true,
 		"MetrolookDownArrow": true,
 		"MetrolookLine": true,
