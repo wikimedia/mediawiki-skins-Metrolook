@@ -26,9 +26,9 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '2.5.3',
+	'version' => '2.6.0',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
-	'author' => array( 'immewnity', 'paladox2015', 'Craig Davison', 'lagleki' ),
+	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
 );
 
@@ -42,8 +42,8 @@ $GLOBALS['wgHooks']['GetPreferences'][] = 'MetrolookHooks::getPreferences';
 $GLOBALS['wgHooks']['ResourceLoaderGetConfigVars'][] = 'MetrolookHooks::resourceLoaderGetConfigVars';
 $GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'MetrolookHooks::makeGlobalVariablesScript';
 
-$GLOBALS['wgExtensionMessagesFiles']['MetrolookTemplate'] = __DIR__.'/Metrolook.i18n.php';
-$GLOBALS['wgMessagesDirs']['MetrolookTemplate'] =  __DIR__ . '/i18n';
+$GLOBALS['wgMessagesDirs']['Metrolook'] =  __DIR__ . '/i18n';
+$GLOBALS['wgExtensionMessagesFiles']['Metrolook'] = __DIR__.'/Metrolook.i18n.php';
 
 // Register skin
 $GLOBALS['wgValidSkinNames']['metrolook'] = 'Metrolook';
@@ -54,7 +54,7 @@ $GLOBALS['wgConfigRegistry']['metrolook'] = 'GlobalVarConfig::newInstance';
 // Configuration options
 
 // Each module may be configured individually to be globally on/off or user preference based
-$GLOBALS['wgMetrolookFeature'] = array(
+$GLOBALS['wgMetrolookFeatures'] = array(
 	'collapsiblenav' => array( 'global' => false, 'user' => true ),
 );
 
@@ -93,6 +93,10 @@ $GLOBALS['wgMetrolookLogo'] = true;
 
 $GLOBALS['wgMetrolookSiteName'] = true;
 
+$GLOBALS['wgMetrolookSiteNameText'] = true;
+
+$GLOBALS['wgMetrolookSiteText'] = '';
+
 /* to enable search bar on the sidebar and disables the search bar on the top bar */
 $GLOBALS['wgMetrolookSearchBar'] = true;
 
@@ -128,6 +132,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'js/collapsibleTabs.js',
 		'js/metrolook.js',
+		'js/metrolook.search.js',
 		'js/vector.js',
 		'js/mediawiki.searchSuggest.custom.js',
 		'js/overthrow.js',

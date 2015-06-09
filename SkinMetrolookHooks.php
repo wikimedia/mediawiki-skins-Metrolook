@@ -7,9 +7,9 @@
  */
 
 class MetrolookHooks {
-	
+
 	/* Protected Static Members */
-	
+
 	protected static $features = array(
 		'collapsiblenav' => array(
 			'preferences' => array(
