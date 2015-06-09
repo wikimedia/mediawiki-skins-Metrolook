@@ -100,6 +100,10 @@ class MetrolookTemplate extends BaseTemplate {
 				$this->mPersonalToolsEcho .= $this->makeListItem( $key, $item );
 			}
 		}
+
+		$this->data['pageLanguage'] =
+			$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+
 		// Output HTML Page
 		$this->html( 'headelement' );
 		?>
@@ -122,12 +126,11 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 			if ( !empty( $this->data['title'] ) ) {
 			?>
-			<h1 id="firstHeading" class="firstHeading" lang="<?php
-			$this->data['pageLanguage'] =
-				$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
-			$this->text( 'pageLanguage' );
-			?>"><?php $this->html( 'title' ) ?></h1>
-			<?php } ?>
+			<h1 id="firstHeading" class="firstHeading" lang="<?php $this->text( 'pageLanguage' ); ?>">
+				<?php $this->html( 'title' ) ?>
+			</h1>
+			<?php
+			} ?>
 			<?php $this->html( 'prebodyhtml' ) ?>
 			<div id="bodyContent" class="mw-body-content">
 				<?php
@@ -137,9 +140,9 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				}
 				?>
-				<div id="contentSub"<?php
-				$this->html( 'userlangattributes' )
-				?>><?php $this->html( 'subtitle' ) ?></div>
+				<div id="contentSub"<?php $this->html( 'userlangattributes' ) ?>>
+					<?php $this->html( 'subtitle' ) ?>
+				</div>
 				<?php
 				if ( $this->data['undelete'] ) {
 					?>
@@ -156,15 +159,13 @@ class MetrolookTemplate extends BaseTemplate {
 				?>
 				<div id="jump-to-nav" class="mw-jump">
 					<?php $this->msg( 'jumpto' ) ?>
-					<a href="#mw-head"><?php
-						$this->msg( 'jumptonavigation' )
-						?></a><?php
-					$this->msg( 'comma-separator' )
-					?>
+					<a href="#mw-head">
+						<?php $this->msg( 'jumptonavigation' ) ?>
+					</a><?php $this->msg( 'comma-separator' ) ?>
 					<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
 				</div>
-				<?php $this->html( 'bodycontent' ) ?>
 				<?php
+				$this->html( 'bodycontent' );
 				if ( $this->data['printfooter'] ) {
 					?>
 					<div class="printfooter">
@@ -172,35 +173,21 @@ class MetrolookTemplate extends BaseTemplate {
 					</div>
 				<?php
 				}
-				?>
-				<?php
 				if ( $this->data['catlinks'] ) {
-					?>
-					<?php
 					$this->html( 'catlinks' );
-					?>
-				<?php
 				}
 				?>
 				<br clear="all" />
 					<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
-			<hr />
+				<hr />
 			<?php
 			foreach ( $this->getFooterLinks() as $category => $links ) {
 				?>
-				<ul id="footer-<?php
-				echo $category
-				?>">
+				<ul id="footer-<?php echo $category ?>">
 					<?php
 					foreach ( $links as $link ) {
 						?>
-						<li id="footer-<?php
-						echo $category
-						?>-<?php
-						echo $link
-						?>"><?php
-							$this->html( $link )
-							?></li>
+						<li id="footer-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
 					<?php
 					}
 					?>
@@ -215,16 +202,11 @@ class MetrolookTemplate extends BaseTemplate {
 					<?php
 					foreach ( $footericons as $blockName => $footerIcons ) {
 						?>
-						<li id="footer-<?php
-						echo htmlspecialchars( $blockName ); ?>ico">
+						<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
 							<?php
 							foreach ( $footerIcons as $icon ) {
-								?>
-								<?php
 								echo $this->getSkin()->makeFooterIcon( $icon );
-								?>
 
-							<?php
 							}
 							?>
 						</li>
@@ -239,11 +221,7 @@ class MetrolookTemplate extends BaseTemplate {
 		</div>
 				<?php
 				if ( $this->data['dataAfterContent'] ) {
-					?>
-					<?php
 					$this->html( 'dataAfterContent' );
-					?>
-				<?php
 				}
 				?>
 				<div class="visualClear"></div>
@@ -412,43 +390,39 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 			$msg = $name;
 		}
 		$msgObj = wfMessage( $msg );
+		$labelId = Sanitizer::escapeId( "p-$name-label" );
 		?>
 		<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
 		<div class="portal" role="navigation" id='<?php
 		echo Sanitizer::escapeId( "p-$name" )
 		?>'<?php
 		echo Linker::tooltip( 'p-' . $name )
-		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
+		?> aria-labelledby='<?php echo $labelId ?>'>
+			<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
+				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
+				?></h5>
 		<?php else: ?>
 		<div class="portal-custom" role="navigation" id='<?php
 		echo Sanitizer::escapeId( "p-$name" )
 		?>'<?php
 		echo Linker::tooltip( 'p-' . $name )
-		?> aria-labelledby='<?php echo Sanitizer::escapeId( "p-$name-label" ) ?>'>
-		<?php endif; ?>	
-			<h5<?php
-			$this->html( 'userlangattributes' )
-			?> id='<?php
-			echo Sanitizer::escapeId( "p-$name-label" )
-			?>'><?php
+		?> aria-labelledby='<?php echo $labelId ?>'>
+			<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
 				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
 				?></h5>
-
+		<?php endif; ?>
 			<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
 			<div class="body">
 			<?php else: ?>
 			<div class="body-custom">
-			<?php endif; ?>	
+			<?php endif; ?>
 				<?php
 				if ( is_array( $content ) ) {
 					?>
 					<ul>
 						<?php
 						foreach ( $content as $key => $val ) {
-							?>
-							<?php echo $this->makeListItem( $key, $val ); ?>
-
-						<?php
+							echo $this->makeListItem( $key, $val );
 						}
 						if ( $hook !== null ) {
 							Hooks::run( $hook, array( &$this, true ) );
@@ -457,8 +431,6 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 					</ul>
 				<?php
 				} else {
-					?>
-					<?php
 					echo $content; /* Allow raw HTML block to be defined by extensions */
 				}
 
@@ -500,9 +472,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							<?php
 							foreach ( $this->data['namespace_urls'] as $link ) {
 								?>
-								<li <?php
-								echo $link['attributes']
-								?>><span><a href="<?php
+								<li <?php echo $link['attributes'] ?>><span><a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
 										echo $link['key']
@@ -533,16 +503,16 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							}
 						}
 						?>
-						<h5 id="p-variants-label"><span><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a></h5>
+						<h5 id="p-variants-label">
+							<span><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a>
+						</h5>
 
 						<div class="menu">
 							<ul>
 								<?php
 								foreach ( $this->data['variant_urls'] as $link ) {
 									?>
-									<li<?php
-									echo $link['attributes']
-									?>><a href="<?php
+									<li<?php echo $link['attributes'] ?>><a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" lang="<?php
 										echo htmlspecialchars( $link['lang'] )
@@ -569,15 +539,11 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 					}
 					?>" aria-labelledby="p-views-label">
 						<h5 id="p-views-label"><?php $this->msg( 'views' ) ?></h5>
-						<ul<?php
-						$this->html( 'userlangattributes' )
-						?>>
+						<ul<?php $this->html( 'userlangattributes' ) ?>>
 							<?php
 							foreach ( $this->data['view_urls'] as $link ) {
 								?>
-								<li<?php
-								echo $link['attributes']
-								?>><span><a href="<?php
+								<li<?php echo $link['attributes'] ?>><span><a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
 										echo $link['key'];
@@ -615,9 +581,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 								<?php
 								foreach ( $this->data['action_urls'] as $link ) {
 									?>
-									<li<?php
-									echo $link['attributes']
-									?>>
+									<li<?php echo $link['attributes'] ?>>
 										<a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
@@ -657,17 +621,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 						</h5>
 
 						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-							<?php
-							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
-							?>
-							<div id="simpleSearch">
-								<?php
-							} else {
-							?>
-								<div>
-									<?php
-							}
-							?>
+							<div<?php echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
 							<?php
 							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
@@ -691,7 +645,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 								array( 'id' => 'searchButton', 'class' => 'searchButton' )
 							);
 							?>
-								</div>
+							</div>
 						</form>
 					</div>
 					<?php else: ?>
@@ -701,17 +655,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 						</h5>
 
 						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-							<?php
-							if ( $this->config->get( 'VectorUseSimpleSearch' ) ) {
-							?>
-							<div id="simpleSearchSearch">
-								<?php
-							} else {
-							?>
-								<div>
-									<?php
-							}
-							?>
+							<div<?php echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
 							<?php
 							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
@@ -735,7 +679,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 								array( 'id' => 'searchButton', 'class' => 'searchButton' )
 							);
 							?>
-								</div>
+							</div>
 						</form>
 					</div>
 					<?php endif; ?> 
