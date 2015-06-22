@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
+	"skinmetrolook-collapsiblenav-preference": "Aktivera möjligheten att kollapsa objekt i sidofältet av Metrolook-utseendet",
 	"metrolook-desc": "Metrolook-utseende för MediaWiki",
 	"metrolook-guest": "Gäst"
 }
