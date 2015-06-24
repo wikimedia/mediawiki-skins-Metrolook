@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec42329_8b5ca9f5",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2015-06-24T16:15:11Z",
+      "side": 1,
+      "message": "Needs also to be set is margin-right: 0.4em; since there doesent seem to be space between text and image now so this fixes problem.",
+      "revId": "3a970d4b30b028e907a06db30e6365f34f8e6538",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
