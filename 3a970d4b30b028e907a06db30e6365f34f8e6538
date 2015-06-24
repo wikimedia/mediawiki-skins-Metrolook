@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8ec42329_49bb26de",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2015-06-24T22:20:47Z",
+      "side": 1,
+      "message": "Ok thanks. and thanks for clearing up code. And I am currently fixing problem some I can get this patch merged. Just need to fix js search bar error for the ipad first since that is important.",
+      "parentUuid": "8ec42329_89f4aeef",
+      "revId": "3a970d4b30b028e907a06db30e6365f34f8e6538",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ec42329_f113de5a",
         "filename": "MetrolookTemplate.php",
         "patchSetId": 3
