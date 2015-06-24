@@ -37,7 +37,7 @@ class SkinMetrolook extends SkinTemplate {
 	public function __construct() {
 		$this->metrolookConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
 	}
-	
+
 	/**
 	 * Initializes output page and sets up skin-specific parameters
 	 * @param OutputPage $out Object to initialize
@@ -58,12 +58,10 @@ class SkinMetrolook extends SkinTemplate {
 		);
 
 		if ( $wgMetrolookMobile ) {
-			$viewport_meta = 'width=device-width, initial-scale=1';
-			$out->addMeta('viewport', $viewport_meta);
-			$out->addModules( array( 'skins.metrolook.js' ) );
-		} else {
-			$out->addModules( array( 'skins.metrolook.js' ) );
+			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
 		}
+
+		$out->addModules( array( 'skins.metrolook.js' ) );
 	}
 
 	/**
