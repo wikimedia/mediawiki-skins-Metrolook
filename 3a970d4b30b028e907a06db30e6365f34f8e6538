@@ -16,6 +16,23 @@
       "revId": "3a970d4b30b028e907a06db30e6365f34f8e6538",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec42329_f113de5a",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2015-06-24T18:37:59Z",
+      "side": 1,
+      "message": "this bit needs to be next to each other not on next lines since it is causing a problem with the down arrow going into logo.\n\nneeds to be like \u003c?php if ( $this-\u003econfig-\u003eget( \u0027MetrolookSiteName\u0027 ) ): ?\u003e\u003cdiv style\u003d\"padding-left:10px;\"\u003e\u003cdiv id\u003d\"siteLogoBar\" class\u003d\"lighthover\" style\u003d\"height:40px;float:left;\"\u003e\u003cdiv class\u003d\"onhoverbg\" style\u003d\"height:40px;float:left;\"\u003e\u003ch4 class\u003d\"title-name\"\u003e\u003ca href\u003d\"\u003c?php echo $this-\u003edata[\u0027nav_urls\u0027][\u0027mainpage\u0027][\u0027href\u0027]; ?\u003e\"\u003e\u003cdiv class\u003d\"title-name\" style\u003d\"font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;\"\u003e\u003c?php echo $GLOBALS[\u0027wgSitename\u0027] ?\u003e\u003c/div\u003e\u003c/a\u003e\u003c/h4\u003e\u003c/div\u003e\u003c?php else: ?\u003e\u003c?php endif; ?\u003e\u003c?php if ( $this-\u003econfig-\u003eget( \u0027MetrolookLine\u0027 ) ): ?\u003e\u003cimg class\u003d\"line\" src\u003d\"\u003c?php echo htmlspecialchars( $this-\u003egetSkin()-\u003egetSkinStylePath( \u0027images/Transparent.gif\u0027 ) ) ?\u003e\" style\u003d\"float:left;\" /\u003e\u003c?php else: ?\u003e\u003c?php endif; ?\u003e\u003c?php if ( $this-\u003econfig-\u003eget( \u0027MetrolookDownArrow\u0027 ) ): ?\u003e\u003cimg class\u003d\"downarrow\" src\u003d\"\u003c?php echo htmlspecialchars( $this-\u003egetSkin()-\u003egetSkinStylePath( \u0027images/Transparent.gif\u0027 ) ) ?\u003e\" style\u003d\"height:60px;width:27px;cursor:pointer;\" /\u003e\u003c?php else: ?\u003e\u003c?php endif; ?\u003e\u003c?php if ( $this-\u003econfig-\u003eget( \u0027MetrolookSiteName\u0027 ) ): ?\u003e\u003c/div\u003e\u003c/div\u003e\u003c?php else: ?\u003e\u003c?php endif; ?\u003e\n\nor if you have an idea on how to fix the problem with it staying on separate lines please do.",
+      "revId": "3a970d4b30b028e907a06db30e6365f34f8e6538",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
