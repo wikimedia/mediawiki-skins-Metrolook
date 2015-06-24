@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8ec42329_89f4aeef",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2015-06-24T21:43:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean by this, since the only functional change in this block of code is moving the $userNameTop initialization out of here. Reindenting HTML tags and/or adding line breaks shouldn\u0027t have any effect, and the same goes for removing empty \"else\" blocks from the PHP portions. Could you please upload some screenshots to illustrate what you mean?\n\nAdditionally, I was planning on moving all of the inline CSS from this file into a separate CSS (or LESS) file in a separate commit, because inline CSS is generally considered problematic for a variety of reasons, such as it\u0027s very hard (if not outright impossible) to override it (from a MediaWiki:*.css page, for example).",
+      "parentUuid": "8ec42329_8b5ca9f5",
+      "revId": "3a970d4b30b028e907a06db30e6365f34f8e6538",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ec42329_f113de5a",
         "filename": "MetrolookTemplate.php",
         "patchSetId": 3
