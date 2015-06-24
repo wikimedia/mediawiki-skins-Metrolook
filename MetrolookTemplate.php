@@ -37,7 +37,6 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
@@ -103,6 +102,15 @@ class MetrolookTemplate extends BaseTemplate {
 
 		$this->data['pageLanguage'] =
 			$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+
+		// User name (or "Guest") to be displayed at the top right (on LTR
+		// interfaces) portion of the skin
+		$user = $this->getSkin()->getUser();
+		if ( !$user->isLoggedIn() ) {
+			$userNameTop = $this->getSkin()->msg( 'metrolook-guest' )->text();
+		} else {
+			$userNameTop = htmlspecialchars( $user->getName(), ENT_QUOTES );
+		}
 
 		// Output HTML Page
 		$this->html( 'headelement' );
@@ -206,7 +214,6 @@ class MetrolookTemplate extends BaseTemplate {
 							<?php
 							foreach ( $footerIcons as $icon ) {
 								echo $this->getSkin()->makeFooterIcon( $icon );
-
 							}
 							?>
 						</li>
@@ -234,69 +241,84 @@ class MetrolookTemplate extends BaseTemplate {
 		<div id="mw-head">
 			<div class="vectorMenu" id="usermenu">
 				<div class="no-js">
-<a href="#" style="text-decoration:none;"><span id="username-top"><span id="username-text"><?php
-if ($_SERVER["REMOTE_ADDR"] == htmlspecialchars($this->getSkin()->getUser()->getName())) {
-echo wfMessage( 'metrolook-guest' )->text();
-} else {
-echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
-}
- ?></span><span style="word-spacing:4px;"> </span><span id="userIcon20"><img class="userIcon20" style="position:relative;top:0.3em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /></span>
-<span style="word-spacing:4px;"> </span><span id="userIcon40"><img class="userIcon40" style="position:relative;top:0.4em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
-</span></span></a>
-<div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
-<?php $this->renderNavigation( 'PERSONAL' ); ?>
-</div>
-</div>
-</div>
-<div id="echoNotifications">
-	<ul>
-	<?php
-		echo $this->mPersonalToolsEcho;
-	?>
-	</ul>
-</div>
+					<a href="#" style="text-decoration:none;">
+						<span id="username-top">
+							<span id="username-text"><?php $userNameTop ?></span>
+							<span style="word-spacing:4px;"> </span>
+							<span id="userIcon20">
+								<img class="userIcon20" style="position:relative;top:0.3em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+							</span>
+							<span style="word-spacing:4px;"> </span>
+							<span id="userIcon40">
+								<img class="userIcon40" style="position:relative;top:0.4em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+							</span>
+						</span>
+					</a>
+					<div class="menu" style="position:absolute;top:40px;right:0px;margin:0;width:200px;">
+						<?php $this->renderNavigation( 'PERSONAL' ); ?>
+					</div>
+				</div>
+			</div>
+			<div id="echoNotifications">
+				<ul>
+					<?php echo $this->mPersonalToolsEcho; ?>
+				</ul>
+			</div>
 
-<div id="hamburgerIcon"><img class="hamburger" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" height="40px" width="40px"></img></div>
-<?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?><div style="padding-left:10px;"><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookLine' ) ): ?><img class="line" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="float:left;" /><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?><img class="downarrow" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="height:60px;width:27px;cursor:pointer;" /><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?></div></div><?php else: ?><?php endif; ?>
+			<div id="hamburgerIcon">
+				<img class="hamburger" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" height="40px" width="40px" />
+			</div>
 
-<?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?>
-	<div id="top-tile-bar" class="fixed-position">
+			<?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?><div style="padding-left:10px;"><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php endif; ?>
+			<?php if ( $this->config->get( 'MetrolookLine' ) ): ?><img class="line" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="float:left;" /><?php endif; ?>
+			<?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?><img class="downarrow" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="height:60px;width:27px;cursor:pointer;" /><?php endif; ?>
+			<?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?></div></div><?php endif; ?>
 
-<div style="vertical-align:top;align:left;">
-<div class="topleft">
-<div style="align:left;margin-left:auto;margin-right:auto;display:none;" class="tilebar" id="bartile"><div id="tilegrouptable"><div id="tilegroup">
-<?php if ( $this->config->get( 'MetrolookBartile' ) ): ?>
+			<?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?>
+			<div id="top-tile-bar" class="fixed-position">
+				<div style="vertical-align:top;align:left;">
+					<div class="topleft">
+						<div style="align:left;margin-left:auto;margin-right:auto;display:none;" class="tilebar" id="bartile">
+							<div id="tilegrouptable">
+								<div id="tilegroup">
+								<?php if ( $this->config->get( 'MetrolookBartile' ) ): ?>
+									<?php if ( $this->config->get( 'MetrolookTile1' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/wiki/"><img src="http://images.pidgi.net/pidgiwikitiletop.png" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile2' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/press/"><img src="http://images.pidgi.net/pidgipresstiletop.png" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile3' ) ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="http://www.pidgi.net/jcc/"><img src="http://images.pidgi.net/jcctiletop.png" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile4' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.petalburgwoods.com/"><img src="http://images.pidgi.net/pwntiletop.png" /></a></div></div><?php endif; ?>
+								<?php else: ?>
+									<?php if ( $this->config->get( 'MetrolookTile5' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL1'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage1'] ?>" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile6' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL2'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage2'] ?>" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile7' ) ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL3'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage3'] ?>" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile8' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL4'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile9' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL5'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage5'] ?>" /></a></div></div><?php endif; ?>
+									<?php if ( $this->config->get( 'MetrolookTile10' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL6'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage6'] ?>" /></a></div></div><?php endif; ?>
+								<?php endif; ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
 
-<?php if ( $this->config->get( 'MetrolookTile1' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/wiki/"><img src="http://images.pidgi.net/pidgiwikitiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile2' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.pidgi.net/press/"><img src="http://images.pidgi.net/pidgipresstiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile3' ) ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="http://www.pidgi.net/jcc/"><img src="http://images.pidgi.net/jcctiletop.png" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile4' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="http://www.petalburgwoods.com/"><img src="http://images.pidgi.net/pwntiletop.png" /></a></div></div><?php else: ?><?php endif; ?>
-
-<?php else: ?>
-
-<?php if ( $this->config->get( 'MetrolookTile5' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL1'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage1'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile6' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL2'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage2'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile7' ) ): ?><div style="float:left;padding:5px;" id="jcctile"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL3'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage3'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile8' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL4'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile9' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL5'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage5'] ?>" /></a></div></div><?php else: ?><?php endif; ?><?php if ( $this->config->get( 'MetrolookTile10' ) ): ?><div style="float:left;padding:5px;"><div class="tile"><a href="<?php echo $GLOBALS['wgMetrolookURL6'] ?>"><img src="<?php echo $GLOBALS['wgMetrolookImage6'] ?>" /></a></div></div><?php else: ?><?php endif; ?>
-
-<?php endif; ?>
-
-</div></div></div>
-</div>
-
-</div></div>
-<?php else: ?>
-<?php endif; ?>
 			<div id="left-navigation">
-				<?php if ( $this->config->get( 'MetrolookUploadButton' ) ): ?><a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="uploadbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php else: ?><?php endif; ?><?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+				<?php if ( $this->config->get( 'MetrolookUploadButton' ) ): ?><a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>"><div class="onhoverbg" style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;"><img class="uploadbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" /> <span style="color:#fff;position:relative;top:3px; "><?php $this->msg('uploadbtn') ?></span></div></a><?php endif; ?>
+				<?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
 			</div>
 
 				<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
 				<img class="searchbar" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
-				<?php else: ?>
 				<?php endif; ?>
 				<img class="editbutton" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 
 
 			<div id="right-navigation">
-				<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
-				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
-				<?php else: ?>
-				<?php endif; ?>
+				<?php
+				if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+					$this->renderNavigation( array( 'SEARCH' ) );
+				}
+				?>
 			</div>
 		</div>
 
@@ -308,7 +330,6 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 					?>" <?php
 					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 					?>></a></div>
-				<?php else: ?>
 				<?php endif; ?>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 			</div>
@@ -320,7 +341,6 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 					?>" <?php
 					echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 					?>></a></div>
-				<?php else: ?>
 				<?php endif; ?>
 				<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
 				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
@@ -385,7 +405,6 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	 * @param null|string|array $hook
 	 */
 	protected function renderPortal( $name, $content, $msg = null, $hook = null ) {
-		
 		if ( $msg === null ) {
 			$msg = $name;
 		}
@@ -448,7 +467,6 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 	 * @param array $elements
 	 */
 	protected function renderNavigation( $elements ) {
-
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
@@ -682,7 +700,7 @@ echo htmlspecialchars( $this->getSkin()->getUser()->getName() );
 							</div>
 						</form>
 					</div>
-					<?php endif; ?> 
+					<?php endif; ?>
 					<?php
 
 					break;
