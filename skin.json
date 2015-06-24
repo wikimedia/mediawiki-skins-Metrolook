@@ -59,6 +59,7 @@
 			"scripts": [
 				"js/collapsibleTabs.js",
 				"js/metrolook.js",
+				"js/metrolook.search.js",
 				"js/vector.js",
 				"js/mediawiki.searchSuggest.custom.js",
 				"js/overthrow.js"
