@@ -1,6 +1,23 @@
 Changelog
 =========
 
+### 4.0 alpha 4
+
+New features
+===
+
+Refractured code in metrolook.js and MetrolookTemplate.php
+
+* New metrolook.search.js that holds search js that was in metrolook.js.
+
+Bug Fixes
+===
+
+* Fixed js issue with searchbar on iPad.
+
+* Some bug fixes.
+
+
 ### 4.0 alpha 3
 
 You can now disable CollapsibleNav new configuations and how to enable and disable it.
