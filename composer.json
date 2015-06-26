@@ -28,5 +28,10 @@
 		"forum" : "https://www.mediawiki.org/wiki/Skin_talk:Metrolook",
 		"source": "https://git.wikimedia.org/summary/mediawiki%2Fskins%2FMetrolook",
 		"irc"   : "irc://irc.freenode.org/mediawiki"
+	},
+	"extra"      : {
+		"branch-alias": {
+			"dev-master": "1.x-dev"
+		}
 	}
 }
