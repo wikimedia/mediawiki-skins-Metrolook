@@ -173,9 +173,13 @@ class MetrolookTemplate extends BaseTemplate {
 					?></a><?php $this->msg( 'comma-separator' ) ?>
 					<?php if ( $this->config->get( 'MetrolookSearchBar' ) ): ?>
 					<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
-					<?php else: ?>
+					<?php
+					else:
+					?>
 					<a href="#p-searchSearch"><?php $this->msg( 'jumptosearch' ) ?></a>
-					<?php endif; ?>
+					<?php
+					endif;
+					?>
 				</div>
 				<?php
 				$this->html( 'bodycontent' );
@@ -251,11 +255,23 @@ class MetrolookTemplate extends BaseTemplate {
 							<span id="username-text"><?php echo $userNameTop ?></span>
 							<span class="username-space" style="word-spacing: 4px;"> </span>
 							<span id="userIcon20">
-								<img class="userIcon20" style="position:relative;top:0.3em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+								<img
+								class="userIcon20"
+								style="position:relative;top:0.3em;"
+								src="<?php
+								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
+								?>"
+								/>
 							</span>
 							<span style="word-spacing:4px;"> </span>
 							<span id="userIcon40">
-								<img class="userIcon40" style="position:relative;top:0.4em;" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+								<img
+								class="userIcon40"
+								style="position:relative;top:0.4em;"
+								src="<?php
+								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
+								?>"
+								/>
 							</span>
 						</span>
 					</a>
