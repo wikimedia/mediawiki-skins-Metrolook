@@ -45,7 +45,7 @@ class SkinMetrolook extends SkinTemplate {
 	public function initPage( OutputPage $out ) {
 
 		parent::initPage( $out );
-		
+
 		if ( $GLOBALS['wgMetrolookMobile'] ) {
 			$out->addMeta( 'viewport', 'width=device-width;, initial-scale=1;' );
 		}
