@@ -122,6 +122,8 @@
 		"VectorUseIconWatch": true,
 		"MetrolookLogo": true,
 		"MetrolookSiteName": true,
+		"MetrolookSiteNameText": true,
+		"MetrolookSiteText": "",
 		"MetrolookSearchBar": true,
 		"MetrolookDownArrow": true,
 		"MetrolookLine": true,
