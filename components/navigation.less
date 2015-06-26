@@ -64,6 +64,7 @@ div#mw-head {
 	width: 10em;
 	height: 160px;
 	margin-bottom: 1em;
+	margin-left: 0.5em;
 
 	a {
 		display: block;
@@ -160,13 +161,13 @@ div#mw-panel-custom {
 	overflow-y: auto;
 	overflow-x: hidden;
 	-webkit-overflow-scrolling: touch;
-	padding-right: 1em;
+	padding-right: 0.7em;
 	padding-top: 1em;
 	width: 11em;
 	left: 0;
 
 	div.portal-custom {
-		margin: 0 0.6em 0 0.7em;
+		margin: 0 0.6em 0 1.2em;
 		padding: 0.25em 0;
 		direction: ltr;
 		background-position: top left;
@@ -216,7 +217,7 @@ div#mw-panel-custom {
 	}
 
 	/* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
-	#p-logo + div.portal-custom {
+	#p-logo + #p-searchSearch + div.portal-custom {
 		background-image: none;
 		margin-top: 0;
 		h5 {

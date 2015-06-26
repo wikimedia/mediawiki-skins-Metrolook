@@ -1,15 +1,15 @@
 <?php
 /**
  * Hooks for Metrolook skin
- * 
+ *
  * @file
  * @ingroup Skins
  */
 
 class MetrolookHooks {
-	
+
 	/* Protected Static Members */
-	
+
 	protected static $features = array(
 		'collapsiblenav' => array(
 			'preferences' => array(
@@ -25,7 +25,7 @@ class MetrolookHooks {
 			'modules' => array( 'skins.metrolook.collapsibleNav' ),
 		)
 	);
-	
+
 
 	/* Static Methods */
 
@@ -37,7 +37,7 @@ class MetrolookHooks {
 
 		global $wgMetrolookFeatures, $wgDefaultUserOptions;
 
-		/* 
+		/*
 		 * Setting default option.
 		 *
 		 * Do not remove this.
@@ -75,12 +75,13 @@ class MetrolookHooks {
 	 */
 	public static function isEnabled( $name ) {
 		global $wgMetrolookFeatures, $wgUser;
-		
+
 		// Features with global set to true are always enabled
 		if ( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['global'] ) {
 			return true;
 		}
-		// Features with user preference control can have any number of preferences to be specific values to be enabled
+		// Features with user preference control can have any number of preferences
+		// to be specific values to be enabled
 		if ( $wgMetrolookFeatures[$name]['user'] ) {
 			if ( isset( self::$features[$name]['requirements'] ) ) {
 				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
@@ -92,17 +93,18 @@ class MetrolookHooks {
 			}
 			return true;
 		}
-		// Features controlled by $wgMetrolookFeatures with both global and user set to false are awlways disabled 
+		// Features controlled by $wgMetrolookFeatures with both global and user set to false
+		// are awlways disabled
 		return false;
 	}
-	
+
 	/* Static Methods */
-	
+
 	/**
 	 * BeforePageDisplay hook
-	 * 
+	 *
 	 * Adds the modules to the page
-	 * 
+	 *
 	 * @param $out OutputPage output page
 	 * @param $skin Skin current skin
 	 */
@@ -117,18 +119,18 @@ class MetrolookHooks {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * GetPreferences hook
-	 * 
+	 *
 	 * Adds Vector-releated items to the preferences
-	 * 
+	 *
 	 * @param $user User current user
 	 * @param $defaultPreferences array list of default user preference controls
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgMetrolookFeatures;
-		
+
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['preferences'] ) &&
@@ -141,15 +143,15 @@ class MetrolookHooks {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * ResourceLoaderGetConfigVars hook
-	 * 
+	 *
 	 * Adds enabled/disabled switches for Vector modules
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgMetrolookFeatures;
-		
+
 		$configurations = array();
 		foreach ( self::$features as $name => $feature ) {
 			if (
@@ -157,19 +159,14 @@ class MetrolookHooks {
 				( !isset( $wgMetrolookFeatures[$name] ) || self::isEnabled( $name ) )
 			) {
 				foreach ( $feature['configurations'] as $configuration ) {
-					global $$configuration;
-					$configurations[$configuration] = $$configuration;
+					global $$wgConfiguration;
+					$configurations[$configuration] = $$wgConfiguration;
 				}
 			}
 		}
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
 		}
-
-		global $wgMetrolookMobile;
-		$vars['wgMetrolook'] = array(
-			'mobile' => $wgMetrolookMobile,
-		);
 
 		return true;
 	}
@@ -184,7 +181,7 @@ class MetrolookHooks {
 		foreach ( self::$features as $name => $feature ) {
 			$enabledModules[$name] = self::isEnabled( $name );
 		}
-		
+
 		$vars['wgMetrolookEnabledModules'] = $enabledModules;
 		return true;
 	}
