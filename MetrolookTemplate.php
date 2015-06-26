@@ -276,7 +276,7 @@ class MetrolookTemplate extends BaseTemplate {
 
 			<?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?><div style="padding-left:10px;"><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><div class="onhoverbg" style="height:40px;float:left;"><h4 class="title-name"><a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>"><div class="title-name" style="font-size: 0.9em; padding-left:0.4em;padding-right:0.4em;color:white;max-width: auto;height:auto; max-height:700px; display: inline-block; vertical-align:middle;"><?php echo $GLOBALS['wgSitename'] ?></div></a></h4></div><?php endif; ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?></div></div><?php endif; ?>
 			<?php if ( $this->config->get( 'MetrolookLine' ) ): ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><?php endif; ?><img class="line" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="float:left;" /><?php endif; ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?></div><?php endif; ?>
-			<?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><?php endif; ?><img class="downarrow" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="height:60px;width:27px;cursor:pointer;" /><?php endif; ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?></div><?php endif; ?>
+			<?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?><div id="siteLogoBar" class="lighthover" style="height:40px;float:left;"><?php endif; ?><img class="downarrow" src="<?php echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" style="cursor:pointer;" /><?php endif; ?><?php if ( $this->config->get( 'MetrolookSiteName' ) ): ?></div><?php endif; ?>
 
 			<?php if ( $this->config->get( 'MetrolookDownArrow' ) ): ?>
 			<div id="top-tile-bar" class="fixed-position">
@@ -497,7 +497,10 @@ class MetrolookTemplate extends BaseTemplate {
 								<li <?php echo $link['attributes'] ?>><span><a href="<?php
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
-										echo $link['key']
+										echo $link['key'];
+										if ( isset ( $link['rel'] ) ) {
+											echo ' rel="' . htmlspecialchars( $link['rel'] ) . '"';
+										}
 										?>><?php
 											echo htmlspecialchars( $link['text'] )
 											?></a></span></li>
