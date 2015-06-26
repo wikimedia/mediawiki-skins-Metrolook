@@ -2,11 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"Siebrand",
-			"Esketti"
+			"Siebrand"
 		]
 	},
-	"skinmetrolook-collapsiblenav-preference": "Inschakelen instorten van de items in de zijbalk in Metrolook huid",
 	"metrolook-desc": "Metrolookuiterlijk voor MediaWiki",
 	"metrolook-guest": "Gast"
 }

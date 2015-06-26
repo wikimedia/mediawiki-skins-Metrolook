@@ -1,11 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe",
-			"Fitoschido"
+			"Macofe"
 		]
 	},
-	"skinmetrolook-collapsiblenav-preference": "Permitir plegar los elementos de la barra lateral en la apariencia Metrolook",
 	"metrolook-desc": "Apariencia Metrolook para MediaWiki",
 	"metrolook-guest": "Invitado"
 }
