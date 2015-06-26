@@ -58,6 +58,8 @@ wfLoadSkin( 'Metrolook' );
 |-------|-------|---------|----------|
 |wgMetrolookLogo| `false` | `$wgMetrolookLogo = true;`| `$wgMetrolookLogo = false;`|
 |wgMetrolookSiteName| `true` | `$wgMetrolookSiteName = true;`| `$wgMetrolookSiteName = false;`|
+|wgMetrolookSiteNameText| `true` | `$wgMetrolookSiteNameText = true;`| `$wgMetrolookSiteNameText = false;`|
+|wgMetrolookSiteText| `There is none` | `$wgMetrolookSiteNameText = false;` then do `$wgMetrolookSiteText = 'Enter text here';`| `$wgMetrolookSiteNameText = true;`|
 |wgMetrolookSearchBar| `true` | `$wgMetrolookSearchBar = true;`| `$wgMetrolookSearchBar = false;`|
 |wgMetrolookDownArrow| `true` | `$wgMetrolookDownArrow = true;`| `$wgMetrolookDownArrow = false;`|
 |wgMetrolookLine| `true` | `$wgMetrolookLine = true;`| `$wgMetrolookLine = false;`|
@@ -79,6 +81,8 @@ $logo was removed in favour of $wgMetrolookLogo and $wgMetrolookSiteName.
 Note: Tile 5 to 10 is for when you disable bartile.
 
 Note: Image setting should be set like this for example $wgMetrolookImage1 = file/to/image or can be set like http://example.com/image.png;
+
+You can shorten youre site name for the top bar with $wgMetrolookSiteText. To set it please enable $wgMetrolookSiteNameText by doing $wgMetrolookSiteNameText = false then set this $wgMetrolookSiteText = 'Enter text here';
 
 
 ## Mobile desgn
@@ -214,7 +218,7 @@ ul {
 
 ## Known Issues
 
-* Sometimes clicking of bartitle on mobile, it wont let you click off sometimes.
+* Sometimes clicking of bartitle on mobile doesent work, workaround is to refresh page.
 
 ## Comming soon
 

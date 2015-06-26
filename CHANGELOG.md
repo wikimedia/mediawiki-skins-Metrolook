@@ -10,6 +10,21 @@ Refractured code in metrolook.js and MetrolookTemplate.php
 
 * New metrolook.search.js that holds search js that was in metrolook.js.
 
+New options
+
+$wgMetrolookSiteNameText
+
+and
+
+$wgMetrolookSiteText
+
+To use it please do the following
+
+$wgMetrolookSiteNameText = false;
+
+$wgMetrolookSiteText = 'Enter text here';
+
+
 Bug Fixes
 ===
 
