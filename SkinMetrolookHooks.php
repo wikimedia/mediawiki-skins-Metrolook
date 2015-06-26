@@ -165,6 +165,12 @@ class MetrolookHooks {
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
 		}
+
+		global $wgMetrolookMobile;
+		$vars['wgMetrolook'] = array(
+			'mobile' => $wgMetrolookMobile,
+		);
+
 		return true;
 	}
 
