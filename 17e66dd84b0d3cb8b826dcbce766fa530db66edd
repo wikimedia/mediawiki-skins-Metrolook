@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec42329_4301883b",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2015-07-01T20:34:00Z",
+      "side": 1,
+      "message": "This should not be done since it makes it not look nice code code desgn wise.",
+      "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
