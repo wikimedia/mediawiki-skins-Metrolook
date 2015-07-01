@@ -88,6 +88,24 @@
       "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec42329_496769e6",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2015-07-01T23:03:51Z",
+      "side": 1,
+      "message": "How should I use if else and endif since I would like to run settings and if the user disable then it uses the else php code instead of the if.",
+      "parentUuid": "8ec42329_e9289582",
+      "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
