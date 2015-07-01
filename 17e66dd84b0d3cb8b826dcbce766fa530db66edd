@@ -34,6 +34,24 @@
       "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec42329_eeddfb47",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 2192
+      },
+      "writtenOn": "2015-07-01T21:41:38Z",
+      "side": 1,
+      "message": "That is rather ugly, but it\u0027s what Vector does too. Paladox, maybe take a look at how Vector does this? (Since alternative syntax such as if: and endif; are discouraged too.)",
+      "parentUuid": "8ec42329_e354342c",
+      "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
