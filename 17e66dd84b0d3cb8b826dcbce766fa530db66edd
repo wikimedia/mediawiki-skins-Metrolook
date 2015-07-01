@@ -52,6 +52,24 @@
       "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec42329_4eee8fec",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 2192
+      },
+      "writtenOn": "2015-07-01T21:43:53Z",
+      "side": 1,
+      "message": "Now that git.wikimedia.org is back up, here, for example: https://git.wikimedia.org/blob/mediawiki%2Fskins%2FVector/0d6637880e2e687a5b4b319824b4a31ab182aac4/VectorTemplate.php#L103",
+      "parentUuid": "8ec42329_eeddfb47",
+      "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
