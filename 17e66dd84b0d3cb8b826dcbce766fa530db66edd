@@ -16,6 +16,24 @@
       "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec42329_e354342c",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 24
+      },
+      "writtenOn": "2015-07-01T20:45:46Z",
+      "side": 1,
+      "message": "Yeah that is a corner case  that we will encounter in our PHP based skin templates.\n\nProbably worth filling a bug  at https://phabricator.wikimedia.org/tag/mediawiki-codesniffer/ to add an exception.\n\nI am wondering what happens if you use curly braces instead i.e.:\n\n \u003c?php if ( $this-\u003econfig-\u003eget( \u0027MetrolookSearchBar\u0027 ) ) { ?\u003e\n \u003c?php } else { ?\u003e\n \u003c?php } ?\u003e\n\nThat is slightly uglier though since  \u0027}\u0027  has less meaning than \u0027endif;\u0027",
+      "parentUuid": "8ec42329_4301883b",
+      "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
