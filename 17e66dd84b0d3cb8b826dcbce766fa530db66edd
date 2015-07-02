@@ -106,6 +106,24 @@
       "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec42329_8f70f1d9",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 2192
+      },
+      "writtenOn": "2015-07-02T08:26:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand. https://github.com/wikimedia/mediawiki-skins-Vector/blob/0d6637880/VectorTemplate.php#L102-108 does not explain how you could do it?",
+      "parentUuid": "8ec42329_496769e6",
+      "revId": "17e66dd84b0d3cb8b826dcbce766fa530db66edd",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
