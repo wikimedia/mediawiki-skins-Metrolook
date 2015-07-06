@@ -618,7 +618,7 @@ class MetrolookTemplate extends BaseTemplate {
 						<div id="p-logo-custom" role="banner"><a class="mw-wiki-logo" href="<?php
 							echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
 							?>" <?php
-							echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+							echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo-custom' ) )
 							?>></a></div>
 					<?php
 					}
