@@ -26,7 +26,6 @@ class MetrolookHooks {
 		)
 	);
 
-
 	/* Static Methods */
 
 	public static function onRegistration() {
@@ -37,7 +36,7 @@ class MetrolookHooks {
 
 		global $wgMetrolookFeatures, $wgDefaultUserOptions;
 
-		/*
+		/* 
 		 * Setting default option.
 		 *
 		 * Do not remove this.
@@ -62,7 +61,6 @@ class MetrolookHooks {
 		}
 
 	}
-
 
 	/**
 	 * Checks if a certain option is enabled
@@ -93,8 +91,8 @@ class MetrolookHooks {
 			}
 			return true;
 		}
-		// Features controlled by $wgMetrolookFeatures with both global and user set to false
-		// are awlways disabled
+		// Features controlled by $wgMetrolookFeatures with both global and user
+		// set to false are awlways disabled 
 		return false;
 	}
 
@@ -130,7 +128,7 @@ class MetrolookHooks {
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgMetrolookFeatures;
-
+		
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['preferences'] ) &&
@@ -167,6 +165,11 @@ class MetrolookHooks {
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
 		}
+
+		global $wgMetrolookMobile;
+		$vars['wgMetrolook'] = array(
+			'mobile' => $wgMetrolookMobile,
+		);
 
 		return true;
 	}
