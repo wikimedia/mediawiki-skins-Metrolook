@@ -1,6 +1,37 @@
 Changelog
 =========
 
+### 4.0 alpha 5
+
+New features
+===
+
+To set tiles now please do the following
+
+go to MediaWiki:metrolook-tiles
+
+
+Then add
+
+for example
+
+Doint forget to add * in front of the code. It wont work without doing * in fornt of code.
+
+* URL to the site|alternative text|image URL
+
+* http://example.com|Example name|http://example.com/example.png
+
+You can now set different tiles for different languges.
+
+(for french)
+
+For example MediaWiki:metrolook-tiles/fr
+
+
+Remove settings
+
+$wgMetrolookTile1-10
+
 ### 4.0 alpha 4
 
 New features
