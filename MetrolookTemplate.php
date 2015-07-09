@@ -33,6 +33,52 @@ class MetrolookTemplate extends BaseTemplate {
 	/** @var string $mPersonalToolsEcho Saves Echo notifications */
 	private $mPersonalToolsEcho = '';
 
+	private function getTiles( $messageName = 'metrolook-tiles' ) {
+		/**
+		 * The message's format is:
+		 * * URL to the site|alternative text|image URL
+		 *
+		 * For example:
+		 * * http://www.pidgi.net/wiki/|PidgiWiki|http://images.pidgi.net/pidgiwikitiletop.png
+		 * * http://www.pidgi.net/press/|PidgiWiki Press|http://images.pidgi.net/pidgipresstiletop.png
+		 * * http://www.pidgi.net/jcc/|The JCC|http://images.pidgi.net/jcctiletop.png
+		 * * http://www.petalburgwoods.com/|Petalburg Woods|http://images.pidgi.net/pwntiletop.png
+		 */
+		$tileMessage = $this->getSkin()->msg( $messageName );
+		$tiles = '';
+		if ( $tileMessage->isDisabled() ) {
+			return $tiles;
+		}
+
+		$lines = explode( "\n", $tileMessage->inContentLanguage()->text() );
+
+		foreach ( $lines as $line ) {
+			if ( strpos( $line, '*' ) !== 0 ) {
+				continue;
+			} else {
+				$line = explode( '|', trim( $line, '* ' ), 3 );
+				$siteURL = $line[0];
+				$altText = $line[1];
+
+				// Maybe it's the name of a MediaWiki: message? I18n is
+				// always nice, so at least try it and see what happens...
+				$linkMsgObj = $this->getSkin()->msg( $altText );
+				if ( !$linkMsgObj->isDisabled() ) {
+					$altText = $linkMsgObj->parse();
+				}
+
+				$imageURL = $line[2];
+				$tiles .= '<div class="tile-wrapper"><div class="tile">' .
+					'<a href="' . htmlspecialchars( $siteURL, ENT_QUOTES ) . '"><img src="' .
+					htmlspecialchars( $imageURL, ENT_QUOTES ) .
+					'" alt="' . htmlspecialchars( $altText, ENT_QUOTES ) . '" /></a>' .
+				'</div></div>';
+			}
+		}
+
+		return $tiles;
+	}
+
 	/**
 	 * Outputs the entire contents of the (X)HTML page
 	 */
@@ -380,141 +426,9 @@ class MetrolookTemplate extends BaseTemplate {
 									<div id="tilegroup">
 										<?php
 										if ( $this->config->get( 'MetrolookBartile' ) ) {
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile1' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="http://www.pidgi.net/wiki/">
-															<img src="http://images.pidgi.net/pidgiwikitiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile2' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="http://www.pidgi.net/press/">
-															<img src="http://images.pidgi.net/pidgipresstiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile3' ) ) {
-												?>
-												<div style="float:left;padding:5px;" id="jcctile">
-													<div class="tile">
-														<a href="http://www.pidgi.net/jcc/">
-															<img src="http://images.pidgi.net/jcctiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile4' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="http://www.petalburgwoods.com/">
-															<img src="http://images.pidgi.net/pwntiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-										<?php
+											echo $this->getTiles();
 										} else {
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile5' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL1'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage1'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile6' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL2'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage2'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile7' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL3'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage3'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile8' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL4'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile9' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL5'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage5'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile10' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL6'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage6'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-										<?php
+											echo $this->getTiles( 'metrolook-tiles-second' );
 										}
 										?>
 									</div>
