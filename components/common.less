@@ -26,18 +26,6 @@ body {
 	background-color: #f3f3f3;
 }
 
-body {
-	height: 100%;
-}
-html {
-	height: 100%;
-}
-html,
-body {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	height: 100%;
-}
 #top-tile-bar {
 	background: transparent;
 	left: 0px;
@@ -45,6 +33,12 @@ body {
 	position: fixed;
 	z-index: 100;
 }
+
+.top-tile-bar-inner-container {
+	align: left;
+	vertical-align: top;
+}
+
 .tilebar {
 	position: relative;
 	left: 0px;
@@ -58,12 +52,25 @@ body {
 	height: 200px;
 	display: block;
 	z-index: 9999999;
+	margin-left: auto;
+	margin-right: auto;
 }
 .tile:hover {
 	outline: 3px #4A4A4A solid;
 }
-.onhoverbg:hover {
-	background: #9F6F40;
+
+.onhoverbg {
+	height: 40px;
+	float: left;
+
+	&:hover {
+		background: #9F6F40;
+	}
+}
+
+#siteLogoBar {
+	float: left;
+	height: 40px;
 }
 
 .topleft {
@@ -199,7 +206,7 @@ img.editbutton {
 }
 
 img.uploadbutton {
-	position:inherit;
+	position: inherit;
 	.background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
 	width: 26px;
 	height: 35px;
@@ -208,7 +215,14 @@ img.uploadbutton {
 	background-repeat: no-repeat;
 }
 
+.uploadbutton span {
+	color: #fff;
+	position: relative;
+	top: 3px;
+}
+
 img.line {
+	float: left;
 	position: inherit;
 	.background-image-svg('images/line.svg', 'images/line.png');
 	width: 2px;
@@ -219,6 +233,7 @@ img.line {
 }
 
 img.downarrow {
+	cursor: pointer;
 	position: inherit;
 	.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
 	width: 28px;
@@ -226,23 +241,40 @@ img.downarrow {
 	margin: 0;
 	padding: 0;
 	background-repeat: no-repeat;
-}
 
-img.downarrow:hover {
-	position: inherit;
-	background: #9F6F40;
-	.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
-	width: 28px;
-	height: 40px;
-	margin: 0;
-	padding: 0;
-	background-repeat: no-repeat;
+	&:hover {
+		position: inherit;
+		background: #9F6F40;
+		.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+		width: 28px;
+		height: 40px;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+	}
 }
 
 #hamburgerIcon {
 	position: fixed;
 	top: 40px;
 	z-index: 0;
+
+	img.hamburger {
+		height: 40px;
+		width: 40px;
+	}
+}
+
+div.title-name {
+	color: white;
+	display: inline-block;
+	font-size: 17px;
+	height: auto;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	max-height: 700px;
+	max-width: auto;
+	vertical-align: middle;
 }
 
 /* Hide empty portlets */
@@ -278,7 +310,12 @@ pre,
 
 .hoverbox {
 	background: #CF8B54;
+
+	&:hover {
+		background: #9F6F40;
+	}
 }
-.hoverbox:hover {
-	background: #9F6F40;
+
+.spacer {
+	word-spacing: 4px;
 }
