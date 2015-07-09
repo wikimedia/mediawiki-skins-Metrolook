@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec42329_2d2990e2",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2015-07-09T11:52:11Z",
+      "side": 1,
+      "message": "(Per Jenkins) Unexpected space before command after \u0027|\u0027.",
+      "revId": "76ae7ca8e66765070782a7e5bf036afb8396032d",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
