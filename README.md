@@ -66,9 +66,6 @@ wfLoadSkin( 'Metrolook' );
 |wgMetrolookUploadButton| `true` | `$wgMetrolookUploadButton = true;`| `$wgMetrolookUploadButton = false;`|
 |wgMetrolookMobile| `true` | `$wgMetrolookMobile = true;`| `$wgMetrolookMobile = false;`|
 |wgMetrolookBartile| `true` | `$wgMetrolookBartile = true;`| `$wgMetrolookBartile = false;`|
-|`$wgMetrolookTileN`<br>Where `N` is between 1 to 4. | `true` | `$wgMetrolookTile1 = true;`| `$wgMetrolookTile1 = false;` |
-|`$wgMetrolookTileN`<br>Where `N` is between 5 to 10. | | `$wgMetrolookTile5 = true;`| `$wgMetrolookTile5 = false;` |
-|`$wgMetrolookURLN`, `$wgMetrolookImageN`<br>Where `N` is between 1 to 6. |  | `$wgMetrolookURL1 = link of website;`<br>`$wgMetrolookImage1 = image link;`| |
 |wgMetrolookFeatures| `$wgMetrolookFeatures'] = array( 'collapsiblenav' => array( 'global' => false, 'user' => true ), );` | default is enabled | `$wgDefaultUserOptions['skinmetrolook-collapsiblenav'] = 0;` to disable it but allow users in preference to enable it. or `$wgMetrolookFeatures = array( 'collapsiblenav' => array( 'global' => false, 'user' => false ), );` to disable everywhere|
 
 $wgBartile is now used to disable the default tiles or enable them so you can have the default tiles or set your self one.
@@ -77,12 +74,28 @@ $link and $picture were removed in favour of using $wgMetrolookBartile and $wgMe
 
 $logo was removed in favour of $wgMetrolookLogo and $wgMetrolookSiteName.
 
-
-Note: Tile 5 to 10 is for when you disable bartile.
-
-Note: Image setting should be set like this for example $wgMetrolookImage1 = file/to/image or can be set like http://example.com/image.png;
-
 You can shorten youre site name for the top bar with $wgMetrolookSiteText. To set it please enable $wgMetrolookSiteNameText by doing $wgMetrolookSiteNameText = false then set this $wgMetrolookSiteText = 'Enter text here';
+
+To set tiles now please do the following
+
+go to MediaWiki:metrolook-tiles
+
+
+Then add
+
+for example
+
+Doint forget to add * in front of the code. It wont work without doing * in fornt of code.
+
+* URL to the site|alternative text|image URL
+
+* http://example.com|Example name|http://example.com/example.png
+
+You can now set different tiles for different languges.
+
+(for french)
+
+For example MediaWiki:metrolook-tiles/fr 
 
 
 ## Mobile desgn
