@@ -26,21 +26,18 @@ body {
 	background-color: #f3f3f3;
 }
 
-#top-tile-bar {
-	background: transparent;
-	left: 0px;
-	height: 200px;
-	position: fixed;
-	z-index: 100;
-}
-
 .top-tile-bar-inner-container {
 	align: left;
 	vertical-align: top;
 }
 
+.tile-wrapper {
+	float: left;
+	padding: 5px;
+}
+
 .tilebar {
-	position: relative;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	right: 0px;
@@ -48,13 +45,14 @@ body {
 	align: right;
 	color: #fff;
 	background: #1D1D1D;
-	width: 21474836.47em;
 	height: 200px;
 	display: block;
 	z-index: 9999999;
 	margin-left: auto;
 	margin-right: auto;
+	display: none;
 }
+
 .tile:hover {
 	outline: 3px #4A4A4A solid;
 }
@@ -215,10 +213,15 @@ img.uploadbutton {
 	background-repeat: no-repeat;
 }
 
-.uploadbutton span {
+span.uploadbutton {
 	color: #fff;
 	position: relative;
 	top: 3px;
+}
+
+#uploadbutton {
+	padding-left:0.8em;
+	padding-right:0.8em;
 }
 
 img.line {
