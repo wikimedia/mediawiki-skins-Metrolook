@@ -242,7 +242,7 @@ class MetrolookTemplate extends BaseTemplate {
 					$this->html( 'catlinks' );
 				}
 				?>
-				<br clear="all" />
+				<div class="visualClear"></div>
 					<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
 				<hr />
 			<?php
