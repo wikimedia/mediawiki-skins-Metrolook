@@ -446,9 +446,19 @@ class MetrolookTemplate extends BaseTemplate {
 
 			<div id="left-navigation">
 				<?php
-				if ( $this->config->get( 'MetrolookUploadButton' ) ) {
+				if ( $this->config->get( 'MetrolookUploadButton' ) && $user->isAllowed( 'upload' ) ) {
+					if (
+						isset( $this->data['nav_urls']['upload']['href'] ) &&
+						$this->data['nav_urls']['upload']['href']
+					)
+					{
+						$uploadURL = $this->data['nav_urls']['upload']['href'];
+					} else {
+						$upURL = SpecialPage::getTitleFor( 'Upload' )->getFullURL();
+						$uploadURL = htmlspecialchars( $upURL, ENT_QUOTES );
+					}
 					?>
-					<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>">
+					<a href="<?php echo $uploadURL; ?>">
 						<div class="onhoverbg" id="uploadbutton">
 							<img
 							class="uploadbutton"
