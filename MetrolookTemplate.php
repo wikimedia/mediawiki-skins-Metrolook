@@ -83,11 +83,12 @@ class MetrolookTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
+		$skin = $this->getSkin();
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
 		if ( $this->config->get( 'VectorUseIconWatch' ) ) {
-			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() )
+			$mode = $skin->getUser()->isWatched( $skin->getRelevantTitle() )
 				? 'unwatch'
 				: 'watch';
 
@@ -147,13 +148,13 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 
 		$this->data['pageLanguage'] =
-			$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
+			$skin->getTitle()->getPageViewLanguage()->getHtmlCode();
 
 		// User name (or "Guest") to be displayed at the top right (on LTR
 		// interfaces) portion of the skin
-		$user = $this->getSkin()->getUser();
+		$user = $skin->getUser();
 		if ( !$user->isLoggedIn() ) {
-			$userNameTop = $this->getSkin()->msg( 'metrolook-guest' )->text();
+			$userNameTop = $skin->msg( 'metrolook-guest' )->text();
 		} else {
 			$userNameTop = htmlspecialchars( $user->getName(), ENT_QUOTES );
 		}
@@ -270,7 +271,7 @@ class MetrolookTemplate extends BaseTemplate {
 						<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
 							<?php
 							foreach ( $footerIcons as $icon ) {
-								echo $this->getSkin()->makeFooterIcon( $icon );
+								echo $skin->makeFooterIcon( $icon );
 							}
 							?>
 						</li>
@@ -307,7 +308,7 @@ class MetrolookTemplate extends BaseTemplate {
 								class="userIcon20"
 								alt=""
 								src="<?php
-								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
+								echo htmlspecialchars( $skin->getSkinStylePath( 'images/Transparent.gif' ) )
 								?>"
 								/>
 							</span>
@@ -317,7 +318,7 @@ class MetrolookTemplate extends BaseTemplate {
 								class="userIcon40"
 								alt=""
 								src="<?php
-								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
+								echo htmlspecialchars( $skin->getSkinStylePath( 'images/Transparent.gif' ) )
 								?>"
 								/>
 							</span>
@@ -339,7 +340,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="hamburger"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+					$skin->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 			</div>
 
 			<?php
@@ -381,7 +382,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="line"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
+					$skin->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
 				/>
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ) {
@@ -407,7 +408,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="downarrow"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
+					$skin->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
 				/>
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ) {
@@ -464,7 +465,7 @@ class MetrolookTemplate extends BaseTemplate {
 							class="uploadbutton"
 							alt=""
 							src="<?php echo htmlspecialchars(
-								$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+								$skin->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 								<span class="uploadbutton">
 									<?php $this->msg( 'uploadbtn' ) ?>
 								</span>
@@ -483,7 +484,7 @@ class MetrolookTemplate extends BaseTemplate {
 					class="searchbar"
 					alt=""
 					src="<?php echo htmlspecialchars(
-						$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+						$skin->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 				<?php
 				}
 				?>
@@ -491,7 +492,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="editbutton"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+					$skin->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 
 
 			<div id="right-navigation">
