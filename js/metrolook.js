@@ -83,4 +83,15 @@ $( function() {
 		}
 		e.stopPropagation();
 	} );
+
+	// Listen to clicks (taps on mobile) to the black bar and if it was
+	// clicked/tapped (instead of an individual tile), dismiss the menu.
+	// This improves usability especially on lower-end mobile devices with
+	// smaller screens.
+	// Fixes https://phabricator.wikimedia.org/T105785
+	$( '#tilegroup' ).not( '.tile-wrapper' ).on( 'click', function() {
+		if ( $( '#bartile' ).is( ':visible' ) ) {
+			toggleDiv( 'bartile' );
+		}
+	} );
 } );
