@@ -164,7 +164,7 @@ class MetrolookTemplate extends BaseTemplate {
 
 		<div id="mw-page-base" class="noprint"></div>
 		<div id="mw-head-base" class="noprint"></div>
-		<div id="content" class="mw-body" class="overthrow" role="main">
+		<div id="content" class="mw-body overthrow" role="main">
 			<a id="top"></a>
 
 			<?php
@@ -305,6 +305,7 @@ class MetrolookTemplate extends BaseTemplate {
 							<span id="userIcon20">
 								<img
 								class="userIcon20"
+								alt=""
 								src="<?php
 								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
 								?>"
@@ -314,6 +315,7 @@ class MetrolookTemplate extends BaseTemplate {
 							<span id="userIcon40">
 								<img
 								class="userIcon40"
+								alt=""
 								src="<?php
 								echo htmlspecialchars( $this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) )
 								?>"
@@ -335,6 +337,7 @@ class MetrolookTemplate extends BaseTemplate {
 			<div id="hamburgerIcon">
 				<img
 				class="hamburger"
+				alt=""
 				src="<?php echo htmlspecialchars(
 					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 			</div>
@@ -343,11 +346,11 @@ class MetrolookTemplate extends BaseTemplate {
 			if ( $this->config->get( 'MetrolookSiteName' ) ) {
 				?>
 				<div style="padding-left:10px;">
-					<div id="siteLogoBar" class="lighthover">
+					<div class="lighthover siteLogoBar">
 						<div class="onhoverbg">
 							<h4 class="title-name">
 								<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
-									<div class="title-name">
+									<span class="title-name">
 										<?php
 										if ( $this->config->get( 'MetrolookSiteNameText' ) ) {
 											echo $GLOBALS['wgSitename'];
@@ -355,7 +358,7 @@ class MetrolookTemplate extends BaseTemplate {
 											echo $GLOBALS['wgMetrolookSiteText'];
 										}
 										?>
-									</div>
+									</span>
 								</a>
 							</h4>
 						</div>
@@ -370,12 +373,13 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ) {
 					?>
-					<div id="siteLogoBar" class="lighthover">
+					<div class="lighthover siteLogoBar">
 				<?php
 				}
 				?>
 				<img
 				class="line"
+				alt=""
 				src="<?php echo htmlspecialchars(
 					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
 				/>
@@ -395,12 +399,13 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ) {
 					?>
-					<div id="siteLogoBar" class="lighthover">
+					<div class="lighthover siteLogoBar">
 				<?php
 				}
 				?>
 				<img
 				class="downarrow"
+				alt=""
 				src="<?php echo htmlspecialchars(
 					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
 				/>
@@ -447,6 +452,7 @@ class MetrolookTemplate extends BaseTemplate {
 						<div class="onhoverbg" id="uploadbutton">
 							<img
 							class="uploadbutton"
+							alt=""
 							src="<?php echo htmlspecialchars(
 								$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 								<span class="uploadbutton">
@@ -465,6 +471,7 @@ class MetrolookTemplate extends BaseTemplate {
 					?>
 					<img
 					class="searchbar"
+					alt=""
 					src="<?php echo htmlspecialchars(
 						$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 				<?php
@@ -472,6 +479,7 @@ class MetrolookTemplate extends BaseTemplate {
 				?>
 				<img
 				class="editbutton"
+				alt=""
 				src="<?php echo htmlspecialchars(
 					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
 
