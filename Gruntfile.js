@@ -21,6 +21,7 @@ module.exports = function ( grunt ) {
 		banana: conf.MessagesDirs,
 		jsonlint: {
 			all: [
+				'*.json',
 				'**/*.json',
 				'!node_modules/**'
 			]
