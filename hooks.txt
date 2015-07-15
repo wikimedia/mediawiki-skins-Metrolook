@@ -1,6 +1,13 @@
 Hooks provided by the Metrolook skin.
 
+'MetrolookAfterToolbox': Called after the toolbox (#p-tb) has been rendered
+$tpl: MetrolookTemplate object
+
+'MetrolookRightPanel': Called inside div#mw-panel-right; can be used to populate
+that div element with ad HTML, for example.
+$tpl: MetrolookTemplate object
+
 'SkinMetrolookStyleModules': Called when defining the list of module styles to be
-loaded by the Vector skin.
+loaded by the Metrolook skin.
 $skin: SkinMetrolook object
 &$styles: Array of module names whose style will be loaded for the skin
