@@ -80,6 +80,36 @@ class MetrolookTemplate extends BaseTemplate {
 	}
 
 	/**
+	 * Get the current user's avatar image.
+	 *
+	 * @param int $width 20 or 40, used for the img ID and class attributes
+	 * @return string Valid <\img\> tag suitable for output
+	 */
+	private function getAvatar( $width ) {
+		$skin = $this->getSkin();
+
+		// Default avatar is what we start with
+		$avatarImage = Html::element(
+			'img',
+			array(
+				'class' => 'userIcon' . (int)$width,
+				'src' => htmlspecialchars( $skin->getSkinStylePath( 'images/Transparent.gif' ) ),
+				'alt' => ''
+			)
+		);
+
+		if ( class_exists( 'wAvatar' ) ) { // SocialProfile is installed
+			$avatar = new wAvatar( $skin->getUser()->getId(), 'l' );
+			$avatarImage = $avatar->getAvatarURL( array(
+				'width' => (int)$width,
+				'class' => 'userIcon' . (int)$width . ' socialprofile-avatar'
+			) );
+		}
+
+		return $avatarImage;
+	}
+
+	/**
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
@@ -303,25 +333,9 @@ class MetrolookTemplate extends BaseTemplate {
 						<span id="username-top">
 							<span id="username-text"><?php echo $userNameTop ?></span>
 							<span class="username-space spacer"> </span>
-							<span id="userIcon20">
-								<img
-								class="userIcon20"
-								alt=""
-								src="<?php
-								echo htmlspecialchars( $skin->getSkinStylePath( 'images/Transparent.gif' ) )
-								?>"
-								/>
-							</span>
+							<span id="userIcon20"><?php echo $this->getAvatar( 20 ) ?></span>
 							<span class="spacer"> </span>
-							<span id="userIcon40">
-								<img
-								class="userIcon40"
-								alt=""
-								src="<?php
-								echo htmlspecialchars( $skin->getSkinStylePath( 'images/Transparent.gif' ) )
-								?>"
-								/>
-							</span>
+							<span id="userIcon40"><?php echo $this->getAvatar( 40 ) ?></span>
 						</span>
 					</a>
 					<div class="menu personal-menu">

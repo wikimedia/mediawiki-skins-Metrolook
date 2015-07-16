@@ -167,25 +167,32 @@ img.userIcon40 {
 	padding: 0;
 	background-repeat: no-repeat;
 	position: relative;
-	top: 0.4em;
-}
 
-#userIcon40 {
-	position: relative;
-	top:-0.4px;
-	background-image: none;
-	.background-image-svg('images/user-icon-40.svg', 'images/user-icon-40.png');
-	width: 35px;
-	height: 38px;
-	background-repeat: no-repeat;
-}
-
-#userIcon20 {
-	display: none;
+	&:not(.socialprofile-avatar) {
+		.background-image-svg('images/user-icon-40.svg', 'images/user-icon-40.png');
+		width: 35px;
+		height: 38px;
+	}
 }
 
 #userIcon40 {
 	display: block;
+	position: relative;
+	background-image: none;
+	background-repeat: no-repeat;
+
+	/* Reverse what personalMenu.less sets for desktop view */
+	img.socialprofile-avatar {
+		display: block;
+		/* Yes, I know using pixels is evil, but I just couldn't get the
+		* em's to work like I wanted. With -1px, there's no one-pixel-wide gap.
+		*/
+		top: -1px;
+	}
+}
+
+#userIcon20 {
+	display: none;
 }
 
 div.actionmenu ul {
