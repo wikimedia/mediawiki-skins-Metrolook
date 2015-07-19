@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Linedwell",
-			"Nicolapps"
+			"Nicolapps",
+			"Wladek92"
 		]
 	},
+	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l'habillage Metrolook",
 	"metrolook-desc": "Skin Metrolook pour MediaWiki",
 	"metrolook-guest": "Invité"
 }
