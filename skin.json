@@ -55,6 +55,17 @@
 				}
 			}
 		},
+		"skins.metrolook.styles.responsive": {
+			"position": "top",
+			"styles": {
+				"screen.mobile.less": {
+					"media": "screen"
+				},
+				"screen-hd.less": {
+					"media": "screen and (min-width: 982px)"
+				}
+			}
+		},
 		"skins.metrolook.js": {
 			"scripts": [
 				"js/collapsibleTabs.js",
