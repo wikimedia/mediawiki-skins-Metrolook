@@ -1,6 +1,9 @@
+/* global $ */
+
 function isTouchDevice() {
 	return !!('ontouchstart' in window);
 }
+
 /* This is here to fix js issue with iPad (all models) */
 $(function () {
 	if( isTouchDevice() ) {
