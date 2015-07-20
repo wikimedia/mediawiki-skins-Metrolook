@@ -46,7 +46,7 @@ class SkinMetrolook extends SkinTemplate {
 
 		parent::initPage( $out );
 
-		if ( $GLOBALS['wgMetrolookMobile'] ) {
+		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) ) {
 			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
 		}
 
@@ -70,7 +70,11 @@ class SkinMetrolook extends SkinTemplate {
 	public function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
 
-		$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
+		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) ) {
+			$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles.responsive' );
+		} else {
+			$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
+		}
 		Hooks::run( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
 		$out->addModuleStyles( $styles );
 	}
