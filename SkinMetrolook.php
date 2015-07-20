@@ -42,7 +42,7 @@ class SkinMetrolook extends SkinTemplate {
 		parent::initPage( $out );
 
 		if ( $GLOBALS['wgMetrolookMobile'] ) {
-			$out->addMeta( 'viewport', 'width=device-width;, initial-scale=1;' );
+			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
 		}
 
 		// Append CSS which includes IE only behavior fixes for hover support -
