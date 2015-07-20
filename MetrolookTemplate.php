@@ -34,16 +34,18 @@ class MetrolookTemplate extends BaseTemplate {
 	private $mPersonalToolsEcho = '';
 
 	private function getTiles( $messageName = 'metrolook-tiles' ) {
+		// @codingStandardsIgnoreStart
 		/**
 		 * The message's format is:
-		 * * URL to the site|alternative text|image URL
+		 * * URL to the site|alternative text|image URL|image SVG URL
 		 *
 		 * For example:
-		 * * http://www.pidgi.net/wiki/|PidgiWiki|http://images.pidgi.net/pidgiwikitiletop.png
-		 * * http://www.pidgi.net/press/|PidgiWiki Press|http://images.pidgi.net/pidgipresstiletop.png
-		 * * http://www.pidgi.net/jcc/|The JCC|http://images.pidgi.net/jcctiletop.png
-		 * * http://www.petalburgwoods.com/|Petalburg Woods|http://images.pidgi.net/pwntiletop.png
+		 * * http://www.pidgi.net/wiki/|PidgiWiki|http://images.pidgi.net/pidgiwikitiletop.png|http://images.pidgi.net/pidgiwikitiletop.png
+		 * * http://www.pidgi.net/press/|PidgiWiki Press|http://images.pidgi.net/pidgipresstiletop.png|http://images.pidgi.net/pidgipresstiletop.png
+		 * * http://www.pidgi.net/jcc/|The JCC|http://images.pidgi.net/jcctiletop.png|http://images.pidgi.net/jcctiletop.png
+		 * * http://www.petalburgwoods.com/|Petalburg Woods|http://images.pidgi.net/pwntiletop.png|http://images.pidgi.net/pwntiletop.png
 		 */
+		// @codingStandardsIgnoreEnd
 		$tileMessage = $this->getSkin()->msg( $messageName );
 		$tiles = '';
 		if ( $tileMessage->isDisabled() ) {
@@ -56,7 +58,7 @@ class MetrolookTemplate extends BaseTemplate {
 			if ( strpos( $line, '*' ) !== 0 ) {
 				continue;
 			} else {
-				$line = explode( '|', trim( $line, '* ' ), 3 );
+				$line = explode( '|', trim( $line, '* ' ), 4 );
 				$siteURL = $line[0];
 				$altText = $line[1];
 
@@ -67,11 +69,15 @@ class MetrolookTemplate extends BaseTemplate {
 					$altText = $linkMsgObj->parse();
 				}
 
+				$imageURLSVG = $line[3];
 				$imageURL = $line[2];
 				$tiles .= '<div class="tile-wrapper"><div class="tile">' .
-					'<a href="' . htmlspecialchars( $siteURL, ENT_QUOTES ) . '"><img src="' .
+					'<a href="' . htmlspecialchars( $siteURL, ENT_QUOTES ) . '">
+					<object class="image-align" data="' .
+					htmlspecialchars( $imageURLSVG, ENT_QUOTES ) . '">
+					<img src="' .
 					htmlspecialchars( $imageURL, ENT_QUOTES ) .
-					'" alt="' . htmlspecialchars( $altText, ENT_QUOTES ) . '" /></a>' .
+					'" alt="' . htmlspecialchars( $altText, ENT_QUOTES ) . '" /></object></a>' .
 				'</div></div>';
 			}
 		}
