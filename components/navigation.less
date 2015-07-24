@@ -23,7 +23,10 @@
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
 	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
-	min-width: auto;
+	min-width: 100%;
+	position: fixed;
+	top: 0px;
+	z-index: 1;
 }
 
 #mw-head-base {
@@ -34,12 +37,14 @@
 	background-image: url(images/border.png);
 	background-position: bottom left;
 	background-repeat: repeat-x;
+	position: fixed;
 }
 
 div#mw-head {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	min-width: 100%;
+	z-index: 1;
 
 	h5 {
 		margin: 0;
@@ -102,7 +107,7 @@ div#mw-head {
 /* Panel */
 div#mw-panel {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0px;
 	height: auto;
@@ -177,7 +182,7 @@ div#mw-panel {
 /* Panel */
 div#mw-panel-custom {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
