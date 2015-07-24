@@ -435,30 +435,6 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 			?>
 
-			<?php
-			if ( $this->config->get( 'MetrolookDownArrow' ) ) {
-				?>
-				<div class="top-tile-bar-inner-container">
-					<div class="topleft">
-						<div class="tilebar" id="bartile">
-							<div id="tilegrouptable">
-								<div id="tilegroup">
-									<?php
-									if ( $this->config->get( 'MetrolookBartile' ) ) {
-										echo $this->getTiles();
-									} else {
-										echo $this->getTiles( 'metrolook-tiles-second' );
-									}
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php
-			}
-			?>
-
 			<div id="left-navigation">
 				<?php
 				if ( $this->config->get( 'MetrolookUploadButton' ) && $user->isAllowed( 'upload' ) ) {
@@ -552,6 +528,30 @@ class MetrolookTemplate extends BaseTemplate {
 					?>
 					<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
 					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				</div>
+			<?php
+			}
+			?>
+
+			<?php
+			if ( $this->config->get( 'MetrolookDownArrow' ) ) {
+				?>
+				<div class="top-tile-bar-inner-container">
+					<div class="topleft">
+						<div class="tilebar" id="bartile">
+							<div id="tilegrouptable">
+								<div id="tilegroup">
+									<?php
+									if ( $this->config->get( 'MetrolookBartile' ) ) {
+										echo $this->getTiles();
+									} else {
+										echo $this->getTiles( 'metrolook-tiles-second' );
+									}
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			<?php
 			}
