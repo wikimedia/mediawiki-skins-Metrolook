@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec42329_d50c55f1",
+        "filename": "i18n/en.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2015-08-04T10:05:49Z",
+      "side": 1,
+      "message": "Not everyone knows what Metro is. I suggest to add a link to https://en.wikipedia.org/wiki/Metro_%28design_language%29 (I guess that Metro is meant, isn\u0027t it?)",
+      "revId": "e2f5333926bdaf86cd033a0d587b7913be2574db",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
