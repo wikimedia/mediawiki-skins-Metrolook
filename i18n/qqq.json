@@ -7,7 +7,7 @@
 		]
 	},
 	"skinname-metrolook": "{{optional}}",
-	"metrolook-desc": "{{desc|name=Metrolook|url=https://www.mediawiki.org/wiki/Skin:Metrolook}}",
+	"metrolook-desc": "{{desc|what=skin|name=Metrolook|url=https://www.mediawiki.org/wiki/Skin:Metrolook}}",
 	"metrolook.css": "{{optional}}",
 	"metrolook.js": "{{optional}}",
 	"skinmetrolook-collapsiblenav-preference": "The message refers to the sidebar, whose sections are collapsible in Metrolook skin (some of them collapsed by default and some no); the preference disables collapsing entirely and is among \"Advanced options\" in the \"Appearence\" section.",
