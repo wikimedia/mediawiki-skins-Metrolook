@@ -5,7 +5,7 @@
 		]
 	},
 	"skinname-metrolook": "Metrolook",
-	"metrolook-desc": "Metrolook skin for MediaWiki",
+	"metrolook-desc": "Metrolook is a Metro-inspired fork of the Vector skin",
 	"metrolook.css": "/* CSS placed here will affect users of the Metrolook skin */",
 	"metrolook.js": "/* Any JavaScript here will be loaded for users using the Metrolook skin */",
 	"skinmetrolook-collapsiblenav-preference": "Enable collapsing of items in the sidebar in Metrolook skin",
