@@ -3,10 +3,11 @@
 		"authors": [
 			"Linedwell",
 			"Nicolapps",
-			"Wladek92"
+			"Wladek92",
+			"VictorBrice"
 		]
 	},
+	"metrolook-desc": " Metrolook est fourchette d'a [https://en.wikipedia.org/wiki/Metro_(design_language) inspiré par la métro] du Vectorskin",
 	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l'habillage Metrolook",
-	"metrolook-desc": "Skin Metrolook pour MediaWiki",
 	"metrolook-guest": "Invité"
 }
