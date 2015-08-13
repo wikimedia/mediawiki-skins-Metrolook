@@ -7,7 +7,7 @@ function isTouchDevice() {
 /* This is here to fix js issue with iPad (all models) */
 $(function () {
 	if( isTouchDevice() ) {
-		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test(navigator.userAgent) ) {
 			$( '#p-search' ).hide();
 			$( 'img.searchbar' ).click(function(e) {
 				$( '#p-search' ).fadeToggle(150);
