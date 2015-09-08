@@ -1,6 +1,6 @@
 /*jshint node:true */
 module.exports = function ( grunt ) {
-	// var conf = grunt.file.readJSON( 'skin.json' );
+	var conf = grunt.file.readJSON( 'skin.json' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
@@ -18,15 +18,7 @@ module.exports = function ( grunt ) {
 		jscs: {
 			src: '<%= jshint.all %>'
 		},
-		banana: {
-			options: {
-				disallowDuplicateTranslations: false
-			},
-			all: [
-				// conf.MessagesDirs
-				'i18n/'
-			]
-		},
+		banana: conf.MessagesDirs,
 		jsonlint: {
 			all: [
 				'*.json',
