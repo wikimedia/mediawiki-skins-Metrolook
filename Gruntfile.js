@@ -18,7 +18,12 @@ module.exports = function ( grunt ) {
 		jscs: {
 			src: '<%= jshint.all %>'
 		},
-		banana: conf.MessagesDirs,
+		banana: {
+			options: {
+				disallowDuplicateTranslations: false
+			},
+			conf.MessagesDirs
+		},
 		jsonlint: {
 			all: [
 				'*.json',
