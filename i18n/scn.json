@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pippinu"
+			"Pippinu",
+			"Sarvaturi"
 		]
 	},
-	"skinmetrolook-collapsiblenav-preference": "Cunsenti di strìnciri l’elimenti dâ sbarra latirali ntâ peddi Metrolook",
-	"metrolook-desc": "Peddi Metrolook pi’ MediaWiki",
+	"metrolook-desc": "Peddi Metrolook pi MediaWiki",
+	"skinmetrolook-collapsiblenav-preference": "Cunzenti di strìnciri l'elimenti dâ sbarra latirali ntâ peddi Metrolook",
 	"metrolook-guest": "Òspiti"
 }
