@@ -129,8 +129,8 @@
 		}
 	},
 	"config": {
-		"VectorUseSimpleSearch": true,
-		"VectorUseIconWatch": true,
+		"MetrolookUseSimpleSearch": true,
+		"MetrolookUseIconWatch": true,
 		"MetrolookLogo": true,
 		"MetrolookSiteName": true,
 		"MetrolookSiteNameText": true,

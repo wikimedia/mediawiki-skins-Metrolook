@@ -117,7 +117,7 @@ class MetrolookTemplate extends BaseTemplate {
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
-		if ( $this->config->get( 'VectorUseIconWatch' ) ) {
+		if ( $this->config->get( 'MetrolookUseIconWatch' ) ) {
 			$mode = $skin->getUser()->isWatched( $skin->getRelevantTitle() )
 				? 'unwatch'
 				: 'watch';
@@ -874,7 +874,7 @@ class MetrolookTemplate extends BaseTemplate {
 							</h5>
 
 							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-								<div<?php echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
+								<div<?php echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
 								<?php
 								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
@@ -911,7 +911,7 @@ class MetrolookTemplate extends BaseTemplate {
 
 							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
 								<div<?php
-									echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearchSearch"' : '' ?>>
+									echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearchSearch"' : '' ?>>
 								<?php
 								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );

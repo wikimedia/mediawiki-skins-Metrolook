@@ -27,6 +27,12 @@ You can now set different tiles for different languges.
 
 For example MediaWiki:metrolook-tiles/fr
 
+Renamed settings
+
+VectorUseSimpleSearch -> MetrolookUseSimpleSearch
+
+VectorUseIconWatch -> MetrolookUseIconWatch
+
 
 Remove settings
 
