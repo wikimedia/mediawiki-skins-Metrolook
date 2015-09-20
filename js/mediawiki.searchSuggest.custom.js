@@ -2,6 +2,20 @@
  * Add search suggestions to the search form.
  */
 ( function ( mw, $ ) {
+	mw.searchSuggest = {
+		request: function ( api, query, response, maxRows ) {
+			return api.get( {
+				action: 'opensearch',
+				search: query,
+				namespace: 0,
+				limit: maxRows,
+				suggest: ''
+			} ).done( function ( data ) {
+				response( data[ 1 ] );
+			} );
+		}
+	};
+
 	$( function () {
 		var api, map, searchboxesSelectors,
 			// Region where the suggestions box will appear directly below
@@ -18,14 +32,14 @@
 		// Compatibility map
 		map = {
 			// SimpleSearch is broken in Opera < 9.6
-			opera: [['>=', 9.6]],
+			opera: [ [ '>=', 9.6 ] ],
 			// Older Konquerors are unable to position the suggestions correctly (bug 50805)
-			konqueror: [['>=', '4.11']],
+			konqueror: [ [ '>=', '4.11' ] ],
 			docomo: false,
 			blackberry: false,
 			// Support for iOS 6 or higher. It has not been tested on iOS 5 or lower
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]]
+			ipod: [ [ '>=', 6 ] ],
+			iphone: [ [ '>=', 6 ] ]
 		};
 
 		if ( !$.client.test( map ) ) {
@@ -58,13 +72,14 @@
 		/**
 		 * Callback that's run when the user changes the search input text
 		 * 'this' is the search input box (jQuery object)
+		 *
 		 * @ignore
 		 */
 		function onBeforeUpdate() {
 			var searchText = this.val();
 
 			if ( searchText && searchText !== previousSearchText ) {
-				mw.track( 'mediawiki.searchSuggest, skins.metrolook.js', {
+				mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
 					action: 'session-start'
 				} );
 			}
@@ -74,12 +89,13 @@
 		/**
 		 * Callback that's run when suggestions have been updated either from the cache or the API
 		 * 'this' is the search input box (jQuery object)
+		 *
 		 * @ignore
 		 */
 		function onAfterUpdate() {
 			var context = this.data( 'suggestionsContext' );
 
-			mw.track( 'mediawiki.searchSuggest, skins.metrolook.js', {
+			mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
 				action: 'impression-results',
 				numberOfResults: context.config.suggestions.length,
 				// FIXME: when other types of search become available change this value accordingly
@@ -110,7 +126,7 @@
 			var context = $input.data( 'suggestionsContext' ),
 				text = $input.val();
 
-			mw.track( 'mediawiki.searchSuggest, skins.metrolook.js', {
+			mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
 				action: 'click-result',
 				numberOfResults: context.config.suggestions.length,
 				clickIndex: context.config.suggestions.indexOf( text ) + 1
@@ -168,22 +184,14 @@
 		$( searchboxesSelectors.join( ', ' ) )
 			.suggestions( {
 				fetch: function ( query, response, maxRows ) {
-					var node = this[0];
+					var node = this[ 0 ];
 
 					api = api || new mw.Api();
 
-					$.data( node, 'request', api.get( {
-						action: 'opensearch',
-						search: query,
-						namespace: 0,
-						limit: maxRows,
-						suggest: ''
-					} ).done( function ( data ) {
-						response( data[ 1 ] );
-					} ) );
+					$.data( node, 'request', mw.searchSuggest.request( api, query, response, maxRows ) );
 				},
 				cancel: function () {
-					var node = this[0],
+					var node = this[ 0 ],
 						request = $.data( node, 'request' );
 
 					if ( request ) {
@@ -250,7 +258,7 @@
 			// track the form submit event
 			.on( 'submit', function () {
 				var context = $searchInput.data( 'suggestionsContext' );
-				mw.track( 'mediawiki.searchSuggest, skins.metrolook.js', {
+				mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
 					action: 'submit-form',
 					numberOfResults: context.config.suggestions.length
 				} );
