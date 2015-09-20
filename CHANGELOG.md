@@ -1,7 +1,7 @@
 Changelog
 =========
 
-### 4.0 alpha 5
+### 4.0 rc 1
 
 New features
 ===
@@ -37,6 +37,10 @@ VectorUseIconWatch -> MetrolookUseIconWatch
 Remove settings
 
 $wgMetrolookTile1-10
+
+### 4.0 alpha 5
+
+( Not released instead please see 4.0 rc 1 which is this release but in rc stage. )
 
 ### 4.0 alpha 4
 
