@@ -17,7 +17,7 @@ function isTouchDevice() {
 }
 
 function isMobileUserAgent() {
-	return !!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test( navigator.userAgent ) );
+	return !!( /mobi|alcatel|Android|android|kindle|webOS|webos|iPhone|iPad|iPod|Tablet|PlayBook|Wii|Silk|BlackBerry|playstation|phone|nintendo|htc[-_]|IEMobile|CriOS|Opera Mini|opera.m|palm|panasonic|philips|samsung|Mobile|mobile/i.test( navigator.userAgent ) );
 }
 
 $( function() {
