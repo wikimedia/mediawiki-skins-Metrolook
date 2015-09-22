@@ -91,7 +91,6 @@
 				"components/collapsibleNav.less"
 			],
 			"dependencies": [
-				"jquery.throttle-debounce",
 				"jquery.client",
 				"jquery.cookie",
 				"jquery.tabIndex"
