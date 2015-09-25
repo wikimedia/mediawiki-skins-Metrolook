@@ -4,7 +4,7 @@
 			"paladox"
 		]
 	},
-	"skinname-metrolook": "Metrolook",
+	"metrolook-skinname": "Metrolook",
 	"metrolook-desc": "Metrolook is a [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspired] fork of the Vector skin",
 	"metrolook.css": "/* CSS placed here will affect users of the Metrolook skin */",
 	"metrolook.js": "/* Any JavaScript here will be loaded for users using the Metrolook skin */",

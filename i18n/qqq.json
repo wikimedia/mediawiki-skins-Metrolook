@@ -6,7 +6,7 @@
 			"Umherirrender"
 		]
 	},
-	"skinname-metrolook": "{{optional}}",
+	"metrolook-skinname": "{{optional}}",
 	"metrolook-desc": "{{desc|what=skin|name=Metrolook|url=https://www.mediawiki.org/wiki/Skin:Metrolook}}",
 	"metrolook.css": "{{optional}}",
 	"metrolook.js": "{{optional}}",
