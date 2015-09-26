@@ -28,40 +28,6 @@ class MetrolookHooks {
 
 	/* Static Methods */
 
-	public static function onRegistration() {
-		// Each module may be configured individually to be globally on/off or user preference based
-		$features = array(
-			'collapsiblenav' => array( 'global' => false, 'user' => true ),
-		);
-
-		global $wgMetrolookFeatures, $wgDefaultUserOptions;
-
-		/*
-		 * Setting default option.
-		 *
-		 * Do not remove this.
-		 *
-		 * Bug T76314
-		 *
-		 * You can add this to your localsettings.php file and change from 1 to 0 to disbale it globaly.
-		 */
-		$wgDefaultUserOptions['skinmetrolook-collapsiblenav'] = 1;
-
-		// Eww, do a 2d array merge so we don't wipe out settings
-		if ( $wgMetrolookFeatures ) {
-			foreach ( $features as $name => $settings ) {
-				if ( isset( $wgMetrolookFeatures[$name] ) ) {
-					$wgMetrolookFeatures[$name] += $settings;
-				} else {
-					$wgMetrolookFeatures[$name] = $settings;
-				}
-			}
-		} else {
-			$wgMetrolookFeatures = $features;
-		}
-
-	}
-
 	/**
 	 * Checks if a certain option is enabled
 	 *
