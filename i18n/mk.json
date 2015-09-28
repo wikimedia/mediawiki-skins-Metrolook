@@ -4,7 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"metrolook-skinname": "Метроизглед",
+	"skinname-metrolook": "Метроизглед",
 	"metrolook-desc": "„Метроизглед“ е варијанта на рувото „Векторско“ инспирирано од дизајнерскиот јазик [https://en.wikipedia.org/wiki/Metro_(design_language) Метро]",
 	"metrolook.css": "/* Тука поставениот CSS ќе се применува врз корисниците на рувото „Метроизглед“ */",
 	"metrolook.js": "/* Тука поставениот JavaScript  ќе им се вчитува на корисниците што го користат рувото „Метроизглед“ */",
