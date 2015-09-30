@@ -11,10 +11,6 @@ Compatible with MediaWiki 1.26+.
 If you would like compatibility with older releases of MediaWiki, download the
 appropriate version for your MediaWiki from one of the URLs below:
 
-1.25
-
-https://github.com/paladox/Metrolook/tree/REL1_25
-
 1.24
 
 https://github.com/paladox/Metrolook/tree/REL1_24
@@ -48,7 +44,6 @@ To get mobile design please download Metrolook release 0.2.0, 0.3.10, 1.4, 2.5 o
 Please report any and all bugs, issues and other feedback via the bug tracker (see below).
 
 ### Bugs
-
 Bugs and issues should be reported on the MediaWiki Phabricator or GitHub.
 It is strongly recommended that you use Phabricator to report bugs and submit
 feedback, as more developers will see the report and are able to act on it.
@@ -76,8 +71,6 @@ See https://phabricator.wikimedia.org/tag/mediawiki-skins-metrolook/ for a list
 of currently open bugs.
 
 ## Version
-
-7.x.x requires MediaWiki 1.27.
 
 4.x.x requires MediaWiki 1.26.
 
