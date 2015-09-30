@@ -36,7 +36,7 @@
 	"scripts": {
 		"test": [
 			"parallel-lint . --exclude vendor",
-			"phpcs -p"
+			"phpcs -p -s"
 		]
 	}
 }
