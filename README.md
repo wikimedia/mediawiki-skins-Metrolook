@@ -11,6 +11,14 @@ Compatible with MediaWiki 1.26+.
 If you would like compatibility with older releases of MediaWiki, download the
 appropriate version for your MediaWiki from one of the URLs below:
 
+1.26
+
+https://github.com/paladox/Metrolook/tree/REL1_26
+
+1.25
+
+https://github.com/paladox/Metrolook/tree/REL1_25
+
 1.24
 
 https://github.com/paladox/Metrolook/tree/REL1_24
