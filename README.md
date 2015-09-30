@@ -80,7 +80,7 @@ of currently open bugs.
 
 ## Version
 
-5.x.x requires MediaWiki 1.26.
+5.x.x requires MediaWiki 1.27.
 
 4.x.x requires MediaWiki 1.26.
 
