@@ -37,15 +37,18 @@ body {
 	padding: 0px 0px 0px 0px;
 	height: 100%;
 }
-#top-tile-bar {
-	background: transparent;
-	left: 0px;
-	height: 200px;
-	position: fixed;
-	z-index: 100;
+.top-tile-bar-inner-container {
+	align: left;
+	vertical-align: top;
 }
+
+.tile-wrapper {
+	float: left;
+	padding: 5px;
+}
+
 .tilebar {
-	position: relative;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	right: 0px;
@@ -53,16 +56,30 @@ body {
 	align: right;
 	color: #fff;
 	background: #1D1D1D;
-	width: 21474836.47em;
 	height: 200px;
 	display: block;
 	z-index: 9999999;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
 }
+
 .tile:hover {
 	outline: 3px #4A4A4A solid;
 }
-.onhoverbg:hover {
-	background: #9F6F40;
+
+.onhoverbg {
+	height: 40px;
+	float: left;
+
+	&:hover {
+		background: #9F6F40;
+	}
+}
+
+.siteLogoBar {
+	float: left;
+	height: 40px;
 }
 
 .topleft {
@@ -93,6 +110,7 @@ img.editbutton {
 	height: 130px;
 }
 
+
 /* Content */
 div#content {
 	margin-left: 10em;
@@ -105,7 +123,7 @@ div#content {
 	color: black;
 	direction: ltr;
 	height: auto;
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -196,19 +214,24 @@ img.downarrow:hover {
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width: auto;
+	min-width: 100%;
+	position: fixed;
+	top: 0px;
+	z-index: 1;
 }
 
 #mw-head-base {
 	margin-top: -5em;
 	margin-left: 10em;
 	height: 5em;
+	position: fixed;
 }
 
 div#mw-head {
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	min-width: 100%;
+	z-index: 1;
 }
 
 div#mw-head h5 {
@@ -812,7 +835,7 @@ div#simpleSearchSearch #mw-searchButtonButton {
 /* Panel */
 div#mw-panel {
 	font-size: inherit;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
@@ -822,6 +845,7 @@ div#mw-panel {
 	padding-top: 1em;
 	width: 11em;
 	left: 0;
+	z-index: 1;
 }
 div#mw-panel div.portal {
 	margin: 0 0.6em 0 0.7em;
@@ -868,7 +892,7 @@ div#mw-panel div.portal div.body ul li a:visited {
 /* Panel */
 div#mw-panel-custom {
 	font-size: inherit;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
@@ -879,6 +903,7 @@ div#mw-panel-custom {
 	padding-top: 1em;
 	width: 11em;
 	left: 0;
+	z-index: 1;
 }
 div#mw-panel-custom div.portal-custom {
 	margin: 0 0.6em 0 0.7em;

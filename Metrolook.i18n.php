@@ -89,22 +89,19 @@ $messages['diq'] = array(
 	'metrolook-guest' => 'Meyman',
 );
 
-/**
- * @author Caliburn
- */
-$messages['en-gb'] = array(
-	'metrolook-desc' => 'Metrolook skin for MediaWiki',
-	'metrolook-guest' => 'Guest',
-);
-
 /** English
  * @author paladox
  */
 $messages['en'] = array(
 	'skinname-metrolook' => 'Metrolook',
+	'metrolook-desc' => 'Metrolook is a [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspired] fork of the Vector skin',
 	'skinmetrolook-collapsiblenav-preference' => 'Enable collapsing of items in the sidebar in Metrolook skin',
-	'metrolook-desc' => 'Metrolook skin for MediaWiki',
 	'metrolook-guest' => 'Guest',
+	'metrolook-tiles' => '* http://www.pidgi.net/wiki/|PidgiWiki|http://images.pidgi.net/pidgiwikitiletop.png
+* http://www.pidgi.net/press/|PidgiWiki Press|http://images.pidgi.net/pidgipresstiletop.png
+* http://www.petalburgwoods.com/|Petalburg Woods|http://images.pidgi.net/pwntiletop.png
+* http://burstcade.pidgi.net/|Burstcade|http://images.pidgi.net/burstcadetiletop.png',
+	'metrolook-tiles-second' => '',
 );
 
 /** 
