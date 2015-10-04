@@ -1,10 +1,13 @@
+/* global $ */
+
 function isTouchDevice() {
 	return !!('ontouchstart' in window);
 }
+
 /* This is here to fix js issue with iPad (all models) */
 $(function () {
 	if( isTouchDevice() ) {
-		if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		if( /mobi|alcatel|Android|android|webOS|webos|iPhone|iPod|Wii|Silk|BlackBerry|playstation|phone|nintendo|htc[-_]|IEMobile|CriOS|Opera Mini|opera.m|palm|panasonic|philips|samsung|Mobile|mobile/i.test(navigator.userAgent) ) {
 			$( '#p-search' ).hide();
 			$( 'img.searchbar' ).click(function(e) {
 				$( '#p-search' ).fadeToggle(150);
@@ -18,5 +21,11 @@ $(function () {
 				}
 			});
 		}
+
+		/* Fix search bar not showing on iPad */
+		if( /kindle|iPad|PlayBook|Tablet/i.test(navigator.userAgent) ) {
+			$( '#p-search' ).show();
+		}
 	}
 });
+

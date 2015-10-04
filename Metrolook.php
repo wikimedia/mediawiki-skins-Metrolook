@@ -26,7 +26,7 @@ $GLOBALS['wgExtensionCredits']['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.3.13',
+	'version' => '0.3.14',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -70,14 +70,14 @@ $GLOBALS['wgDefaultUserOptions']['skinmetrolook-collapsiblenav'] = 1;
  *  - true = use an icon search button
  *  - false = use Go & Search buttons
  */
-$GLOBALS['wgVectorUseSimpleSearch'] = true;
+$GLOBALS['wgMetrolookUseSimpleSearch'] = true;
 
 /**
  * Watch and unwatch as an icon rather than a link.
  *  - true = use an icon watch/unwatch button
  *  - false = use watch/unwatch text link
  */
-$GLOBALS['wgVectorUseIconWatch'] = true;
+$GLOBALS['wgMetrolookUseIconWatch'] = true;
 
 /**
  * Logo
@@ -104,16 +104,7 @@ $GLOBALS['wgMetrolookUploadButton'] = true;
 
 $GLOBALS['wgMetrolookMobile'] = true;
 
-/* To use tile 5 to 10 please diable this */
 $GLOBALS['wgMetrolookBartile'] = true;
-
-$GLOBALS['wgMetrolookTile1'] = true;
-
-$GLOBALS['wgMetrolookTile2'] = true;
-
-$GLOBALS['wgMetrolookTile3'] = true;
-
-$GLOBALS['wgMetrolookTile4'] = true;
 
 // Register modules
 $GLOBALS['wgResourceModules']['skins.metrolook'] = array(
@@ -140,6 +131,7 @@ $GLOBALS['wgResourceModules']['skins.metrolook.js'] = array(
 	'scripts' => array(
 		'Metrolook/js/collapsibleTabs.js',
 		'Metrolook/js/metrolook.js',
+		'Metrolook/js/metrolook.search.js',
 		'Metrolook/js/vector.js',
 		'Metrolook/js/mediawiki.searchSuggest.custom.js',
 		'Metrolook/js/overthrow.js',

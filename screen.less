@@ -38,32 +38,49 @@ body {
 	padding: 0px 0px 0px 0px;
 	height: 100%;
 }
-#top-tile-bar {
-	background: transparent;
-	left: 0px;
-	height: 200px;
-	position: fixed;
-	z-index: 100;
+.top-tile-bar-inner-container {
+	align: left;
+	vertical-align: top;
 }
+
+.tile-wrapper {
+	float: left;
+	padding: 5px;
+}
+
 .tilebar {
-	position: relative;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
-	align:right;
+	align: right;
 	color: #fff;
 	background: #1D1D1D;
-	width: 21474836.47em;
 	height: 200px;
 	display: block;
 	z-index: 9999999;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
 }
+
 .tile:hover {
 	outline: 3px #4A4A4A solid;
 }
-.onhoverbg:hover {
-	background: #9F6F40;
+
+.onhoverbg {
+	height: 40px;
+	float: left;
+
+	&:hover {
+		background: #9F6F40;
+	}
+}
+
+.siteLogoBar {
+	float: left;
+	height: 40px;
 }
 
 .topleft {
@@ -93,6 +110,7 @@ img.editbutton {
 	padding: 35px;
 	height: 130px;
 }
+
 /* Content */
 div#content {
 	margin-left: 10em;
@@ -105,7 +123,7 @@ div#content {
 	color: black;
 	direction: ltr;
 	height: auto;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -115,13 +133,24 @@ div#content {
 }
 
 img.uploadbutton {
-	position:inherit;
+	position: inherit;
 	.background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
-	width: 26px; /* width of your image */
-	height: 35px; /* height of your image */
-	margin: 0; /* If you want no margin */
-	padding: 0; /* if your want to padding */
+	width: 26px;
+	height: 35px;
+	margin: 0;
+	padding: 0;
 	background-repeat: no-repeat;
+}
+
+span.uploadbutton {
+	color: #fff;
+	position: relative;
+	top: 3px;
+}
+
+#uploadbutton {
+	padding-left:0.8em;
+	padding-right:0.8em;
 }
 
 img.line {
@@ -161,6 +190,18 @@ img.downarrow:hover {
 	z-index: 0;
 }
 
+span.title-name {
+	color: white;
+	display: inline-block;
+	font-size: 17px;
+	height: auto;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	max-height: 700px;
+	max-width: auto;
+	vertical-align: middle;
+}
+
 /* Hide, but keep accessible for screen-readers */
 #mw-navigation h2 {
 	position: absolute;
@@ -180,19 +221,24 @@ img.downarrow:hover {
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	.background-image('images/page-fade.png');
-	min-width: auto;
+	min-width: 100%;
+	position: fixed;
+	top: 0px;
+	z-index: 3;
 }
 
 #mw-head-base {
 	margin-top: -5em;
 	margin-left: 10em;
 	height: 5em;
+	position: fixed;
 }
 
 div#mw-head {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	min-width: 100%;
+	z-index: 3;
 
 	h5 {
 		margin: 0;
@@ -288,6 +334,10 @@ img.userIcon20 {
 	list-style: none;
 }
 
+.mw-echo-overlay {
+	position: fixed !important;
+}
+
 .username-space {
 	margin-right: 0.4em;
 }
@@ -296,7 +346,13 @@ img.userIcon20 {
 #left-navigation {
 	float: initial;
 	/* IE 6 double-margin bug fix */
-	display: inline; 
+	display: inline;
+	
+	.onhoverbg {
+	    padding-left: 0.8em;
+		padding-right: 0.8em;
+		font-size: 10pt;
+	}
 }
 #right-navigation {
 	float: right;
@@ -717,6 +773,10 @@ div#simpleSearch {
 
 /* Custom */
 
+.suggestions {
+	position: fixed !important;
+}
+
 /* Search */
 #p-searchSearch {
 	/* @noflip */
@@ -840,7 +900,7 @@ div#simpleSearchSearch {
 /* Panel */
 div#mw-panel {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0px;
 	height: auto;
@@ -850,6 +910,7 @@ div#mw-panel {
 	padding-top: 1em;
 	width: 11em;
 	left: 0;
+	z-index: 1;
 
 	div.portal {
 		margin: 0 0.6em 0 0.7em;
@@ -903,7 +964,7 @@ div#mw-panel {
 /* Panel */
 div#mw-panel-custom {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
@@ -914,6 +975,7 @@ div#mw-panel-custom {
 	padding-top: 1em;
 	width: 11em;
 	left: 0;
+	z-index: 1;
 
 	div.portal-custom {
 		margin: 0 0.6em 0 0.7em;
