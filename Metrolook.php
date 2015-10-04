@@ -26,7 +26,7 @@ $wgExtensionCredits['skin'][] = array(
 	'name' => 'Metrolook',
 	'namemsg' => 'skinname-metrolook',
 	'descriptionmsg' => 'metrolook-desc',
-	'version' => '0.2.3',
+	'version' => '0.2.4',
 	'url' => 'https://www.mediawiki.org/wiki/Skin:Metrolook',
 	'author' => array( 'immewnity', 'Paladox', 'Craig Davison', 'lagleki' ),
 	'license-name' => 'GPLv2+',
@@ -72,14 +72,14 @@ $wgDefaultUserOptions['skinmetrolook-collapsiblenav'] = 1;
  *  - true = use an icon search button
  *  - false = use Go & Search buttons
  */
-$wgVectorUseSimpleSearch = true;
+$wgMetrolookUseSimpleSearch = true;
 
 /**
  * Watch and unwatch as an icon rather than a link.
  *  - true = use an icon watch/unwatch button
  *  - false = use watch/unwatch text link
  */
-$wgVectorUseIconWatch = true;
+$wgMetrolookUseIconWatch = true;
 
 
 $wgMetrolookLogo = true;
@@ -101,16 +101,7 @@ $wgMetrolookUploadButton = true;
 
 $wgMetrolookMobile = true;
 
-/* To use tile 5 to 10 please diable this */
 $wgMetrolookBartile = true;
-
-$wgMetrolookTile1 = true;
-
-$wgMetrolookTile2 = true;
-
-$wgMetrolookTile3 = true;
-
-$wgMetrolookTile4 = true;
 
 // Register modules
 $wgResourceModules['skins.metrolook'] = array(

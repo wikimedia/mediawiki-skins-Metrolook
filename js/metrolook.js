@@ -17,7 +17,7 @@ function isTouchDevice() {
 }
 
 function isMobileUserAgent() {
-	return !!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|CriOS|Opera Mini|Mobile|mobile/i.test( navigator.userAgent ) );
+	return !!( /mobi|alcatel|Android|android|kindle|webOS|webos|iPhone|iPad|iPod|Tablet|PlayBook|Wii|Silk|BlackBerry|playstation|phone|nintendo|htc[-_]|IEMobile|CriOS|Opera Mini|opera.m|palm|panasonic|philips|samsung|Mobile|mobile/i.test( navigator.userAgent ) );
 }
 
 $( function() {
@@ -82,5 +82,16 @@ $( function() {
 			$( '.clicker' ).removeClass( 'active' );
 		}
 		e.stopPropagation();
+	} );
+
+	// Listen to clicks (taps on mobile) to the black bar and if it was
+	// clicked/tapped (instead of an individual tile), dismiss the menu.
+	// This improves usability especially on lower-end mobile devices with
+	// smaller screens.
+	// Fixes https://phabricator.wikimedia.org/T105785
+	$( '#tilegroup' ).not( '.tile-wrapper' ).on( 'click', function() {
+		if ( $( '#bartile' ).is( ':visible' ) ) {
+			toggleDiv( 'bartile' );
+		}
 	} );
 } );
