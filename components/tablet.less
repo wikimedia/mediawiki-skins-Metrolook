@@ -16,7 +16,6 @@ img.searchbar {
 }
 }
 
-
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (orientation:portrait) {
 
 img.searchbar {
@@ -31,10 +30,9 @@ img.searchbar {
 	margin-left: 0px;
 }
 
-
 div#mw-panel {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
@@ -106,7 +104,7 @@ div#mw-panel {
 
 div#mw-panel-custom {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
@@ -180,7 +178,7 @@ div#mw-panel-custom {
 	}
 }
 
-.mw-body {
+div#content {
 	margin-left: 11em;
 	padding: 1.25em 1.5em 1.5em 1.5em;
 	/* @embed */
@@ -191,7 +189,7 @@ div#mw-panel-custom {
 	color: black;
 	direction: ltr;
 	height: auto;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	right: 0em;
 	left: 0;
@@ -209,21 +207,18 @@ div#mw-panel-custom {
 		margin: 0.5em 0;
 	}
 
-	h2 {
+	h1,
+	h2,
+	#firstHeading {
 		font-family: @content-heading-font-family;
 		line-height: @heading-line-height;
 		margin-bottom: 0.25em;
 		padding: 0;
 	}
 
-	h1 {
+	h1,
+	#firstHeading {
 		font-size: @content-heading-font-size;
-	}
-	
-	.mw-body-content {
-		h1 {
-			margin-top: 1em;
-		}
 	}
 
 	h2 {
@@ -242,7 +237,7 @@ div#mw-panel-custom {
 	}
 
 	h3 {
-		font-size: 1.2em;
+		font-size: 1.17em;
 	}
 
 	h3,
@@ -261,32 +256,11 @@ div#mw-panel-custom {
 		font-size: 100%; /* (reset) */
 		font-family: @content-font-family;
 	}
-
-	.firstHeading {
-		/* Change the default from mediawiki.skinning CSS to let indicators float into heading area */
-		overflow: visible;
-	}
-
-	.mw-indicators {
-		float: right;
-		line-height: @content-line-height;
-		font-size: @content-font-size;
-		/* Ensure that this is displayed on top of .mw-body-content and clickable */
-		position: relative;
-		z-index: 1;
-	}
-
-	.mw-indicator {
-		display: inline-block;
-		zoom: 1;
-		*display: inline;
-	}
 }
 
 div#mw-head {
-	position: absolute;
+	position: fixed;
 	top: 0;
-	min-width: 99%;
 
 	h5 {
 		margin: 0;
@@ -301,7 +275,6 @@ div#mw-head {
 	background-repeat: repeat-x;
 	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
 	background-image: url('images/page-fade.png');
-	min-width: 62em;
 }
 
 #p-search {
@@ -364,7 +337,7 @@ img.editbutton:hover {
 
 div#mw-panel {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
@@ -436,7 +409,7 @@ div#mw-panel {
 
 div#mw-panel-custom {
 	font-size: @menu-main-font-size;
-	position: absolute;
+	position: fixed;
 	top: 40px;
 	bottom: 0;
 	height: auto;
@@ -510,7 +483,7 @@ div#mw-panel-custom {
 	}
 }
 
-.mw-body {
+div#content {
 	margin-left: 11em;
 	padding: 1.25em 1.5em 1.5em 1.5em;
 	/* @embed */
@@ -521,7 +494,7 @@ div#mw-panel-custom {
 	color: black;
 	direction: ltr;
 	height: auto;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -539,21 +512,18 @@ div#mw-panel-custom {
 		margin: 0.5em 0;
 	}
 
-	h2 {
+	h1,
+	h2,
+	#firstHeading {
 		font-family: @content-heading-font-family;
 		line-height: @heading-line-height;
 		margin-bottom: 0.25em;
 		padding: 0;
 	}
 
-	h1 {
+	h1,
+	#firstHeading {
 		font-size: @content-heading-font-size;
-	}
-	
-	.mw-body-content {
-		h1 {
-			margin-top: 1em;
-		}
 	}
 
 	h2 {
@@ -572,7 +542,7 @@ div#mw-panel-custom {
 	}
 
 	h3 {
-		font-size: 1.2em;
+		font-size: 1.17em;
 	}
 
 	h3,
@@ -591,32 +561,11 @@ div#mw-panel-custom {
 		font-size: 100%; /* (reset) */
 		font-family: @content-font-family;
 	}
-
-	.firstHeading {
-		/* Change the default from mediawiki.skinning CSS to let indicators float into heading area */
-		overflow: visible;
-	}
-
-	.mw-indicators {
-		float: right;
-		line-height: @content-line-height;
-		font-size: @content-font-size;
-		/* Ensure that this is displayed on top of .mw-body-content and clickable */
-		position: relative;
-		z-index: 1;
-	}
-
-	.mw-indicator {
-		display: inline-block;
-		zoom: 1;
-		*display: inline;
-	}
 }
 
 div#mw-head {
-	position: absolute;
+	position: fixed;
 	top: 0;
-	min-width: 92.750%;
 
 	h5 {
 		margin: 0;

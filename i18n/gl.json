@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
-	"metrolook-desc": "Aparencia Metrolook para MediaWiki",
+	"metrolook-desc": "Metrolook é unha aparencia derivada da aparencia Vector e [https://en.wikipedia.org/wiki/Metro_(design_language) inspirada en Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Permitir pregar os elementos da barra lateral na aparencia Metrolook",
 	"metrolook-guest": "Invitado"
 }
