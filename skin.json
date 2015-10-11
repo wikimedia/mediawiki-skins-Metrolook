@@ -1,7 +1,7 @@
 {
 	"name": "Metrolook",
 	"namemsg": "skinname-metrolook",
-	"version": "3.1.0",
+	"version": "3.2.0",
 	"author": [
 		"immewnity",
 		"Paladox",
@@ -80,7 +80,6 @@
 				"components/collapsibleNav.less"
 			],
 			"dependencies": [
-				"jquery.throttle-debounce",
 				"jquery.client",
 				"jquery.cookie",
 				"jquery.tabIndex"
@@ -118,8 +117,8 @@
 		}
 	},
 	"config": {
-		"VectorUseSimpleSearch": true,
-		"VectorUseIconWatch": true,
+		"MetrolookUseSimpleSearch": true,
+		"MetrolookUseIconWatch": true,
 		"MetrolookLogo": true,
 		"MetrolookSiteName": true,
 		"MetrolookSiteNameText": true,
@@ -129,10 +128,6 @@
 		"MetrolookLine": true,
 		"MetrolookUploadButton": true,
 		"MetrolookMobile": true,
-		"MetrolookBartile": true,
-		"MetrolookTile1": true,
-		"MetrolookTile2": true,
-		"MetrolookTile3": true,
-		"MetrolookTile4": true
+		"MetrolookBartile": true
 	}
 }

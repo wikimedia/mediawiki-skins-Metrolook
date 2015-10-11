@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Strainu",
+			"Minisarm"
+		]
+	},
+	"metrolook-desc": "Metrolook este o variantă a aspectului Vector [https://en.wikipedia.org/wiki/Metro_(design_language) inspirată de limbajul Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Permite restrângerea elementelor din bara laterală în tema Metrolook",
+	"metrolook-guest": "Oaspete"
+}
