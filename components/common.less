@@ -26,44 +26,49 @@ body {
 	background-color: #f3f3f3;
 }
 
-body {
-	height: 100%;
+.top-tile-bar-inner-container {
+	align: left;
+	vertical-align: top;
 }
-html {
-	height: 100%;
+
+.tile-wrapper {
+	float: left;
+	padding: 5px;
 }
-html,
-body {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-	height: 100%;
-}
-#top-tile-bar {
-	background:transparent;
-	left: 0px;
-	height: 200px;
-	position: fixed;
-	z-index: 100;
-}
+
 .tilebar {
-	position: relative;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
-	align:right;
-	color:#fff;
-	background:#1D1D1D;
-	width: 21474836.47em;
+	align: right;
+	color: #fff;
+	background: #1D1D1D;
 	height: 200px;
 	display: block;
 	z-index: 9999999;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
 }
+
 .tile:hover {
 	outline: 3px #4A4A4A solid;
 }
-.onhoverbg:hover {
-	background: #9F6F40;
+
+.onhoverbg {
+	height: 40px;
+	float: left;
+
+	&:hover {
+		background: #9F6F40;
+	}
+}
+
+.siteLogoBar {
+	float: left;
+	height: 40px;
 }
 
 .topleft {
@@ -74,7 +79,7 @@ body {
 .topright .hover {
 	display: none;
 	position: absolute;
-	left:0;
+	left: 0;
 	z-index: 2000;
 	height: 200px;
 }
@@ -194,13 +199,24 @@ img.editbutton {
 }
 
 img.uploadbutton {
-	position:inherit;
+	position: inherit;
 	.background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
-	width: 26px; /* width of your image */
-	height: 35px; /* height of your image */
-	margin: 0; /* If you want no margin */
-	padding: 0; /* if your want to padding */
+	width: 26px;
+	height: 35px;
+	margin: 0;
+	padding: 0;
 	background-repeat: no-repeat;
+}
+
+span.uploadbutton {
+	color: #fff;
+	position: relative;
+	top: 3px;
+}
+
+#uploadbutton {
+	padding-left:0.8em;
+	padding-right:0.8em;
 }
 
 img.line {
@@ -238,6 +254,23 @@ img.downarrow:hover {
 	position: fixed;
 	top: 40px;
 	z-index: 0;
+
+	img.hamburger {
+		height: 40px;
+		width: 40px;
+	}
+}
+
+span.title-name {
+	color: white;
+	display: inline-block;
+	font-size: 17px;
+	height: auto;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	max-height: 700px;
+	max-width: auto;
+	vertical-align: middle;
 }
 
 /* Hide empty portlets */
