@@ -1,10 +1,10 @@
 Changelog
 =========
 
-### 4.0 rc 1
-
-New features
+4.0 rc 1
 ===
+
+### New features
 
 To set tiles now please do the following
 
@@ -38,14 +38,15 @@ Remove settings
 
 $wgMetrolookTile1-10
 
-### 4.0 alpha 5
+4.0 alpha 5
+===
 
 ( Not released instead please see 4.0 rc 1 which is this release but in rc stage. )
 
-### 4.0 alpha 4
-
-New features
+4.0 alpha 4
 ===
+
+### New features
 
 Refractured code in metrolook.js and MetrolookTemplate.php
 
@@ -66,15 +67,15 @@ $wgMetrolookSiteNameText = false;
 $wgMetrolookSiteText = 'Enter text here';
 
 
-Bug Fixes
-===
+### Bug Fixes
 
 * Fixed js issue with searchbar on iPad.
 
 * Some bug fixes.
 
 
-### 4.0 alpha 3
+4.0 alpha 3
+===
 
 You can now disable CollapsibleNav new configuations and how to enable and disable it.
 
@@ -88,7 +89,8 @@ to disable it
 
 $wgDefaultUserOptions['skinmetrolook-collapsiblenav'] = 0; to disable it but allow users in preference to enable it. or $wgMetrolookFeatures = array( 'collapsiblenav' => array( 'global' => false, 'user' => false ), ); to disable everywhere
 
-### 4.0 alpha 2
+4.0 alpha 2
+===
 
 More improvements to mobile desgn on ipad.
 
@@ -96,7 +98,8 @@ Please note i18n shim are no longer avalible in this release.
 
 Skin.json is now used.
 
-### 4.0 alpha 1
+4.0 alpha 1
+===
 
 First release of Metrolook to support MediaWiki 1.26.
 
