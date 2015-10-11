@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
-	"metrolook-desc": "Metrolook-utseende för MediaWiki",
+	"skinname-metrolook": "Metrolook",
+	"metrolook-desc": "Metrolook är en [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspirerad] version av utseendet Vector",
+	"skinmetrolook-collapsiblenav-preference": "Aktivera möjligheten att kollapsa objekt i sidofältet av Metrolook-utseendet",
 	"metrolook-guest": "Gäst"
 }

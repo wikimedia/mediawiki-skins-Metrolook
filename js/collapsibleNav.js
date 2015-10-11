@@ -59,7 +59,7 @@
 	}
 
 	$( function ( $ ) {
-		var $headings, tabIndex;
+		var $headings;
 
 		/* General Portal Modification */
 
@@ -214,7 +214,7 @@
 	}
 
 	$( function ( $ ) {
-		var $headings, tabIndex;
+		var $headings;
 
 		/* General Portal Modification */
 

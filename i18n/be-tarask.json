@@ -4,6 +4,7 @@
 			"Red Winged Duck"
 		]
 	},
-	"metrolook-desc": "Тэма афармленьня Metrolook для MediaWiki",
+	"metrolook-desc": "Metrolook — адгалінаваньне тэмы афармленьня Vector, натхнёная [https://en.wikipedia.org/wiki/Metro_(design_language) Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Дазволіць згортваць блёкі ў бакавым мэню ў тэме афармленьня «Metrolook»",
 	"metrolook-guest": "Госьць"
 }
