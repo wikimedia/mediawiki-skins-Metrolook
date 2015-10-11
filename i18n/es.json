@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Macofe"
+			"Macofe",
+			"Fitoschido"
 		]
 	},
-	"metrolook-desc": "Apariencia Metrolook para MediaWiki",
+	"metrolook-desc": "Metrolook es una apariencia derivada de Vector [https://en.wikipedia.org/wiki/Metro_(design_language) inspirada en Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Permitir plegar los elementos de la barra lateral en la apariencia Metrolook",
 	"metrolook-guest": "Invitado"
 }

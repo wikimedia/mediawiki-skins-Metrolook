@@ -33,6 +33,52 @@ class MetrolookTemplate extends BaseTemplate {
 	/** @var string $mPersonalToolsEcho Saves Echo notifications */
 	private $mPersonalToolsEcho = '';
 
+	private function getTiles( $messageName = 'metrolook-tiles' ) {
+		/**
+		 * The message's format is:
+		 * * URL to the site|alternative text|image URL
+		 *
+		 * For example:
+		 * * http://www.pidgi.net/wiki/|PidgiWiki|http://images.pidgi.net/pidgiwikitiletop.png
+		 * * http://www.pidgi.net/press/|PidgiWiki Press|http://images.pidgi.net/pidgipresstiletop.png
+		 * * http://www.pidgi.net/jcc/|The JCC|http://images.pidgi.net/jcctiletop.png
+		 * * http://www.petalburgwoods.com/|Petalburg Woods|http://images.pidgi.net/pwntiletop.png
+		 */
+		$tileMessage = $this->getSkin()->msg( $messageName );
+		$tiles = '';
+		if ( $tileMessage->isDisabled() ) {
+			return $tiles;
+		}
+
+		$lines = explode( "\n", $tileMessage->inContentLanguage()->text() );
+
+		foreach ( $lines as $line ) {
+			if ( strpos( $line, '*' ) !== 0 ) {
+				continue;
+			} else {
+				$line = explode( '|', trim( $line, '* ' ), 3 );
+				$siteURL = $line[0];
+				$altText = $line[1];
+
+				// Maybe it's the name of a MediaWiki: message? I18n is
+				// always nice, so at least try it and see what happens...
+				$linkMsgObj = $this->getSkin()->msg( $altText );
+				if ( !$linkMsgObj->isDisabled() ) {
+					$altText = $linkMsgObj->parse();
+				}
+
+				$imageURL = $line[2];
+				$tiles .= '<div class="tile-wrapper"><div class="tile">' .
+					'<a href="' . htmlspecialchars( $siteURL, ENT_QUOTES ) . '"><img src="' .
+					htmlspecialchars( $imageURL, ENT_QUOTES ) .
+					'" alt="' . htmlspecialchars( $altText, ENT_QUOTES ) . '" /></a>' .
+				'</div></div>';
+			}
+		}
+
+		return $tiles;
+	}
+
 	/**
 	 * Outputs the entire contents of the (X)HTML page
 	 */
@@ -40,7 +86,7 @@ class MetrolookTemplate extends BaseTemplate {
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
-		if ( $this->config->get( 'VectorUseIconWatch' ) ) {
+		if ( $this->config->get( 'MetrolookUseIconWatch' ) ) {
 			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() )
 				? 'unwatch'
 				: 'watch';
@@ -291,6 +337,7 @@ class MetrolookTemplate extends BaseTemplate {
 			<div id="hamburgerIcon">
 				<img
 				class="hamburger"
+				alt=""
 				src="<?php echo htmlspecialchars(
 					$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>"
 				height="40px"
@@ -301,17 +348,11 @@ class MetrolookTemplate extends BaseTemplate {
 			if ( $this->config->get( 'MetrolookSiteName' ) ) {
 				?>
 				<div style="padding-left:10px;">
-					<div id="siteLogoBar" class="lighthover" style="height:40px;float:left;">
-						<div class="onhoverbg" style="height:40px;float:left;">
+					<div class="lighthover siteLogoBar">
+						<div class="onhoverbg">
 							<h4 class="title-name">
 								<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
-									<div
-									class="title-name"
-									style="
-									font-size: 17px; padding-left: 0.4em; padding-right: 0.4em; color: white;
-									max-width: auto; height: auto; max-height: 700px; display: inline-block;
-									vertical-align:middle;
-									">
+									<span class="title-name">
 										<?php
 										if ( $this->config->get( 'MetrolookSiteNameText' ) ) {
 											?>
@@ -323,7 +364,7 @@ class MetrolookTemplate extends BaseTemplate {
 										<?php
 										}
 										?>
-									</div>
+									</span>
 								</a>
 							</h4>
 						</div>
@@ -338,7 +379,7 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ) {
 					?>
-					<div id="siteLogoBar" class="lighthover" style="height:40px;float:left;">
+					<div class="lighthover siteLogoBar">
 				<?php
 				}
 				?>
@@ -364,7 +405,7 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ){
 					?>
-					<div id="siteLogoBar" class="lighthover" style="height:40px;float:left;">
+					<div class="lighthover siteLogoBar">
 				<?php
 				}
 				?>
@@ -384,178 +425,28 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 			?>
 
-			<?php
-			if ( $this->config->get( 'MetrolookDownArrow' ) ) {
-				?>
-				<div id="top-tile-bar" class="fixed-position">
-					<div style="vertical-align:top;align:left;">
-						<div class="topleft">
-							<div style="align: left; margin-left: auto; margin-right: auto; display: none;"
-							class="tilebar" id="bartile">
-								<div id="tilegrouptable">
-									<div id="tilegroup">
-										<?php
-										if ( $this->config->get( 'MetrolookBartile' ) ) {
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile1' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="http://www.pidgi.net/wiki/">
-															<img src="http://images.pidgi.net/pidgiwikitiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile2' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="http://www.pidgi.net/press/">
-															<img src="http://images.pidgi.net/pidgipresstiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile3' ) ) {
-												?>
-												<div style="float:left;padding:5px;" id="jcctile">
-													<div class="tile">
-														<a href="http://www.pidgi.net/jcc/">
-															<img src="http://images.pidgi.net/jcctiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile4' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="http://www.petalburgwoods.com/">
-															<img src="http://images.pidgi.net/pwntiletop.png" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-										<?php
-										} else {
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile5' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL1'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage1'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile6' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL2'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage2'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile7' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL3'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage3'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile8' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL4'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage4'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile9' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL5'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage5'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-											<?php
-											if ( $this->config->get( 'MetrolookTile10' ) ) {
-												?>
-												<div style="float:left;padding:5px;">
-													<div class="tile">
-														<a href="<?php echo $GLOBALS['wgMetrolookURL6'] ?>">
-															<img src="<?php echo $GLOBALS['wgMetrolookImage6'] ?>" />
-														</a>
-													</div>
-												</div>
-											<?php
-											}
-											?>
-										<?php
-										}
-										?>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php
-			}
-			?>
-
 			<div id="left-navigation">
 				<?php
-				if ( $this->config->get( 'MetrolookUploadButton' ) ) {
+				if ( $this->config->get( 'MetrolookUploadButton' ) && $user->isAllowed( 'upload' ) ) {
+					if (
+						isset( $this->data['nav_urls']['upload']['href'] ) &&
+						$this->data['nav_urls']['upload']['href']
+					)
+					{
+						$uploadURL = $this->data['nav_urls']['upload']['href'];
+					} else {
+						$upURL = SpecialPage::getTitleFor( 'Upload' )->getFullURL();
+						$uploadURL = htmlspecialchars( $upURL, ENT_QUOTES );
+					}
 					?>
-					<a href="<?php echo $this->data['nav_urls']['upload']['href']; ?>">
-						<div
-						class="onhoverbg"
-						style="padding-left:0.8em;padding-right:0.8em;float:left;height:40px;font-size:10pt;">
+					<a href="<?php echo $uploadURL; ?>">
+						<div class="onhoverbg" id="uploadbutton">
 							<img
 							class="uploadbutton"
+							alt=""
 							src="<?php echo htmlspecialchars(
-								$this->getSkin()->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
-								<span style="color:#fff;position:relative;top:3px; ">
+								$skin->getSkinStylePath( 'images/Transparent.gif' ) ) ?>" />
+								<span class="uploadbutton">
 									<?php $this->msg( 'uploadbtn' ) ?>
 								</span>
 						</div>
@@ -625,6 +516,30 @@ class MetrolookTemplate extends BaseTemplate {
 					?>
 					<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
 					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+				</div>
+			<?php
+			}
+			?>
+
+			<?php
+			if ( $this->config->get( 'MetrolookDownArrow' ) ) {
+				?>
+				<div class="top-tile-bar-inner-container">
+					<div class="topleft">
+						<div class="tilebar" id="bartile">
+							<div id="tilegrouptable">
+								<div id="tilegroup">
+									<?php
+									if ( $this->config->get( 'MetrolookBartile' ) ) {
+										echo $this->getTiles();
+									} else {
+										echo $this->getTiles( 'metrolook-tiles-second' );
+									}
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			<?php
 			}
@@ -939,7 +854,7 @@ class MetrolookTemplate extends BaseTemplate {
 							</h5>
 
 							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-								<div<?php echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
+								<div<?php echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
 								<?php
 								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
@@ -976,7 +891,7 @@ class MetrolookTemplate extends BaseTemplate {
 
 							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
 								<div<?php
-									echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearchSearch"' : '' ?>>
+									echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearchSearch"' : '' ?>>
 								<?php
 								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
