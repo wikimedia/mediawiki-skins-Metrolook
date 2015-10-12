@@ -12,7 +12,7 @@
 		$.cookie(
 			'vector-nav-' + $element.parent().attr( 'id' ),
 			isCollapsed,
-			{ 'expires': 30, 'path': '/' }
+			{ expires: 30, 'path': '/' }
 		);
 
 		$element
@@ -37,20 +37,20 @@
 		// Left-to-right languages
 		ltr: {
 			// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
-			opera: [['>=', 9.6]],
-			konqueror: [['>=', 4.0]],
+			opera: [ [ '>=', 9.6 ] ],
+			konqueror: [ [ '>=', 4.0 ] ],
 			blackberry: false,
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]],
+			ipod: [ [ '>=', 6 ] ],
+			iphone: [ [ '>=', 6 ] ],
 			ps3: false
 		},
 		// Right-to-left languages
 		rtl: {
-			opera: [['>=', 9.6]],
-			konqueror: [['>=', 4.0]],
+			opera: [ [ '>=', 9.6 ] ],
+			konqueror: [ [ '>=', 4.0 ] ],
 			blackberry: false,
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]],
+			ipod: [ [ '>=', 6 ] ],
+			iphone: [ [ '>=', 6 ] ],
 			ps3: false
 		}
 	};
@@ -68,9 +68,9 @@
 		// Use cookie data to restore preferences of what to show and hide
 		$( '#mw-panel > .portal:not(.persistent)' )
 			.each( function ( i ) {
-				var id = $(this).attr( 'id' ),
+				var id = $( this ).attr( 'id' ),
 					state = $.cookie( 'vector-nav-' + id );
-				$(this).find( 'ul:first' ).attr( 'id', id + '-list' );
+				$( this ).find( 'ul:first' ).attr( 'id', id + '-list' );
 				// Add anchor tag to heading for better accessibility
 				$( this ).find( 'h5' ).wrapInner(
 					$( '<a>' )
@@ -88,22 +88,22 @@
 					( state === null && i < 1 ) ||
 					( state === null && id === 'p-lang' )
 				) {
-					$(this)
+					$( this )
 						.addClass( 'expanded' )
 						.removeClass( 'collapsed' )
 						.find( '.body' )
 						.hide() // bug 34450
 						.show();
-					$(this).find( 'h5 > a' )
+					$( this ).find( 'h5 > a' )
 						.attr( {
 							'aria-pressed': 'true',
 							'aria-expanded': 'true'
 						} );
 				} else {
-					$(this)
+					$( this )
 						.addClass( 'collapsed' )
 						.removeClass( 'expanded' );
-					$(this).find( 'h5 > a' )
+					$( this ).find( 'h5 > a' )
 						.attr( {
 							'aria-pressed': 'false',
 							'aria-expanded': 'false'
@@ -111,7 +111,7 @@
 				}
 				// Re-save cookie
 				if ( state !== null ) {
-					$.cookie( 'vector-nav-' + $(this).attr( 'id' ), state, { 'expires': 30, 'path': '/' } );
+					$.cookie( 'vector-nav-' + $( this ).attr( 'id' ), state, { expires: 30, 'path': '/' } );
 				}
 			} );
 
@@ -127,21 +127,18 @@
 			.delegate( '.portal:not(.persistent) > h5', 'keydown', function ( e ) {
 				// Make the space and enter keys act as a click
 				if ( e.which === 13 /* Enter */ || e.which === 32 /* Space */ ) {
-					toggle( $(this) );
+					toggle( $( this ) );
 				}
 			} )
 			.delegate( '.portal:not(.persistent) > h5', 'mousedown', function ( e ) {
 				if ( e.which !== 3 ) { // Right mouse click
-					toggle( $(this) );
-					$(this).blur();
+					toggle( $( this ) );
+					$( this ).blur();
 				}
 				return false;
 			} );
-	});
-
+	} );
 }( mediaWiki, jQuery ) );
-
-
 
 
 /*
@@ -150,7 +147,7 @@
  *
  *
  */
- 
+
 /**
  * Collapsible navigation for Vector
  */
@@ -190,20 +187,20 @@
 		// Left-to-right languages
 		ltr: {
 			// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
-			opera: [['>=', 9.6]],
-			konqueror: [['>=', 4.0]],
+			opera: [ [ '>=', 9.6 ] ],
+			konqueror: [ [ '>=', 4.0 ] ],
 			blackberry: false,
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]],
+			ipod: [ [ '>=', 6 ] ],
+			iphone: [ [ '>=', 6 ] ],
 			ps3: false
 		},
 		// Right-to-left languages
 		rtl: {
-			opera: [['>=', 9.6]],
-			konqueror: [['>=', 4.0]],
+			opera: [ [ '>=', 9.6 ] ],
+			konqueror: [ [ '>=', 4.0 ] ],
 			blackberry: false,
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]],
+			ipod: [ [ '>=', 6 ] ],
+			iphone: [ [ '>=', 6 ] ],
 			ps3: false
 		}
 	};
@@ -221,9 +218,9 @@
 		// Use cookie data to restore preferences of what to show and hide
 		$( '#mw-panel-custom > .portal-custom:not(.persistent)' )
 			.each( function ( i ) {
-				var id = $(this).attr( 'id' ),
+				var id = $( this ).attr( 'id' ),
 					state = $.cookie( 'vector-nav-' + id );
-				$(this).find( 'ul:first' ).attr( 'id', id + '-list' );
+				$( this ).find( 'ul:first' ).attr( 'id', id + '-list' );
 				// Add anchor tag to heading for better accessibility
 				$( this ).find( 'h5' ).wrapInner(
 					$( '<a>' )
@@ -241,22 +238,22 @@
 					( state === null && i < 1 ) ||
 					( state === null && id === 'p-lang' )
 				) {
-					$(this)
+					$( this )
 						.addClass( 'expanded' )
 						.removeClass( 'collapsed' )
 						.find( '.body-custom' )
 						.hide() // bug 34450
 						.show();
-					$(this).find( 'h5 > a' )
+					$( this ).find( 'h5 > a' )
 						.attr( {
 							'aria-pressed': 'true',
 							'aria-expanded': 'true'
 						} );
 				} else {
-					$(this)
+					$( this )
 						.addClass( 'collapsed' )
 						.removeClass( 'expanded' );
-					$(this).find( 'h5 > a' )
+					$( this ).find( 'h5 > a' )
 						.attr( {
 							'aria-pressed': 'false',
 							'aria-expanded': 'false'
@@ -264,7 +261,7 @@
 				}
 				// Re-save cookie
 				if ( state !== null ) {
-					$.cookie( 'vector-nav-' + $(this).attr( 'id' ), state, { 'expires': 30, 'path': '/' } );
+					$.cookie( 'vector-nav-' + $( this ).attr( 'id' ), state, { 'expires': 30, 'path': '/' } );
 				}
 			} );
 
@@ -280,16 +277,15 @@
 			.delegate( '.portal-custom:not(.persistent) > h5', 'keydown', function ( e ) {
 				// Make the space and enter keys act as a click
 				if ( e.which === 13 /* Enter */ || e.which === 32 /* Space */ ) {
-					toggle( $(this) );
+					toggle( $( this ) );
 				}
 			} )
 			.delegate( '.portal-custom:not(.persistent) > h5', 'mousedown', function ( e ) {
 				if ( e.which !== 3 ) { // Right mouse click
-					toggle( $(this) );
-					$(this).blur();
+					toggle( $( this ) );
+					$( this ).blur();
 				}
 				return false;
 			} );
-	});
-
+	} );
 }( mediaWiki, jQuery ) );
