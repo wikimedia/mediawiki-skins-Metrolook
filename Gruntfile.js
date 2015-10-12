@@ -12,11 +12,17 @@ module.exports = function ( grunt ) {
 				jshintrc: true
 			},
 			all: [
-				'*.js'
+				'*.js',
+				'**/*.js'
 			]
 		},
 		jscs: {
-			src: '<%= jshint.all %>'
+			src: '<%= jshint.all %>',
+			options: {
+				excludeFiles: [
+					'node_modules/'
+				]
+			}
 		},
 		banana: conf.MessagesDirs,
 		jsonlint: {
