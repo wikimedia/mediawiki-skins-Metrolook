@@ -4,12 +4,13 @@
 ( function ( $ ) {
 	var rtl = $( 'html' ).attr( 'dir' ) === 'rtl';
 	$.fn.collapsibleTabs = function ( options ) {
+		// Merge options into the defaults
+		var settings = $.extend( {}, $.collapsibleTabs.defaults, options );
+
 		// return if the function is called on an empty jquery object
 		if ( !this.length ) {
 			return this;
 		}
-		// Merge options into the defaults
-		var settings = $.extend( {}, $.collapsibleTabs.defaults, options );
 
 		this.each( function () {
 			var $el = $( this );
@@ -94,7 +95,7 @@
 				if ( $( data.collapsedContainer + ' ' + data.collapsible ).length > 0 &&
 						data.expandCondition( $.collapsibleTabs.getSettings( $( data.collapsedContainer ).children(
 								data.collapsible + ':first' ) ).expandedWidth ) ) {
-					//move the element from the dropdown to the tab
+					// move the element from the dropdown to the tab
 					$el.trigger( 'beforeTabExpand' );
 					$.collapsibleTabs
 						.moveToExpanded( data.collapsedContainer + ' ' + data.collapsible + ':first' );
