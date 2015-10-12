@@ -37,20 +37,20 @@
 		// Left-to-right languages
 		ltr: {
 			// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
-			opera: [['>=', 9.6]],
-			konqueror: [['>=', 4.0]],
+			opera: [[ '>=', 9.6 ]],
+			konqueror: [[ '>=', 4.0 ]],
 			blackberry: false,
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]],
+			ipod: [[ '>=', 6 ]],
+			iphone: [[ '>=', 6 ]],
 			ps3: false
 		},
 		// Right-to-left languages
 		rtl: {
-			opera: [['>=', 9.6]],
-			konqueror: [['>=', 4.0]],
+			opera: [[ '>=', 9.6 ]],
+			konqueror: [[ '>=', 4.0 ]],
 			blackberry: false,
-			ipod: [['>=', 6]],
-			iphone: [['>=', 6]],
+			ipod: [[ '>=', 6 ]],
+			iphone: [[ '>=', 6 ]],
 			ps3: false
 		}
 	};
