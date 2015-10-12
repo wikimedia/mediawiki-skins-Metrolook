@@ -1,7 +1,7 @@
 {
 	"name": "Metrolook",
 	"namemsg": "skinname-metrolook",
-	"version": "5.0 alpha 1",
+	"version": "5.0 alpha 2",
 	"author": [
 		"immewnity",
 		"Paladox",
@@ -149,7 +149,8 @@
 		"MetrolookLine": true,
 		"MetrolookUploadButton": true,
 		"MetrolookMobile": true,
-		"MetrolookBartile": true
+		"MetrolookBartile": true,
+		"MetrolookDisableAvatar": true
 	},
 	"manifest_version": 1
 }

@@ -98,12 +98,14 @@ class MetrolookTemplate extends BaseTemplate {
 			)
 		);
 
-		if ( class_exists( 'wAvatar' ) ) { // SocialProfile is installed
-			$avatar = new wAvatar( $skin->getUser()->getId(), 'l' );
-			$avatarImage = $avatar->getAvatarURL( array(
-				'width' => (int)$width,
-				'class' => 'userIcon' . (int)$width . ' socialprofile-avatar'
-			) );
+		if ( $this->config->get( 'MetrolookDisableAvatar' ) ) {
+			if ( class_exists( 'wAvatar' ) ) { // SocialProfile is installed
+				$avatar = new wAvatar( $skin->getUser()->getId(), 'l' );
+				$avatarImage = $avatar->getAvatarURL( array(
+					'width' => (int)$width,
+					'class' => 'userIcon' . (int)$width . ' socialprofile-avatar'
+				) );
+			}
 		}
 
 		return $avatarImage;
