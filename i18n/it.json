@@ -4,6 +4,7 @@
 			"Beta16"
 		]
 	},
-	"metrolook-desc": "Skin Metrolook per MediaWiki",
+	"metrolook-desc": "Metrolook è un fork della skin Vector [https://it.wikipedia.org/wiki/Modern_UI_(linguaggio_di_design) ispirata a Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Abilita la compressione degli elementi nella barra laterale per la skin Metrolook",
 	"metrolook-guest": "Ospite"
 }
