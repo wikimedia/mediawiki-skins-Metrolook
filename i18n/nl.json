@@ -6,7 +6,7 @@
 			"Esketti"
 		]
 	},
-	"skinmetrolook-collapsiblenav-preference": "Inschakelen instorten van de items in de zijbalk in Metrolook huid",
-	"metrolook-desc": "Metrolookuiterlijk voor MediaWiki",
+	"metrolook-desc": "Metrolook is een op [https://en.wikipedia.org/wiki/Metro_(design_language) Metro geinspireerde] fork van het Vectoruiterlijk",
+	"skinmetrolook-collapsiblenav-preference": "Inklappen van items inschakelen in de zijbalk van het Metrolookuiterlijk",
 	"metrolook-guest": "Gast"
 }
