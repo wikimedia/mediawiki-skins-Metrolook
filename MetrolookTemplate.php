@@ -50,7 +50,7 @@ class MetrolookTemplate extends BaseTemplate {
 			return $tiles;
 		}
 
-		$lines = explode( "\n", $tileMessage->inContentLanguage()->text() );
+		$lines = explode( "\n", $tileMessage->text() );
 
 		foreach ( $lines as $line ) {
 			if ( strpos( $line, '*' ) !== 0 ) {
