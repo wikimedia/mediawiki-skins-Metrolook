@@ -172,7 +172,7 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 		$personalTools = $this->getPersonalTools();
 		foreach ( $personalTools as $key => $item ) {
-			if ( $key !== 'notifications' ) {
+			if ( $key !== 'notifications-alert' ) {
 				$this->mPersonalTools .= $this->makeListItem( $key, $item );
 			} else {
 				$this->mPersonalToolsEcho .= $this->makeListItem( $key, $item );
