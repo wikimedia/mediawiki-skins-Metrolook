@@ -19,7 +19,7 @@
 			.parent()
 			.toggleClass( 'expanded' )
 			.toggleClass( 'collapsed' )
-			.find( '.body' )
+			.find( '.body-custom' )
 			.slideToggle( 'fast' );
 		isCollapsed = !isCollapsed;
 
@@ -64,9 +64,9 @@
 		/* General Portal Modification */
 
 		// Apply a class to the entire panel to activate styles
-		$( '#mw-panel' ).addClass( 'collapsible-nav' );
+		$( '#mw-panel-custom' ).addClass( 'collapsible-nav' );
 		// Use cookie data to restore preferences of what to show and hide
-		$( '#mw-panel > .portal:not(.persistent)' )
+		$( '#mw-panel-custom > .portal-custom:not(.persistent)' )
 			.each( function ( i ) {
 				var id = $( this ).attr( 'id' ),
 					state = $.cookie( 'vector-nav-' + id );
@@ -91,7 +91,7 @@
 					$( this )
 						.addClass( 'expanded' )
 						.removeClass( 'collapsed' )
-						.find( '.body' )
+						.find( '.body-custom' )
 						.hide() // bug 34450
 						.show();
 					$( this ).find( 'h5 > a' )
@@ -117,20 +117,20 @@
 
 		/* Tab Indexing */
 
-		$headings = $( '#mw-panel > .portal:not(.persistent) > h5' );
+		$headings = $( '#mw-panel-custom > .portal-custom:not(.persistent) > h5' );
 
 		// Make it keyboard accessible
 		$headings.attr( 'tabindex', '0' );
 
 		// Toggle the selected menu's class and expand or collapse the menu
-		$( '#mw-panel' )
-			.delegate( '.portal:not(.persistent) > h5', 'keydown', function ( e ) {
+		$( '#mw-panel-custom' )
+			.delegate( '.portal-custom:not(.persistent) > h5', 'keydown', function ( e ) {
 				// Make the space and enter keys act as a click
 				if ( e.which === 13 /* Enter */ || e.which === 32 /* Space */ ) {
 					toggle( $( this ) );
 				}
 			} )
-			.delegate( '.portal:not(.persistent) > h5', 'mousedown', function ( e ) {
+			.delegate( '.portal-custom:not(.persistent) > h5', 'mousedown', function ( e ) {
 				if ( e.which !== 3 ) { // Right mouse click
 					toggle( $( this ) );
 					$( this ).blur();

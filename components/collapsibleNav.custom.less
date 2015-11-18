@@ -4,9 +4,9 @@
 @import "../variables.less";
 @import "mediawiki.mixins.less";
 
-#mw-panel.collapsible-nav {
-	.portal {
-	
+#mw-panel-custom.collapsible-nav {
+	.portal-custom {
+
 		h5 {
 			background-position: left center;
 			background-repeat: no-repeat;
@@ -25,7 +25,7 @@
 			}
 		}
 
-		.body {
+		.body-custom {
 			margin: @collapsible-nav-body-margin;
 			background-image: none !important;
 			padding-top: 0;
@@ -50,7 +50,7 @@
 
 		/* Persistent */
 		&.persistent {
-			.body {
+			.body-custom {
 				display: block;
 				margin-left: 0.5em;
 			}
