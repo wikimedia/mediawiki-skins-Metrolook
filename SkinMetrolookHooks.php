@@ -11,19 +11,35 @@ class MetrolookHooks {
 	/* Protected Static Members */
 
 	protected static $features = array(
-		'collapsiblenav' => array(
-			'preferences' => array(
-				'skinmetrolook-collapsiblenav' => array(
-					'type' => 'toggle',
-					'label-message' => 'skinmetrolook-collapsiblenav-preference',
-					'section' => 'rendering/advancedrendering',
+		if ( $this->config->get( 'MetrolookSearchBar' ) ) {
+			'collapsiblenav' => array(
+				'preferences' => array(
+					'skinmetrolook-collapsiblenav' => array(
+						'type' => 'toggle',
+						'label-message' => 'skinmetrolook-collapsiblenav-preference',
+						'section' => 'rendering/advancedrendering',
+					),
 				),
-			),
-			'requirements' => array(
-				'skinmetrolook-collapsiblenav' => true,
-			),
-			'modules' => array( 'skins.metrolook.collapsibleNav' ),
-		)
+				'requirements' => array(
+					'skinmetrolook-collapsiblenav' => true,
+				),
+				'modules' => array( 'skins.metrolook.collapsibleNav' ),
+			)
+		} else {
+			'collapsiblenav-custom' => array(
+				'preferences' => array(
+					'skinmetrolook-collapsiblenav-custom' => array(
+						'type' => 'toggle',
+						'label-message' => 'skinmetrolook-collapsiblenav-preference',
+						'section' => 'rendering/advancedrendering',
+					),
+				),
+				'requirements' => array(
+					'skinmetrolook-collapsiblenav-custom' => true,
+				),
+				'modules' => array( 'skins.metrolook.collapsibleNav-custom' ),
+			)
+		}
 	);
 
 	/* Static Methods */
