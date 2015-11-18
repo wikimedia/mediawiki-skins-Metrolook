@@ -97,6 +97,20 @@
 				"jquery.cookie",
 				"jquery.tabIndex"
 			]
+		},
+		"skins.metrolook.collapsibleNav-custom": {
+			"position": "bottom",
+			"scripts": [
+				"js/collapsibleNav.custom.js"
+			],
+			"styles": [
+				"components/collapsibleNav.custom.less"
+			],
+			"dependencies": [
+				"jquery.client",
+				"jquery.cookie",
+				"jquery.tabIndex"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -127,7 +141,7 @@
 			"+mediawiki.sectionAnchor": "skinStyles/mediawiki.sectionAnchor.less",
 			"ooui": "skinStyles/ooui.less",
 			"mediawiki.special": "skinStyles/mediawiki.special.less",
-			"mediawiki.special.preferences": "skinStyles/mediawiki.special.preferences.less"
+			"+mediawiki.special.preferences.styles": "skinStyles/mediawiki.special.preferences.styles.less"
 		}
 	},
 	"config": {

@@ -26,6 +26,22 @@ class MetrolookHooks {
 		)
 	);
 
+	protected static $featurescustom = array(
+		'collapsiblenav-custom' => array(
+			'preferences' => array(
+				'skinmetrolook-collapsiblenav-custom' => array(
+					'type' => 'toggle',
+					'label-message' => 'skinmetrolook-collapsiblenav-preference',
+					'section' => 'rendering/advancedrendering',
+				),
+			),
+			'requirements' => array(
+				'skinmetrolook-collapsiblenav-custom' => true,
+			),
+			'modules' => array( 'skins.metrolook.collapsibleNav-custom' ),
+		)
+	);
+
 	/* Static Methods */
 
 	/**
@@ -38,7 +54,7 @@ class MetrolookHooks {
 	 * @return bool
 	 */
 	public static function isEnabled( $name ) {
-		global $wgMetrolookFeatures, $wgUser;
+		global $wgMetrolookFeatures, $wgUser, $wgMetrolookSearchBar;
 
 		// Features with global set to true are always enabled
 		if ( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['global'] ) {
@@ -46,16 +62,30 @@ class MetrolookHooks {
 		}
 		// Features with user preference control can have any number of preferences
 		// to be specific values to be enabled
-		if ( $wgMetrolookFeatures[$name]['user'] ) {
-			if ( isset( self::$features[$name]['requirements'] ) ) {
-				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
-					// Important! We really do want fuzzy evaluation here
-					if ( $wgUser->getOption( $requirement ) != $value ) {
-						return false;
+		if ( $wgMetrolookSearchBar ) {
+			if ( $wgMetrolookFeatures[$name]['user'] ) {
+				if ( isset( self::$features[$name]['requirements'] ) ) {
+					foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
+						// Important! We really do want fuzzy evaluation here
+						if ( $wgUser->getOption( $requirement ) != $value ) {
+							return false;
+						}
 					}
 				}
+				return true;
 			}
-			return true;
+		} else {
+			if ( $wgMetrolookFeatures[$name]['user'] ) {
+				if ( isset( self::$featurescustom[$name]['requirements'] ) ) {
+					foreach ( self::$featurescustom[$name]['requirements'] as $requirement => $value ) {
+						// Important! We really do want fuzzy evaluation here
+						if ( $wgUser->getOption( $requirement ) != $value ) {
+							return false;
+						}
+					}
+				}
+				return true;
+			}
 		}
 		// Features controlled by $wgMetrolookFeatures with both global and user
 		// set to false are awlways disabled
@@ -73,11 +103,21 @@ class MetrolookHooks {
 	 * @param $skin Skin current skin
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
+		global $wgMetrolookSearchBar;
 		if ( $skin instanceof SkinMetrolook ) {
-			// Add modules for enabled features
-			foreach ( self::$features as $name => $feature ) {
-				if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
-					$out->addModules( $feature['modules'] );
+			if ( $wgMetrolookSearchBar ) {
+				// Add modules for enabled features
+				foreach ( self::$features as $name => $feature ) {
+					if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
+						$out->addModules( $feature['modules'] );
+					}
+				}
+			} else {
+				// Add modules for enabled features
+				foreach ( self::$featurescustom as $name => $feature ) {
+					if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
+						$out->addModules( $feature['modules'] );
+					}
 				}
 			}
 		}
@@ -93,15 +133,28 @@ class MetrolookHooks {
 	 * @param $defaultPreferences array list of default user preference controls
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
-		global $wgMetrolookFeatures;
+		global $wgMetrolookFeatures, $wgMetrolookSearchBar;
 
-		foreach ( self::$features as $name => $feature ) {
-			if (
-				isset( $feature['preferences'] ) &&
-				( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['user'] )
-			) {
-				foreach ( $feature['preferences'] as $key => $options ) {
-					$defaultPreferences[$key] = $options;
+		if ( $wgMetrolookSearchBar ) {
+			foreach ( self::$features as $name => $feature ) {
+				if (
+					isset( $feature['preferences'] ) &&
+					( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['user'] )
+				) {
+					foreach ( $feature['preferences'] as $key => $options ) {
+						$defaultPreferences[$key] = $options;
+					}
+				}
+			}
+		} else {
+			foreach ( self::$featurescustom as $name => $feature ) {
+				if (
+					isset( $feature['preferences'] ) &&
+					( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['user'] )
+				) {
+					foreach ( $feature['preferences'] as $key => $options ) {
+						$defaultPreferences[$key] = $options;
+					}
 				}
 			}
 		}
@@ -117,25 +170,34 @@ class MetrolookHooks {
 		global $wgMetrolookFeatures;
 
 		$configurations = array();
-		foreach ( self::$features as $name => $feature ) {
-			if (
-				isset( $feature['configurations'] ) &&
-				( !isset( $wgMetrolookFeatures[$name] ) || self::isEnabled( $name ) )
-			) {
-				foreach ( $feature['configurations'] as $configuration ) {
-					global $$wgConfiguration;
-					$configurations[$configuration] = $$wgConfiguration;
+		if ( $wgMetrolookSearchBar ) {
+			foreach ( self::$features as $name => $feature ) {
+				if (
+					isset( $feature['configurations'] ) &&
+					( !isset( $wgMetrolookFeatures[$name] ) || self::isEnabled( $name ) )
+				) {
+					foreach ( $feature['configurations'] as $configuration ) {
+						global $$wgConfiguration;
+						$configurations[$configuration] = $$wgConfiguration;
+					}
+				}
+			}
+		} else {
+			foreach ( self::$featurescustom as $name => $feature ) {
+				if (
+					isset( $feature['configurations'] ) &&
+					( !isset( $wgMetrolookFeatures[$name] ) || self::isEnabled( $name ) )
+				) {
+					foreach ( $feature['configurations'] as $configuration ) {
+						global $$wgConfiguration;
+						$configurations[$configuration] = $$wgConfiguration;
+					}
 				}
 			}
 		}
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
 		}
-
-		global $wgMetrolookMobile;
-		$vars['wgMetrolook'] = array(
-			'mobile' => $wgMetrolookMobile,
-		);
 
 		return true;
 	}
@@ -145,10 +207,17 @@ class MetrolookHooks {
 	 * @return bool
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
+		global $wgMetrolookSearchBar;
 		// Build and export old-style wgMetrolookEnabledModules object for back compat
 		$enabledModules = array();
-		foreach ( self::$features as $name => $feature ) {
-			$enabledModules[$name] = self::isEnabled( $name );
+		if ( $wgMetrolookSearchBar ) {
+			foreach ( self::$features as $name => $feature ) {
+				$enabledModules[$name] = self::isEnabled( $name );
+			}
+		} else {
+			foreach ( self::$featurescustom as $name => $feature ) {
+				$enabledModules[$name] = self::isEnabled( $name );
+			}
 		}
 
 		$vars['wgMetrolookEnabledModules'] = $enabledModules;
