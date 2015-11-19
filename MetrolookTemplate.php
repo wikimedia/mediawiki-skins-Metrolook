@@ -329,28 +329,6 @@ class MetrolookTemplate extends BaseTemplate {
 			<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
 
 		<div id="mw-head">
-			<div class="vectorMenu" id="usermenu">
-				<div class="no-js">
-					<a href="#" class="user-icon-container">
-						<span id="username-top">
-							<span id="username-text"><?php echo $userNameTop ?></span>
-							<span class="username-space spacer"> </span>
-							<span id="userIcon20"><?php echo $this->getAvatar( 20 ) ?></span>
-							<span class="spacer"> </span>
-							<span id="userIcon40"><?php echo $this->getAvatar( 40 ) ?></span>
-						</span>
-					</a>
-					<div class="menu personal-menu">
-						<?php $this->renderNavigation( 'PERSONAL' ); ?>
-					</div>
-				</div>
-			</div>
-			<div id="echoNotifications">
-				<ul>
-					<?php echo $this->mPersonalToolsEcho; ?>
-				</ul>
-			</div>
-
 			<div id="hamburgerIcon">
 				<img
 				class="hamburger"
@@ -436,6 +414,27 @@ class MetrolookTemplate extends BaseTemplate {
 			<?php
 			}
 			?>
+			<div class="vectorMenu" id="usermenu">
+				<div class="no-js">
+					<a href="#" class="user-icon-container">
+						<span id="username-top">
+							<span id="username-text"><?php echo $userNameTop ?></span>
+							<span class="username-space spacer"> </span>
+							<span id="userIcon20"><?php echo $this->getAvatar( 20 ) ?></span>
+							<span class="spacer"> </span>
+							<span id="userIcon40"><?php echo $this->getAvatar( 40 ) ?></span>
+						</span>
+					</a>
+					<div class="menu personal-menu">
+						<?php $this->renderNavigation( 'PERSONAL' ); ?>
+					</div>
+				</div>
+			</div>
+			<div id="echoNotifications">
+				<ul>
+					<?php echo $this->mPersonalToolsEcho; ?>
+				</ul>
+			</div>
 
 			<div id="left-navigation">
 				<?php
