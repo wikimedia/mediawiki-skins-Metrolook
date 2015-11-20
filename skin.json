@@ -55,11 +55,7 @@
 				"screen-hd.less": {
 					"media": "screen and (min-width: 982px)"
 				}
-			},
-			"dependencies": [
-				"ext.echo.uiy",
-				"ext.echo.styles.badgey"
-			]
+			}
 		},
 		"skins.metrolook.styles.responsive": {
 			"position": "top",
