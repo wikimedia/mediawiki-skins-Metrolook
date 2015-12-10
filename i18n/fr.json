@@ -7,7 +7,7 @@
 			"VictorBrice"
 		]
 	},
-	"metrolook-desc": " Metrolook est fourchette d'a [https://en.wikipedia.org/wiki/Metro_(design_language) inspiré par la métro] du Vectorskin",
+	"metrolook-desc": " Metrolook est un fork de l'habillage Vector inspiré par  [https://en.wikipedia.org/wiki/Metro_(design_language) inspiré par Metro]",
 	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l'habillage Metrolook",
 	"metrolook-guest": "Invité"
 }
