@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eaa8f54_12ddd647",
+        "filename": "composer.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 24
+      },
+      "writtenOn": "2015-12-16T09:55:07Z",
+      "side": 1,
+      "message": "Trailing whitespace but otherwise ok :-}",
+      "revId": "6cb15efbee7dfdf2836ed1852ec4af773621d046",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
