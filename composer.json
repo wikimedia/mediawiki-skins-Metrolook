@@ -29,6 +29,9 @@
 		"source": "https://git.wikimedia.org/summary/mediawiki%2Fskins%2FMetrolook",
 		"irc": "irc://irc.freenode.org/mediawiki"
 	},
+	"extra": {
+		"installer-name": "Metrolook"	
+	},
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "0.9.*",
 		"mediawiki/mediawiki-codesniffer": "0.5.0"
