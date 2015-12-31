@@ -167,7 +167,7 @@ class MetrolookHooks {
 	 * Adds enabled/disabled switches for Vector modules
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
-		global $wgMetrolookFeatures;
+		global $wgMetrolookFeatures, $wgMetrolookSearchBar;
 
 		$configurations = array();
 		if ( $wgMetrolookSearchBar ) {
