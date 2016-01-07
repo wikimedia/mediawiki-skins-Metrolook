@@ -154,6 +154,7 @@
 			},
 			"_merge_strategy": "array_plus_2d"
 		},
+		"MetrolookDisableCollapsibleNav": true,
 		"MetrolookUseSimpleSearch": true,
 		"MetrolookUseIconWatch": true,
 		"MetrolookLogo": true,
