@@ -10,5 +10,12 @@
     "grunt-jscs": "2.6.0",
     "grunt-jsonlint": "1.0.7",
     "jscs-preset-wikimedia": "~1.0.0"
+  },
+  "deploy": {
+    "node": "4.2",
+    "target": "debian",
+    "dependencies": {
+      "_all": []
+    }
   }
 }
