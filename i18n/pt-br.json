@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mordecool"
+			"Mordecool",
+			"HenriqueCrang"
 		]
 	},
+	"metrolook-desc": "Metrolook é um fork [https://en.wikipedia.org/wiki/Metro_(design_language) inspirado no Metro] do tema Vector",
+	"skinmetrolook-collapsiblenav-preference": "Ativar o ocultamento de itens na barra lateral no tema Metrolook",
 	"metrolook-guest": "Hóspede"
 }
