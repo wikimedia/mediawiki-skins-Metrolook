@@ -347,10 +347,22 @@ class MetrolookTemplate extends BaseTemplate {
 								<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
 									<span class="title-name">
 										<?php
-										if ( $this->config->get( 'MetrolookSiteNameText' ) ) {
-											echo $GLOBALS['wgSitename'];
+										if ( $this->config->get( 'MetrolookSiteNameLogo' ) ) {
+											?>
+											<div style="height:40px;float:left;margin-top:-0.7em;">
+												<a href="<?php
+													echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+												?>">
+													<img src="<?php echo $this->text( 'logopath' ) ?>" />
+												</a>
+											</div>
+										<?php
 										} else {
-											echo $GLOBALS['wgMetrolookSiteText'];
+											if ( $this->config->get( 'MetrolookSiteNameText' ) ) {
+												echo $GLOBALS['wgSitename'];
+											} else {
+												echo $GLOBALS['wgMetrolookSiteText'];
+											}
 										}
 										?>
 									</span>
@@ -501,14 +513,16 @@ class MetrolookTemplate extends BaseTemplate {
 				?>
 				<div id="mw-panel">
 					<?php
-					if ( $this->config->get( 'MetrolookLogo' ) ) {
-						?>
-						<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
-							echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-							?>" <?php
-							echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-							?>></a></div>
-					<?php
+					if ( !$this->config->get( 'MetrolookSiteNameLogo' ) ) {
+						if ( $this->config->get( 'MetrolookLogo' ) ) {
+							?>
+							<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
+								echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+								?>" <?php
+								echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+								?>></a></div>
+						<?php
+						}
 					}
 					?>
 					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
@@ -518,14 +532,16 @@ class MetrolookTemplate extends BaseTemplate {
 				?>
 				<div id="mw-panel-custom">
 					<?php
-					if ( $this->config->get( 'MetrolookLogo' ) ) {
-						?>
-						<div id="p-logo-custom" role="banner"><a class="mw-wiki-logo" href="<?php
-							echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-							?>" <?php
-							echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo-custom' ) )
-							?>></a></div>
-					<?php
+					if ( !$this->config->get( 'MetrolookSiteNameLogo' ) ) {
+						if ( $this->config->get( 'MetrolookLogo' ) ) {
+							?>
+							<div id="p-logo-custom" role="banner"><a class="mw-wiki-logo" href="<?php
+								echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+								?>" <?php
+								echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo-custom' ) )
+								?>></a></div>
+						<?php
+						}
 					}
 					?>
 					<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
