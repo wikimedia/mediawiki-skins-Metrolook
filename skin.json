@@ -157,6 +157,7 @@
 		"MetrolookUseSimpleSearch": true,
 		"MetrolookUseIconWatch": true,
 		"MetrolookLogo": true,
+		"MetrolookSiteNameLogo": false,
 		"MetrolookSiteName": true,
 		"MetrolookSiteNameText": true,
 		"MetrolookSiteText": "",
