@@ -60,7 +60,7 @@ class SkinMetrolook extends SkinTemplate {
 				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
 		);
 
-		$out->addModules( array( 'skins.metrolook.js' ) );
+		$out->addModules( [ 'skins.metrolook.js' ] );
 	}
 
 	/**
@@ -71,11 +71,11 @@ class SkinMetrolook extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) ) {
-			$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles.responsive' );
+			$styles = [ 'mediawiki.skinning.interface', 'skins.metrolook.styles.responsive' ];
 		} else {
-			$styles = array( 'mediawiki.skinning.interface', 'skins.metrolook.styles' );
+			$styles = [ 'mediawiki.skinning.interface', 'skins.metrolook.styles' ];
 		}
-		Hooks::run( 'SkinMetrolookStyleModules', array( $this, &$styles ) );
+		Hooks::run( 'SkinMetrolookStyleModules', [ $this, &$styles ] );
 		$out->addModuleStyles( $styles );
 	}
 

@@ -91,20 +91,20 @@ class MetrolookTemplate extends BaseTemplate {
 		// Default avatar is what we start with
 		$avatarImage = Html::element(
 			'img',
-			array(
+			[
 				'class' => 'userIcon' . (int)$width,
 				'src' => htmlspecialchars( $skin->getSkinStylePath( 'images/Transparent.gif' ) ),
 				'alt' => ''
-			)
+			]
 		);
 
 		if ( $this->config->get( 'MetrolookDisableAvatar' ) ) {
 			if ( class_exists( 'wAvatar' ) ) { // SocialProfile is installed
 				$avatar = new wAvatar( $skin->getUser()->getId(), 'l' );
-				$avatarImage = $avatar->getAvatarURL( array(
+				$avatarImage = $avatar->getAvatarURL( [
 					'width' => (int)$width,
 					'class' => 'userIcon' . (int)$width . ' socialprofile-avatar'
-				) );
+				] );
 			}
 		}
 
@@ -208,7 +208,7 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 			?>
 			<?php
-			if ( is_callable( array( $this, 'getIndicators' ) ) ) {
+			if ( is_callable( [ $this, 'getIndicators' ] ) ) {
 				echo $this->getIndicators();
 			}
 			// Loose comparison with '!=' is intentional, to catch null and false too, but not '0'
@@ -478,7 +478,7 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				}
 				?>
-				<?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ) ); ?>
+				<?php $this->renderNavigation( [ 'NAMESPACES', 'VARIANTS', 'VIEWS', 'ACTIONS' ] ); ?>
 			</div>
 
 				<?php
@@ -502,7 +502,7 @@ class MetrolookTemplate extends BaseTemplate {
 			<div id="right-navigation">
 				<?php
 				if ( $this->config->get( 'MetrolookSearchBar' ) ) {
-					$this->renderNavigation( array( 'SEARCH' ) );
+					$this->renderNavigation( [ 'SEARCH' ] );
 				}
 				?>
 			</div>
@@ -544,7 +544,7 @@ class MetrolookTemplate extends BaseTemplate {
 						}
 					}
 					?>
-					<?php $this->renderNavigation( array( 'SEARCH' ) ); ?>
+					<?php $this->renderNavigation( [ 'SEARCH' ] ); ?>
 					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 				</div>
 			<?php
@@ -579,7 +579,7 @@ class MetrolookTemplate extends BaseTemplate {
 		<div id="mw-panel-right" class="noprint">
 			<?php
 			// Hook point for the ShoutWiki Ads extension
-			Hooks::run( 'MetrolookRightPanel', array( $this ) );
+			Hooks::run( 'MetrolookRightPanel', [ $this ] );
 			?>
 		</div>
 
@@ -620,7 +620,7 @@ class MetrolookTemplate extends BaseTemplate {
 				case 'TOOLBOX':
 					$this->renderPortal( 'tb', $this->getToolbox(), 'toolbox', 'SkinTemplateToolboxEnd' );
 					// Hook point for the ShoutWiki Ads extension
-					Hooks::run( 'MetrolookAfterToolbox', array( $this ) );
+					Hooks::run( 'MetrolookAfterToolbox', [ $this ] );
 					break;
 				case 'LANGUAGES':
 					if ( $this->data['language_urls'] !== false ) {
@@ -692,7 +692,7 @@ class MetrolookTemplate extends BaseTemplate {
 							echo $this->makeListItem( $key, $val );
 						}
 						if ( $hook !== null ) {
-							Hooks::run( $hook, array( &$this, true ) );
+							Hooks::run( $hook, [ &$this, true ] );
 						}
 						?>
 					</ul>
@@ -718,7 +718,7 @@ class MetrolookTemplate extends BaseTemplate {
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
-			$elements = array( $elements );
+			$elements = [ $elements ];
 			// If there's a series of elements, reverse them when in RTL mode
 		} elseif ( $this->data['rtl'] ) {
 			$elements = array_reverse( $elements );
@@ -896,7 +896,7 @@ class MetrolookTemplate extends BaseTemplate {
 									<?php echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>
 								>
 								<?php
-								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+								echo $this->makeSearchInput( [ 'id' => 'searchInput' ] );
 								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
 								// We construct two buttons (for 'go' and 'fulltext' search modes),
 								// but only one will be visible and actionable at a time (they are
@@ -911,11 +911,11 @@ class MetrolookTemplate extends BaseTemplate {
 								//   cause it to be used.
 								echo $this->makeSearchButton(
 									'fulltext',
-									array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
+									[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
 								);
 								echo $this->makeSearchButton(
 									'go',
-									array( 'id' => 'searchButton', 'class' => 'searchButton' )
+									[ 'id' => 'searchButton', 'class' => 'searchButton' ]
 								);
 								?>
 								</div>
@@ -933,7 +933,7 @@ class MetrolookTemplate extends BaseTemplate {
 								<div<?php
 									echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearchSearch"' : '' ?>>
 								<?php
-								echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
+								echo $this->makeSearchInput( [ 'id' => 'searchInput' ] );
 								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
 								// We construct two buttons (for 'go' and 'fulltext' search modes),
 								// but only one will be visible and actionable at a time (they are
@@ -948,11 +948,11 @@ class MetrolookTemplate extends BaseTemplate {
 								//   cause it to be used.
 								echo $this->makeSearchButton(
 									'fulltext',
-									array( 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' )
+									[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
 								);
 								echo $this->makeSearchButton(
 									'go',
-									array( 'id' => 'searchButton', 'class' => 'searchButton' )
+									[ 'id' => 'searchButton', 'class' => 'searchButton' ]
 								);
 								?>
 								</div>
