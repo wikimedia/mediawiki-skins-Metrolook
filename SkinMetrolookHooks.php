@@ -10,37 +10,37 @@ class MetrolookHooks {
 
 	/* Protected Static Members */
 
-	protected static $features = array(
-		'collapsiblenav' => array(
-			'preferences' => array(
-				'skinmetrolook-collapsiblenav' => array(
+	protected static $features = [
+		'collapsiblenav' => [
+			'preferences' => [
+				'skinmetrolook-collapsiblenav' => [
 					'type' => 'toggle',
 					'label-message' => 'skinmetrolook-collapsiblenav-preference',
 					'section' => 'rendering/advancedrendering',
-				),
-			),
-			'requirements' => array(
+				],
+			],
+			'requirements' => [
 				'skinmetrolook-collapsiblenav' => true,
-			),
-			'modules' => array( 'skins.metrolook.collapsibleNav' ),
+			],
+			'modules' => [ 'skins.metrolook.collapsibleNav' ],
 		)
-	);
+	];
 
-	protected static $featurescustom = array(
-		'collapsiblenav-custom' => array(
-			'preferences' => array(
-				'skinmetrolook-collapsiblenav-custom' => array(
+	protected static $featurescustom = [
+		'collapsiblenav-custom' => [
+			'preferences' => [
+				'skinmetrolook-collapsiblenav-custom' => [
 					'type' => 'toggle',
 					'label-message' => 'skinmetrolook-collapsiblenav-preference',
 					'section' => 'rendering/advancedrendering',
-				),
-			),
-			'requirements' => array(
+				],
+			],
+			'requirements' => [
 				'skinmetrolook-collapsiblenav-custom' => true,
-			),
-			'modules' => array( 'skins.metrolook.collapsibleNav-custom' ),
-		)
-	);
+			],
+			'modules' => [ 'skins.metrolook.collapsibleNav-custom' ],
+		]
+	];
 
 	/* Static Methods */
 
@@ -169,7 +169,7 @@ class MetrolookHooks {
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgMetrolookFeatures, $wgMetrolookSearchBar;
 
-		$configurations = array();
+		$configurations = [];
 		if ( $wgMetrolookSearchBar ) {
 			foreach ( self::$features as $name => $feature ) {
 				if (
@@ -209,7 +209,7 @@ class MetrolookHooks {
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgMetrolookSearchBar;
 		// Build and export old-style wgMetrolookEnabledModules object for back compat
-		$enabledModules = array();
+		$enabledModules = [];
 		if ( $wgMetrolookSearchBar ) {
 			foreach ( self::$features as $name => $feature ) {
 				$enabledModules[$name] = self::isEnabled( $name );
