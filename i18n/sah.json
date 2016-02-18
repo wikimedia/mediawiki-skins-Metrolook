@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"HalanTul"
+			"HalanTul",
+			"Ай-Куо"
 		]
 	},
+	"skinmetrolook-collapsiblenav-preference": " «Metrolook» тиэмэҕэ хаҥас меню булуоктарын сабары көҥүллээҥ",
 	"metrolook-guest": "Ыалдьыт"
 }
