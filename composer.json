@@ -39,7 +39,18 @@
 	"scripts": {
 		"test": [
 			"parallel-lint . --exclude vendor",
-			"phpcs -p -s"
+			"phpcs -p -s",
+			"npm test"
+		],
+		"post-install-cmd": [
+			"node --version",
+			"npm --version",
+			"npm install"
+		],
+		"post-update-cmd": [
+			"node --version",
+			"npm --version",
+			"npm install"
 		]
 	}
 }
