@@ -13,7 +13,7 @@
 				toggleDiv( openDiv );
 			}
 		} );
-
+f.hi
 		function isTouchDevice() {
 			return !!( 'ontouchstart' in window );
 		}
