@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Otokoume"
+			"Otokoume",
+			"2nd-player"
 		]
 	},
+	"skinmetrolook-collapsiblenav-preference": "Metrolook外装のナビゲーションで、項目の折り畳みを有効にする",
 	"metrolook-guest": "ゲスト"
 }
