@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andibing",
+			"Caliburn"
+		]
+	},
+	"metrolook-desc": "Metrolook is a [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspired] fork of the Vector skin",
+	"skinmetrolook-collapsiblenav-preference": "Enable collapsing of items in the sidebar in Metrolook skin",
+	"metrolook-guest": "Guest"
+}
