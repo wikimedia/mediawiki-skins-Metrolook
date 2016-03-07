@@ -50,16 +50,6 @@ class SkinMetrolook extends SkinTemplate {
 			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
 		}
 
-		// Append CSS which includes IE only behavior fixes for hover support -
-		// this is better than including this in a CSS file since it doesn't
-		// wait for the CSS file to load before fetching the HTC file.
-		$min = $this->getRequest()->getFuzzyBool( 'debug' ) ? '' : '.min';
-		$out->addHeadItem( 'csshover',
-			'<!--[if lt IE 7]><style type="text/css">body{behavior:url("' .
-				htmlspecialchars( $this->getConfig()->get( 'LocalStylePath' ) ) .
-				"/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
-		);
-
 		$out->addModules( [ 'skins.metrolook.js' ] );
 	}
 
