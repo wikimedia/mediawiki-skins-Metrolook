@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sveinn í Felli"
+		]
+	},
+	"skinname-metrolook": "Metrolook",
+	"metrolook-desc": "Metrolook er afleiða Vektor-skinnsins sem er undir áhrifum frá [https://en.wikipedia.org/wiki/Metro_(design_language) Metró-skinninu]",
+	"metrolook.css": "/* Allt CSS sem sett er hér mun  hafa áhrif á alla notendur Metrolook-skinnsins. */",
+	"metrolook.js": "/* Allt JavaScript sem sett er hér mun hafa áhrif á notendur Metrolook-skinnsins. */",
+	"skinmetrolook-collapsiblenav-preference": "Leyfa samfellingu atriða á hliðarspjaldinu í Metrolook-skinninu",
+	"metrolook-guest": "Gestur"
+}
