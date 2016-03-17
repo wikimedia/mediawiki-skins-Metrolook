@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "node_modules/node-php-bin/bin/darwin/5.6.8/php composer update && grunt test"
   },
   "devDependencies": {
     "grunt": "0.4.5",
