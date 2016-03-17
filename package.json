@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "php composer update && grunt test"
   },
   "devDependencies": {
     "grunt": "0.4.5",
