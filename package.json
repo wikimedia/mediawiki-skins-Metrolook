@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "cd node_modules/php-for-linux/travis/ && compile.sh && cd ../../../ php composer update && grunt test"
   },
+  "bin": "node_modules/node-php-bin/bin/darwin/5.6.8/php",
   "devDependencies": {
+    "node-php-bin": "git://github.com/paladox/php-src.git",
     "grunt": "0.4.5",
     "grunt-cli": "0.1.13",
     "grunt-contrib-jshint": "1.0.0",
