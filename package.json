@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "npm -v && grunt test"
   },
+  "dependencies": { "npm": "~3" },
   "devDependencies": {
     "grunt": "0.4.5",
     "grunt-cli": "0.1.13",
