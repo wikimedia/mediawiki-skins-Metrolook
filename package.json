@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "npm install npm && node node_modules/npm/cli.js -v && node node_modules/npm/cli.js test grunt",
+    "grunt": "grunt test"
   },
   "devDependencies": {
     "grunt": "0.4.5",
