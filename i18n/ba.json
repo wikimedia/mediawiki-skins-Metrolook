@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Рустам Нурыев"
+			"Рустам Нурыев",
+			"Sagan"
 		]
 	},
+	"metrolook-desc": "Metrolook — интерфейс принцибына нигеҙләнгән [https://ru.wikipedia.org/wiki/Metro (интерфейс)|Metro] «Векторлы» биҙәү мидификацияһы",
+	"skinmetrolook-collapsiblenav-preference": "«Metrolook» күренешендә һул яҡтағы блоктыы төрөргә рөхсәт итергә",
 	"metrolook-guest": "Ҡунаҡ"
 }
