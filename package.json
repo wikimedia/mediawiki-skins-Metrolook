@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "/etc/php5/cli/php && grunt test"
   },
   "devDependencies": {
     "grunt": "0.4.5",
