@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "/usr/local/bin/php && grunt test"
   },
   "devDependencies": {
     "grunt": "0.4.5",
