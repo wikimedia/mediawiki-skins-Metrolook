@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test && php"
   },
   "devDependencies": {
     "grunt": "0.4.5",
