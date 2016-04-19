@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"McSalama",
-			"Pitke"
+			"Pitke",
+			"01miki10"
 		]
 	},
 	"metrolook-desc": "Metrolook on Metro-designkuvailukielen innoittama versio Vector-ulkoasusta",
+	"skinmetrolook-collapsiblenav-preference": "Mahdollista sivupalkin kohteiden piilottaminen Metrolook-ulkoasussa",
 	"metrolook-guest": "Vieras"
 }
