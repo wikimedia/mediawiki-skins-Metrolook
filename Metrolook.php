@@ -11,3 +11,4 @@ if ( function_exists( 'wfLoadSkin' ) ) {
 } else {
 	die( 'This version of the Metrolook skin requires MediaWiki 1.25+' );
 }
+
