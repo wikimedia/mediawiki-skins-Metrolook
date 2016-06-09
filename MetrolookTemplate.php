@@ -314,7 +314,7 @@ class MetrolookTemplate extends BaseTemplate {
 			<?php
 			}
 			?>
-			<div style="clear:both"></div>
+			<div class="visualClear"></div>
 		</div>
 				<?php
 				if ( $this->data['dataAfterContent'] ) {
@@ -340,7 +340,7 @@ class MetrolookTemplate extends BaseTemplate {
 			<?php
 			if ( $this->config->get( 'MetrolookSiteName' ) ) {
 				?>
-				<div style="padding-left:10px;">
+				<div class="siteLogoBarContainer">
 					<div class="lighthover siteLogoBar">
 						<div class="onhoverbg">
 							<h4 class="title-name">
@@ -349,11 +349,11 @@ class MetrolookTemplate extends BaseTemplate {
 										<?php
 										if ( $this->config->get( 'MetrolookSiteNameLogo' ) ) {
 											?>
-											<div style="height:40px;float:left;margin-top:-0.7em;">
+											<div class="sitename-logo">
 												<a href="<?php
 													echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
 												?>">
-													<img src="<?php echo $this->text( 'logopath' ) ?>" />
+													<img src="<?php echo $this->text( 'logopath' ) ?>" alt="" />
 												</a>
 											</div>
 										<?php
