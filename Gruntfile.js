@@ -23,6 +23,9 @@ module.exports = function ( grunt ) {
 		},
 		banana: conf.MessagesDirs,
 		jsonlint: {
+			options: {
+				reporter: 'jshint'
+			},
 			all: [
 				'*.json',
 				'**/*.json',
