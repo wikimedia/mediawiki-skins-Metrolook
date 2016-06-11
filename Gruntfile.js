@@ -23,11 +23,16 @@ module.exports = function ( grunt ) {
 		},
 		banana: conf.MessagesDirs,
 		jsonlint: {
+			jshintStyle: {
+				options: {
+					reporter: 'jshint'
+				},
 			all: [
 				'*.json',
 				'**/*.json',
 				'!node_modules/**'
 			]
+			}
 		}
 	} );
 
