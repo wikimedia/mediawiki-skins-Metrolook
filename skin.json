@@ -38,7 +38,7 @@
 		],
 		"MakeGlobalVariablesScript": [
 			"MetrolookHooks::makeGlobalVariablesScript"
-		]
+		],
 	},
 	"AutoloadClasses": {
 		"MetrolookHooks": "SkinMetrolookHooks.php",
