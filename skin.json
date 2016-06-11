@@ -23,7 +23,7 @@
 	},
 	"MessagesDirs": {
 		"Metrolook": [
-			"i18n"
+			"i18n",
 		]
 	},
 	"Hooks": {
