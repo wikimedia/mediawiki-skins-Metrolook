@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
+	"metrolook-desc": "Metrolook  [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-ilham grotış] çatala vektor skini",
+	"skinmetrolook-collapsiblenav-preference": "Kışt u çiyanê cikta Metrolook'i aktiv ke",
 	"metrolook-guest": "Meyman"
 }
