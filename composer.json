@@ -26,7 +26,7 @@
 	"support": {
 		"wiki": "https://www.mediawiki.org/wiki/Skin:Metrolook",
 		"forum": "https://www.mediawiki.org/wiki/Skin_talk:Metrolook",
-		"source": "https://git.wikimedia.org/summary/mediawiki%2Fskins%2FMetrolook",
+		"source": "https://phabricator.wikimedia.org/diffusion/SMTL/",
 		"irc": "irc://irc.freenode.org/mediawiki"
 	},
 	"extra": {
