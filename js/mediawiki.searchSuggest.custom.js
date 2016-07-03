@@ -6,17 +6,19 @@
 		// queries the wiki and calls response with the result
 		request: function ( api, query, response, maxRows ) {
 			return api.get( {
+				formatversion: 2,
 				action: 'opensearch',
 				search: query,
 				namespace: 0,
 				limit: maxRows,
 				suggest: true
-			} ).done( function ( data ) {
-				response( data[ 1 ] );
+			} ).done( function ( data, jqXHR ) {
+				response( data[ 1 ], {
+					type: jqXHR.getResponseHeader( 'X-OpenSearch-Type' ),
+					query: query
+				} );
 			} );
-		},
-		// The name of the request api for event logging purposes
-		type: 'prefix'
+		}
 	};
 
 	$( function () {
@@ -82,7 +84,11 @@
 			var searchText = this.val();
 
 			if ( searchText && searchText !== previousSearchText ) {
-				mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
+				mw.track( 'mediawiki.searchSuggest', {
+					action: 'session-start'
+				} );
+
+				mw.track( 'skins.metrolook.js', {
 					action: 'session-start'
 				} );
 			}
@@ -90,48 +96,103 @@
 		}
 
 		/**
+		 * defines the location of autocomplete. Typically either
+		 * header, which is in the top right of vector (for example)
+		 * and content which identifies the main search bar on
+		 * Special:Search.  Defaults to header for skins that don't set
+		 * explicitly.
+		 *
+		 * @ignore
+		 */
+		 function getInputLocation( context ) {
+			 return context.config.$region
+			 	 .closest( 'form' )
+				 .find( '[data-search-loc]' )
+				 .data( 'search-loc' ) || 'header';
+		 }
+
+		/**
 		 * Callback that's run when suggestions have been updated either from the cache or the API
 		 * 'this' is the search input box (jQuery object)
 		 *
 		 * @ignore
 		 */
-		function onAfterUpdate() {
+		function onAfterUpdate( metadata ) {
 			var context = this.data( 'suggestionsContext' );
 
-			mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
+			mw.track( 'mediawiki.searchSuggest', {
 				action: 'impression-results',
 				numberOfResults: context.config.suggestions.length,
-				resultSetType: mw.searchSuggest.type
+				resultSetType: metadata.type || 'unknown',
+				query: metadata.query,
+				inputLocation: getInputLocation( context )
+			} );
+
+			mw.track( 'skins.metrolook.js', {
+				action: 'impression-results',
+				numberOfResults: context.config.suggestions.length,
+				resultSetType: metadata.type || 'unknown',
+				query: metadata.query,
+				inputLocation: getInputLocation( context )
 			} );
 		}
 
 		// The function used to render the suggestions.
 		function renderFunction( text, context ) {
-			var formData = getFormData( context );
+			var formData = getFormData( context ),
+				textboxConfig = context.data.$textbox.data( 'mw-searchsuggest' ) || {};
 
 			// linkParams object is modified and reused
 			formData.linkParams[ formData.textParam ] = text;
 
-			// this is the container <div>, jQueryfied
-			this.text( text )
-				.wrap(
+			// Allow trackers to attach tracking information, such
+			// as wprov, to clicked links.
+			mw.track( 'mediawiki.searchSuggest', {
+				action: 'render-one',
+				formData: formData,
+				index: context.config.suggestions.indexOf( text )
+			} );
+
+			mw.track( 'skins.metrolook.js', {
+				action: 'render-one',
+				formData: formData,
+				index: context.config.suggestions.indexOf( text ) + 1
+			} );
+
+			// this is the container <div>, jQueryfield
+			this.text( text );
+
+			// wrap only as link, if the config doesn't disallow it
+			if ( textboxConfig.wrapAsLink !== false	) {
+				this.wrap(
 					$( '<a>' )
 						.attr( 'href', formData.baseHref + $.param( formData.linkParams ) )
 						.attr( 'title', text )
 						.addClass( 'mw-searchSuggest-link' )
 				);
+			}
 		}
 
 		// The function used when the user makes a selection
-		function selectFunction( $input ) {
+		function selectFunction( $input, source ) {
 			var context = $input.data( 'suggestionsContext' ),
 				text = $input.val();
 
-			mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
-				action: 'click-result',
-				numberOfResults: context.config.suggestions.length,
-				clickIndex: context.config.suggestions.indexOf( text ) + 1
-			} );
+			// Selecting via keyboard triggers a form submission. That will fire
+			// the submit-form event in addition to this click-result event.
+			if ( source !== 'keyboard' ) {
+				mw.track( 'mediawiki.searchSuggest', {
+					action: 'click-result',
+					numberOfResults: context.config.suggestions.length,
+					index: context.config.suggestions.indexOf( text )
+				} );
+
+				mw.track( 'skins.metrolook.js', {
+					action: 'click-result',
+					numberOfResults: context.config.suggestions.length,
+					index: context.config.suggestions.indexOf( text )
+				} );
+			}
 
 			// allow the form to be submitted
 			return true;
@@ -143,6 +204,18 @@
 
 			// linkParams object is modified and reused
 			formData.linkParams[ formData.textParam ] = query;
+
+			mw.track( 'mediawiki.searchSuggest', {
+				action: 'render-one',
+				formData: formData,
+				index: context.config.suggestions.indexOf( query )
+			} );
+
+			mw.track( 'skins.metrolook.js', {
+				action: 'render-one',
+				formData: formData,
+				index: context.config.suggestions.indexOf( query )
+			} );
 
 			if ( $el.children().length === 0 ) {
 				$el
@@ -175,9 +248,6 @@
 		searchboxesSelectors = [
 			// Primary searchbox on every page in standard skins
 			'#searchInput',
-			// Special:Search
-			'#powerSearchText',
-			'#searchText',
 			// Generic selector for skins with multiple searchboxes (used by CologneBlue)
 			// and for MediaWiki itself (special pages with page title inputs)
 			'.mw-searchInput'
@@ -206,6 +276,10 @@
 						// allow the form to be submitted
 						return true;
 					}
+				},
+				update: {
+					before: onBeforeUpdate,
+					after: onAfterUpdate
 				},
 				cache: true,
 				highlightInput: true
@@ -246,9 +320,26 @@
 			},
 			special: {
 				render: specialRenderFunction,
-				select: function ( $input ) {
-					$input.closest( 'form' )
-						.append( $( '<input type="hidden" name="fulltext" value="1"/>' ) );
+				select: function ( $input, source ) {
+					var context = $input.data( 'suggestionsContext' ),
+						text = $input.val();
+					if ( source === 'mouse' ) {
+						// mouse click won't trigger form submission, so we need to send a click event
+						mw.track( 'mediawiki.searchSuggest', {
+							action: 'click-result',
+							numberOfResults: context.config.suggestions.length,
+							index: context.config.suggestions.indexOf( text )
+						} );
+
+						mw.track( 'skins.metrolook.js', {
+							action: 'click-result',
+							numberOfResults: context.config.suggestions.length,
+							index: context.config.suggestions.indexOf( text )
+						} );
+					} else {
+						$input.closest( 'form' )
+							.append( $( '<input type="hidden" name="fulltext" value="1"/>' ) );
+					}
 					return true; // allow the form to be submitted
 				}
 			},
@@ -259,9 +350,21 @@
 			// track the form submit event
 			.on( 'submit', function () {
 				var context = $searchInput.data( 'suggestionsContext' );
-				mw.track( 'mediawiki.searchSuggest', 'skins.metrolook.js', {
+				mw.track( 'mediawiki.searchSuggest', {
 					action: 'submit-form',
-					numberOfResults: context.config.suggestions.length
+					numberOfResults: context.config.suggestions.length,
+					$form: context.config.$region.closest( 'form' ),
+					inputLocation: getInputLocation( context ),
+					index: context.config.suggestions.indexOf(
+						context.data.$textbox.val()
+					)
+				} );
+
+				mw.track( 'skins.metrolook.js', {
+					action: 'submit-form',
+					numberOfResults: context.config.suggestions.length,
+					$form: context.config.$region.closest( 'form' ),
+					inputLocation: getInputLocation( context )
 				} );
 			} )
 			// If the form includes any fallback fulltext search buttons, remove them
