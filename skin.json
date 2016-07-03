@@ -70,20 +70,28 @@
 				}
 			}
 		},
+		"skins.metrolook.mediawiki.searchSuggest.custom": {
+			"scripts": [
+				"js/mediawiki.searchSuggest.custom.js"
+			],
+			"position": "top",
+			"dependencies": [
+				"mediawiki.searchSuggest"
+			]
+		},
 		"skins.metrolook.js": {
 			"scripts": [
 				"js/collapsibleTabs.js",
 				"js/metrolook.js",
 				"js/metrolook.search.js",
 				"js/vector.js",
-				"js/mediawiki.searchSuggest.custom.js",
 				"js/overthrow.js"
 			],
 			"position": "top",
 			"dependencies": [
+				"skins.metrolook.mediawiki.searchSuggest.custom",
 				"jquery.throttle-debounce",
-				"jquery.tabIndex",
-				"mediawiki.searchSuggest"
+				"jquery.tabIndex"
 			]
 		},
 		"skins.metrolook.collapsibleNav": {
