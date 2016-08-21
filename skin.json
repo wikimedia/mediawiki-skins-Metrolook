@@ -150,9 +150,7 @@
 			"+mediawiki.notification": "skinStyles/mediawiki.notification.less",
 			"+oojs-ui-core.styles": "skinStyles/ooui.less",
 			"mediawiki.special": "skinStyles/mediawiki.special.less",
-			"+mediawiki.special.preferences.styles": "skinStyles/mediawiki.special.preferences.styles.less",
-			"ext.echo.ui": "skinStyles/mw.echo.ui.NotificationBadgeWidget.metrolook.less",
-			"ext.echo.styles.badge": "skinStyles/mw.echo.badge.metrolook.less"
+			"+mediawiki.special.preferences.styles": "skinStyles/mediawiki.special.preferences.styles.less"
 		}
 	},
 	"config": {

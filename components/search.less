@@ -1,4 +1,7 @@
 /* Search */
+
+@import "mediawiki.mixins";
+
 #p-search {
 	/* @noflip */
 	float: left;
@@ -6,7 +9,7 @@
 	margin-left: 0.5em;
 
 	h5 {
-		display: none;
+		.mixin-screen-reader-text;
 	}
 
 	form,
