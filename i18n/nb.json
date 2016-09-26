@@ -1,7 +1,9 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Jon Harald Søby"
+		]
 	},
-	"metrolook-desc": "Metrolook-drakt for MediaWiki",
+	"metrolook-desc": "Metrolook er en [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspirert] forgrening av Vector-drakta",
 	"metrolook-guest": "Gjest"
 }
