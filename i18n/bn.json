@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftabuzzaman"
+			"Aftabuzzaman",
+			"আজিজ"
 		]
 	},
 	"skinname-metrolook": "মেট্রোলুক",
 	"metrolook-desc": "মিডিয়াউইকির জন্য মেট্রোলুক আবরণ",
+	"skinmetrolook-collapsiblenav-preference": "মেট্রোলুক আবরনের পার্শ্বদন্ডে আইটেম ধ্বস সক্রিয় করো।",
 	"metrolook-guest": "অতিথি"
 }
