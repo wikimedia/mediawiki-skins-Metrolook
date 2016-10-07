@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
+	"metrolook-desc": "O tema Metrolook é uma variação do tema Vector inspirada no [https://en.wikipedia.org/wiki/Metro_(design_language) Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Permitir a ocultação de elementos da barra lateral no tema Metrolook",
 	"metrolook-guest": "Visitante"
 }
