@@ -47,10 +47,7 @@
 	},
 	"ResourceModules": {
 		"skins.metrolook.styles": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
+			"targets": [ "desktop", "mobile" ],
 			"position": "top",
 			"styles": {
 				"screen.less": {
@@ -62,10 +59,7 @@
 			}
 		},
 		"skins.metrolook.styles.responsive": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
+			"targets": [ "desktop", "mobile" ],
 			"position": "top",
 			"styles": {
 				"screen.mobile.less": {
@@ -161,56 +155,26 @@
 	},
 	"config": {
 		"MetrolookFeatures": {
-			"value": {
-				"collapsiblenav": {
-					"global": false,
-					"user": true
-				}
+			"collapsiblenav": {
+				"global": false,
+				"user": true
 			},
-			"merge_strategy": "array_plus_2d"
+			"_merge_strategy": "array_plus_2d"
 		},
-		"MetrolookUseSimpleSearch": {
-			"value": true
-		},
-		"MetrolookUseIconWatch": {
-			"value": true
-		},
-		"MetrolookLogo": {
-			"value": true
-		},
-		"MetrolookSiteNameLogo": {
-			"value": false
-		},
-		"MetrolookSiteName": {
-			"value": true
-		},
-		"MetrolookSiteNameText": {
-			"value": true
-		},
-		"MetrolookSiteText": {
-			"value": ""
-		},
-		"MetrolookSearchBar": {
-			"value": true
-		},
-		"MetrolookDownArrow": {
-			"value": true
-		},
-		"MetrolookLine": {
-			"value": true
-		},
-		"MetrolookUploadButton": {
-			"value": true
-		},
-		"MetrolookMobile": {
-			"value": true
-		},
-		"MetrolookBartile": {
-			"value": true
-		},
-		"MetrolookDisableAvatar": {
-			"value": true
-		}
+		"MetrolookUseSimpleSearch": true,
+		"MetrolookUseIconWatch": true,
+		"MetrolookLogo": true,
+		"MetrolookSiteNameLogo": false,
+		"MetrolookSiteName": true,
+		"MetrolookSiteNameText": true,
+		"MetrolookSiteText": "",
+		"MetrolookSearchBar": true,
+		"MetrolookDownArrow": true,
+		"MetrolookLine": true,
+		"MetrolookUploadButton": true,
+		"MetrolookMobile": true,
+		"MetrolookBartile": true,
+		"MetrolookDisableAvatar": true
 	},
-	"manifest_version": 2
+	"manifest_version": 1
 }
