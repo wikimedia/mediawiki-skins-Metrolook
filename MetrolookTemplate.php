@@ -185,10 +185,10 @@ class MetrolookTemplate extends BaseTemplate {
 		// User name (or "Guest") to be displayed at the top right (on LTR
 		// interfaces) portion of the skin
 		$user = $skin->getUser();
-		if ( !$user->isLoggedIn() ) {
-			$userNameTop = $skin->msg( 'metrolook-guest' )->text();
-		} else {
+		if ( $user->isLoggedIn() ) {
 			$userNameTop = htmlspecialchars( $user->getName(), ENT_QUOTES );
+		} else {
+			$userNameTop = $skin->msg( 'metrolook-guest' )->text();
 		}
 
 		// Output HTML Page
@@ -250,17 +250,7 @@ class MetrolookTemplate extends BaseTemplate {
 					<a href="#mw-head"><?php
 						$this->msg( 'jumptonavigation' )
 					?></a><?php $this->msg( 'comma-separator' ) ?>
-					<?php
-					if ( $this->config->get( 'MetrolookSearchBar' ) ) {
-						?>
-						<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
-					<?php
-					} else {
-					?>
-						<a href="#p-searchSearch"><?php $this->msg( 'jumptosearch' ) ?></a>
-					<?php
-					}
-					?>
+					<a href="#p-search"><?php $this->msg( 'jumptosearch' ) ?></a>
 				</div>
 				<?php
 				$this->html( 'bodycontent' );
@@ -359,9 +349,9 @@ class MetrolookTemplate extends BaseTemplate {
 										<?php
 										} else {
 											if ( $this->config->get( 'MetrolookSiteNameText' ) ) {
-												echo $GLOBALS['wgSitename'];
-											} else {
 												echo $GLOBALS['wgMetrolookSiteText'];
+											} else {
+												echo $GLOBALS['wgSitename'];
 											}
 										}
 										?>
@@ -508,48 +498,22 @@ class MetrolookTemplate extends BaseTemplate {
 			</div>
 		</div>
 
-			<?php
-			if ( $this->config->get( 'MetrolookSearchBar' ) ) {
-				?>
-				<div id="mw-panel">
-					<?php
-					if ( !$this->config->get( 'MetrolookSiteNameLogo' ) ) {
-						if ( $this->config->get( 'MetrolookLogo' ) ) {
-							?>
-							<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
-								echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-								?>" <?php
-								echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
-								?>></a></div>
-						<?php
-						}
-					}
+			<div id="mw-panel">
+				<?php
+				if ( !$this->config->get( 'MetrolookSiteNameLogo' ) &&
+					$this->config->get( 'MetrolookLogo' )
+				) {
 					?>
-					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
-				</div>
-			<?php
-			} else {
+					<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
+						echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+						?>" <?php
+						echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+						?>></a></div>
+				<?php
+				}
 				?>
-				<div id="mw-panel-custom">
-					<?php
-					if ( !$this->config->get( 'MetrolookSiteNameLogo' ) ) {
-						if ( $this->config->get( 'MetrolookLogo' ) ) {
-							?>
-							<div id="p-logo-custom" role="banner"><a class="mw-wiki-logo" href="<?php
-								echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-								?>" <?php
-								echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo-custom' ) )
-								?>></a></div>
-						<?php
-						}
-					}
-					?>
-					<?php $this->renderNavigation( [ 'SEARCH' ] ); ?>
-					<?php $this->renderPortals( $this->data['sidebar'] ); ?>
-				</div>
-			<?php
-			}
-			?>
+				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
+			</div>
 
 			<?php
 			if ( $this->config->get( 'MetrolookDownArrow' ) ) {
@@ -647,42 +611,15 @@ class MetrolookTemplate extends BaseTemplate {
 		$msgObj = wfMessage( $msg );
 		$labelId = Sanitizer::escapeId( "p-$name-label" );
 		?>
-		<?php
-		if ( $this->config->get( 'MetrolookSearchBar' ) ) {
-			?>
-			<div class="portal" role="navigation" id='<?php
-			echo Sanitizer::escapeId( "p-$name" )
-			?>'<?php
-			echo Linker::tooltip( 'p-' . $name )
-			?> aria-labelledby='<?php echo $labelId ?>'>
-				<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
-					echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
-					?></h5>
-		<?php
-		} else {
-			?>
-			<div class="portal-custom" role="navigation" id='<?php
-			echo Sanitizer::escapeId( "p-$name" )
-			?>'<?php
-			echo Linker::tooltip( 'p-' . $name )
-			?> aria-labelledby='<?php echo $labelId ?>'>
-				<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
-					echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
-					?></h5>
-		<?php
-		}
-		?>
-			<?php
-			if ( $this->config->get( 'MetrolookSearchBar' ) ) {
-				?>
-				<div class="body">
-			<?php
-			} else {
-				?>
-				<div class="body-custom">
-			<?php
-			}
-			?>
+		<div class="portal" role="navigation" id='<?php
+		echo Sanitizer::escapeId( "p-$name" )
+		?>'<?php
+		echo Linker::tooltip( 'p-' . $name )
+		?> aria-labelledby='<?php echo $labelId ?>'>
+			<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
+				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
+				?></h5>
+			<div class="body">
 				<?php
 				if ( is_array( $content ) ) {
 					?>
@@ -883,86 +820,43 @@ class MetrolookTemplate extends BaseTemplate {
 					break;
 				case 'SEARCH':
 					?>
-					<?php
-					if ( $this->config->get( 'MetrolookSearchBar' ) ) {
-						?>
-						<div id="p-search" role="search">
-							<h5<?php $this->html( 'userlangattributes' ) ?>>
-								<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
-							</h5>
+					<div id="p-search" role="search">
+						<h5<?php $this->html( 'userlangattributes' ) ?>>
+							<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
+						</h5>
 
-							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-								<div
-									<?php echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>
-								>
-								<?php
-								echo $this->makeSearchInput( [ 'id' => 'searchInput' ] );
-								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
-								// We construct two buttons (for 'go' and 'fulltext' search modes),
-								// but only one will be visible and actionable at a time (they are
-								// overlaid on top of each other in CSS).
-								// * Browsers will use the 'fulltext' one by default (as it's the
-								//   first in tree-order), which is desirable when they are unable
-								//   to show search suggestions (either due to being broken or
-								//   having JavaScript turned off).
-								// * The mediawiki.searchSuggest module, after doing tests for the
-								//   broken browsers, removes the 'fulltext' button and handles
-								//   'fulltext' search itself; this will reveal the 'go' button and
-								//   cause it to be used.
-								echo $this->makeSearchButton(
-									'fulltext',
-									[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
-								);
-								echo $this->makeSearchButton(
-									'go',
-									[ 'id' => 'searchButton', 'class' => 'searchButton' ]
-								);
-								?>
-								</div>
-							</form>
-						</div>
-					<?php
-					} else {
-						?>
-						<div id="p-searchSearch" role="search">
-							<h5<?php $this->html( 'userlangattributes' ) ?>>
-								<label for="searchInput"><?php $this->msg( 'search' ) ?></label>
-							</h5>
+						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
+							<div
+								<?php echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>
+							>
+							<?php
+							echo $this->makeSearchInput( [ 'id' => 'searchInput' ] );
+							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+							// We construct two buttons (for 'go' and 'fulltext' search modes),
+							// but only one will be visible and actionable at a time (they are
+							// overlaid on top of each other in CSS).
+							// * Browsers will use the 'fulltext' one by default (as it's the
+							//   first in tree-order), which is desirable when they are unable
+							//   to show search suggestions (either due to being broken or
+							//   having JavaScript turned off).
+							// * The mediawiki.searchSuggest module, after doing tests for the
+							//   broken browsers, removes the 'fulltext' button and handles
+							//   'fulltext' search itself; this will reveal the 'go' button and
+							//   cause it to be used.
+							echo $this->makeSearchButton(
+								'fulltext',
+								[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
+							);
+							echo $this->makeSearchButton(
+								'go',
+								[ 'id' => 'searchButton', 'class' => 'searchButton' ]
+							);
+							?>
+							</div>
+						</form>
+					</div>
 
-							<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-								<div<?php
-									echo $this->config->get( 'MetrolookUseSimpleSearch' ) ? ' id="simpleSearchSearch"' : '' ?>>
-								<?php
-								echo $this->makeSearchInput( [ 'id' => 'searchInput' ] );
-								echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
-								// We construct two buttons (for 'go' and 'fulltext' search modes),
-								// but only one will be visible and actionable at a time (they are
-								// overlaid on top of each other in CSS).
-								// * Browsers will use the 'fulltext' one by default (as it's the
-								//   first in tree-order), which is desirable when they are unable
-								//   to show search suggestions (either due to being broken or
-								//   having JavaScript turned off).
-								// * The mediawiki.searchSuggest module, after doing tests for the
-								//   broken browsers, removes the 'fulltext' button and handles
-								//   'fulltext' search itself; this will reveal the 'go' button and
-								//   cause it to be used.
-								echo $this->makeSearchButton(
-									'fulltext',
-									[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
-								);
-								echo $this->makeSearchButton(
-									'go',
-									[ 'id' => 'searchButton', 'class' => 'searchButton' ]
-								);
-								?>
-								</div>
-							</form>
-						</div>
 					<?php
-					}
-					?>
-					<?php
-
 					break;
 			}
 		}

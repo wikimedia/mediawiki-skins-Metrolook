@@ -1,0 +1,127 @@
+/* Personal */
+#p-personal {
+	position: relative;
+	top: 0em;
+	right: 0.75em;
+	/* Display on top of page tabs - bugs 37158, 48078 */
+	z-index: 100;
+
+	h5 {
+		display: none;
+	}
+
+	ul {
+		list-style-type: none;
+		list-style-image: none;
+		margin-right: 12px;
+		margin-left: 0;
+		right: -12px;
+		position: absolute;
+	}
+
+	li {
+		line-height: 20px;
+		/* @noflip */
+		float: left;
+		width: 100%;
+		margin-left: 0em;
+		margin-top: 0em;
+		font-size: 1em;
+		white-space: nowrap;
+	}
+}
+
+#username-top {
+	color: #fff;
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 9.5pt;
+	padding-top: 1px;
+	font-family: sans-serif;
+}
+
+#usermenu {
+	float: right;
+	background-image: none;
+	vertical-align: middle;
+	height: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+	top: 0px;
+	right: 10px;
+	width: auto;
+	text-align: right;
+
+	div > a.user-icon-container {
+		text-decoration: none;
+	}
+}
+
+img.userIcon20 {
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+	position: relative;
+
+	&:not(.socialprofile-avatar) {
+		.background-image-svg('images/user-icon-20.svg', 'images/user-icon-20.png');
+		width: 20px;
+		height: 37px;
+		top: 0.3em;
+	}
+
+	.socialprofile-avatar {
+		top: -0.3em;
+	}
+}
+
+/* IE8 fixes */
+img.userIcon20 {
+	background-image: url('images/user-icon-20.png');
+	width: 20px;
+	height: 37px;
+	top: 0.3em;
+}
+
+#userIcon20 {
+	position: relative;
+	top: 2px;
+	background-repeat: no-repeat;
+}
+
+#userIcon40 {
+	background-image: none;
+
+	img.socialprofile-avatar {
+		display: none;
+	}
+}
+
+#echoNotifications {
+	float: right;
+	top: 0.3em;
+	position: relative;
+	margin-right: 1em;
+}
+
+#echoNotifications ul {
+	list-style: none;
+}
+
+.mw-echo-overlay{
+	position: fixed !important;
+}
+
+.username-space {
+	margin-right: 0.4em;
+}
+
+div.personal-menu {
+	margin: 0;
+	position: absolute;
+	top: 40px;
+	right: 0px;
+	width: 200px;
+}
