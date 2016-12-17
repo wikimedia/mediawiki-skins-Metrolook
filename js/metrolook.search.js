@@ -1,14 +1,18 @@
-( function ( $ ) {
-	$( function () {
-
-		function isTouchDevice() {
-			return !!( 'ontouchstart' in window );
-		}
-
-		/* This is here to fix js issue with iPad (all models) */
+( function ( $, mw ) {
+	if ( mw.config.get( 'wgMetrolookSearch' ) ) {
 		$( function () {
-			if ( isTouchDevice() ) {
-				if ( /mobi|alcatel|Android|android|webOS|webos|iPhone|iPod|Wii|Silk|BlackBerry|playstation|phone|nintendo|htc[-_]|IEMobile|CriOS|Opera Mini|opera.m|palm|panasonic|philips|samsung|Mobile|mobile/i.test( navigator.userAgent ) ) {
+
+			function isTouchDevice() {
+				return !!( 'ontouchstart' in window );
+			}
+
+			function isMobileUserAgent() {
+				return !!( /mobi|alcatel|Android|android|webOS|webos|iPhone|iPod|Wii|Silk|BlackBerry|playstation|phone|nintendo|htc[-_]|IEMobile|CriOS|Opera Mini|opera.m|palm|panasonic|philips|samsung|Mobile|mobile/i.test( navigator.userAgent ) );
+			}
+
+			/* This is here to fix js issue with iPad (all models) */
+			$( function () {
+				if ( isTouchDevice() && isMobileUserAgent() ) {
 					$( '#p-search' ).hide();
 					$( 'img.searchbar' ).click( function ( e ) {
 						$( '#p-search' ).fadeToggle( 150 );
@@ -27,7 +31,7 @@
 				if ( /kindle|iPad|PlayBook|Tablet/i.test( navigator.userAgent ) ) {
 					$( '#p-search' ).show();
 				}
-			}
+			} );
 		} );
-	} );
-}( jQuery ) );
+	}
+}( jQuery, mediaWiki ) );

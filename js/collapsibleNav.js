@@ -1,5 +1,5 @@
 /**
- * Collapsible navigation for Vector
+ * Collapsible navigation for Metrolook
  */
 ( function ( mw, $ ) {
 	'use strict';
@@ -10,7 +10,7 @@
 		var isCollapsed = $element.parent().is( '.collapsed' );
 
 		$.cookie(
-			'vector-nav-' + $element.parent().attr( 'id' ),
+			'metrolook-nav-' + $element.parent().attr( 'id' ),
 			isCollapsed,
 			{ expires: 30, path: '/' }
 		);
@@ -69,7 +69,7 @@
 		$( '#mw-panel > .portal:not(.persistent)' )
 			.each( function ( i ) {
 				var id = $( this ).attr( 'id' ),
-					state = $.cookie( 'vector-nav-' + id );
+					state = $.cookie( 'metrolook-nav-' + id );
 				$( this ).find( 'ul:first' ).attr( 'id', id + '-list' );
 				// Add anchor tag to heading for better accessibility
 				$( this ).find( 'h5' ).wrapInner(
@@ -111,7 +111,7 @@
 				}
 				// Re-save cookie
 				if ( state !== null ) {
-					$.cookie( 'vector-nav-' + $( this ).attr( 'id' ), state, { expires: 30, path: '/' } );
+					$.cookie( 'metrolook-nav-' + $( this ).attr( 'id' ), state, { expires: 30, path: '/' } );
 				}
 			} );
 
