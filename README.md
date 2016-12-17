@@ -3,39 +3,41 @@ Metrolook
 
 A skin for MediaWiki
 
-The author of the skin is http://www.pidgi.net/wiki/Main_Page
+The original author of the skin was http://www.pidgi.net/wiki/Main_Page
 
 
-Compatible with MediaWiki 1.26+.
+Compatible with MediaWiki 1.29+.
 
 If you would like compatibility with older releases of MediaWiki, download the
 appropriate version for your MediaWiki from one of the URLs below:
 
+1.28
+
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_28/
+
+1.27
+
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_27/
+
 1.26
 
-https://github.com/paladox/Metrolook/tree/REL1_26
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_26/
 
 1.25
 
-https://github.com/paladox/Metrolook/tree/REL1_25
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_25/
 
 1.24
 
-https://github.com/paladox/Metrolook/tree/REL1_24
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_24/
 
 1.23
 
-https://github.com/paladox/Metrolook/tree/REL1_23
-
-1.22
-
-https://github.com/paladox/Metrolook/tree/REL1_22
-
-1.21
-
-https://github.com/paladox/Metrolook/tree/REL1_21
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_23/
 
 ### Live demo
+
+This is an old demo.
 
 A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page .
 This is currently using MediaWiki 1.25wmf18 and a snapshot of the test branch of the skin.
@@ -58,7 +60,7 @@ feedback, as more developers will see the report and are able to act on it.
 
 Phabricator is located at:
 
-https://phabricator.wikimedia.org/tag/mediawiki-skins-metrolook/
+https://phabricator.wikimedia.org/tag/metrolook/
 
 If, for some reason, you are unable to unwilling to use Phabricator, you can
 submit your bug on GitHub, but it is likely to receive less attention there
@@ -75,10 +77,17 @@ that you are experiencing currently.
 
 ## Known Issues
 
-See https://phabricator.wikimedia.org/tag/mediawiki-skins-metrolook/ for a list
-of currently open bugs.
+See https://phabricator.wikimedia.org/tag/metrolook/ for a list of currently open bugs.
+
+### MediaWiki versions we no longer support
+
+* MediaWiki 1.22 or lower is now unsupported.
 
 ## Version
+
+7.x.x requires MediaWiki 1.29.
+
+6.x.x requires MediaWiki 1.28.
 
 5.x.x requires MediaWiki 1.27.
 

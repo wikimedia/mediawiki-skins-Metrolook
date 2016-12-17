@@ -1,0 +1,167 @@
+@import "mediawiki.mixins";
+@import "personalMenu";
+@import "search";
+@import "tabs";
+
+/* Hide, but keep accessible for screen-readers */
+#mw-navigation h2 {
+	position: absolute;
+	top: -9999px;
+}
+
+#p-navigation-label {
+	position: absolute;
+	top: -9999px;
+}
+
+/* Head */
+#mw-page-base {
+	height: 2.5em;
+	background-color: #CF8B54;
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+	background-image: url('images/page-fade.png');
+	.vertical-gradient(#CF8B54, #CF8B54, 50%, 100%);
+	min-width: 100%;
+	position: fixed;
+	top: 0px;
+	z-index: 3;
+}
+
+#mw-head-base {
+	margin-top: -5em;
+	margin-left: 10em;
+	height: 5em;
+	/* @embed */
+	background-image: url(images/border.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
+	position: fixed;
+}
+
+div#mw-head {
+	position: fixed;
+	top: 0;
+	min-width: 100%;
+	z-index: 3;
+
+	h5 {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+/* Navigation Containers */
+#left-navigation {
+	float: initial;
+	/* IE 6 double-margin bug fix */
+	display: inline;
+
+	.onhoverbg {
+		padding-left: 0.8em;
+		padding-right: 0.8em;
+		font-size: 10pt;
+	}
+}
+
+#right-navigation {
+	float: right;
+}
+
+/* Logo */
+#p-logo {
+	left: 0;
+	width: 10em;
+	height: 160px;
+	margin-bottom: 1em;
+	margin-left: 0.5em;
+
+	a {
+		display: block;
+		width: 10em;
+		height: 160px;
+		background-repeat: no-repeat;
+		background-position: center center;
+		text-decoration: none;
+	}
+}
+
+/* Panel */
+div#mw-panel {
+	font-size: @menu-main-font-size;
+	position: fixed;
+	top: 40px;
+	bottom: 0;
+	height: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	padding-right: 1em;
+	padding-top: 1em;
+	width: 11em;
+	left: 0;
+	z-index: 1;
+
+	div.portal {
+		margin: 0 0.6em 0 1.2em;
+		padding: 0.25em 0;
+		direction: ltr;
+		background-position: top left;
+		background-repeat: no-repeat;
+		.background-image('images/portal-break.png');
+
+		h5 {
+			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
+			font-weight: 100;
+			font-size: 1em;
+			color: #444444;
+			padding: 0.25em;
+			padding-top: 0;
+			padding-left: 17px;
+			padding-bottom: 0;
+			margin-bottom: 0;
+			cursor: default;
+			border: none;
+		}
+
+		div.body {
+			margin: @menu-main-body-margin;
+			padding-top: 0;
+
+			ul {
+				list-style-type: none;
+				list-style-image: none;
+				margin: 0;
+				padding: @menu-main-body-padding;
+
+				li {
+					line-height: 1.125em;
+					margin: 0;
+					padding: 0.25em 0;
+					font-size: @menu-main-body-font-size;
+					word-wrap: break-word;
+
+					a {
+						color: @menu-main-body-link-color;
+						&:visited {
+							color: @menu-main-body-link-visited-color;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
+	#p-logo + #p-search + div.portal {
+		background-image: none;
+		margin-top: 0;
+		h5 {
+			display: none;
+		}
+		div.body {
+			margin-left: 0.5em;
+		}
+	}
+}
