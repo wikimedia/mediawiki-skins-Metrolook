@@ -1,0 +1,123 @@
+@import "../../variables.less";
+@import "mediawiki.mixins";
+
+/* iPad landscape and other tablets in landscape */
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+	img.searchbar {
+		display: none;
+	}
+}
+
+/* iPad landscape and other tablets in landscape */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+	img.searchbar {
+		display: none;
+	}
+}
+
+/* iPad landscape and other tablets in landscape and portrait */
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (orientation:portrait) {
+
+	img.searchbar {
+		display: none;
+	}
+
+	#echoNotifications {
+		float: right;
+		top: 0.3em;
+		position: relative;
+		margin-right: 0px;
+		margin-left: 0px;
+	}
+
+	div#mw-panel {
+		padding-right: 1em;
+		padding-top: 1em;
+	}
+
+	.mw-body {
+		position: fixed;
+	}
+
+	div#mw-head {
+		position: fixed;
+		top: 0;
+
+		h5 {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	#mw-page-base {
+		height: 2.5em;
+		background-color: CF8B54;
+		background-position: bottom left;
+		background-repeat: repeat-x;
+		/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
+		background-image: url('../../images/page-fade.png');
+	}
+
+	#usermenu {
+		right: -11px;
+	}
+
+	/* ipad portrait and other tablets in portrait */
+
+	@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+
+		img.searchbar {
+			display: none;
+		}
+
+		img.editbutton {
+			.background-image-svg('../../images/edit-icon.svg', '../../images/edit-icon.png');
+			width: 36px;
+			height: 35px;
+			background-repeat: no-repeat;
+			cursor: pointer;
+			display: block;
+			float: right;
+			margin-right: 0;
+			height: 40px;
+		}
+
+		img.editbutton:hover {
+			cursor: pointer;
+			display: block;
+			float: right;
+			margin-right: 0;
+			background-color: #9F6F40;
+			height: 40px;
+		}
+
+		#echoNotifications {
+			float: right;
+			top: 0.3em;
+			position: relative;
+			margin-right: 30px;
+			margin-left: 0px;
+		}
+
+		div#mw-panel {
+			position: fixed;
+			padding-right: 1em;
+		}
+
+		.mw-body {
+			position: fixed;
+		}
+
+		div#mw-head {
+			position: fixed;
+			top: 0;
+
+			h5 {
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+}

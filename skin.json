@@ -58,11 +58,11 @@
 				}
 			}
 		},
-		"skins.metrolook.styles.responsive": {
+		"skins.metrolook.styles.custom": {
 			"targets": [ "desktop", "mobile" ],
 			"position": "top",
 			"styles": {
-				"screen.mobile.less": {
+				"screen-custom.less": {
 					"media": "screen"
 				},
 				"screen-hd.less": {
@@ -70,13 +70,27 @@
 				}
 			}
 		},
-		"skins.metrolook.mediawiki.searchSuggest.custom": {
-			"scripts": [
-				"js/mediawiki.searchSuggest.custom.js"
-			],
+		"skins.metrolook.styles.mobile": {
+			"targets": [ "desktop", "mobile" ],
 			"position": "top",
-			"dependencies": [
-				"mediawiki.searchSuggest"
+			"styles": [
+				"components/mobile/mobile.less",
+				"components/tablet/tablet.less"
+			]
+		},
+		"skins.metrolook.styles.mobile.custom": {
+			"targets": [ "desktop", "mobile" ],
+			"position": "top",
+			"styles": [
+				"components/mobile/mobile-custom.less",
+				"components/tablet/tablet-custom.less"
+			]
+		},
+		"skins.metrolook.styles.theme.custom": {
+			"targets": [ "desktop", "mobile" ],
+			"position": "top",
+			"styles": [
+				"components/custom/theme.less"
 			]
 		},
 		"skins.metrolook.js": {
@@ -89,7 +103,6 @@
 			],
 			"position": "top",
 			"dependencies": [
-				"skins.metrolook.mediawiki.searchSuggest.custom",
 				"jquery.throttle-debounce",
 				"jquery.tabIndex"
 			]
@@ -100,21 +113,7 @@
 				"js/collapsibleNav.js"
 			],
 			"styles": [
-				"components/collapsibleNav.less"
-			],
-			"dependencies": [
-				"jquery.client",
-				"jquery.cookie",
-				"jquery.tabIndex"
-			]
-		},
-		"skins.metrolook.collapsibleNav-custom": {
-			"position": "bottom",
-			"scripts": [
-				"js/collapsibleNav.custom.js"
-			],
-			"styles": [
-				"components/collapsibleNav.custom.less"
+				"components/main/collapsibleNav.less"
 			],
 			"dependencies": [
 				"jquery.client",
@@ -166,7 +165,7 @@
 		"MetrolookLogo": true,
 		"MetrolookSiteNameLogo": false,
 		"MetrolookSiteName": true,
-		"MetrolookSiteNameText": true,
+		"MetrolookSiteNameText": false,
 		"MetrolookSiteText": "",
 		"MetrolookSearchBar": true,
 		"MetrolookDownArrow": true,
