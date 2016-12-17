@@ -54,13 +54,10 @@
 			} // end mobile-only code
 
 			$( '#hamburgerIcon' ).click( function ( e ) {
-				$( '#mw-panel, #mw-panel-custom' ).fadeToggle( 150 );
+				$( '#mw-panel' ).fadeToggle( 150 );
 				$( '.clicker' ).toggleClass( 'active' );
-				if (
-					$( '#mw-panel' ).is( ':visible' ) ||
-					$( '#mw-panel-custom' ).is( ':visible' )
-				) {
-					$( '#mw-panel, #mw-panel-custom', this ).fadeOut( 150 );
+				if ( $( '#mw-panel' ).is( ':visible' ) ) {
+					$( '#mw-panel', this ).fadeOut( 150 );
 					$( '.clicker' ).removeClass( 'active' );
 				}
 				e.stopPropagation();

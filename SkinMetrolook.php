@@ -59,11 +59,40 @@ class SkinMetrolook extends SkinTemplate {
 	 */
 	public function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
-
-		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) ) {
-			$styles = [ 'mediawiki.skinning.interface', 'skins.metrolook.styles.responsive' ];
-		} else {
-			$styles = [ 'mediawiki.skinning.interface', 'skins.metrolook.styles' ];
+		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) &&
+			!$this->metrolookConfig->get( 'MetrolookSearchBar' )
+		) {
+			$styles = [
+				'mediawiki.skinning.interface',
+				'skins.metrolook.styles.custom',
+				'skins.metrolook.styles.mobile.custom',
+				'skins.metrolook.styles.theme.custom',
+			];
+		} elseif ( $this->metrolookConfig->get( 'MetrolookMobile' ) &&
+			$this->metrolookConfig->get( 'MetrolookSearchBar' )
+		) {
+			$styles = [
+				'mediawiki.skinning.interface',
+				'skins.metrolook.styles',
+				'skins.metrolook.styles.mobile',
+				'skins.metrolook.styles.theme.custom',
+			];
+		} elseif ( !$this->metrolookConfig->get( 'MetrolookMobile' ) &&
+			$this->metrolookConfig->get( 'MetrolookSearchBar' )
+		) {
+			$styles = [
+				'mediawiki.skinning.interface',
+				'skins.metrolook.styles',
+				'skins.metrolook.styles.theme.custom',
+			];
+		} elseif ( !$this->metrolookConfig->get( 'MetrolookMobile' ) &&
+			!$this->metrolookConfig->get( 'MetrolookSearchBar' )
+		) {
+			$styles = [
+				'mediawiki.skinning.interface',
+				'skins.metrolook.styles.custom',
+				'skins.metrolook.styles.theme.custom',
+			];
 		}
 		Hooks::run( 'SkinMetrolookStyleModules', [ $this, &$styles ] );
 		$out->addModuleStyles( $styles );
