@@ -86,24 +86,6 @@ div#mw-head {
 	}
 }
 
-/* Logo */
-#p-logo-custom {
-	left: 0;
-	width: 10em;
-	height: 160px;
-	margin-bottom: 1em;
-	margin-left: 0.5em;
-
-	a {
-		display: block;
-		width: 10em;
-		height: 160px;
-		background-repeat: no-repeat;
-		background-position: center center;
-		text-decoration: none;
-	}
-}
-
 /* Panel */
 div#mw-panel {
 	font-size: @menu-main-font-size;
@@ -174,86 +156,6 @@ div#mw-panel {
 			display: none;
 		}
 		div.body {
-			margin-left: 0.5em;
-		}
-	}
-}
-
-/* custom */
-/* Panel */
-div#mw-panel-custom {
-	font-size: @menu-main-font-size;
-	position: fixed;
-	top: 40px;
-	bottom: 0;
-	height: auto;
-	overflow-y: auto;
-	overflow-x: hidden;
-	-webkit-overflow-scrolling: touch;
-	padding-right: 0.7em;
-	padding-top: 1em;
-	width: 11em;
-	left: 0;
-	z-index: 1;
-
-	div.portal-custom {
-		margin: 0 0.6em 0 1.2em;
-		padding: 0.25em 0;
-		direction: ltr;
-		background-position: top left;
-		background-repeat: no-repeat;
-		.background-image('images/portal-break.png');
-
-		h5 {
-			font-family: 'Segoe UI Light', Segoe UI, sans-serif;
-			font-weight: 100;
-			font-size: 1em;
-			color: #444444;
-			padding: 0.25em;
-			padding-top: 0;
-			padding-left: 17px;
-			padding-bottom: 0;
-			margin-bottom: 0;
-			cursor: default;
-			border: none;
-		}
-
-		div.body-custom {
-			margin: @menu-main-body-margin;
-			padding-top: 0;
-
-			ul {
-				list-style-type: none;
-				list-style-image: none;
-				margin: 0;
-				padding: @menu-main-body-padding;
-
-				li {
-					line-height: 1.125em;
-					margin: 0;
-					padding: 0.25em 0;
-					font-size: @menu-main-body-font-size;
-					word-wrap: break-word;
-
-					a {
-						color: @menu-main-body-link-color;
-						&:visited {
-							color: @menu-main-body-link-visited-color;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/* First sidebar portlet. Not using :first-of-type for IE<=8 support. */
-	#p-logo-custom + #p-searchSearch + div.portal-custom {
-		background-image: none;
-		margin-top: 0;
-		h5 {
-			display: none;
-		}
-		div.body-custom {
 			margin-left: 0.5em;
 		}
 	}

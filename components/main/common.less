@@ -1,0 +1,353 @@
+/*
+ * Any rules which should not be flipped automatically in right-to-left situations should be
+ * prepended with @noflip in a comment block.
+ *
+ * This stylesheet employs a few CSS trick to accomplish compatibility with a wide range of web
+ * browsers. The most common trick is to use some styles in IE6 only. This is accomplished by using
+ * a rule that makes things work in IE6, and then following it with a rule that begins with
+ * "html > body" or use a child selector ">", which is ignored by IE6 because it does not support
+ * the child selector. You can spot this by looking for the "OVERRIDDEN BY COMPLIANT BROWSERS" and
+ * "IGNORED BY IE6" comments.
+ */
+@import "mediawiki.mixins";
+
+/* Framework */
+html {
+	font-size: @html-font-size;
+}
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: @content-font-family;
+}
+body {
+	background-color: #f3f3f3;
+}
+
+.top-tile-bar-inner-container {
+	align: left;
+	vertical-align: top;
+}
+
+.tile-wrapper {
+	float: left;
+	padding: 5px;
+}
+
+.tilebar {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	align: right;
+	color: #fff;
+	background: #1D1D1D;
+	height: 200px;
+	display: block;
+	z-index: 9999999;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
+}
+
+.tile:hover {
+	outline: 3px #4A4A4A solid;
+}
+
+.onhoverbg {
+	height: 40px;
+	float: left;
+
+	&:hover {
+		background: #9F6F40;
+	}
+}
+
+div.siteLogoBarContainer {
+	padding-left: 10px;
+}
+
+.siteLogoBar {
+	float: left;
+	height: 40px;
+}
+
+.topleft {
+	display: inline;
+	position: relative;
+}
+
+.topright .hover {
+	display: none;
+	position: absolute;
+	left: 0;
+	z-index: 2000;
+	height: 200px;
+}
+
+img.editbutton {
+	display: none;
+}
+
+#tilegrouptable {
+	height: 130px;
+	padding: 0;
+	border-spacing: 0;
+}
+
+#tilegroup {
+	padding: 35px;
+	height: 130px;
+}
+
+/* Content */
+.mw-body {
+	margin-left: 10em;
+	padding: 1.25em 1.5em 1.5em 1.5em;
+	/* @embed */
+	background-image: url(images/border.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+	background-color: white;
+	color: black;
+	direction: ltr;
+	height: auto;
+	position: relative;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	top: 40px;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+
+	.mw-editsection,
+	.mw-editsection-like {
+		font-family: @content-font-family;
+	}
+
+	p {
+		line-height: inherit;
+		margin: 0.5em 0;
+	}
+
+	h2 {
+		font-family: @content-heading-font-family;
+		line-height: @heading-line-height;
+		margin-bottom: 0.25em;
+		padding: 0;
+
+		/* Fallback heading font for scripts which render poorly in @content-heading-font-family. */
+		/* See T73240 */
+		&:lang( ja ), /* See T65817 */
+		&:lang( he ), /* See T65843 and T65844 */
+		&:lang( ko ) { /* See T65827 */
+			font-family: @content-heading-font-family-generic;
+		}
+	}
+
+	h1 {
+		font-size: @content-heading-font-size;
+	}
+
+	.mw-body-content {
+		h1 {
+			margin-top: 1em;
+		}
+	}
+
+	h2 {
+		font-size: 1.5em;
+		margin-top: 1em;
+	}
+
+	h3,
+	h4,
+	h5,
+	h6 {
+		line-height: @content-line-height;
+		margin-top: 0.3em;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	h3 {
+		font-size: 1.2em;
+	}
+
+	h3,
+	h4 {
+		font-weight: bold;
+	}
+
+	h4,
+	h5,
+	h6 {
+		font-size: 100%; /* (reset) */
+	}
+
+	#toc h2,
+	.toc h2 {
+		font-size: 100%; /* (reset) */
+		font-family: @content-font-family;
+	}
+
+	.firstHeading {
+		/* Change the default from mediawiki.skinning CSS to let indicators float into heading area */
+		overflow: visible;
+	}
+
+	.mw-indicators {
+		float: right;
+		line-height: @content-line-height;
+		font-size: @content-font-size;
+		/* Ensure that this is displayed on top of .mw-body-content and clickable */
+		position: relative;
+		z-index: 1;
+	}
+
+	.mw-indicator {
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+	}
+}
+
+img.uploadbutton {
+	position: inherit;
+	.background-image-svg('images/uploadlogo.svg', 'images/uploadlogo.png');
+	width: 26px;
+	height: 35px;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+}
+
+span.uploadbutton {
+	color: #fff;
+	position: relative;
+	top: 3px;
+}
+
+#uploadbutton {
+	padding-left:0.8em;
+	padding-right:0.8em;
+}
+
+img.line {
+	float: left;
+	position: inherit;
+	.background-image-svg('images/line.svg', 'images/line.png');
+	width: 2px;
+	height: 35px;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+}
+
+img.downarrow {
+	cursor: pointer;
+	position: inherit;
+	.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+	width: 28px;
+	height: 40px;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+
+	&:hover {
+		position: inherit;
+		background: #9F6F40;
+		.background-image-svg('images/downarrow.svg', 'images/downarrow.png');
+		width: 28px;
+		height: 40px;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+	}
+}
+
+#hamburgerIcon {
+	position: fixed;
+	top: 40px;
+	z-index: 0;
+
+	img.hamburger {
+		height: 40px;
+		width: 40px;
+	}
+}
+
+span.title-name {
+	color: white;
+	display: inline-block;
+	font-size: 17px;
+	height: auto;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	max-height: 700px;
+	max-width: auto;
+	vertical-align: middle;
+}
+
+div.sitename-logo {
+	float: left;
+	height: 40px;
+	margin-top: -0.7em;
+}
+
+/* Hide empty portlets */
+div.emptyPortlet {
+	display: none;
+}
+
+ul {
+	list-style-type: disc;
+	.list-style-image-svg('images/bullet-icon.svg', 'images/bullet-icon.png');
+}
+
+pre,
+.mw-code {
+	line-height: 1.3em;
+}
+
+/* Site Notice (includes notices from CentralNotice extension) */
+#siteNotice {
+	font-size: 0.8em;
+}
+
+.redirectText {
+	font-size: 140%;
+}
+
+.redirectMsg p {
+	margin: 0;
+}
+
+.mw-body-content {
+	position: relative;
+	line-height: @content-line-height;
+	font-size: @content-font-size;
+	z-index: 0;
+}
+
+.hoverbox {
+	background: #CF8B54;
+
+	&:hover {
+		background: #9F6F40;
+	}
+}
+
+.spacer {
+	word-spacing: 4px;
+}
+
+#pt-notifications-notice .mw-echo-notifications-badge {
+	left: 0.7em;
+	right: 0.4em;
+	top: 0.5em;
+	padding-right: 11.5em;
+}

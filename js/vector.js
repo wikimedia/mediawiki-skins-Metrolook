@@ -1,5 +1,5 @@
 /**
- * Vector-specific scripts
+ * Metrolook-specific scripts
  */
 jQuery( function ( $ ) {
 	/**
@@ -110,4 +110,3 @@ jQuery( function ( $ ) {
 			}
 		} );
 } );
-
