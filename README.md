@@ -11,29 +11,33 @@ Compatible with MediaWiki 1.26+.
 If you would like compatibility with older releases of MediaWiki, download the
 appropriate version for your MediaWiki from one of the URLs below:
 
+1.28
+
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_28/
+
 1.26
 
-https://github.com/paladox/Metrolook/tree/REL1_26
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_26/
 
 1.25
 
-https://github.com/paladox/Metrolook/tree/REL1_25
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_25/
 
 1.24
 
-https://github.com/paladox/Metrolook/tree/REL1_24
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_24/
 
 1.23
 
-https://github.com/paladox/Metrolook/tree/REL1_23
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_23/
 
 1.22
 
-https://github.com/paladox/Metrolook/tree/REL1_22
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_22/
 
 1.21
 
-https://github.com/paladox/Metrolook/tree/REL1_21
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_21/
 
 ### Live demo
 
@@ -79,6 +83,10 @@ See https://phabricator.wikimedia.org/tag/mediawiki-skins-metrolook/ for a list
 of currently open bugs.
 
 ## Version
+
+7.x.x requires MediaWiki 1.29.
+
+6.x.x requires MediaWiki 1.28.
 
 5.x.x requires MediaWiki 1.27.
 

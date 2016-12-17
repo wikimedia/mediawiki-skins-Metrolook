@@ -1,6 +1,10 @@
 Changelog
 =========
 
+5.0
+===
+
+Supports MediaWiki 1.27.
 
 5.0 alpha 2
 ===
