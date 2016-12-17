@@ -2,8 +2,7 @@ Changelog
 =========
 
 
-6.0
+7.0 alpha 1
 ===
 
-* Supports MediaWiki 1.28
-
+* Supports MediaWiki 1.29
