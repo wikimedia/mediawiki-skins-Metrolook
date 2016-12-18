@@ -1,0 +1,21 @@
+{
+	"extends": "wikimedia",
+	"env": {
+		"browser": true,
+		"jquery": true
+	},
+	"globals": {
+		"mediaWiki": false
+	},
+	"rules": {
+		// "valid-jsdoc": [ "error", { "matchDescription": false } ]
+		"require-jsdoc": ["error", {
+			"require": {
+				"FunctionDeclaration": false,
+				"MethodDefinition": false,
+				"ClassDeclaration": false,
+				"ArrowFunctionExpression": false
+			}
+		}]
+	}
+}
