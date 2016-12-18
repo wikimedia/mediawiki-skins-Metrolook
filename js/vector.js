@@ -110,4 +110,3 @@ jQuery( function ( $ ) {
 			}
 		} );
 } );
-
