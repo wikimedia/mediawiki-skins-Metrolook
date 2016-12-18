@@ -103,6 +103,8 @@
 		 * explicitly.
 		 *
 		 * @ignore
+		 * @param {Object} context
+		 * @return {string}
 		 */
 		function getInputLocation( context ) {
 			return context.config.$region
@@ -116,6 +118,7 @@
 		 * 'this' is the search input box (jQuery object)
 		 *
 		 * @ignore
+		 * @param {Object} metadata
 		 */
 		function onAfterUpdate( metadata ) {
 			var context = this.data( 'suggestionsContext' );
