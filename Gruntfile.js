@@ -7,10 +7,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-jscs' );
 
 	grunt.initConfig( {
-		jshint: {
-			options: {
-				jshintrc: true
-			},
+		eslint: {
 			all: [
 				'*.js',
 				'**/*.js',
@@ -34,6 +31,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'test', [ 'jshint', 'jscs', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'test', [ 'eslint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };
