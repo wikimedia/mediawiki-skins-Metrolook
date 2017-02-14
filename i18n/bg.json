@@ -4,5 +4,7 @@
 			"StanProg"
 		]
 	},
+	"metrolook-desc": "Metrolook е [https://en.wikipedia.org/wiki/Metro_(design_language) вдъхновен от Metro] форк на облика „Vector“",
+	"skinmetrolook-collapsiblenav-preference": "Включване на скриването на елемент от страничната лена в облик „Metrolook“",
 	"metrolook-guest": "Гост"
 }
