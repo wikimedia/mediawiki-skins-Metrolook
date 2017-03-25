@@ -99,7 +99,8 @@
 				"js/metrolook.js",
 				"js/metrolook.search.js",
 				"js/vector.js",
-				"js/overthrow.js"
+				"js/overthrow.js",
+				"js/fixed-header-scroll-fix.js"
 			],
 			"position": "top",
 			"dependencies": [
