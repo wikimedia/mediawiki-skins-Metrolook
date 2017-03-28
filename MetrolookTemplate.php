@@ -39,10 +39,10 @@ class MetrolookTemplate extends BaseTemplate {
 		 * * URL to the site|alternative text|image URL
 		 *
 		 * For example:
-		 * * http://www.pidgi.net/wiki/|PidgiWiki|http://images.pidgi.net/pidgiwikitiletop.png
-		 * * http://www.pidgi.net/press/|PidgiWiki Press|http://images.pidgi.net/pidgipresstiletop.png
-		 * * http://www.pidgi.net/jcc/|The JCC|http://images.pidgi.net/jcctiletop.png
-		 * * http://www.petalburgwoods.com/|Petalburg Woods|http://images.pidgi.net/pwntiletop.png
+		 * * https://www.pidgi.net/wiki/|PidgiWiki|https://images.pidgi.net/pidgiwikitiletop.png
+		 * * https://www.pidgi.net/press/|PidgiWiki Press|https://images.pidgi.net/pidgipresstiletop.png
+		 * * https://www.pidgi.net/jcc/|The JCC|https://images.pidgi.net/jcctiletop.png
+		 * * https://www.petalburgwoods.com/|Petalburg Woods|https://images.pidgi.net/pwntiletop.png
 		 */
 		$tileMessage = $this->getSkin()->msg( $messageName );
 		$tiles = '';
