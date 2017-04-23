@@ -2,10 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Mordecool",
-			"HenriqueCrang"
+			"HenriqueCrang",
+			"Felipe L. Ewald"
 		]
 	},
+	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolook é um fork [https://en.wikipedia.org/wiki/Metro_(design_language) inspirado no Metro] do tema Vector",
+	"metrolook.css": "/* CSS colocado aqui irá afetar usuários do tema Metrolook */",
+	"metrolook.js": "/* Qualquer JavaScript aqui colocado será carregado para usuários usando o tema Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Ativar o ocultamento de itens na barra lateral no tema Metrolook",
-	"metrolook-guest": "Hóspede"
+	"metrolook-guest": "Convidado"
 }
