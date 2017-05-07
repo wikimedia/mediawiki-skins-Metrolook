@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Siddhartha Ghai"
+			"Siddhartha Ghai",
+			"Sfic"
 		]
 	},
-	"metrolook-desc": "मीडियाविकि के लिए मेट्रोलुक त्वचा",
+	"skinname-metrolook": "मेट्रोलूक",
+	"metrolook-desc": "मेट्रोलूक एक [https://en.wikipedia.org/wiki/Metro_(design_language) मेट्रो से प्रेरित] और वेक्टर पर आधारित त्वचा है।",
+	"skinmetrolook-collapsiblenav-preference": "मेट्रोलोक त्वचा में साइडबार में वस्तुओं को नीचे-ऊपर करने हेतु सक्षम करें",
 	"metrolook-guest": "अतिथि"
 }
