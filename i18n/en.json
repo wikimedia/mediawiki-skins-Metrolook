@@ -10,6 +10,6 @@
 	"metrolook.js": "/* Any JavaScript here will be loaded for users using the Metrolook skin */",
 	"skinmetrolook-collapsiblenav-preference": "Enable collapsing of items in the sidebar in Metrolook skin",
 	"metrolook-guest": "Guest",
-	"metrolook-tiles": "* https://www.pidgi.net/wiki/|PidgiWiki|https://images.pidgi.net/pidgiwikitiletop.png\n* httpd://www.pidgi.net/press/|PidgiWiki Press|https://images.pidgi.net/pidgipresstiletop.png\n* https://www.petalburgwoods.com/|Petalburg Woods|https://images.pidgi.net/pwntiletop.png\n* https://burstcade.pidgi.net/|Burstcade|https://images.pidgi.net/burstcadetiletop.png",
+	"metrolook-tiles": "* https://www.pidgi.net/wiki/|PidgiWiki|https://images.pidgi.net/pidgiwikitiletop.png\n* https://www.pidgi.net/press/|PidgiWiki Press|https://images.pidgi.net/pidgipresstiletop.png\n* https://www.petalburgwoods.com/|Petalburg Woods|https://images.pidgi.net/pwntiletop.png\n* https://burstcade.pidgi.net/|Burstcade|https://images.pidgi.net/burstcadetiletop.png",
 	"metrolook-tiles-second": ""
 }
