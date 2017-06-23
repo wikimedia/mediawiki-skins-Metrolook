@@ -43,7 +43,6 @@ class SkinMetrolook extends SkinTemplate {
 	 * @param OutputPage $out Object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-
 		parent::initPage( $out );
 
 		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) ) {

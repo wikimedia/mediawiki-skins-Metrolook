@@ -99,7 +99,8 @@ class MetrolookTemplate extends BaseTemplate {
 		);
 
 		if ( $this->config->get( 'MetrolookDisableAvatar' ) ) {
-			if ( class_exists( 'wAvatar' ) ) { // SocialProfile is installed
+			if ( class_exists( 'wAvatar' ) ) {
+				// SocialProfile is installed
 				$avatar = new wAvatar( $skin->getUser()->getId(), 'l' );
 				$avatarImage = $avatar->getAvatarURL( [
 					'width' => (int)$width,
@@ -445,8 +446,7 @@ class MetrolookTemplate extends BaseTemplate {
 					if (
 						isset( $this->data['nav_urls']['upload']['href'] ) &&
 						$this->data['nav_urls']['upload']['href']
-					)
-					{
+					) {
 						$uploadURL = $this->data['nav_urls']['upload']['href'];
 					} else {
 						$upURL = SpecialPage::getTitleFor( 'Upload' )->getFullURL();
@@ -638,7 +638,8 @@ class MetrolookTemplate extends BaseTemplate {
 					</ul>
 				<?php
 				} else {
-					echo $content; /* Allow raw HTML block to be defined by extensions */
+					// Allow raw HTML block to be defined by extensions
+					echo $content;
 				}
 
 				$this->renderAfterPortlet( $name );
@@ -835,17 +836,18 @@ class MetrolookTemplate extends BaseTemplate {
 							<?php
 							echo $this->makeSearchInput( [ 'id' => 'searchInput' ] );
 							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
-							// We construct two buttons (for 'go' and 'fulltext' search modes),
-							// but only one will be visible and actionable at a time (they are
-							// overlaid on top of each other in CSS).
-							// * Browsers will use the 'fulltext' one by default (as it's the
-							//   first in tree-order), which is desirable when they are unable
-							//   to show search suggestions (either due to being broken or
-							//   having JavaScript turned off).
-							// * The mediawiki.searchSuggest module, after doing tests for the
-							//   broken browsers, removes the 'fulltext' button and handles
-							//   'fulltext' search itself; this will reveal the 'go' button and
-							//   cause it to be used.
+							/* We construct two buttons (for 'go' and 'fulltext' search modes),
+							 * but only one will be visible and actionable at a time (they are
+							 * overlaid on top of each other in CSS).
+							 * * Browsers will use the 'fulltext' one by default (as it's the
+							 *   first in tree-order), which is desirable when they are unable
+							 *   to show search suggestions (either due to being broken or
+							 *   having JavaScript turned off).
+							 * * The mediawiki.searchSuggest module, after doing tests for the
+							 *   broken browsers, removes the 'fulltext' button and handles
+							 *   'fulltext' search itself; this will reveal the 'go' button and
+							 *   cause it to be used.
+							 */
 							echo $this->makeSearchButton(
 								'fulltext',
 								[ 'id' => 'mw-searchButton', 'class' => 'searchButton mw-fallbackSearchButton' ]
