@@ -683,7 +683,7 @@ class MetrolookTemplate extends BaseTemplate {
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
 										echo $link['key'];
-										if ( isset ( $link['rel'] ) ) {
+										if ( isset( $link['rel'] ) ) {
 											echo ' rel="' . htmlspecialchars( $link['rel'] ) . '"';
 										}
 										?>><?php
@@ -757,7 +757,7 @@ class MetrolookTemplate extends BaseTemplate {
 										echo htmlspecialchars( $link['href'] )
 										?>" <?php
 										echo $link['key'];
-										if ( isset ( $link['rel'] ) ) {
+										if ( isset( $link['rel'] ) ) {
 											echo ' rel="' . htmlspecialchars( $link['rel'] ) . '"';
 										}
 										?>><?php
