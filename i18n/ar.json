@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Khaled"
+			"Khaled",
+			"ديفيد"
 		]
 	},
 	"metrolook-desc": "مظهر الميترو لميديا ويكي",
+	"skinmetrolook-collapsiblenav-preference": "تمكين طي العناصر الموجودة في الشريط الجانبي في البرنامج المساعد ميترولوك",
 	"metrolook-guest": "زائر"
 }
