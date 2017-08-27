@@ -11,6 +11,14 @@ Compatible with MediaWiki 1.29+.
 If you would like compatibility with older releases of MediaWiki, download the
 appropriate version for your MediaWiki from one of the URLs below:
 
+1.30
+
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/master/
+
+1.29
+
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/master/
+
 1.28
 
 https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_28/
@@ -27,20 +35,12 @@ https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_26/
 
 https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_25/
 
-1.24
-
-https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_24/
-
-1.23
-
-https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_23/
-
 ### Live demo
 
 This is an old demo.
 
-A working demo of the skin is available at http://www.pidgi.net/metrolooktest/index.php/Main_Page .
-This is currently using MediaWiki 1.25wmf18 and a snapshot of the test branch of the skin.
+A working demo of the skin is available at https://www.pidgi.net/wiki/Main_Page .
+This is currently using MediaWiki 1.26 and a snapshot of the test branch of the skin.
 
 ### On-wiki documentation
 
@@ -81,7 +81,7 @@ See https://phabricator.wikimedia.org/tag/metrolook/ for a list of currently ope
 
 ### MediaWiki versions we no longer support
 
-* MediaWiki 1.22 or lower is now unsupported.
+* MediaWiki 1.26 or lower is now unsupported.
 
 ## Version
 
