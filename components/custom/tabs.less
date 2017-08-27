@@ -1,6 +1,6 @@
 /*
-Styling for namespace tabs (page, discussion) and views (read, edit, view history, watch and other actions)
-*/
+ * Styling for namespace tabs (page, discussion) and views (read, edit, view history, watch and other actions)
+ */
 
 /* Navigation Labels */
 div.vectorTabs h5,
@@ -85,7 +85,7 @@ div.vectorTabs {
 			color: #fff;
 			cursor: pointer;
 			font-size: 0.8em;
-			text-decoration: none; 
+			text-decoration: none;
 		}
 
 		/* Ignored by IE6 which doesn't support child selector */
@@ -93,7 +93,7 @@ div.vectorTabs {
 			display: block;
 		}
 	}
-	
+
 	a:hover {
 			background: #9F6F40;
 	}
@@ -139,7 +139,7 @@ body.rtl div.vectorMenu {
 div#mw-head div.vectorMenu h5 {
 	/* @noflip */
 	float: left;
-	.background-image('images/tab-break.png');
+	.background-image( 'images/tab-break.png' );
 	background-repeat: no-repeat;
 	background-position: bottom right;
 	font-size: 1em;
@@ -148,28 +148,24 @@ div#mw-head div.vectorMenu h5 {
 	margin-right: -1px;
 }
 
-div.vectorMenu h5 a {
+div.vectorMenu h5 span {
 	display: inline-block;
 	width: 24px;
 	height: 2em;
-	background-color: #CF8B54; 
-	.background-image-svg('images/arrow-down-icon.svg', 'images/arrow-down-icon.png');
-	background-position: 30% 30%; 
+	background-color: #CF8B54;
+	.background-image-svg( 'images/arrow-down-icon.svg', 'images/arrow-down-icon.png' );
+	background-position: 30% 30%;
 	background-repeat: no-repeat;
-	.transition(background-position 250ms);
 }
-div.vectorMenu:hover h5 a {
+div.vectorMenu:hover h5 span {
 	background-color: #9F6F40;
 }
 div.vectorMenu:hover {
 	background-color: #9F6F40;
 }
-div.vectorMenu.menuForceShow h5 a {
-	background-position: 100% 100%;
-}
 
-div.vectorMenuFocus h5 a {
-	.background-image-svg('images/arrow-down-focus-icon.svg', 'images/arrow-down-focus-icon.png');
+div.vectorMenuFocus h5 span {
+	.background-image-svg( 'images/arrow-down-focus-icon.svg', 'images/arrow-down-focus-icon.png' );
 	background-position: 100% 60%;
 }
 
@@ -198,7 +194,7 @@ div.vectorMenu ul {
 	margin: 0;
 	margin-left: -6px;
 	text-align: left;
-	z-index: 1;
+	z-index: 2;
 }
 
 /* Fixes old versions of FireFox */
@@ -231,7 +227,7 @@ div.vectorMenu li a {
 	color: #333;
 	cursor: pointer;
 	font-size: 0.8em;
-	text-decoration:none; 
+	text-decoration:none;
 }
 div.vectorMenu li a:hover {
 	background-color: #f3f3f3;
