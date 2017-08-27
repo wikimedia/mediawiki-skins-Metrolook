@@ -204,7 +204,7 @@ class MetrolookTemplate extends BaseTemplate {
 			<?php
 			if ( $this->data['sitenotice'] ) {
 				?>
-				<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
+				<div id="siteNotice" class="mw-body-content"><?php $this->html( 'sitenotice' ) ?></div>
 			<?php
 			}
 			?>
@@ -225,7 +225,7 @@ class MetrolookTemplate extends BaseTemplate {
 				<?php
 				if ( $this->data['isarticle'] ) {
 					?>
-					<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
+					<div id="siteSub" class="noprint"><?php $this->msg( 'tagline' ) ?></div>
 				<?php
 				}
 				?>
@@ -714,7 +714,7 @@ class MetrolookTemplate extends BaseTemplate {
 						}
 						?>
 						<h5 id="p-variants-label">
-							<span><?php echo htmlspecialchars( $variantLabel ) ?></span><a href="#"></a>
+							<span><?php echo htmlspecialchars( $variantLabel ) ?></span>
 						</h5>
 
 						<div class="menu">
@@ -760,6 +760,9 @@ class MetrolookTemplate extends BaseTemplate {
 										if ( isset( $link['rel'] ) ) {
 											echo ' rel="' . htmlspecialchars( $link['rel'] ) . '"';
 										}
+										if ( isset( $link['target'] ) ) {
+											echo ' target="' . htmlspecialchars( $link['target'] ) . '"';
+										}
 										?>><?php
 											// $link['text'] can be undefined - bug 27764
 											if ( array_key_exists( 'text', $link ) ) {
@@ -784,7 +787,7 @@ class MetrolookTemplate extends BaseTemplate {
 					?>" aria-labelledby="p-cactions-label">
 						<h5 id="p-cactions-label"><span><?php
 							$this->msg( 'actions' )
-						?></span><a href="#"></a></h5>
+						?></span></h5>
 
 						<div class="menu">
 							<ul<?php $this->html( 'userlangattributes' ) ?>>

@@ -35,7 +35,17 @@ class SkinMetrolook extends SkinTemplate {
 	private $metrolookConfig;
 
 	public function __construct() {
-		$this->metrolookConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'metrolook' );
+		$this->metrolookConfig = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'metrolook' );
+	}
+
+	/** @inheritdoc */
+	public function getPageClasses( $title ) {
+		$className = parent::getPageClasses( $title );
+		if ( $this->metrolookConfig->get( 'MetrolookExperimentalPrintStyles' ) ) {
+			$className .= ' metrolook-experimental-print-styles';
+		}
+		return $className;
 	}
 
 	/**
@@ -47,6 +57,14 @@ class SkinMetrolook extends SkinTemplate {
 
 		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) ) {
 			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1' );
+		}
+
+		// Print styles are feature flagged.
+		// This flag can be removed when T169732 is resolved.
+		if ( $this->metrolookConfig->get( 'MetrolookExperimentalPrintStyles' ) ) {
+			// Note, when deploying (T169732) we'll want to fold the stylesheet into
+			// skins.metrolook.styles and remove this module altogether.
+			$out->addModuleStyles( 'skins.metrolook.styles.experimental.print' );
 		}
 
 		$out->addModules( [ 'skins.metrolook.js' ] );
@@ -102,5 +120,14 @@ class SkinMetrolook extends SkinTemplate {
 	 */
 	public function setupTemplate( $classname, $repository = false, $cache_dir = false ) {
 		return new $classname( $this->metrolookConfig );
+	}
+
+	/**
+	 * Whether the logo should be preloaded with an HTTP link header or not
+	 * @since 1.29
+	 * @return bool
+	 */
+	public function shouldPreloadLogo() {
+		return true;
 	}
 }
