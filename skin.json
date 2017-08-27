@@ -1,7 +1,7 @@
 {
 	"name": "Metrolook",
 	"namemsg": "skinname-metrolook",
-	"version": "7.0 alpha 1",
+	"version": "7.0 alpha 2",
 	"author": [
 		"immewnity",
 		"Paladox",
@@ -43,7 +43,8 @@
 	"AutoloadClasses": {
 		"MetrolookHooks": "SkinMetrolookHooks.php",
 		"SkinMetrolook": "SkinMetrolook.php",
-		"MetrolookTemplate": "MetrolookTemplate.php"
+		"MetrolookTemplate": "MetrolookTemplate.php",
+		"Metrolook\\ResourceLoaderLessModule": "ResourceLoaderLessModule.php"
 	},
 	"ResourceModules": {
 		"skins.metrolook.styles": {
@@ -69,6 +70,14 @@
 					"media": "screen and (min-width: 982px)"
 				}
 			}
+		},
+		"skins.metrolook.styles.experimental.print": {
+			"class": "Metrolook\\ResourceLoaderLessModule",
+			"targets": [ "desktop", "mobile" ],
+			"position": "top",
+			"styles": [
+				"print.less"
+			]
 		},
 		"skins.metrolook.styles.mobile": {
 			"targets": [ "desktop", "mobile" ],
@@ -147,6 +156,7 @@
 			"jquery.ui.spinner": "skinStyles/jquery.ui/jquery.ui.spinner.css",
 			"jquery.ui.tabs": "skinStyles/jquery.ui/jquery.ui.tabs.css",
 			"jquery.ui.tooltips": "skinStyles/jquery.ui/jquery.ui.tooltips.css",
+			"+mediawiki.action.view.redirectPage": "skinStyles/mediawiki.action.view.redirectPage.less",
 			"+mediawiki.notification": "skinStyles/mediawiki.notification.less",
 			"+oojs-ui-core.styles": "skinStyles/ooui.less",
 			"mediawiki.special": "skinStyles/mediawiki.special.less",
@@ -174,7 +184,10 @@
 		"MetrolookUploadButton": true,
 		"MetrolookMobile": true,
 		"MetrolookBartile": true,
-		"MetrolookDisableAvatar": true
+		"MetrolookDisableAvatar": true,
+		"@MetrolookExperimentalPrintStyles": "Temporary config variable to feature flag new print styles (T154965)",
+		"MetrolookExperimentalPrintStyles": false,
+		"MetrolookPrintLogo": false
 	},
 	"manifest_version": 1
 }
