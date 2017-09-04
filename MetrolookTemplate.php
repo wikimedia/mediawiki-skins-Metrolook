@@ -518,7 +518,8 @@ class MetrolookTemplate extends BaseTemplate {
 		<div id="mw-panel-right" class="noprint">
 			<?php
 			// Hook point for the ShoutWiki Ads extension
-			Hooks::run( 'MetrolookRightPanel', [ $this ] );
+			$skin = $this;
+			Hooks::run( 'MetrolookRightPanel', [ &$skin ] );
 			?>
 		</div>
 
@@ -559,7 +560,8 @@ class MetrolookTemplate extends BaseTemplate {
 				case 'TOOLBOX':
 					$this->renderPortal( 'tb', $this->getToolbox(), 'toolbox', 'SkinTemplateToolboxEnd' );
 					// Hook point for the ShoutWiki Ads extension
-					Hooks::run( 'MetrolookAfterToolbox', [ $this ] );
+					$skin = $this;
+					Hooks::run( 'MetrolookAfterToolbox', [ &$skin ] );
 					break;
 				case 'LANGUAGES':
 					if ( $this->data['language_urls'] !== false ) {
@@ -604,7 +606,8 @@ class MetrolookTemplate extends BaseTemplate {
 							echo $this->makeListItem( $key, $val );
 						}
 						if ( $hook !== null ) {
-							Hooks::run( $hook, [ &$this, true ] );
+							$skin = $this;
+							Hooks::run( $hook, [ &$skin, true ] );
 						}
 						?>
 					</ul>
