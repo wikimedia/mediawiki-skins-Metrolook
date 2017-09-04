@@ -35,7 +35,7 @@ class MetrolookHooks {
 	 * This method is public to allow other extensions that use CollapsibleVector to use the
 	 * same configuration as CollapsibleVector itself
 	 *
-	 * @param $name string Name of the feature, should be a key of $features
+	 * @param $name string Name of the feature, should be a key of $name
 	 * @return bool
 	 */
 	public static function isEnabled( $name ) {
@@ -70,8 +70,8 @@ class MetrolookHooks {
 	 *
 	 * Adds the modules to the page
 	 *
-	 * @param $out OutputPage output page
-	 * @param $skin Skin current skin
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		if ( $skin instanceof SkinMetrolook ) {
@@ -90,8 +90,8 @@ class MetrolookHooks {
 	 *
 	 * Adds Vector-releated items to the preferences
 	 *
-	 * @param $user User current user
-	 * @param $defaultPreferences array list of default user preference controls
+	 * @param User current user $user
+	 * @param array list of default user preference controls &$defaultPreferences
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgMetrolookFeatures;
@@ -140,7 +140,7 @@ class MetrolookHooks {
 	}
 
 	/**
-	 * @param $vars array
+	 * @param array &$vars
 	 * @return bool
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
