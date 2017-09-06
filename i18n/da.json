@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joedalton"
+		]
+	},
+	"metrolook-desc": "Metrolook er en [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspireret] forgrening af temaet Vector",
+	"skinmetrolook-collapsiblenav-preference": "Aktiver sammenklapning af elementer i sidemenuen i Metrolooktemaet",
+	"metrolook-guest": "Gæst"
+}
