@@ -22,7 +22,6 @@
 
 namespace Metrolook;
 
-use ConfigFactory;
 use CSSMin;
 use MediaWiki\MediaWikiServices;
 use ResourceLoaderContext;

@@ -39,7 +39,7 @@ class SkinMetrolook extends SkinTemplate {
 			->makeConfig( 'metrolook' );
 	}
 
-	/** @inheritdoc */
+	/** @inheritDoc */
 	public function getPageClasses( $title ) {
 		$className = parent::getPageClasses( $title );
 		if ( $this->metrolookConfig->get( 'MetrolookExperimentalPrintStyles' ) ) {
