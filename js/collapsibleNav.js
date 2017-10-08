@@ -124,13 +124,13 @@
 
 		// Toggle the selected menu's class and expand or collapse the menu
 		$( '#mw-panel' )
-			.delegate( '.portal:not(.persistent) > h5', 'keydown', function ( e ) {
+			.on( 'keydown', '.portal:not(.persistent) > h5', function ( e ) {
 				// Make the space and enter keys act as a click
 				if ( e.which === 13 /* Enter */ || e.which === 32 /* Space */ ) {
 					toggle( $( this ) );
 				}
 			} )
-			.delegate( '.portal:not(.persistent) > h5', 'mousedown', function ( e ) {
+			.on( 'mousedown', '.portal:not(.persistent) > h5', function ( e ) {
 				if ( e.which !== 3 ) { // Right mouse click
 					toggle( $( this ) );
 					$( this ).blur();
