@@ -11,13 +11,17 @@ Compatible with MediaWiki 1.29+.
 If you would like compatibility with older releases of MediaWiki, download the
 appropriate version for your MediaWiki from one of the URLs below:
 
-1.30
+1.31
 
 https://phabricator.wikimedia.org/diffusion/SMTL/browse/master/
+
+1.30
+
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_30/
 
 1.29
 
-https://phabricator.wikimedia.org/diffusion/SMTL/browse/master/
+https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_29/
 
 1.28
 
@@ -27,13 +31,26 @@ https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_28/
 
 https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_27/
 
-1.26
+### Creating custom css
 
-https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_26/
+You now have to create the theme.less file in components/custom/theme.less.
 
-1.25
+The reason why is to prvent custom css from being lost on upgrade.
 
-https://phabricator.wikimedia.org/diffusion/SMTL/browse/REL1_25/
+```
+Here's a template on how it should look.
+
+/* Add your custom theme overrides here */
+
+@import "../../variables.less";
+@import "mediawiki.mixins";
+
+@media screen {
+/* Top Bar colour and hover colour start */
+
+/* Top Bar colour and hover colour */
+}
+```
 
 ### Live demo
 
