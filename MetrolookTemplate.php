@@ -134,15 +134,9 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 		}
 
-		// Reverse horizontally rendered navigation elements
-		if ( $this->data['rtl'] ) {
-			$this->data['view_urls'] =
-				array_reverse( $this->data['view_urls'] );
-			$this->data['namespace_urls'] =
-				array_reverse( $this->data['namespace_urls'] );
-			$this->data['personal_urls'] =
-				array_reverse( $this->data['personal_urls'] );
-		}
+		echo $langSelector;
+		echo $notLoggedIn;
+
 		$personalTools = $this->getPersonalTools();
 		foreach ( $personalTools as $key => $item ) {
 			if ( $key !== 'notifications-alert' ) {
@@ -625,7 +619,7 @@ class MetrolookTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * Render one or more navigations elements by name, automatically reveresed
+	 * Render one or more navigations elements by name, automatically reversed by css
 	 * when UI is in RTL mode
 	 *
 	 * @param array $elements
@@ -635,9 +629,6 @@ class MetrolookTemplate extends BaseTemplate {
 		// flexible arguments
 		if ( !is_array( $elements ) ) {
 			$elements = [ $elements ];
-			// If there's a series of elements, reverse them when in RTL mode
-		} elseif ( $this->data['rtl'] ) {
-			$elements = array_reverse( $elements );
 		}
 		// Render elements
 		foreach ( $elements as $name => $element ) {
@@ -823,9 +814,7 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 		// Add CSS class 'collapsible' to links which are not marked as "primary"
 		if (
-			isset( $options['metrolook-collapsible'] ) && $options['metrolook-collapsible']
-			&& !( isset( $item['primary'] ) && $item['primary'] )
-		) {
+			isset( $options['metrolook-collapsible'] ) && $options['metrolook-collapsible'] ) {
 			$item['class'] = rtrim( 'collapsible ' . $item['class'], ' ' );
 		}
 		// We don't use this, prevent it from popping up in HTML output
