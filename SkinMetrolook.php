@@ -45,6 +45,7 @@ class SkinMetrolook extends SkinTemplate {
 		if ( $this->metrolookConfig->get( 'MetrolookExperimentalPrintStyles' ) ) {
 			$className .= ' metrolook-experimental-print-styles';
 		}
+		$className .= ' metrolook-nav-directionality';
 		return $className;
 	}
 

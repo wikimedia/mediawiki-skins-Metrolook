@@ -18,6 +18,10 @@ div.vectorTabs {
 	background-repeat: no-repeat;
 	padding-left: 1px;
 
+	.metrolook-nav-directionality & {
+		float: left;
+	}
+
 	ul {
 		/* @noflip */
 		float: left;
@@ -29,6 +33,10 @@ div.vectorTabs {
 		.background-image('images/tab-break.png');
 		background-position: right bottom;
 		background-repeat: no-repeat;
+
+		.metrolook-nav-directionality & {
+			float: left;
+		}
 
 		li {
 			/* @noflip */
@@ -44,6 +52,10 @@ div.vectorTabs {
 			background-position: bottom left;
 			background-repeat: repeat-x;
 			white-space: nowrap;
+
+			.metrolook-nav-directionality & {
+				float: left;
+			}
 		}
 
 		/* IGNORED BY IE6 which doesn't support child selector */
@@ -115,6 +127,10 @@ div.vectorTabs {
 			/* @noflip */
 			float: left;
 			display: block;
+
+			.metrolook-nav-directionality & {
+				float: left;
+			}
 		}
 	}
 }
@@ -129,11 +145,10 @@ div.vectorMenu {
 	padding-right: 5px;
 	cursor: pointer;
 	z-index:10;
-}
 
-body.rtl div.vectorMenu {
-	/* @noflip */
-	direction: rtl;
+	.metrolook-nav-directionality & {
+		float: left;
+	}
 }
 
 div#mw-head div.vectorMenu h5 {
@@ -146,6 +161,10 @@ div#mw-head div.vectorMenu h5 {
 	height: 2.5em;
 	padding-right: 1px;
 	margin-right: -1px;
+
+	.metrolook-nav-directionality & {
+		float: left;
+	}
 }
 
 div.vectorMenu h5 span {
