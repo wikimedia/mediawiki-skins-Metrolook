@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Khaled",
-			"ديفيد"
+			"ديفيد",
+			"Meno25"
 		]
 	},
-	"metrolook-desc": "مظهر الميترو لميديا ويكي",
+	"metrolook-desc": "مظهر الميترو هو نسخة [https://en.wikipedia.org/wiki/Metro_(design_language) مستوحاة من ميترو] للواجهة فيكتور",
 	"skinmetrolook-collapsiblenav-preference": "تمكين طي العناصر الموجودة في الشريط الجانبي في البرنامج المساعد ميترولوك",
 	"metrolook-guest": "زائر"
 }
