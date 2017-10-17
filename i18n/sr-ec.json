@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Obsuser"
+		]
+	},
+	"metrolook-desc": "Метролук је форк Вектор скина [https://en.wikipedia.org/wiki/Metro_(design_language) инспирисан Метроом]",
+	"skinmetrolook-collapsiblenav-preference": "Омогући затварање ставки у сајдбару у Метролук скину",
+	"metrolook-guest": "Гост"
+}
