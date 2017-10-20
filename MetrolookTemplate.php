@@ -134,10 +134,16 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 		}
 
-		echo $langSelector;
-		echo $notLoggedIn;
-
 		$personalTools = $this->getPersonalTools();
+
+		$langSelector = '';
+		if ( array_key_exists( 'uls', $personalTools ) ) {
+			$langSelector = $this->makeListItem( 'uls', $personalTools[ 'uls' ] );
+			unset( $personalTools[ 'uls' ] );
+		}
+
+		echo $langSelector;
+
 		foreach ( $personalTools as $key => $item ) {
 			if ( $key !== 'notifications-alert' ) {
 				$this->mPersonalTools .= $this->makeListItem( $key, $item );
