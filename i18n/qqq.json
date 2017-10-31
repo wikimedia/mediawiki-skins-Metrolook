@@ -8,7 +8,7 @@
 			"2nd-player"
 		]
 	},
-	"skinname-metrolook": "{{optional}}",
+	"skinname-metrolook": "{{name}}",
 	"metrolook-desc": "{{desc|what=skin|name=Metrolook|url=https://www.mediawiki.org/wiki/Skin:Metrolook}}",
 	"metrolook.css": "{{optional}}",
 	"metrolook.js": "{{optional}}",
