@@ -4,10 +4,11 @@
 			"Linedwell",
 			"Nicolapps",
 			"Wladek92",
-			"VictorBrice"
+			"VictorBrice",
+			"Verdy p"
 		]
 	},
-	"metrolook-desc": " Metrolook est un fork de l'habillage Vector inspiré par  [https://en.wikipedia.org/wiki/Metro_(design_language) inspiré par Metro]",
-	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l'habillage Metrolook",
+	"metrolook-desc": "Metrolook est une dérivation de l’habillage Vector inspiré par le langage de design  [https://en.wikipedia.org/wiki/Metro_(design_language) Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l’habillage Metrolook",
 	"metrolook-guest": "Invité"
 }
