@@ -7,7 +7,7 @@
  * @ingroup Skins
  */
 
-class MetrolookHooks {
+class SkinMetrolookHooks {
 
 	/* Protected Static Members */
 

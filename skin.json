@@ -28,20 +28,20 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
-			"MetrolookHooks::beforePageDisplay"
+			"SkinMetrolookHooks::beforePageDisplay"
 		],
 		"GetPreferences": [
-			"MetrolookHooks::getPreferences"
+			"SkinMetrolookHooks::getPreferences"
 		],
 		"ResourceLoaderGetConfigVars": [
-			"MetrolookHooks::resourceLoaderGetConfigVars"
+			"SkinMetrolookHooks::resourceLoaderGetConfigVars"
 		],
 		"MakeGlobalVariablesScript": [
-			"MetrolookHooks::makeGlobalVariablesScript"
+			"SkinMetrolookHooks::makeGlobalVariablesScript"
 		]
 	},
 	"AutoloadClasses": {
-		"MetrolookHooks": "SkinMetrolookHooks.php",
+		"SkinMetrolookHooks": "SkinMetrolookHooks.php",
 		"SkinMetrolook": "SkinMetrolook.php",
 		"MetrolookTemplate": "MetrolookTemplate.php",
 		"Metrolook\\ResourceLoaderLessModule": "ResourceLoaderLessModule.php"
