@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eee3df47_a598867c",
+        "filename": "skin.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 161
+      },
+      "writtenOn": "2017-12-15T19:54:14Z",
+      "side": 0,
+      "message": "Class is not used outside of the skin",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "5e75c58378d11caca094600a3314b84f11c2ea7a",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
