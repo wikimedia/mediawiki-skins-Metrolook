@@ -72,6 +72,7 @@ class SkinMetrolookHooks {
 	 *
 	 * @param OutputPage $out
 	 * @param Skin $skin
+	 * @return true
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
 		if ( $skin instanceof SkinMetrolook ) {
@@ -92,6 +93,7 @@ class SkinMetrolookHooks {
 	 *
 	 * @param User current user $user
 	 * @param array list of default user preference controls &$defaultPreferences
+	 * @return true
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgMetrolookFeatures;
@@ -113,6 +115,8 @@ class SkinMetrolookHooks {
 	 * ResourceLoaderGetConfigVars hook
 	 *
 	 * Adds enabled/disabled switches for Vector modules
+	 * @param array &$vars
+	 * @return true
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgMetrolookFeatures, $wgMetrolookSearchBar;

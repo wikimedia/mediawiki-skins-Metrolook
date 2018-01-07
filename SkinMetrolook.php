@@ -118,6 +118,7 @@ class SkinMetrolook extends SkinTemplate {
 
 	/**
 	 * Override to pass our Config instance to it
+	 * @inheritDoc
 	 */
 	public function setupTemplate( $classname, $repository = false, $cache_dir = false ) {
 		return new $classname( $this->metrolookConfig );
