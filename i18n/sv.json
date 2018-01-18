@@ -7,6 +7,8 @@
 	},
 	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolook är en [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspirerad] version av utseendet Vector",
+	"metrolook.css": "/* CSS som skrivs här kommer att påverka alla användare av utseendet Metrolook */",
+	"metrolook.js": "/* JavaScript här kommer att laddas för dem som använder utseendet Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Aktivera möjligheten att kollapsa objekt i sidofältet av Metrolook-utseendet",
 	"metrolook-guest": "Gäst"
 }
