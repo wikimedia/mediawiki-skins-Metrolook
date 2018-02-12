@@ -49,7 +49,6 @@
 	"ResourceModules": {
 		"skins.metrolook.styles": {
 			"targets": [ "desktop", "mobile" ],
-			"position": "top",
 			"styles": {
 				"screen.less": {
 					"media": "screen"
@@ -61,7 +60,6 @@
 		},
 		"skins.metrolook.styles.custom": {
 			"targets": [ "desktop", "mobile" ],
-			"position": "top",
 			"styles": {
 				"screen-custom.less": {
 					"media": "screen"
@@ -74,14 +72,12 @@
 		"skins.metrolook.styles.experimental.print": {
 			"class": "Metrolook\\ResourceLoaderLessModule",
 			"targets": [ "desktop", "mobile" ],
-			"position": "top",
 			"styles": [
 				"print.less"
 			]
 		},
 		"skins.metrolook.styles.mobile": {
 			"targets": [ "desktop", "mobile" ],
-			"position": "top",
 			"styles": [
 				"components/mobile/mobile.less",
 				"components/tablet/tablet.less"
@@ -89,7 +85,6 @@
 		},
 		"skins.metrolook.styles.mobile.custom": {
 			"targets": [ "desktop", "mobile" ],
-			"position": "top",
 			"styles": [
 				"components/mobile/mobile-custom.less",
 				"components/tablet/tablet-custom.less"
@@ -97,7 +92,6 @@
 		},
 		"skins.metrolook.styles.theme.custom": {
 			"targets": [ "desktop", "mobile" ],
-			"position": "top",
 			"styles": [
 				"components/custom/theme.less"
 			]
@@ -111,14 +105,12 @@
 				"js/overthrow.js",
 				"js/fixed-header-scroll-fix.js"
 			],
-			"position": "top",
 			"dependencies": [
 				"jquery.throttle-debounce",
 				"jquery.tabIndex"
 			]
 		},
 		"skins.metrolook.collapsibleNav": {
-			"position": "bottom",
 			"scripts": [
 				"js/collapsibleNav.js"
 			],
