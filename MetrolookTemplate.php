@@ -585,7 +585,7 @@ class MetrolookTemplate extends BaseTemplate {
 		if ( $msg === null ) {
 			$msg = $name;
 		}
-		$msgObj = wfMessage( $msg );
+		$msgObj = $this->getMsg( $msg );
 		$labelId = Sanitizer::escapeId( "p-$name-label" );
 		?>
 		<div class="portal" role="navigation" id='<?php
