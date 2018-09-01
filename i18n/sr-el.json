@@ -4,7 +4,8 @@
 			"Zoranzoki21"
 		]
 	},
-	"metrolook-desc": "Metroluk je fork Vektor skina [https://en.wikipedia.org/wiki/Metro_(design_language) inspirisan Metroom]",
-	"skinmetrolook-collapsiblenav-preference": "Omogući zatvaranje stavki u sajdbaru u Metroluk skinu",
+	"skinname-metrolook": "Metroluk",
+	"metrolook-desc": "Metroluk je fork Vektorske teme [https://en.wikipedia.org/wiki/Metro_(design_language) inspirisan Metroom]",
+	"skinmetrolook-collapsiblenav-preference": "Omogući zatvaranje stavki u sajdbaru u Metroluk temi",
 	"metrolook-guest": "Gost"
 }
