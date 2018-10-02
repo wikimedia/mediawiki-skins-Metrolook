@@ -9,12 +9,14 @@ jQuery( document ).ready( function( $ ) {
 		try {
 			if ( this && this.href !== '' ) {
 				// Split location and hash
-				hash = this.href.match( /[#].*/g )[ 0 ],
+				hash = $.escapeSelector( this.href.match( /[#](.*)/ )[ 1 ] ),
 
 				// Don't reload page if already at same location as last clicked
-				$( 'html, body' ).animate( {
-					scrollTop: $( hash ).offset().top - 41
-				}, 200 );
+				$( '#' + hash ).each( function() {
+					$( 'html, body' ).animate( {
+						scrollTop: $( this ).offset().top - headerHeight
+					}, 200 );
+				} );
 			}
 			e.preventDefault();
 			return false;
@@ -22,10 +24,10 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	/* Add offset when scrolling to an anchor present at page load time */
-	if ( $( ':target' ).length > 0 ) {
+	$( ':target' ).each( function() {
 		dest = $( this ).offset().top - headerHeight;
 		$( 'html, body' ).animate( {
 			scrollTop: dest // also use scrollTop to animate scrolling
 		} );
-	}
+	} );
 } );
