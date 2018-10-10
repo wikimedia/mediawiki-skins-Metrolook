@@ -6,21 +6,19 @@ jQuery( document ).ready( function( $ ) {
 		hash;
 
 	$( '.toc ul a[href*="#"]' ).click( function( e ) {
-		try {
-			if ( this && this.href !== '' ) {
-				// Split location and hash
-				hash = $.escapeSelector( this.href.match( /[#](.*)/ )[ 1 ] ),
+		if ( this && this.href !== '' ) {
+			// Split location and hash
+			hash = $.escapeSelector( this.href.match( /[#](.*)/ )[ 1 ] ),
 
-				// Don't reload page if already at same location as last clicked
-				$( '#' + hash ).each( function() {
-					$( 'html, body' ).animate( {
-						scrollTop: $( this ).offset().top - headerHeight
-					}, 200 );
-				} );
-			}
-			e.preventDefault();
-			return false;
-		} catch ( e ) { }
+			// Don't reload page if already at same location as last clicked
+			$( '#' + hash ).each( function() {
+				$( 'html, body' ).animate( {
+					scrollTop: $( this ).offset().top - headerHeight
+				}, 200 );
+			} );
+		}
+		e.preventDefault();
+		return false;
 	} );
 
 	/* Add offset when scrolling to an anchor present at page load time */
