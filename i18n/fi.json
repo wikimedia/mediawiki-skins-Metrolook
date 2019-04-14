@@ -3,10 +3,11 @@
 		"authors": [
 			"McSalama",
 			"Pitke",
-			"01miki10"
+			"01miki10",
+			"Pyscowicz"
 		]
 	},
-	"metrolook-desc": "Metrolook on Metro-designkuvailukielen innoittama versio Vector-ulkoasusta",
+	"metrolook-desc": "Metrolook on Metro-designkuvailukielen innoittama versio Vektori-ulkoasusta",
 	"skinmetrolook-collapsiblenav-preference": "Mahdollista sivupalkin kohteiden piilottaminen Metrolook-ulkoasussa",
 	"metrolook-guest": "Vieras"
 }
