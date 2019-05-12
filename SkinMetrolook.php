@@ -35,6 +35,7 @@ class SkinMetrolook extends SkinTemplate {
 	private $metrolookConfig;
 
 	public function __construct() {
+		parent::__construct( ...func_get_args() );
 		$this->metrolookConfig = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'metrolook' );
 	}
