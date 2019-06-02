@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Mirin"
 		]
 	},
+	"metrolook-desc": "Metrolook estas forko de la etoso Vector, inspirita de  [https://en.wikipedia.org/wiki/Metro_(design_language) Metro]",
+	"skinmetrolook-collapsiblenav-preference": "Ebligi maletendadon de flankpanelaj eroj je etoso Metrolook",
 	"metrolook-guest": "Gasto"
 }
