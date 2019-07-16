@@ -806,6 +806,7 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 		return $html;
 	}
+
 	/**
 	 * @inheritDoc
 	 */
