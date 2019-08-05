@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Cwlin0416",
-			"Kly"
+			"Kly",
+			"Winston Sung"
 		]
 	},
-	"metrolook-desc": "Metrolook 是 Vector 外觀的[https://zh.wikipedia.org/wiki/%E7%8E%B0%E4%BB%A3UI 現代UI] 分支",
+	"metrolook-desc": "Metrolook 是 Vector 佈景主題的[https://zh.wikipedia.org/wiki/%E7%8E%B0%E4%BB%A3UI 現代UI] 分支",
 	"skinmetrolook-collapsiblenav-preference": "開啟 Metrolook 外觀的側邊欄項目摺疊功能",
 	"metrolook-guest": "訪客"
 }
