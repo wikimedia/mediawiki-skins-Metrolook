@@ -824,8 +824,6 @@ class MetrolookTemplate extends BaseTemplate {
 			isset( $options['metrolook-collapsible'] ) && $options['metrolook-collapsible'] ) {
 			$item['class'] = rtrim( 'collapsible ' . $item['class'], ' ' );
 		}
-		// We don't use this, prevent it from popping up in HTML output
-		unset( $item['redundant'] );
 		return parent::makeListItem( $key, $item, $options );
 	}
 }
