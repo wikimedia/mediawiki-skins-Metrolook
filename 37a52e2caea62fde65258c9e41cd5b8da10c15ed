@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ca3bb96_481ab0a9",
+        "filename": "SkinMetrolook.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2019-08-30T21:17:11Z",
+      "side": 1,
+      "message": "No, passing ..args here means it changes its skinname, which it does not expect right now. and might also not work.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
