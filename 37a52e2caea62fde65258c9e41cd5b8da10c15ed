@@ -22,6 +22,30 @@
       "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1509355_4afcd1a6",
+        "filename": "SkinMetrolook.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 562
+      },
+      "writtenOn": "2019-08-30T22:07:54Z",
+      "side": 1,
+      "message": "Where do you see a problem? As far as I see it behaves like if there is no constructor:\n\n ( new SkinMetrolook( \u0027foo\u0027 ) )-\u003eskinname\n\nreturns \u0027metrolook\u0027 before this change and returns \u0027foo\u0027 with this change and on removing the constructor.",
+      "parentUuid": "4ca3bb96_481ab0a9",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
