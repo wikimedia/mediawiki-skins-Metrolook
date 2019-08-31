@@ -46,6 +46,30 @@
       "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65dc6de3_bcdb5330",
+        "filename": "SkinMetrolook.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2019-08-31T11:52:17Z",
+      "side": 1,
+      "message": "Hm.. but how?\n\n class Skin {\n      public function __construct( $skinname \u003d null ) {\n\t\tif ( is_string( $skinname ) ) {\n\t\t\t$this-\u003eskinname \u003d $skinname;\n\t\t}\n\t}\n\n  }\n\nThis means when a string is passed, it will end up set. And the SkinFactory will pass this generally. Which for newer skins should be used, but older ones tend to rely on their own hardcoded value.\n\nWhat is preventing it from getting set?",
+      "parentUuid": "f1509355_4afcd1a6",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
