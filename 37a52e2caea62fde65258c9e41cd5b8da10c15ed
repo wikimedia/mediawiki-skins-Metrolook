@@ -70,6 +70,30 @@
       "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2683f446_592e326b",
+        "filename": "SkinMetrolook.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 562
+      },
+      "writtenOn": "2019-08-31T19:12:34Z",
+      "side": 1,
+      "message": "What do you want to have here?\n\n parent::__construct( \u0027metrolook\u0027 );\n\nor\n\n parent::__construct();",
+      "parentUuid": "65dc6de3_bcdb5330",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
