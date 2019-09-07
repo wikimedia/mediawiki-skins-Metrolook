@@ -94,6 +94,30 @@
       "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b958b19_51060380",
+        "filename": "SkinMetrolook.php",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 34
+      },
+      "writtenOn": "2019-09-07T17:25:31Z",
+      "side": 1,
+      "message": "Both are fine. The most modern/new way for a skin that needs a static name to implement it, would be to do parent::__construct( \u0027metrolook\u0027 ); and then remove `public $skinname \u003d \u0027metrolook\u0027;` above.\n\nHowever, afaik not Skin has done that before, so it would be unusual.\n\nIn any event, we have to support the other cases. Right now, calling the parent constructor at all is optional for legacy reasons. So right now, nothing would have to change, except to remove `parent::__construct( ...func_get_args() );` because that means injected dynamic names will be overriding the static name in this class, which can break compatibility. See a0947c9507 in core.",
+      "parentUuid": "2683f446_592e326b",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "37a52e2caea62fde65258c9e41cd5b8da10c15ed",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
     }
   ]
 }
