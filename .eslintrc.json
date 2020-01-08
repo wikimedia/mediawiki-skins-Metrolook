@@ -9,6 +9,8 @@
 		"mediaWiki": false
 	},
 	"rules": {
-		"valid-jsdoc": "off"
+		"valid-jsdoc": "off",
+		"no-sequences": "warn",
+		"no-unused-expressions": "warn"
 	}
 }
