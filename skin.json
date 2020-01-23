@@ -106,8 +106,7 @@
 				"js/fixed-header-scroll-fix.js"
 			],
 			"dependencies": [
-				"jquery.throttle-debounce",
-				"jquery.tabIndex"
+				"jquery.throttle-debounce"
 			]
 		},
 		"skins.metrolook.collapsibleNav": {
@@ -119,8 +118,7 @@
 			],
 			"dependencies": [
 				"jquery.client",
-				"jquery.cookie",
-				"jquery.tabIndex"
+				"jquery.cookie"
 			]
 		}
 	},
