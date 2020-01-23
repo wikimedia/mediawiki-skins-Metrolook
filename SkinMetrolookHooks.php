@@ -39,7 +39,7 @@ class SkinMetrolookHooks {
 	 * @return bool
 	 */
 	public static function isEnabled( $name ) {
-		global $wgMetrolookFeatures, $wgUser;
+		global $wgMetrolookFeatures;
 
 		// Features with global set to true are always enabled
 		if ( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['global'] ) {
@@ -49,9 +49,10 @@ class SkinMetrolookHooks {
 		// to be specific values to be enabled
 		if ( $wgMetrolookFeatures[$name]['user'] ) {
 			if ( isset( self::$features[$name]['requirements'] ) ) {
+				$user = RequestContext::getMain()->getUser();
 				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
 					// Important! We really do want fuzzy evaluation here
-					if ( $wgUser->getOption( $requirement ) != $value ) {
+					if ( $user->getOption( $requirement ) != $value ) {
 						return false;
 					}
 				}
