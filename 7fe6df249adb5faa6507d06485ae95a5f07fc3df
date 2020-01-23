@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08516822_de438617",
+        "filename": "SkinMetrolookHooks.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 6729
+      },
+      "writtenOn": "2020-01-23T19:12:47Z",
+      "side": 1,
+      "message": "No context to use :(",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "7fe6df249adb5faa6507d06485ae95a5f07fc3df",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951",
+      "unresolved": false
+    }
+  ]
+}
