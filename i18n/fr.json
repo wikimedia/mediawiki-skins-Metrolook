@@ -6,12 +6,13 @@
 			"Wladek92",
 			"VictorBrice",
 			"Verdy p",
-			"Derugon"
+			"Derugon",
+			"Eneelk"
 		]
 	},
 	"metrolook-desc": "Metrolook est une dérivation de l’habillage Vector inspirée par le [https://en.wikipedia.org/wiki/Metro_(design_language) langage de conception Metro]",
-	"metrolook.css": "/* Le CSS placé ici affectera les utilisateurs de l’habillage Metrolook. */",
-	"metrolook.js": "/* Tout JavaScript ici sera chargé pour les utilisateurs de l’habillage Metrolook */",
+	"metrolook.css": "/* La totalité du CSS placé ici s’appliquera aux utilisateurs de l’habillage Metrolook */",
+	"metrolook.js": "/* La totalité du JavaScript placé ici s’appliquera aux utilisateurs de l’habillage Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l’habillage Metrolook",
 	"metrolook-guest": "Invité"
 }
