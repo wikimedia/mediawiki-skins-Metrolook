@@ -3,7 +3,7 @@ Hooks provided by the Metrolook skin.
 'MetrolookAfterToolbox': Called after the toolbox (#p-tb) has been rendered
 $tpl: MetrolookTemplate object
 
-'MetrolookRightPanel': Called inside div#mw-panel-right; can be used to populate
+'MetrolookRightPanel': Called inside #mw-panel-right; can be used to populate
 that div element with ad HTML, for example.
 $tpl: MetrolookTemplate object
 
