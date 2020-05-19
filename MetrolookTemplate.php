@@ -138,7 +138,7 @@ class MetrolookTemplate extends BaseTemplate {
 
 		$langSelector = '';
 		if ( array_key_exists( 'uls', $personalTools ) ) {
-			$langSelector = $this->makeListItem( 'uls', $personalTools[ 'uls' ] );
+			$langSelector = $this->makeMetroLookListItem( 'uls', $personalTools[ 'uls' ] );
 			unset( $personalTools[ 'uls' ] );
 		}
 
@@ -146,9 +146,9 @@ class MetrolookTemplate extends BaseTemplate {
 
 		foreach ( $personalTools as $key => $item ) {
 			if ( $key !== 'notifications-alert' ) {
-				$this->mPersonalTools .= $this->makeListItem( $key, $item );
+				$this->mPersonalTools .= $this->makeMetroLookListItem( $key, $item );
 			} else {
-				$this->mPersonalToolsEcho .= $this->makeListItem( $key, $item );
+				$this->mPersonalToolsEcho .= $this->makeMetroLookListItem( $key, $item );
 			}
 		}
 
@@ -603,7 +603,7 @@ class MetrolookTemplate extends BaseTemplate {
 					<ul>
 						<?php
 						foreach ( $content as $key => $val ) {
-							echo $this->makeListItem( $key, $val );
+							echo $this->makeMetroLookListItem( $key, $val );
 						}
 						if ( $hook !== null ) {
 							$skin = $this;
@@ -650,7 +650,7 @@ class MetrolookTemplate extends BaseTemplate {
 						<ul<?php $this->html( 'userlangattributes' ) ?>>
 							<?php
 							foreach ( $this->data['namespace_urls'] as $key => $item ) {
-								echo "\t\t\t\t\t\t\t" . $this->makeListItem( $key, $item, [
+								echo "\t\t\t\t\t\t\t" . $this->makeMetroLookListItem( $key, $item, [
 									'metrolook-wrap' => true,
 								] ) . "\n";
 							}
@@ -684,7 +684,7 @@ class MetrolookTemplate extends BaseTemplate {
 							<ul>
 								<?php
 								foreach ( $this->data['variant_urls'] as $key => $item ) {
-									echo "\t\t\t\t\t\t\t\t" . $this->makeListItem( $key, $item ) . "\n";
+									echo "\t\t\t\t\t\t\t\t" . $this->makeMetroLookListItem( $key, $item ) . "\n";
 								}
 								?>
 							</ul>
@@ -703,7 +703,7 @@ class MetrolookTemplate extends BaseTemplate {
 						<ul<?php $this->html( 'userlangattributes' ) ?>>
 							<?php
 							foreach ( $this->data['view_urls'] as $key => $item ) {
-								echo "\t\t\t\t\t\t\t" . $this->makeListItem( $key, $item, [
+								echo "\t\t\t\t\t\t\t" . $this->makeMetroLookListItem( $key, $item, [
 									'metrolook-wrap' => true,
 									'metrolook-collapsible' => true,
 								] ) . "\n";
@@ -726,7 +726,7 @@ class MetrolookTemplate extends BaseTemplate {
 							<ul<?php $this->html( 'userlangattributes' ) ?>>
 								<?php
 								foreach ( $this->data['action_urls'] as $key => $item ) {
-									echo "\t\t\t\t\t\t\t\t" . $this->makeListItem( $key, $item ) . "\n";
+									echo "\t\t\t\t\t\t\t\t" . $this->makeMetroLookListItem( $key, $item ) . "\n";
 								}
 								?>
 							</ul>
@@ -808,9 +808,13 @@ class MetrolookTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * @inheritDoc
+	 * Helper function for calling Skin::makeListItem
+	 * @param string $key
+	 * @param array $item
+	 * @param array $options
+	 * @return array
 	 */
-	public function makeListItem( $key, $item, $options = [] ) {
+	public function makeMetroLookListItem( $key, $item, $options = [] ) {
 		// For fancy styling of watch/unwatch star
 		if (
 			$this->config->get( 'MetrolookUseIconWatch' )
@@ -824,6 +828,6 @@ class MetrolookTemplate extends BaseTemplate {
 			isset( $options['metrolook-collapsible'] ) && $options['metrolook-collapsible'] ) {
 			$item['class'] = rtrim( 'collapsible ' . $item['class'], ' ' );
 		}
-		return parent::makeListItem( $key, $item, $options );
+		return $this->getSkin()->makeListItem( $key, $item, $options );
 	}
 }
