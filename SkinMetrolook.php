@@ -26,8 +26,11 @@
  * @ingroup Skins
  */
 class SkinMetrolook extends SkinTemplate {
+	/** @var string */
 	public $skinname = 'metrolook';
+	/** @var string */
 	public $stylename = 'Metrolook';
+	/** @var string */
 	public $template = 'MetrolookTemplate';
 	/**
 	 * @var Config

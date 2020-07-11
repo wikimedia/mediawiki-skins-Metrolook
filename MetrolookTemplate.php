@@ -33,6 +33,10 @@ class MetrolookTemplate extends BaseTemplate {
 	/** @var string $mPersonalToolsEcho Saves Echo notifications */
 	private $mPersonalToolsEcho = '';
 
+	/**
+	 * @param string $messageName
+	 * @return string
+	 */
 	private function getTiles( $messageName = 'metrolook-tiles' ) {
 		/**
 		 * The message's format is:

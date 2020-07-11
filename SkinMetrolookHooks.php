@@ -11,6 +11,7 @@ class SkinMetrolookHooks {
 
 	/* Protected Static Members */
 
+	/** @var array */
 	protected static $features = [
 		'collapsiblenav' => [
 			'preferences' => [
@@ -35,7 +36,7 @@ class SkinMetrolookHooks {
 	 * This method is public to allow other extensions that use CollapsibleVector to use the
 	 * same configuration as CollapsibleVector itself
 	 *
-	 * @param $name string Name of the feature, should be a key of $name
+	 * @param string $name Name of the feature, should be a key of $name
 	 * @return bool
 	 */
 	public static function isEnabled( $name ) {
