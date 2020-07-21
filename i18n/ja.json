@@ -3,10 +3,11 @@
 		"authors": [
 			"2nd-player",
 			"Otokoume",
+			"Shirayuki",
 			"Yusuke1109"
 		]
 	},
-	"metrolook-desc": "Metrolookは、[https://en.wikipedia.org/wiki/Metro_(design_language) Metro (Modern UI)]の影響を受けたVectorスキンのフォークです",
+	"metrolook-desc": "Metrolookは、[https://ja.wikipedia.org/wiki/Modern_UI Metro (Modern UI)]の影響を受けたベクター外装のフォークです",
 	"skinmetrolook-collapsiblenav-preference": "Metrolook外装のナビゲーションで、項目の折り畳みを有効にする",
 	"metrolook-guest": "ゲスト"
 }
