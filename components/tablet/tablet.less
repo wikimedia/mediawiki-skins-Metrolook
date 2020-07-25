@@ -1,5 +1,4 @@
 @import "../../variables.less";
-@import "mediawiki.mixins";
 
 /* iPad landscape and other tablets in landscape */
 
@@ -59,7 +58,7 @@
 		background-position: bottom left;
 		background-repeat: repeat-x;
 		/* This image is only a fallback (for IE 6-9), so we do not @embed it. */
-		background-image: url('../../images/page-fade.png');
+		background-image: url( ../../images/page-fade.png );
 	}
 
 	#p-search {
@@ -92,7 +91,7 @@
 		}
 
 		img.editbutton {
-			.background-image-svg('../../images/edit-icon.svg', '../../images/edit-icon.png');
+			background-image: url( ../../images/edit-icon.svg );
 			width: 36px;
 			height: 35px;
 			background-repeat: no-repeat;
