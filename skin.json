@@ -1,7 +1,7 @@
 {
 	"name": "Metrolook",
 	"namemsg": "skinname-metrolook",
-	"version": "7.0 alpha 2",
+	"version": "7.0 alpha 3",
 	"author": [
 		"immewnity",
 		"Paladox",
@@ -12,6 +12,9 @@
 	"descriptionmsg": "metrolook-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
+	"requires": {
+		"MediaWiki": ">= 1.36.0"
+	},
 	"DefaultUserOptions": {
 		"skinmetrolook-collapsiblenav": 1
 	},
