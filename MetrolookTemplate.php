@@ -562,7 +562,7 @@ class MetrolookTemplate extends BaseTemplate {
 				case 'SEARCH':
 					break;
 				case 'TOOLBOX':
-					$this->renderPortal( 'tb', $this->getToolbox(), 'toolbox', 'SkinTemplateToolboxEnd' );
+					$this->renderPortal( 'tb', $this->data['sidebar']['TOOLBOX'], 'toolbox', 'SkinTemplateToolboxEnd' );
 					// Hook point for the ShoutWiki Ads extension
 					$skin = $this;
 					Hooks::run( 'MetrolookAfterToolbox', [ &$skin ] );
