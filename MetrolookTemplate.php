@@ -28,9 +28,9 @@
 class MetrolookTemplate extends BaseTemplate {
 	/* Functions */
 
-	/** @var string $mPersonalTools Saves the personal Tools */
+	/** @var string Saves the personal Tools */
 	private $mPersonalTools = '';
-	/** @var string $mPersonalToolsEcho Saves Echo notifications */
+	/** @var string Saves Echo notifications */
 	private $mPersonalToolsEcho = '';
 
 	/**
