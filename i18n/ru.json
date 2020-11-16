@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Helpau",
 			"Okras"
 		]
 	},
+	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolook — это основанная на принципах интерфейса [https://ru.wikipedia.org/wiki/Metro (интерфейс)|Metro] модификация темы оформления «Векторное»",
 	"skinmetrolook-collapsiblenav-preference": "Разрешить сворачивать блоки в левом меню в теме «Metrolook»",
 	"metrolook-guest": "Гость"
