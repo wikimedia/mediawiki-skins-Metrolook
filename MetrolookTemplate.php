@@ -590,10 +590,10 @@ class MetrolookTemplate extends BaseTemplate {
 			$msg = $name;
 		}
 		$msgObj = $this->getMsg( $msg );
-		$labelId = Sanitizer::escapeId( "p-$name-label" );
+		$labelId = Sanitizer::escapeIdForAttribute( "p-$name-label" );
 		?>
 		<div class="portal" role="navigation" id='<?php
-		echo Sanitizer::escapeId( "p-$name" )
+		echo Sanitizer::escapeIdForAttribute( "p-$name" )
 		?>'<?php
 		echo Linker::tooltip( 'p-' . $name )
 		?> aria-labelledby='<?php echo $labelId ?>'>
