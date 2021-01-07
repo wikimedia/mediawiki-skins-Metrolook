@@ -5,14 +5,16 @@
 			"Eneelk",
 			"Linedwell",
 			"Nicolapps",
+			"Thibaut120094",
 			"Verdy p",
 			"VictorBrice",
 			"Wladek92"
 		]
 	},
-	"metrolook-desc": "Metrolook est une dérivation de l’habillage Vector inspirée par le [https://en.wikipedia.org/wiki/Metro_(design_language) langage de conception Metro]",
-	"metrolook.css": "/* La totalité du CSS placé ici s’appliquera aux utilisateurs de l’habillage Metrolook */",
-	"metrolook.js": "/* La totalité du JavaScript placé ici s’appliquera aux utilisateurs de l’habillage Metrolook */",
+	"skinname-metrolook": "Metrolook",
+	"metrolook-desc": "Metrolook est une dérivation de l’habillage Vecteur inspirée par le [https://fr.wikipedia.org/wiki/Modern_UI langage de conception Metro]",
+	"metrolook.css": "/* Tout CSS placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Metrolook */",
+	"metrolook.js": "/* Tout code JavaScript placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l’habillage Metrolook",
 	"metrolook-guest": "Invité"
 }
