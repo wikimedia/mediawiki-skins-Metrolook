@@ -76,11 +76,12 @@ img.userIcon20 {
 		top: 0.3em;
 	}
 
-	.socialprofile-avatar {
-		top: -0.3em;
+	&.socialprofile-avatar {
+		top: -0.2em;
 	}
 }
 
+<<<<<<< HEAD   (02f182 Fix the "jump to" accessibility links)
 /* IE8 fixes */
 img.userIcon20 {
 	background-image: url('images/user-icon-20.png');
@@ -89,6 +90,8 @@ img.userIcon20 {
 	top: 0.3em;
 }
 
+=======
+>>>>>>> CHANGE (a787ca A bunch of visual fixes)
 #userIcon20 {
 	position: relative;
 	top: 2px;
@@ -108,13 +111,17 @@ img.userIcon20 {
 	top: 0.3em;
 	position: relative;
 	margin-right: 1em;
+
+	ul {
+		list-style: none;
+
+		li {
+			display: inline-block;
+		}
+	}
 }
 
-#echoNotifications ul {
-	list-style: none;
-}
-
-.mw-echo-overlay{
+.mw-echo-overlay {
 	position: fixed !important;
 }
 
