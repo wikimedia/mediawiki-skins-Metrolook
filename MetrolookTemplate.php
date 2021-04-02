@@ -105,9 +105,8 @@ class MetrolookTemplate extends BaseTemplate {
 		if ( $this->config->get( 'MetrolookDisableAvatar' ) ) {
 			if ( class_exists( 'wAvatar' ) ) {
 				// SocialProfile is installed
-				$avatar = new wAvatar( $skin->getUser()->getId(), 'l' );
+				$avatar = new wAvatar( $skin->getUser()->getId(), 'm' );
 				$avatarImage = $avatar->getAvatarURL( [
-					'width' => (int)$width,
 					'class' => 'userIcon' . (int)$width . ' socialprofile-avatar'
 				] );
 			}
@@ -142,17 +141,18 @@ class MetrolookTemplate extends BaseTemplate {
 
 		$langSelector = '';
 		if ( array_key_exists( 'uls', $personalTools ) ) {
-			$langSelector = $this->makeMetroLookListItem( 'uls', $personalTools[ 'uls' ] );
-			unset( $personalTools[ 'uls' ] );
+			$langSelector = $this->makeMetroLookListItem( 'uls', $personalTools['uls'] );
+			unset( $personalTools['uls'] );
 		}
 
 		echo $langSelector;
 
 		foreach ( $personalTools as $key => $item ) {
-			if ( $key !== 'notifications-alert' ) {
-				$this->mPersonalTools .= $this->makeMetroLookListItem( $key, $item );
-			} else {
+			// Echo notifications go to their own, special place; other personal tools are handled more normally
+			if ( in_array( $key, [ 'notifications-alert', 'notifications-notice' ] ) ) {
 				$this->mPersonalToolsEcho .= $this->makeMetroLookListItem( $key, $item );
+			} else {
+				$this->mPersonalTools .= $this->makeMetroLookListItem( $key, $item );
 			}
 		}
 

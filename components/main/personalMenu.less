@@ -76,17 +76,9 @@ img.userIcon20 {
 		top: 0.3em;
 	}
 
-	.socialprofile-avatar {
-		top: -0.3em;
+	&.socialprofile-avatar {
+		top: -0.2em;
 	}
-}
-
-/* IE8 fixes */
-img.userIcon20 {
-	background-image: url('images/user-icon-20.png');
-	width: 20px;
-	height: 37px;
-	top: 0.3em;
 }
 
 #userIcon20 {
@@ -108,13 +100,17 @@ img.userIcon20 {
 	top: 0.3em;
 	position: relative;
 	margin-right: 1em;
+
+	ul {
+		list-style: none;
+
+		li {
+			display: inline-block;
+		}
+	}
 }
 
-#echoNotifications ul {
-	list-style: none;
-}
-
-.mw-echo-overlay{
+.mw-echo-overlay {
 	position: fixed !important;
 }
 
