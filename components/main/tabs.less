@@ -52,6 +52,8 @@ div.vectorTabs {
 			background-position: bottom left;
 			background-repeat: repeat-x;
 			white-space: nowrap;
+			/* Force the links down a bit */
+			margin-top: 10px;
 
 			.metrolook-nav-directionality & {
 				float: left;
@@ -67,15 +69,16 @@ div.vectorTabs {
 	li {
 		&.new {
 			a,
-			a:visited{
+			a:visited {
 				color: #a55858;
 			}
 		}
 
 		&.selected {
 			.background-image('images/tab-current-fade.png');
+
 			a,
-			a:visited{
+			a:visited {
 				color: #fff;
 				text-decoration: none;
 			}
