@@ -21,11 +21,6 @@ jQuery( function ( $ ) {
 	rAF( initialCactionsWidth );
 
 	/**
-	 * Focus search input at the very end
-	 */
-	$( '#searchInput' ).attr( 'tabindex', $( document ).lastTabIndex() + 1 );
-
-	/**
 	 * Dropdown menu accessibility
 	 */
 	$( 'div.vectorMenu' ).each( function () {
