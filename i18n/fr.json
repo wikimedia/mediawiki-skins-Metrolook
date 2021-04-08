@@ -3,6 +3,7 @@
 		"authors": [
 			"Derugon",
 			"Eneelk",
+			"Gomoko",
 			"Linedwell",
 			"Nicolapps",
 			"Thibaut120094",
@@ -16,5 +17,7 @@
 	"metrolook.css": "/* Tout CSS placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Metrolook */",
 	"metrolook.js": "/* Tout code JavaScript placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Activer le repli des éléments dans la barre latérale de navigation pour l’habillage Metrolook",
-	"metrolook-guest": "Invité"
+	"metrolook-guest": "Invité",
+	"metrolook-jump-to-navigation": "Sauter à la navigation",
+	"metrolook-jump-to-search": "Sauter à la recherche"
 }
