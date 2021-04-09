@@ -6,5 +6,7 @@
 	},
 	"metrolook-desc": "Metrolook è un fork del tema Vector [https://it.wikipedia.org/wiki/Modern_UI_(linguaggio_di_design) ispirata a Metro]",
 	"skinmetrolook-collapsiblenav-preference": "Abilita la compressione degli elementi nella barra laterale per il tema Metrolook",
-	"metrolook-guest": "Ospite"
+	"metrolook-guest": "Ospite",
+	"metrolook-jump-to-navigation": "Vai alla navigazione",
+	"metrolook-jump-to-search": "Vai alla ricerca"
 }
