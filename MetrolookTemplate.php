@@ -258,16 +258,19 @@ class MetrolookTemplate extends BaseTemplate {
 			<?php
 			}
 			?>
-			<?php $footericons = $this->getFooterIcons( "icononly" );
+			<?php $footericons = $this->get( 'footericons' );
 			if ( count( $footericons ) > 0 ) {
 				?>
 				<ul id="footer-icons" class="noprint">
 					<?php
-					foreach ( $footericons as $blockName => $footerIcons ) {
+					foreach ( $footericons as $blockName => &$footerIcons ) {
 						?>
 						<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
 							<?php
-							foreach ( $footerIcons as $icon ) {
+							foreach ( $footerIcons as $footerIconKey => $icon ) {
+								if ( !isset( $icon['src'] ) ) {
+									unset( $footerIcons[$footerIconKey] );
+								}
 								echo $skin->makeFooterIcon( $icon );
 							}
 							?>
