@@ -4,6 +4,7 @@
 			"2nd-player",
 			"Emmanuel Fernandess",
 			"Liuxinyu970226",
+			"Matěj Suchánek",
 			"Raymond",
 			"Umherirrender",
 			"paladox"
@@ -16,7 +17,7 @@
 	"skinmetrolook-collapsiblenav-preference": "The message refers to the sidebar, whose sections are collapsible in Metrolook skin (some of them collapsed by default and some no); the preference disables collapsing entirely and is among \"Advanced options\" in the \"Appearence\" section.\n\nSee also\n*{{msg-mw|collapsiblevector-collapsiblenav-preference}}",
 	"metrolook-guest": "Used for descbribing you as a guest editing the wiki.\n{{Identical|Guest}}",
 	"metrolook-jump-to-navigation": "Accessibility link for jumping to the navigation links. Visually hidden by default.\n\nSee also\n* {{msg-mw|Navigation}}",
-	"metrolook-jump-to-search": "Accessibility link for jumping to the site search. Visually hidden by default.\n\nSee also\n* {{msg-mw|Search}} jump",
+	"metrolook-jump-to-search": "Accessibility link for jumping to the site search. Visually hidden by default.\n\nSee also\n* {{msg-mw|Search}}",
 	"metrolook-tiles": "{{notranslate}}\nUsed to configure the first set of tiles, which are displayed when <code>$wgMetrolookBartile</code> is set to <code>true</code>.\nThe message's format is:\n\n* URL to the site|alternative text|image URL\n\nFor example:\n\n* http://www.pidgi.net/wiki/|PidgiWiki|http://images.pidgi.net/pidgiwikitiletop.png",
 	"metrolook-tiles-second": "{{notranslate}}\nUsed to configure the second set of tiles, which are displayed when <code>$wgMetrolookBartile</code> is set to <code>false</code>. The format is same as that of [[MediaWiki:Metrolook-tiles]]."
 }
