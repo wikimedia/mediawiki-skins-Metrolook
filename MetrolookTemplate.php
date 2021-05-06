@@ -162,7 +162,7 @@ class MetrolookTemplate extends BaseTemplate {
 		// User name (or "Guest") to be displayed at the top right (on LTR
 		// interfaces) portion of the skin
 		$user = $skin->getUser();
-		if ( $user->isLoggedIn() ) {
+		if ( $user->isRegistered() ) {
 			$userNameTop = htmlspecialchars( $user->getName(), ENT_QUOTES );
 		} else {
 			$userNameTop = $skin->msg( 'metrolook-guest' )->text();
