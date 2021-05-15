@@ -21,6 +21,8 @@
  * @ingroup Skins
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * QuickTemplate class for Metrolook skin
  * @ingroup Skins
@@ -127,7 +129,8 @@ class MetrolookTemplate extends BaseTemplate {
 
 		// Move the watch/unwatch star outside of the collapsed "actions" menu to the main "views" menu
 		if ( $this->config->get( 'MetrolookUseIconWatch' ) ) {
-			$mode = $skin->getUser()->isWatched( $skin->getRelevantTitle() )
+			$mode = MediaWikiServices::getInstance()->getWatchlistManager()
+				->isWatched( $skin->getUser(), $skin->getRelevantTitle() )
 				? 'unwatch'
 				: 'watch';
 
