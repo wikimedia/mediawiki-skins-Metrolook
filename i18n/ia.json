@@ -6,5 +6,7 @@
 	},
 	"metrolook-desc": "Metrolook es un variante del apparentia Vector [https://en.wikipedia.org/wiki/Metro_(design_language) inspirate per Metro]",
 	"skinmetrolook-collapsiblenav-preference": "Permitter de plicar elementos in le barra lateral in le apparentia Metrolook",
-	"metrolook-guest": "Hospite"
+	"metrolook-guest": "Hospite",
+	"metrolook-jump-to-navigation": "Saltar al navigation",
+	"metrolook-jump-to-search": "Saltar al recerca"
 }
