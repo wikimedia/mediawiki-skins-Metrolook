@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"FakeGreenHand",
 			"Liuxinyu970226"
 		]
 	},
 	"metrolook-desc": "Metrolook是一种[https://zh.wikipedia.org/wiki/现代UI 受现代UI启发]的Vector皮肤复制品",
-	"metrolook.css": "/* 这里放置的CSS将影响使用Metrolook皮肤的用户 */",
+	"metrolook.css": "/* 这里的任何CSS将为使用Metrolook皮肤的用户加载 */",
 	"metrolook.js": "/* 这里的任何JavaScript将为使用Metrolook皮肤的用户加载 */",
 	"skinmetrolook-collapsiblenav-preference": "在Metrolook皮肤的侧边栏启用折叠项目",
 	"metrolook-guest": "访客"
