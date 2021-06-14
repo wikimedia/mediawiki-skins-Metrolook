@@ -7,5 +7,7 @@
 	},
 	"metrolook-desc": "Metrolook — це відгалуження теми оформлення «Векторне», [https://en.wikipedia.org/wiki/Metro_(design_language) навіяне Metro]",
 	"skinmetrolook-collapsiblenav-preference": "Дозволити згортання елементів бічного меню в темі «Metrolook»",
-	"metrolook-guest": "Гість"
+	"metrolook-guest": "Гість",
+	"metrolook-jump-to-navigation": "Перейти до навігації",
+	"metrolook-jump-to-search": "Перейти до пошуку"
 }
