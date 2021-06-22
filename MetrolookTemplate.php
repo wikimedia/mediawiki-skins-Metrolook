@@ -625,7 +625,17 @@ class MetrolookTemplate extends BaseTemplate {
 					echo $content;
 				}
 
-				$this->renderAfterPortlet( $name );
+				$afterPortlet = '';
+				$content = $this->getSkin()->getAfterPortlet( $name );
+				if ( $content !== '' ) {
+					$afterPortlet = Html::rawElement(
+						'div',
+						[ 'class' => [ 'after-portlet', 'after-portlet-' . $name ] ],
+						$content
+					);
+				}
+
+				echo $afterPortlet;
 				?>
 			</div>
 		</div>
