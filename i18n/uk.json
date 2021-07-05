@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Piramidion",
 			"Ата"
 		]
 	},
-	"metrolook-desc": "Metrolook — це відгалуження теми оформлення «Векторне», [https://en.wikipedia.org/wiki/Metro_(design_language) навіяне Metro]",
+	"metrolook-desc": "Metrolook — це відгалуження теми оформлення «Векторне», [https://uk.wikipedia.org/wiki/Metro_(інтерфейс) навіяне Metro]",
 	"skinmetrolook-collapsiblenav-preference": "Дозволити згортання елементів бічного меню в темі «Metrolook»",
 	"metrolook-guest": "Гість",
 	"metrolook-jump-to-navigation": "Перейти до навігації",
