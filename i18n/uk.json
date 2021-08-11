@@ -6,7 +6,10 @@
 			"Ата"
 		]
 	},
+	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolook — це відгалуження теми оформлення «Векторне», [https://uk.wikipedia.org/wiki/Metro_(інтерфейс) навіяне Metro]",
+	"metrolook.css": "/* CSS, розміщений тут, вплине на користувачів скіна Metrolook */",
+	"metrolook.js": "/* JavaScript, розміщений тут, вплине на користувачів скіна Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Дозволити згортання елементів бічного меню в темі «Metrolook»",
 	"metrolook-guest": "Гість",
 	"metrolook-jump-to-navigation": "Перейти до навігації",
