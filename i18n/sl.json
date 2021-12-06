@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dbc334"
+			"Dbc334",
+			"Eleassar"
 		]
 	},
-	"metrolook-desc": "Metrolook je različica kože Vector, [https://en.wikipedia.org/wiki/Metro_(design_language) navdahnjena po Metroju]",
+	"metrolook-desc": "Metrolook je različica preobleke Vector, navdihnjena pri [https://sl.wikipedia.org/wiki/Metro_(oblikovalski_jezik) Metroju]",
 	"skinmetrolook-collapsiblenav-preference": "Omogoči zlaganje vnosov v navigacijskem meniju v koži Metrolook",
 	"metrolook-guest": "Gost"
 }

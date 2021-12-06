@@ -7,5 +7,7 @@
 	},
 	"metrolook-desc": "עיצוב מטרולוק למדיה־ויקי הוא פיצול מעיצוב וקטור [https://en.wikipedia.org/wiki/Metro_(design_language) בהשראת מטרו]",
 	"skinmetrolook-collapsiblenav-preference": "הפעלת הסתרת פריטים בסרגל הצד בעיצוב מטרולוק",
-	"metrolook-guest": "אורח"
+	"metrolook-guest": "אורח",
+	"metrolook-jump-to-navigation": "קפיצה לניווט",
+	"metrolook-jump-to-search": "קפיצה לחיפוש"
 }

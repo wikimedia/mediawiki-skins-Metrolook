@@ -9,5 +9,7 @@
 	"metrolook.css": "/* Тука поставениот CSS ќе се применува врз корисниците на рувото „Метроизглед“ */",
 	"metrolook.js": "/* Тука поставениот JavaScript  ќе им се вчитува на корисниците што го користат рувото „Метроизглед“ */",
 	"skinmetrolook-collapsiblenav-preference": "Овозможи расклоп на ставки во страничникот на рувото „Метроизглед“",
-	"metrolook-guest": "Гостин"
+	"metrolook-guest": "Гостин",
+	"metrolook-jump-to-navigation": "Прејди на прегледникот",
+	"metrolook-jump-to-search": "Прејди на пребарувањето"
 }

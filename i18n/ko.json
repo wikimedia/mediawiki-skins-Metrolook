@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"아라"
+			"아라",
+			"Apzp79",
+			"Ykhwong"
 		]
 	},
 	"skinname-metrolook": "메트로룩",
 	"metrolook-desc": "메트로룩은 벡터 스킨의 [https://en.wikipedia.org/wiki/Metro_(design_language) Metro에서 영감을 얻은] 포크입니다",
 	"skinmetrolook-collapsiblenav-preference": "메트로룩 스킨에서 사이드바 항목 접기 활성화",
-	"metrolook-guest": "손님"
+	"metrolook-guest": "손님",
+	"metrolook-jump-to-navigation": "둘러보기로 이동",
+	"metrolook-jump-to-search": "검색으로 이동"
 }

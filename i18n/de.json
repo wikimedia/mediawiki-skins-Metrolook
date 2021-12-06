@@ -8,5 +8,7 @@
 	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolook ist eine [https://en.wikipedia.org/wiki/Metro_(design_language) Metro-inspirierte] Abspaltung der Benutzeroberfläche „Vector“",
 	"skinmetrolook-collapsiblenav-preference": "Aktiviert das Einklappen von Elementen in der Seitenleiste in der Benutzeroberfläche „Metrolook“",
-	"metrolook-guest": "Gast"
+	"metrolook-guest": "Gast",
+	"metrolook-jump-to-navigation": "Zur Navigation springen",
+	"metrolook-jump-to-search": "Zur Suche springen"
 }

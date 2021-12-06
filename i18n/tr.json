@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Joseph",
+			"MuratTheTurkish"
 		]
 	},
 	"metrolook-desc": "Metrolook, Vektör görünümün bir [https://tr.wikipedia.org/wiki/Metro_(tasarım_dili) Metrodan ilham alan] çatalı",
-	"skinmetrolook-collapsiblenav-preference": "Metrolook dış görünümünde kenar çubuğundaki öğelerin daraltılmasını sağlayın",
-	"metrolook-guest": "Misafir"
+	"skinmetrolook-collapsiblenav-preference": "Metrolook görünümünde kenar çubuğundaki öğelerin daraltılmasını etkinleştir",
+	"metrolook-guest": "Misafir",
+	"metrolook-jump-to-navigation": "Gezinti kısmına atla",
+	"metrolook-jump-to-search": "Arama kısmına atla"
 }
