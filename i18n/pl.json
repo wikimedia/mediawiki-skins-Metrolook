@@ -2,10 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
-			"The Polish"
+			"The Polish",
+			"Rail"
 		]
 	},
 	"metrolook-desc": "Metrolook jest forkiem skórki Wektor wzorowanym na [https://pl.wikipedia.org/wiki/Modern_UI Metro]",
+	"metrolook.css": "/* Umieszczony tutaj kod CSS zostanie załadowany przez użytkowników korzystających ze skórki Metrolook */",
+	"metrolook.js": "/* Umieszczony tutaj kod JavaScript zostanie załadowany przez użytkowników korzystających ze skórki Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Włącz zwijanie sekcji menu bocznego w skórce Wektor",
-	"metrolook-guest": "Gość"
+	"metrolook-guest": "Gość",
+	"metrolook-jump-to-navigation": "Przejdź do nawigacji",
+	"metrolook-jump-to-search": "Przejdź do wyszukiwania"
 }

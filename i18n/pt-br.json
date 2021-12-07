@@ -13,5 +13,7 @@
 	"metrolook.css": "/* Todos os CSS colocado aqui serão carregados para usuários do tema Metrolook */",
 	"metrolook.js": "/* Todos os JavaScript aqui colocado será carregado para usuários do tema Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Ativar o ocultamento de itens na barra lateral no tema Metrolook",
-	"metrolook-guest": "Convidado"
+	"metrolook-guest": "Convidado",
+	"metrolook-jump-to-navigation": "Ir para navegação",
+	"metrolook-jump-to-search": "Ir para pesquisar"
 }

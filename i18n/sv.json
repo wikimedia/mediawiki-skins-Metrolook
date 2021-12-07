@@ -10,5 +10,7 @@
 	"metrolook.css": "/* All CSS här kommer att läsas in för de som använder utseendet Metrolook */",
 	"metrolook.js": "/* All JavaScript här kommer att läsas in för alla som använder utseendet Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Aktivera möjligheten att kollapsa objekt i sidofältet av Metrolook-utseendet",
-	"metrolook-guest": "Gäst"
+	"metrolook-guest": "Gäst",
+	"metrolook-jump-to-navigation": "Hoppa till navigering",
+	"metrolook-jump-to-search": "Hoppa till sök"
 }
