@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gazimagomedov"
+			"Gazimagomedov",
+			"Omarov M."
 		]
 	},
-	"metrolook-desc": "Куцалъул тема - MediaWiki Metrolook",
+	"metrolook-desc": "Metrolook буго [https://av.wikipedia.org/wiki/Metro_(design_language) Metro-inspired] интерфейсалъул принципазда гӀуцӀараб Вектор куцлъиялъул темаялъул модификация",
 	"metrolook-guest": "Гьобол"
 }
