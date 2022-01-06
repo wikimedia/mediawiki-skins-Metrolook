@@ -52,8 +52,11 @@ div.vectorTabs {
 			background-position: bottom left;
 			background-repeat: repeat-x;
 			white-space: nowrap;
-			/* Force the links down a bit */
-			margin-top: 10px;
+
+			a {
+				// @see T298601
+				padding-top: 1em;
+			}
 
 			.metrolook-nav-directionality & {
 				float: left;
