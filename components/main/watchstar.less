@@ -1,6 +1,14 @@
 @import "mediawiki.mixins.rotation";
 
 /* Watch/Unwatch Icon Styling */
+/* @see T298601 */
+#ca-watch,
+#ca-unwatch {
+	/* The value is chosen based on the extremely scientifical
+	 * "It looks good on my machine" method
+	 */
+	padding-top: 0.6em;
+}
 #ca-unwatch.icon a,
 #ca-watch.icon a {
 	margin: 0;
