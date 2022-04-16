@@ -2,28 +2,29 @@
 
 /* Watch/Unwatch Icon Styling */
 /* @see T298601 */
-#ca-watch,
-#ca-unwatch {
-	/* The value is chosen based on the extremely scientifical
-	 * "It looks good on my machine" method
-	 */
-	padding-top: 0.6em;
-}
 #ca-unwatch.icon a,
 #ca-watch.icon a {
 	margin: 0;
 	padding: 0;
+	padding-top: 1em;
 	display: block;
 	width: 26px;
-	/* This hides the text but shows the background image */
-	padding-top: 1.5em;
 	margin-top: 0;
 	/* Only applied in IE6 */
 	_margin-top: -0.8em;
-	height: 0;
 	overflow: hidden;
 	background-position: 5px 45%;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
+	height: 2.1em;
+	text-indent: 100%;
+}
+/* On smaller screens the watch star gets hidden into the "..." menu;
+ * apply a bit of padding to it in that case to make it look nicer and
+ * more consistent with the textual links like "Edit", "History", etc.
+ */
+#p-cactions.menuForceShow #ca-watch,
+#p-cactions.menuForceShow #ca-unwatch {
+	padding-left: 0.5em;
 }
 #ca-unwatch.icon a {
 	background-image: url( images/unwatch-icon.svg );
