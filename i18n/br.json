@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Huñvreüs",
 			"Y-M D"
 		]
 	},
-	"metrolook-guest": "Den pedet"
+	"metrolook-guest": "Den pedet",
+	"metrolook-jump-to-navigation": "Mont d’ar merdeerezh",
+	"metrolook-jump-to-search": "Mont d’ar c’hlask"
 }
