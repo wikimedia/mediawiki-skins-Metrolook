@@ -1,6 +1,7 @@
 /**
  * Collapsible Tabs for the Metrolook skin.
  *
+ * @param $
  * @class jQuery.plugin.collapsibleTabs
  */
 ( function ( $ ) {

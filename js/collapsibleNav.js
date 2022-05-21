@@ -1,5 +1,8 @@
 /**
  * Collapsible navigation for Metrolook
+ *
+ * @param mw
+ * @param $
  */
 ( function ( mw, $ ) {
 	'use strict';
