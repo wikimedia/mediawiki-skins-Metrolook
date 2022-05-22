@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ea4680_df69b11f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6729
+      },
+      "writtenOn": "2022-05-22T01:26:13Z",
+      "side": 1,
+      "message": "not sure why jenkins thought there was a merge conflict, JS changes are correct",
+      "revId": "0819eee6c79a72c2adfefe49bb953ff086276291",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    }
+  ]
+}
