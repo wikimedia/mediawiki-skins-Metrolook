@@ -7,6 +7,8 @@
  * @ingroup Skins
  */
 
+use MediaWiki\MediaWikiServices;
+
 class SkinMetrolookHooks {
 
 	/* Protected Static Members */
@@ -50,10 +52,11 @@ class SkinMetrolookHooks {
 		// to be specific values to be enabled
 		if ( $wgMetrolookFeatures[$name]['user'] ) {
 			if ( isset( self::$features[$name]['requirements'] ) ) {
+				$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 				$user = RequestContext::getMain()->getUser();
 				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
 					// Important! We really do want fuzzy evaluation here
-					if ( $user->getOption( $requirement ) != $value ) {
+					if ( $userOptionsLookup->getOption( $user, $requirement ) != $value ) {
 						return false;
 					}
 				}
