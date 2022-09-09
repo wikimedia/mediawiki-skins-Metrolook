@@ -109,7 +109,7 @@
 				"js/fixed-header-scroll-fix.js"
 			],
 			"dependencies": [
-				"jquery.throttle-debounce"
+				"mediawiki.util"
 			]
 		},
 		"skins.metrolook.collapsibleNav": {
