@@ -9,5 +9,7 @@
 	"metrolook.css": "/* CSS i denne fila vil gjelde alle som bruker drakta Metrolook */",
 	"metrolook.js": "/* Javascript i denne fila vil gjelde for brukere av drakta Metrolook */",
 	"skinmetrolook-collapsiblenav-preference": "Slå på sammenlegging av elementer i sidemenyen i Metrolook-drakta",
-	"metrolook-guest": "Gjest"
+	"metrolook-guest": "Gjest",
+	"metrolook-jump-to-navigation": "Til navigasjon",
+	"metrolook-jump-to-search": "Til søk"
 }
