@@ -172,7 +172,6 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 
 		// Output HTML Page
-		$this->html( 'headelement' );
 		?>
 
 		<div id="mw-page-base" class="noprint"></div>
@@ -530,10 +529,6 @@ class MetrolookTemplate extends BaseTemplate {
 			Hooks::run( 'MetrolookRightPanel', [ &$skin ] );
 			?>
 		</div>
-
-		<?php $this->printTrail(); ?>
-	</body>
-</html>
 <?php
 	}
 
