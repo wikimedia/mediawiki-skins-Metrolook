@@ -37,8 +37,12 @@ class SkinMetrolook extends SkinTemplate {
 	 */
 	private $metrolookConfig;
 
-	public function __construct() {
-		parent::__construct( ...func_get_args() );
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( $options ) {
+		$options['bodyOnly'] = true;
+		parent::__construct( $options );
 		$this->metrolookConfig = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'metrolook' );
 	}
@@ -85,7 +89,7 @@ class SkinMetrolook extends SkinTemplate {
 			!$this->metrolookConfig->get( 'MetrolookSearchBar' )
 		) {
 			$styles = [
-				'mediawiki.skinning.interface',
+				'skins.metrolook.interface',
 				'skins.metrolook.styles.custom',
 				'skins.metrolook.styles.mobile.custom',
 				'skins.metrolook.styles.theme.custom',
@@ -94,7 +98,7 @@ class SkinMetrolook extends SkinTemplate {
 			$this->metrolookConfig->get( 'MetrolookSearchBar' )
 		) {
 			$styles = [
-				'mediawiki.skinning.interface',
+				'skins.metrolook.interface',
 				'skins.metrolook.styles',
 				'skins.metrolook.styles.mobile',
 				'skins.metrolook.styles.theme.custom',
@@ -103,7 +107,7 @@ class SkinMetrolook extends SkinTemplate {
 			$this->metrolookConfig->get( 'MetrolookSearchBar' )
 		) {
 			$styles = [
-				'mediawiki.skinning.interface',
+				'skins.metrolook.interface',
 				'skins.metrolook.styles',
 				'skins.metrolook.styles.theme.custom',
 			];
@@ -111,7 +115,7 @@ class SkinMetrolook extends SkinTemplate {
 			!$this->metrolookConfig->get( 'MetrolookSearchBar' )
 		) {
 			$styles = [
-				'mediawiki.skinning.interface',
+				'skins.metrolook.interface',
 				'skins.metrolook.styles.custom',
 				'skins.metrolook.styles.theme.custom',
 			];
