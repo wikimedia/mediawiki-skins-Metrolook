@@ -7,5 +7,7 @@
 	},
 	"metrolook-desc": "O tema Metrolook é uma variação do tema Vector inspirada no [https://en.wikipedia.org/wiki/Metro_(design_language) Metro]",
 	"skinmetrolook-collapsiblenav-preference": "Permitir a ocultação de elementos da barra lateral no tema Metrolook",
-	"metrolook-guest": "Visitante"
+	"metrolook-guest": "Visitante",
+	"metrolook-jump-to-navigation": "Saltar para a navegação",
+	"metrolook-jump-to-search": "Saltar para a pesquisa"
 }
