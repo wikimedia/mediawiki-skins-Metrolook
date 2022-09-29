@@ -7,5 +7,7 @@
 	},
 	"metrolook-desc": "Metrolook je različica preobleke Vector, navdihnjena pri [https://sl.wikipedia.org/wiki/Metro_(oblikovalski_jezik) Metroju]",
 	"skinmetrolook-collapsiblenav-preference": "Omogoči zlaganje vnosov v navigacijskem meniju v preobleki Metrolook",
-	"metrolook-guest": "Gost"
+	"metrolook-guest": "Gost",
+	"metrolook-jump-to-navigation": "Pojdi na navigacijo",
+	"metrolook-jump-to-search": "Pojdi na iskanje"
 }
