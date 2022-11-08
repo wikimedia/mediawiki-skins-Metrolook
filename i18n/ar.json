@@ -11,5 +11,7 @@
 	"metrolook.css": "/* الأنماط المتراصة CSS المعروضة هنا ستؤثر على مستخدمي واجهة مترو لوك */",
 	"metrolook.js": "/* أي جافا سكريبت معروضة هنا سيتم تحميلها لمستخدمي واجهة مترو لوك */",
 	"skinmetrolook-collapsiblenav-preference": "تمكين طي العناصر الموجودة في الشريط الجانبي في البرنامج المساعد ميترولوك",
-	"metrolook-guest": "زائر"
+	"metrolook-guest": "زائر",
+	"metrolook-jump-to-navigation": "اذهب إلى التصفح",
+	"metrolook-jump-to-search": "اذهب إلى البحث"
 }
