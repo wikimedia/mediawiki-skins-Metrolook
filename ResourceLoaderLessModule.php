@@ -22,10 +22,10 @@
 
 namespace Metrolook;
 
-use CSSMin;
 use MediaWiki\MediaWikiServices;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;
+use Wikimedia\Minify\CSSMin;
 
 /**
  * ResourceLoader module for print styles.
