@@ -6,5 +6,7 @@
 	},
 	"metrolook-desc": "Metrolook е [https://en.wikipedia.org/wiki/Metro_(design_language) вдъхновен от Metro] форк на облика „Vector“",
 	"skinmetrolook-collapsiblenav-preference": "Включване на скриването на елемент от страничната лена в облик „Metrolook“",
-	"metrolook-guest": "Гост"
+	"metrolook-guest": "Гост",
+	"metrolook-jump-to-navigation": "Направо към навигацията",
+	"metrolook-jump-to-search": "Направо към търсенето"
 }
