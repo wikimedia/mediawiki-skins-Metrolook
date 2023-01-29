@@ -28,6 +28,20 @@
 
 @media print {
 
+	/* Generic hide-in-print-view class used by many skins
+	 * Previously defined in core but not anymore as of MW 1.39
+	 */
+	.noprint {
+		display: none;
+	}
+
+	/* Hide the top navigation bar */
+	#mw-navigation,
+	/* Hide the "Jump to" accessibility links */
+	.mw-jump-link {
+		display: none;
+	}
+
 	/* These styles retain the existing typography in screen.less
 	In future (when deploying these styles) we may want to refactor skins.vector.styles
 	to apply certain styles in print as well as screen mode. */
@@ -248,5 +262,11 @@
 		color: @pureBlack;
 		font-size: 12pt;
 		font-weight: bold;
+	}
+
+	// Don't need the site-specific links or copyright/powered by MW(/etc.) icons
+	#footer-places,
+	#footer-icons {
+		display: none;
 	}
 }
