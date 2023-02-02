@@ -193,8 +193,7 @@
 		"MetrolookMobile": true,
 		"MetrolookBartile": true,
 		"MetrolookDisableAvatar": true,
-		"@MetrolookExperimentalPrintStyles": "Temporary config variable to feature flag new print styles (T154965)",
-		"MetrolookExperimentalPrintStyles": false,
+		"MetrolookExperimentalPrintStyles": true,
 		"MetrolookPrintLogo": false
 	},
 	"manifest_version": 1
