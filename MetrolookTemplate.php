@@ -50,7 +50,8 @@ class MetrolookTemplate extends BaseTemplate {
 		 * * https://www.pidgi.net/jcc/|The JCC|https://images.pidgi.net/jcctiletop.png
 		 * * https://www.petalburgwoods.com/|Petalburg Woods|https://images.pidgi.net/pwntiletop.png
 		 */
-		$tileMessage = $this->getSkin()->msg( $messageName );
+		$skin = $this->getSkin();
+		$tileMessage = $skin->msg( $messageName );
 		$tiles = '';
 		if ( $tileMessage->isDisabled() ) {
 			return $tiles;
@@ -68,9 +69,9 @@ class MetrolookTemplate extends BaseTemplate {
 
 				// Maybe it's the name of a MediaWiki: message? I18n is
 				// always nice, so at least try it and see what happens...
-				$linkMsgObj = $this->getSkin()->msg( $altText );
+				$linkMsgObj = $skin->msg( $altText );
 				if ( !$linkMsgObj->isDisabled() ) {
-					$altText = $linkMsgObj->parse();
+					$altText = $linkMsgObj->text();
 				}
 
 				$imageURL = $line[2];
@@ -166,7 +167,7 @@ class MetrolookTemplate extends BaseTemplate {
 		// interfaces) portion of the skin
 		$user = $skin->getUser();
 		if ( $user->isRegistered() ) {
-			$userNameTop = htmlspecialchars( $user->getName(), ENT_QUOTES );
+			$userNameTop = $user->getName();
 		} else {
 			$userNameTop = $skin->msg( 'metrolook-guest' )->text();
 		}
@@ -401,7 +402,7 @@ class MetrolookTemplate extends BaseTemplate {
 				<div class="no-js">
 					<a href="#" class="user-icon-container">
 						<span id="username-top">
-							<span id="username-text"><?php echo $userNameTop ?></span>
+							<span id="username-text"><?php echo htmlspecialchars( $userNameTop, ENT_QUOTES ) ?></span>
 							<span class="username-space spacer"> </span>
 							<span id="userIcon20"><?php echo $this->getAvatar( 20 ) ?></span>
 							<span class="spacer"> </span>
@@ -484,8 +485,12 @@ class MetrolookTemplate extends BaseTemplate {
 				) {
 					?>
 					<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="<?php
-						echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
+						echo htmlspecialchars(
+							$this->data['nav_urls']['mainpage']['href'] ??
+							Title::newMainPage()->getFullURL()
+						)
 						?>" <?php
+						// @phan-suppress-next-line SecurityCheck-XSS
 						echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 						?>></a></div>
 				<?php
@@ -638,10 +643,10 @@ class MetrolookTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * Render one or more navigations elements by name, automatically reversed by css
+	 * Render one or more navigations elements by name, automatically reversed by CSS
 	 * when UI is in RTL mode
 	 *
-	 * @param array $elements
+	 * @param array|string $elements
 	 */
 	protected function renderNavigation( $elements ) {
 		// If only one element was given, wrap it in an array, allowing more
@@ -825,7 +830,7 @@ class MetrolookTemplate extends BaseTemplate {
 	 * @param string $key
 	 * @param array $item
 	 * @param array $options
-	 * @return array
+	 * @return string
 	 */
 	public function makeMetroLookListItem( $key, $item, $options = [] ) {
 		// For fancy styling of watch/unwatch star
