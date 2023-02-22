@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d03675a_bc377d22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 243
+      },
+      "writtenOn": "2023-02-22T17:10:29Z",
+      "side": 1,
+      "message": "This is as correct as it gets here; to get CI to recognize that SocialProfile is supported (but not a hard dependency), a change is needed to one of the CI .yaml files (if memory serves me correct). As an incorrect quick hack, you could alternatively suppress the PhanUndeclaredClassMethod errors on the mentioned two lines, but I think this oughta be \"properly\" fixed CI-side instead, after which running \"recheck\" here should result in V+2 from jerkins instead of the current V-1.",
+      "revId": "212e76622d22fbaa8aeb6417fb37dc88b23ad623",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    }
+  ]
+}
