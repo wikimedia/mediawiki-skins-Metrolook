@@ -27,7 +27,7 @@
 		"wiki": "https://www.mediawiki.org/wiki/Skin:Metrolook",
 		"forum": "https://www.mediawiki.org/wiki/Skin_talk:Metrolook",
 		"source": "https://phabricator.wikimedia.org/diffusion/SMTL/",
-		"irc": "irc://irc.freenode.org/mediawiki"
+		"irc": "irc://irc.libera.chat/mediawiki"
 	},
 	"extra": {
 		"installer-name": "Metrolook"
