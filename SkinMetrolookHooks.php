@@ -94,10 +94,10 @@ class SkinMetrolookHooks {
 	/**
 	 * GetPreferences hook
 	 *
-	 * Adds Vector-releated items to the preferences
+	 * Adds Metrolook-related items to the preferences
 	 *
-	 * @param User current user $user
-	 * @param array list of default user preference controls &$defaultPreferences
+	 * @param User $user Current user
+	 * @param array &$defaultPreferences List of default user preference controls
 	 * @return true
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
@@ -133,8 +133,10 @@ class SkinMetrolookHooks {
 				( !isset( $wgMetrolookFeatures[$name] ) || self::isEnabled( $name ) )
 			) {
 				foreach ( $feature['configurations'] as $configuration ) {
+					// @phan-suppress-next-line PhanUndeclaredVariable
 					global $$wgConfiguration;
 					$configurations[$configuration] = $$wgConfiguration;
+					// @phan-suppress-previous-line PhanUndeclaredVariable
 				}
 			}
 		}

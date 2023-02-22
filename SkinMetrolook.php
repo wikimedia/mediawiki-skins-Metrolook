@@ -85,6 +85,7 @@ class SkinMetrolook extends SkinTemplate {
 	 */
 	public function getDefaultModules() {
 		$modules = parent::getDefaultModules();
+		$styles = [];
 		if ( $this->metrolookConfig->get( 'MetrolookMobile' ) &&
 			!$this->metrolookConfig->get( 'MetrolookSearchBar' )
 		) {
