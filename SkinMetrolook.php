@@ -21,6 +21,8 @@
  * @ingroup Skins
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * SkinTemplate class for Metrolook skin
  * @ingroup Skins
@@ -121,7 +123,7 @@ class SkinMetrolook extends SkinTemplate {
 				'skins.metrolook.styles.theme.custom',
 			];
 		}
-		Hooks::run( 'SkinMetrolookStyleModules', [ $this, &$styles ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'SkinMetrolookStyleModules', [ $this, &$styles ] );
 		$modules['styles']['skin'] = $styles;
 		return $modules;
 	}
