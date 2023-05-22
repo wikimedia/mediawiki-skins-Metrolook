@@ -6,14 +6,15 @@
 			"Liuxinyu970226",
 			"Matěj Suchánek",
 			"Raymond",
+			"Shirayuki",
 			"Umherirrender",
 			"paladox"
 		]
 	},
 	"skinname-metrolook": "{{name}}",
 	"metrolook-desc": "{{desc|what=skin|name=Metrolook|url=https://www.mediawiki.org/wiki/Skin:Metrolook}}",
-	"metrolook.css": "{{optional}}",
-	"metrolook.js": "{{optional}}",
+	"metrolook.css": "{{optional}}\n{{related/css}}",
+	"metrolook.js": "{{optional}}\n{{related/js}}",
 	"skinmetrolook-collapsiblenav-preference": "The message refers to the sidebar, whose sections are collapsible in Metrolook skin (some of them collapsed by default and some no); the preference disables collapsing entirely and is among \"Advanced options\" in the \"Appearence\" section.\n\nSee also\n*{{msg-mw|collapsiblevector-collapsiblenav-preference}}",
 	"metrolook-guest": "Used for descbribing you as a guest editing the wiki.\n{{Identical|Guest}}",
 	"metrolook-jump-to-navigation": "Accessibility link for jumping to the navigation links. Visually hidden by default.\n\nSee also\n* {{msg-mw|Navigation}}",
