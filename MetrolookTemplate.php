@@ -100,7 +100,7 @@ class MetrolookTemplate extends BaseTemplate {
 			'img',
 			[
 				'class' => 'userIcon' . (int)$width,
-				'src' => htmlspecialchars( $skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif' ),
+				'src' => $skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif',
 				'alt' => ''
 			]
 		);
