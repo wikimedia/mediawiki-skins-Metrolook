@@ -5,6 +5,7 @@
 			"Toliño"
 		]
 	},
+	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolook é unha aparencia derivada da aparencia Vector e [https://en.wikipedia.org/wiki/Metro_(design_language) inspirada en Metro]",
 	"metrolook.css": "/* O CSS colocado aquí afectará aos usuarios da aparencia Metrolook */",
 	"metrolook.js": "/* O código JavaScript colocado aquí cargarase para os usuarios que utilicen a aparencia Metrolook */",
