@@ -23,21 +23,21 @@
 namespace Metrolook;
 
 use MediaWiki\MediaWikiServices;
-use ResourceLoaderContext;
-use ResourceLoaderFileModule;
+use MediaWiki\ResourceLoader\Context;
+use MediaWiki\ResourceLoader\FileModule;
 use Wikimedia\Minify\CSSMin;
 
 /**
  * ResourceLoader module for print styles.
  */
-class ResourceLoaderLessModule extends ResourceLoaderFileModule {
+class ResourceLoaderLessModule extends FileModule {
 	/**
 	 * Get language-specific LESS variables for this module.
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param Context $context
 	 * @return array
 	 */
-	protected function getLessVars( ResourceLoaderContext $context ) {
+	protected function getLessVars( Context $context ) {
 		$lessVars = parent::getLessVars( $context );
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'metrolook' );
 		$printLogo = $config->get( 'MetrolookPrintLogo' );
