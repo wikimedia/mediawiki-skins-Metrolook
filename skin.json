@@ -52,7 +52,7 @@
 	"ResourceModules": {
 		"skins.metrolook.interface": {
 			"targets": [ "desktop", "mobile" ],
-			"class": "ResourceLoaderSkinModule",
+			"class": "MediaWiki\\ResourceLoader\\SkinModule",
 			"features": {
 				"content-links": true,
 				"content-media": true,
