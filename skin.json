@@ -138,7 +138,7 @@
 			],
 			"dependencies": [
 				"jquery.client",
-				"jquery.cookie"
+				"mediawiki.cookie"
 			]
 		}
 	},
