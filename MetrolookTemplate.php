@@ -490,7 +490,6 @@ class MetrolookTemplate extends BaseTemplate {
 							Title::newMainPage()->getFullURL()
 						)
 						?>" <?php
-						// @phan-suppress-next-line SecurityCheck-XSS
 						echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 						?>></a></div>
 				<?php
