@@ -1,4 +1,4 @@
-( function ( $ ) {
+( function () {
 	$( function () {
 		var openDiv;
 
@@ -94,4 +94,4 @@
 			} );
 		} );
 	} );
-}( jQuery ) );
+}() );
