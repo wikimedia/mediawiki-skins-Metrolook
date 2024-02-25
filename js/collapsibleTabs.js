@@ -4,7 +4,7 @@
  * @param $
  * @class jQuery.plugin.collapsibleTabs
  */
-( function ( $ ) {
+( function () {
 	var boundEvent,
 		isRTL = document.documentElement.dir === 'rtl',
 		rAF = window.requestAnimationFrame || setTimeout;
@@ -220,4 +220,4 @@
 	 * @mixins jQuery.plugin.collapsibleTabs
 	 */
 
-}( jQuery ) );
+}() );

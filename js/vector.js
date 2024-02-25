@@ -1,7 +1,7 @@
 /**
  * Metrolook-specific scripts
  */
-jQuery( function ( $ ) {
+$( function () {
 
 	/**
 	 * Collapsible tabs

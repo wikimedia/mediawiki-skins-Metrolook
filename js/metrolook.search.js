@@ -1,4 +1,4 @@
-( function ( $, mw ) {
+( function () {
 	if ( mw.config.get( 'wgMetrolookSearch' ) ) {
 		$( function () {
 
@@ -34,4 +34,4 @@
 			} );
 		} );
 	}
-}( jQuery, mediaWiki ) );
+}() );
