@@ -490,7 +490,7 @@ class MetrolookTemplate extends BaseTemplate {
 						echo htmlspecialchars(
 							$this->data['nav_urls']['mainpage']['href'] ??
 							Title::newMainPage()->getFullURL()
-						)
+																				 )
 						?>" <?php
 						echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 						?>></a></div>
