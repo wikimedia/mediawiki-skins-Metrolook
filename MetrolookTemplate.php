@@ -175,6 +175,7 @@ class MetrolookTemplate extends BaseTemplate {
 		}
 
 		// Output HTML Page
+		// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect
 		?>
 
 		<div id="mw-page-base" class="noprint"></div>
