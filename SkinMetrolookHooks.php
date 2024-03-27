@@ -52,15 +52,15 @@ class SkinMetrolookHooks implements
 	 * @return bool
 	 */
 	public function isEnabled( string $name ): bool {
-		global $wgMetrolookFeatures;
+		$features = MediaWikiServices::getInstance()->getMainConfig()->get( 'MetrolookFeatures' );
 
 		// Features with global set to true are always enabled
-		if ( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['global'] ) {
+		if ( !isset( $features[$name] ) || $features[$name]['global'] ) {
 			return true;
 		}
 		// Features with user preference control can have any number of preferences
 		// to be specific values to be enabled
-		if ( $wgMetrolookFeatures[$name]['user'] ) {
+		if ( $features[$name]['user'] ) {
 			if ( isset( self::$features[$name]['requirements'] ) ) {
 				$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 				$user = RequestContext::getMain()->getUser();
@@ -110,12 +110,12 @@ class SkinMetrolookHooks implements
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onGetPreferences( $user, &$defaultPreferences ) {
-		global $wgMetrolookFeatures;
+		$features = MediaWikiServices::getInstance()->getMainConfig()->get( 'MetrolookFeatures' );
 
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['preferences'] ) &&
-				( !isset( $wgMetrolookFeatures[$name] ) || $wgMetrolookFeatures[$name]['user'] )
+				( !isset( $features[$name] ) || $features[$name]['user'] )
 			) {
 				foreach ( $feature['preferences'] as $key => $options ) {
 					$defaultPreferences[$key] = $options;
@@ -135,13 +135,13 @@ class SkinMetrolookHooks implements
 	 * @return void This hook must not abort, it must return no value
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		global $wgMetrolookFeatures, $wgMetrolookSearchBar;
+		$features = $config->get( 'MetrolookFeatures' );
 
 		$configurations = [];
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['configurations'] ) &&
-				( !isset( $wgMetrolookFeatures[$name] ) || $this->isEnabled( $name ) )
+				( !isset( $features[$name] ) || $this->isEnabled( $name ) )
 			) {
 				foreach ( $feature['configurations'] as $configuration ) {
 					// @phan-suppress-next-line PhanUndeclaredVariable
@@ -152,7 +152,7 @@ class SkinMetrolookHooks implements
 			}
 		}
 
-		$vars['wgMetrolookSearch'] = $wgMetrolookSearchBar;
+		$vars['wgMetrolookSearch'] = $config->get( 'MetrolookSearchBar' );
 
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
