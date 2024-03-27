@@ -7,9 +7,19 @@
  * @ingroup Skins
  */
 
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
+use MediaWiki\Output\Hook\MakeGlobalVariablesScriptHook;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 
-class SkinMetrolookHooks {
+class SkinMetrolookHooks implements
+	BeforePageDisplayHook,
+	GetPreferencesHook,
+	ResourceLoaderGetConfigVarsHook,
+	MakeGlobalVariablesScriptHook
+{
 
 	/* Protected Static Members */
 
@@ -41,7 +51,7 @@ class SkinMetrolookHooks {
 	 * @param string $name Name of the feature, should be a key of $name
 	 * @return bool
 	 */
-	public static function isEnabled( $name ) {
+	public function isEnabled( string $name ): bool {
 		global $wgMetrolookFeatures;
 
 		// Features with global set to true are always enabled
@@ -77,18 +87,17 @@ class SkinMetrolookHooks {
 	 *
 	 * @param OutputPage $out
 	 * @param Skin $skin
-	 * @return true
+	 * @return void This hook must not abort, it must return no value
 	 */
-	public static function beforePageDisplay( $out, $skin ) {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		if ( $skin instanceof SkinMetrolook ) {
 			// Add modules for enabled features
 			foreach ( self::$features as $name => $feature ) {
-				if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
+				if ( isset( $feature['modules'] ) && $this->isEnabled( $name ) ) {
 					$out->addModules( $feature['modules'] );
 				}
 			}
 		}
-		return true;
 	}
 
 	/**
@@ -98,9 +107,9 @@ class SkinMetrolookHooks {
 	 *
 	 * @param User $user Current user
 	 * @param array &$defaultPreferences List of default user preference controls
-	 * @return true
+	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public static function getPreferences( $user, &$defaultPreferences ) {
+	public function onGetPreferences( $user, &$defaultPreferences ) {
 		global $wgMetrolookFeatures;
 
 		foreach ( self::$features as $name => $feature ) {
@@ -121,16 +130,18 @@ class SkinMetrolookHooks {
 	 *
 	 * Adds enabled/disabled switches for Vector modules
 	 * @param array &$vars
-	 * @return true
+	 * @param string $skin
+	 * @param Config $config
+	 * @return void This hook must not abort, it must return no value
 	 */
-	public static function resourceLoaderGetConfigVars( &$vars ) {
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		global $wgMetrolookFeatures, $wgMetrolookSearchBar;
 
 		$configurations = [];
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['configurations'] ) &&
-				( !isset( $wgMetrolookFeatures[$name] ) || self::isEnabled( $name ) )
+				( !isset( $wgMetrolookFeatures[$name] ) || $this->isEnabled( $name ) )
 			) {
 				foreach ( $feature['configurations'] as $configuration ) {
 					// @phan-suppress-next-line PhanUndeclaredVariable
@@ -146,22 +157,20 @@ class SkinMetrolookHooks {
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
 		}
-
-		return true;
 	}
 
 	/**
 	 * @param array &$vars
-	 * @return bool
+	 * @param OutputPage $out OutputPage which called the hook, can be used to get the real title
+	 * @return void This hook must not abort, it must return no value
 	 */
-	public static function makeGlobalVariablesScript( &$vars ) {
+	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
 		// Build and export old-style wgMetrolookEnabledModules object for back compat
 		$enabledModules = [];
 		foreach ( self::$features as $name => $feature ) {
-			$enabledModules[$name] = self::isEnabled( $name );
+			$enabledModules[$name] = $this->isEnabled( $name );
 		}
 
 		$vars['wgMetrolookEnabledModules'] = $enabledModules;
-		return true;
 	}
 }

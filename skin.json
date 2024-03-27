@@ -13,7 +13,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.40.0"
+		"MediaWiki": ">= 1.41.0"
 	},
 	"DefaultUserOptions": {
 		"skinmetrolook-collapsiblenav": 1
@@ -29,19 +29,16 @@
 			"i18n"
 		]
 	},
+	"HookHandlers": {
+		"main": {
+			"class": "SkinMetrolookHooks"
+		}
+	},
 	"Hooks": {
-		"BeforePageDisplay": [
-			"SkinMetrolookHooks::beforePageDisplay"
-		],
-		"GetPreferences": [
-			"SkinMetrolookHooks::getPreferences"
-		],
-		"ResourceLoaderGetConfigVars": [
-			"SkinMetrolookHooks::resourceLoaderGetConfigVars"
-		],
-		"MakeGlobalVariablesScript": [
-			"SkinMetrolookHooks::makeGlobalVariablesScript"
-		]
+		"BeforePageDisplay": "main",
+		"GetPreferences": "main",
+		"ResourceLoaderGetConfigVars": "main",
+		"MakeGlobalVariablesScript": "main"
 	},
 	"AutoloadClasses": {
 		"SkinMetrolookHooks": "SkinMetrolookHooks.php",
