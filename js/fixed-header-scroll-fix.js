@@ -5,7 +5,7 @@ jQuery( document ).ready( function ( $ ) {
 		// Split hash
 		hash;
 
-	$( '.toc ul a[href*="#"]' ).click( function ( e ) {
+	$( '.toc ul a[href*="#"]' ).on( 'click', function ( e ) {
 		if ( this && this.href !== '' ) {
 			// Split location and hash
 			hash = $.escapeSelector( this.href.match( /[#](.*)/ )[ 1 ] );
