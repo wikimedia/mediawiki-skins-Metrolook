@@ -12,7 +12,7 @@
 	function toggle( $element ) {
 		var isCollapsed = $element.parent().is( '.collapsed' );
 
-		$.cookie(
+		mw.cookie.set(
 			'metrolook-nav-' + $element.parent().attr( 'id' ),
 			isCollapsed,
 			{ expires: 30, path: '/' }
@@ -72,7 +72,7 @@
 		$( '#mw-panel > .portal:not(.persistent)' )
 			.each( function ( i ) {
 				var id = $( this ).attr( 'id' ),
-					state = $.cookie( 'metrolook-nav-' + id );
+					state = mw.cookie.get( 'metrolook-nav-' + id );
 				$( this ).find( 'ul:first' ).attr( 'id', id + '-list' );
 				// Add anchor tag to heading for better accessibility
 				$( this ).find( 'h5' ).wrapInner(
@@ -114,7 +114,7 @@
 				}
 				// Re-save cookie
 				if ( state !== null ) {
-					$.cookie( 'metrolook-nav-' + $( this ).attr( 'id' ), state, { expires: 30, path: '/' } );
+					mw.cookie.set( 'metrolook-nav-' + $( this ).attr( 'id' ), state, { expires: 30, path: '/' } );
 				}
 			} );
 
