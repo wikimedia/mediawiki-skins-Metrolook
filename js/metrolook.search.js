@@ -14,12 +14,12 @@
 			$( function () {
 				if ( isTouchDevice() && isMobileUserAgent() ) {
 					$( '#p-search' ).hide();
-					$( 'img.searchbar' ).click( function ( e ) {
+					$( 'img.searchbar' ).on( 'click', function ( e ) {
 						$( '#p-search' ).fadeToggle( 150 );
 						$( '.clicker' ).toggleClass( 'active' );
 						e.stopPropagation();
 					} );
-					$( 'img.searchbar' ).click( function () {
+					$( 'img.searchbar' ).on( 'click', function () {
 						if ( $( '#p-search' ).is( ':visible' ) ) {
 							$( '#p-search', this ).fadeOut( 150 );
 							$( '.clicker' ).removeClass( 'active' );

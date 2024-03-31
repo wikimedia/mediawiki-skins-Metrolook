@@ -1,15 +1,24 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia",
+		"wikimedia/client-es5",
+		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
 	"env": {
-		"browser": true,
-		"jquery": true
+		"commonjs": true
 	},
 	"rules": {
-		"valid-jsdoc": "off",
-		"no-shadow": "warn"
+		"max-len": "off",
+		"no-jquery/no-animate": "warn",
+		"no-jquery/no-class-state": "warn",
+		"no-jquery/no-each-util": "warn",
+		"no-jquery/no-event-shorthand": "warn",
+		"no-jquery/no-fade": "warn",
+		"no-jquery/no-global-selector": "off",
+		"no-jquery/no-parse-html-literal": "warn",
+		"no-jquery/no-slide": "warn",
+		"no-jquery/no-sizzle": "warn",
+		"valid-jsdoc": "off"
 	}
 }
