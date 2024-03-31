@@ -597,13 +597,13 @@ class MetrolookTemplate extends BaseTemplate {
 		$labelId = Sanitizer::escapeIdForAttribute( "p-$name-label" );
 		?>
 		<div class="portal" role="navigation" id='<?php
-		echo Sanitizer::escapeIdForAttribute( "p-$name" )
+		echo htmlspecialchars( Sanitizer::escapeIdForAttribute( "p-$name" ), ENT_QUOTES )
 		?>'<?php
 		// If it isn't escaped, phan complains; if it _is_ escaped, phan still complains :^)
 		// @phan-suppress-next-line SecurityCheck-DoubleEscaped
 		echo htmlspecialchars( Linker::tooltip( 'p-' . $name ), ENT_QUOTES )
-		?> aria-labelledby='<?php echo $labelId ?>'>
-			<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo $labelId ?>'><?php
+		?> aria-labelledby='<?php echo htmlspecialchars( $labelId, ENT_QUOTES ) ?>'>
+			<h5<?php $this->html( 'userlangattributes' ) ?> id='<?php echo htmlspecialchars( $labelId, ENT_QUOTES ) ?>'><?php
 				echo htmlspecialchars( $msgObj->exists() ? $msgObj->text() : $msg );
 				?></h5>
 			<div class="body">
