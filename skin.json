@@ -170,28 +170,62 @@
 	},
 	"config": {
 		"MetrolookFeatures": {
-			"collapsiblenav": {
-				"global": false,
-				"user": true
+			"value": {
+				"collapsiblenav": {
+					"global": false,
+					"user": true
+				}
 			},
-			"_merge_strategy": "array_plus_2d"
+			"merge_strategy": "array_plus_2d"
+		}
+		"MetrolookUseSimpleSearch": {
+			"value": true
 		},
-		"MetrolookUseSimpleSearch": true,
-		"MetrolookUseIconWatch": true,
-		"MetrolookLogo": true,
-		"MetrolookSiteNameLogo": false,
-		"MetrolookSiteName": true,
-		"MetrolookSiteNameText": false,
-		"MetrolookSiteText": "",
-		"MetrolookSearchBar": true,
-		"MetrolookDownArrow": true,
-		"MetrolookLine": true,
-		"MetrolookUploadButton": true,
-		"MetrolookMobile": true,
-		"MetrolookBartile": true,
-		"MetrolookDisableAvatar": true,
-		"MetrolookExperimentalPrintStyles": true,
-		"MetrolookPrintLogo": false
+		"MetrolookUseIconWatch": {
+			"value": true
+		},
+		"MetrolookLogo": {
+			"value": true
+		},
+		"MetrolookSiteNameLogo": {
+			"value": false
+		},
+		"MetrolookSiteName": {
+			"value": true
+		},
+		"MetrolookSiteNameText": {
+			"value": false
+		},
+		"MetrolookSiteText": {
+			"value": ""
+		},
+		"MetrolookSearchBar": {
+			"value": true
+		},
+		"MetrolookDownArrow": {
+			"value": true
+		},
+		"MetrolookLine": {
+			"value": true
+		},
+		"MetrolookUploadButton": {
+			"value": true
+		},
+		"MetrolookMobile": {
+			"value": true
+		},
+		"MetrolookBartile": {
+			"value": true
+		},
+		"MetrolookDisableAvatar": {
+			"value": true
+		},
+		"MetrolookExperimentalPrintStyles": {
+			"value": true
+		},
+		"MetrolookPrintLogo": {
+			"value": false
+		}
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
