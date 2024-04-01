@@ -8,11 +8,11 @@
  */
 
 use MediaWiki\Config\Config;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\User\Options\UserOptionsLookup;
 
 class SkinMetrolookHooks implements
 	BeforePageDisplayHook,
@@ -20,6 +20,16 @@ class SkinMetrolookHooks implements
 	ResourceLoaderGetConfigVarsHook,
 	MakeGlobalVariablesScriptHook
 {
+	private array $metrolookFeatures;
+	private UserOptionsLookup $userOptionsLookup;
+
+	public function __construct(
+		Config $config,
+		UserOptionsLookup $userOptionsLookup
+	) {
+		$this->metrolookFeatures = $config->get( 'MetrolookFeatures' );
+		$this->userOptionsLookup = $userOptionsLookup;
+	}
 
 	/* Protected Static Members */
 
@@ -52,21 +62,18 @@ class SkinMetrolookHooks implements
 	 * @return bool
 	 */
 	public function isEnabled( string $name ): bool {
-		$features = MediaWikiServices::getInstance()->getMainConfig()->get( 'MetrolookFeatures' );
-
 		// Features with global set to true are always enabled
-		if ( !isset( $features[$name] ) || $features[$name]['global'] ) {
+		if ( !isset( $this->metrolookFeatures[$name] ) || $this->metrolookFeatures[$name]['global'] ) {
 			return true;
 		}
 		// Features with user preference control can have any number of preferences
 		// to be specific values to be enabled
-		if ( $features[$name]['user'] ) {
+		if ( $this->metrolookFeatures[$name]['user'] ) {
 			if ( isset( self::$features[$name]['requirements'] ) ) {
-				$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 				$user = RequestContext::getMain()->getUser();
 				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
 					// Important! We really do want fuzzy evaluation here
-					if ( $userOptionsLookup->getOption( $user, $requirement ) != $value ) {
+					if ( $this->userOptionsLookup->getOption( $user, $requirement ) != $value ) {
 						return false;
 					}
 				}
@@ -110,12 +117,10 @@ class SkinMetrolookHooks implements
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onGetPreferences( $user, &$defaultPreferences ) {
-		$features = MediaWikiServices::getInstance()->getMainConfig()->get( 'MetrolookFeatures' );
-
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['preferences'] ) &&
-				( !isset( $features[$name] ) || $features[$name]['user'] )
+				( !isset( $this->metrolookFeatures[$name] ) || $this->metrolookFeatures[$name]['user'] )
 			) {
 				foreach ( $feature['preferences'] as $key => $options ) {
 					$defaultPreferences[$key] = $options;
@@ -135,13 +140,11 @@ class SkinMetrolookHooks implements
 	 * @return void This hook must not abort, it must return no value
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		$features = $config->get( 'MetrolookFeatures' );
-
 		$configurations = [];
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['configurations'] ) &&
-				( !isset( $features[$name] ) || $this->isEnabled( $name ) )
+				( !isset( $this->metrolookFeatures[$name] ) || $this->isEnabled( $name ) )
 			) {
 				foreach ( $feature['configurations'] as $configuration ) {
 					// @phan-suppress-next-line PhanUndeclaredVariable

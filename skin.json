@@ -31,7 +31,11 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "SkinMetrolookHooks"
+			"class": "SkinMetrolookHooks",
+			"services": [
+				"MainConfig",
+				"UserOptionsLookup"
+			]
 		}
 	},
 	"Hooks": {
