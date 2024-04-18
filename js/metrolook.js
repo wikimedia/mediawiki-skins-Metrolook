@@ -8,7 +8,7 @@
 			} );
 		}
 
-		$( document ).click( function ( e ) {
+		$( document ).on( 'click', function ( e ) {
 			if ( !$( e.target ).closest( '#' + openDiv ).length ) {
 				toggleDiv( openDiv );
 			}
@@ -26,7 +26,7 @@
 			if ( isTouchDevice() && isMobileUserAgent() ) {
 				$( '#usermenu > div' ).toggleClass( 'no-js js' );
 				$( '#usermenu .js div' ).hide();
-				$( '#usermenu .js' ).click( function ( e ) {
+				$( '#usermenu .js' ).on( 'click', function ( e ) {
 					$( '#usermenu .js div' ).fadeToggle( 150 );
 					$( '#usermenu' ).toggleClass( 'active' );
 					e.stopPropagation();
@@ -34,13 +34,13 @@
 
 				$( '.actionmenu > div' ).toggleClass( 'no-js js' );
 				$( '.actionmenu .js div' ).hide();
-				$( '.actionmenu .js' ).click( function ( e ) {
+				$( '.actionmenu .js' ).on( 'click', function ( e ) {
 					$( '.actionmenu .js div' ).fadeToggle( 150 );
 					$( '.clicker' ).toggleClass( 'active' );
 					e.stopPropagation();
 				} );
 
-				$( document ).click( function () {
+				$( document ).on( 'click', function () {
 					if ( $( '.actionmenu .js div' ).is( ':visible' ) ) {
 						$( '.actionmenu .js div', this ).fadeOut( 150 );
 						$( '.clicker' ).removeClass( 'active' );
@@ -53,7 +53,7 @@
 				} );
 			} // end mobile-only code
 
-			$( '#hamburgerIcon' ).click( function ( e ) {
+			$( '#hamburgerIcon' ).on( 'click', function ( e ) {
 				$( '#mw-panel' ).fadeToggle( 150 );
 				$( '.clicker' ).toggleClass( 'active' );
 				if ( $( '#mw-panel' ).is( ':visible' ) ) {
@@ -63,7 +63,7 @@
 				e.stopPropagation();
 			} );
 
-			$( 'img.editbutton' ).click( function ( e ) {
+			$( 'img.editbutton' ).on( 'click', function ( e ) {
 				$( '#left-navigation' ).fadeToggle( 150 );
 				$( '.clicker' ).toggleClass( 'active' );
 				if ( $( '#left-navigation' ).is( ':visible' ) ) {
@@ -73,7 +73,7 @@
 				e.stopPropagation();
 			} );
 
-			$( 'img.downarrow' ).click( function ( e ) {
+			$( 'img.downarrow' ).on( 'click', function ( e ) {
 				toggleDiv( 'bartile' );
 				if ( $( '#bartile' ).is( ':visible' ) ) {
 					$( '#bartile', this ).fadeOut( 150 );

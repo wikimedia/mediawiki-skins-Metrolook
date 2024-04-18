@@ -35,10 +35,10 @@ $( function () {
 				}
 			} )
 			// When the heading has focus, also set a class that will change the arrow icon
-			.focus( function () {
+			.on( 'focus', function () {
 				$el.addClass( 'vectorMenuFocus' );
 			} )
-			.blur( function () {
+			.on( 'blur', function () {
 				$el.removeClass( 'vectorMenuFocus' );
 			} );
 	} );
