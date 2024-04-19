@@ -1,0 +1,8 @@
+Code-Review+2: Jforrester <jforrester@wikimedia.org>
+Verified+1: Libraryupgrader <tools.libraryupgrader@tools.wmflabs.org>
+Verified+2: jenkins-bot
+Submitted-by: jenkins-bot
+Submitted-at: Fri, 19 Apr 2024 20:04:29 +0000
+Reviewed-on: https://gerrit.wikimedia.org/r/c/mediawiki/skins/Metrolook/+/1021955
+Project: mediawiki/skins/Metrolook
+Branch: refs/heads/master
