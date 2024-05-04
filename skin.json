@@ -22,7 +22,13 @@
 		"metrolook": "GlobalVarConfig::newInstance"
 	},
 	"ValidSkinNames": {
-		"metrolook": "Metrolook"
+		"metrolook": {
+			"class": "SkinMetrolook",
+			"services": [
+				"ConfigFactory",
+				"HookContainer"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"Metrolook": [
