@@ -6,8 +6,7 @@
  */
 ( function () {
 	var boundEvent,
-		isRTL = document.documentElement.dir === 'rtl',
-		rAF = window.requestAnimationFrame || setTimeout;
+		isRTL = document.documentElement.dir === 'rtl';
 
 	/**
 	 * @event beforeTabCollapse
@@ -52,12 +51,12 @@
 		if ( !boundEvent ) {
 			boundEvent = true;
 			$( window ).on( 'resize', mw.util.debounce( 100, function () {
-				rAF( $.collapsibleTabs.handleResize );
+				requestAnimationFrame( $.collapsibleTabs.handleResize );
 			} ) );
 		}
 
 		// call our resize handler to setup the page
-		rAF( $.collapsibleTabs.handleResize );
+		requestAnimationFrame( $.collapsibleTabs.handleResize );
 		return this;
 	};
 	$.collapsibleTabs = {
@@ -145,7 +144,7 @@
 					$( this ).detach().prependTo( target ).data( 'collapsibleTabsSettings', outerData );
 					$( this ).attr( 'style', 'display: list-item;' );
 					expContainerSettings.shifting = false;
-					rAF( $.collapsibleTabs.handleResize );
+					requestAnimationFrame( $.collapsibleTabs.handleResize );
 				} );
 		},
 		moveToExpanded: function ( ele ) {
@@ -173,7 +172,7 @@
 					.data( 'collapsibleTabsSettings', data )
 					.animate( { width: expandedWidth + 'px' }, 'normal', function () {
 						$( this ).attr( 'style', 'display: block;' );
-						rAF( function () {
+						requestAnimationFrame( function () {
 						// Update the 'expandedWidth' in case someone was brazen enough to change the tab's
 						// contents after the page load *gasp* (T71729). This doesn't prevent a tab from
 						// collapsing back and forth once, but at least it won't continue to do that forever.
