@@ -21,7 +21,8 @@
  * @ingroup Skins
  */
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Config\ConfigFactory;
+use MediaWiki\HookContainer\HookContainer;
 
 /**
  * SkinTemplate class for Metrolook skin
@@ -34,19 +35,19 @@ class SkinMetrolook extends SkinTemplate {
 	public $stylename = 'Metrolook';
 	/** @var string */
 	public $template = 'MetrolookTemplate';
-	/**
-	 * @var Config
-	 */
-	private $metrolookConfig;
 
-	/**
-	 * @inheritDoc
-	 */
-	public function __construct( $options ) {
+	private Config $metrolookConfig;
+	private HookContainer $hookContainer;
+
+	public function __construct(
+		ConfigFactory $configFactory,
+		HookContainer $hookContainer,
+		$options
+	) {
 		$options['bodyOnly'] = true;
 		parent::__construct( $options );
-		$this->metrolookConfig = \MediaWiki\MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'metrolook' );
+		$this->metrolookConfig = $configFactory->makeConfig( 'metrolook' );
+		$this->hookContainer = $hookContainer;
 	}
 
 	/** @inheritDoc */
@@ -123,7 +124,7 @@ class SkinMetrolook extends SkinTemplate {
 				'skins.metrolook.styles.theme.custom',
 			];
 		}
-		MediaWikiServices::getInstance()->getHookContainer()->run( 'SkinMetrolookStyleModules', [ $this, &$styles ] );
+		$this->hookContainer->run( 'SkinMetrolookStyleModules', [ $this, &$styles ] );
 		$modules['styles']['skin'] = $styles;
 		return $modules;
 	}
