@@ -22,6 +22,7 @@
  */
 
 use MediaWiki\Html\Html;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 
@@ -102,7 +103,7 @@ class MetrolookTemplate extends BaseTemplate {
 			'img',
 			[
 				'class' => 'userIcon' . (int)$width,
-				'src' => $skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif',
+				'src' => $skin->getConfig()->get( MainConfigNames::StylePath ) . '/Metrolook/images/Transparent.gif',
 				'alt' => ''
 			]
 		);
@@ -308,7 +309,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="hamburger"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif' ) ?>" />
+					$skin->getConfig()->get( MainConfigNames::StylePath ) . '/Metrolook/images/Transparent.gif' ) ?>" />
 			</div>
 
 			<?php
@@ -362,7 +363,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="line"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif' ) ?>"
+					$skin->getConfig()->get( MainConfigNames::StylePath ) . '/Metrolook/images/Transparent.gif' ) ?>"
 				/>
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ) {
@@ -388,7 +389,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="downarrow"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif' ) ?>"
+					$skin->getConfig()->get( MainConfigNames::StylePath ) . '/Metrolook/images/Transparent.gif' ) ?>"
 				/>
 				<?php
 				if ( $this->config->get( 'MetrolookSiteName' ) ) {
@@ -442,7 +443,7 @@ class MetrolookTemplate extends BaseTemplate {
 							class="uploadbutton"
 							alt=""
 							src="<?php echo htmlspecialchars(
-								$skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif' ) ?>" />
+								$skin->getConfig()->get( MainConfigNames::StylePath ) . '/Metrolook/images/Transparent.gif' ) ?>" />
 								<span class="uploadbutton">
 									<?php $this->msg( 'uploadbtn' ) ?>
 								</span>
@@ -461,7 +462,7 @@ class MetrolookTemplate extends BaseTemplate {
 					class="searchbar"
 					alt=""
 					src="<?php echo htmlspecialchars(
-						$skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif' ) ?>" />
+						$skin->getConfig()->get( MainConfigNames::StylePath ) . '/Metrolook/images/Transparent.gif' ) ?>" />
 				<?php
 				}
 				?>
@@ -469,7 +470,7 @@ class MetrolookTemplate extends BaseTemplate {
 				class="editbutton"
 				alt=""
 				src="<?php echo htmlspecialchars(
-					$skin->getConfig()->get( 'StylePath' ) . '/Metrolook/images/Transparent.gif' ) ?>" />
+					$skin->getConfig()->get( MainConfigNames::StylePath ) . '/Metrolook/images/Transparent.gif' ) ?>" />
 
 
 			<div id="right-navigation">
