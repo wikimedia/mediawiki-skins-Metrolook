@@ -24,6 +24,7 @@
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\Output\OutputPage;
 
 /**
  * SkinTemplate class for Metrolook skin
