@@ -8,7 +8,6 @@ $( function () {
 	 */
 	var $cactions = $( '#p-cactions' ),
 		$tabContainer = $( '#p-views ul' ),
-		rAF = window.requestAnimationFrame || setTimeout,
 		// Avoid forced style calculation during page load
 		initialCactionsWidth = function () {
 			var width = $cactions.width();
@@ -18,7 +17,7 @@ $( function () {
 			return width;
 		};
 
-	rAF( initialCactionsWidth );
+	requestAnimationFrame( initialCactionsWidth );
 
 	/**
 	 * Dropdown menu accessibility
