@@ -19,6 +19,7 @@
 		"no-jquery/no-parse-html-literal": "warn",
 		"no-jquery/no-slide": "warn",
 		"no-jquery/no-sizzle": "warn",
-		"valid-jsdoc": "off"
+		"valid-jsdoc": "off",
+		"no-jquery/no-extend": "warn"
 	}
 }
