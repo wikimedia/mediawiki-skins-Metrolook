@@ -28,7 +28,7 @@
 	 */
 	$.fn.collapsibleTabs = function ( options ) {
 		// Merge options into the defaults
-		var settings = $.extend( {}, $.collapsibleTabs.defaults, options );
+		var settings = Object.assign( {}, $.collapsibleTabs.defaults, options );
 
 		// return if the function is called on an empty jquery object
 		if ( !this.length ) {

@@ -20,6 +20,7 @@
 		"no-jquery/no-slide": "warn",
 		"no-jquery/no-sizzle": "warn",
 		"valid-jsdoc": "off",
-		"no-jquery/no-extend": "warn"
+		"no-jquery/no-extend": "warn",
+		"es-x/no-object-assign": "warn"
 	}
 }
