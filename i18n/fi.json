@@ -5,11 +5,13 @@
 			"Korjaus1",
 			"McSalama",
 			"Pitke",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Samoasambia"
 		]
 	},
 	"metrolook-desc": "Metrolook on Metro-designkuvailukielen innoittama versio Vektori-ulkoasusta",
 	"skinmetrolook-collapsiblenav-preference": "Mahdollista sivupalkin kohteiden piilottaminen Metrolook-ulkoasussa",
 	"metrolook-guest": "Vieras",
+	"metrolook-jump-to-navigation": "Siirry navigaatioon",
 	"metrolook-jump-to-search": "Siirry hakuun"
 }
