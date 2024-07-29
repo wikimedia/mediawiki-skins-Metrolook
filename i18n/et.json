@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jack Phoenix",
 			"Snowstormer"
 		]
 	},
-	"metrolook-guest": "Külaline"
+	"metrolook-guest": "Külaline",
+	"metrolook-jump-to-navigation": "Mine navigeerimisribale",
+	"metrolook-jump-to-search": "Mine otsikasti"
 }
