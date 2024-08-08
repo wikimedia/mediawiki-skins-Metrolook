@@ -2,10 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Macofe"
+			"Macofe",
+			"Jack Phoenix"
 		]
 	},
 	"metrolook-desc": "Metrolook es una apariencia derivada de Vector [https://en.wikipedia.org/wiki/Metro_(design_language) inspirada en Metro]",
 	"skinmetrolook-collapsiblenav-preference": "Permitir plegar los elementos de la barra lateral en la apariencia Metrolook",
-	"metrolook-guest": "Invitado"
+	"metrolook-guest": "Invitado",
+	"metrolook-jump-to-navigation": "Ir a la navegación",
+	"metrolook-jump-to-search": "Ir a la búsqueda"
 }
