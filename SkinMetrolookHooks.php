@@ -9,7 +9,6 @@
 
 use MediaWiki\Config\Config;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
-use MediaWiki\Output\Hook\MakeGlobalVariablesScriptHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
@@ -18,8 +17,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 class SkinMetrolookHooks implements
 	BeforePageDisplayHook,
 	GetPreferencesHook,
-	ResourceLoaderGetConfigVarsHook,
-	MakeGlobalVariablesScriptHook
+	ResourceLoaderGetConfigVarsHook
 {
 	private array $metrolookFeatures;
 	private UserOptionsLookup $userOptionsLookup;
@@ -161,20 +159,5 @@ class SkinMetrolookHooks implements
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
 		}
-	}
-
-	/**
-	 * @param array &$vars
-	 * @param OutputPage $out OutputPage which called the hook, can be used to get the real title
-	 * @return void This hook must not abort, it must return no value
-	 */
-	public function onMakeGlobalVariablesScript( &$vars, $out ): void {
-		// Build and export old-style wgMetrolookEnabledModules object for back compat
-		$enabledModules = [];
-		foreach ( self::$features as $name => $feature ) {
-			$enabledModules[$name] = $this->isEnabled( $name );
-		}
-
-		$vars['wgMetrolookEnabledModules'] = $enabledModules;
 	}
 }
