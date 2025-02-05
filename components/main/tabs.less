@@ -42,8 +42,7 @@ div.vectorTabs {
 			/* @noflip */
 			float: left;
 			line-height: 14px;
-			/* For IE6, overridden later to display:block by modern browsers */
-			display: inline-block;
+			display: block;
 			height: 100%;
 			margin: 0;
 			padding: 0;
@@ -61,11 +60,6 @@ div.vectorTabs {
 			.metrolook-nav-directionality & {
 				float: left;
 			}
-		}
-
-		/* IGNORED BY IE6 which doesn't support child selector */
-		> li {
-			display: block;
 		}
 	}
 
@@ -95,8 +89,7 @@ div.vectorTabs {
 		}
 
 		a {
-			/* For IE6, overridden later to display:block by modern browsers */
-			display: inline-block;
+			display: block;
 			height: 2.1em;
 			padding-left: 0.8em;
 			padding-right: 0.8em;
@@ -104,11 +97,6 @@ div.vectorTabs {
 			cursor: pointer;
 			font-size: 0.8em;
 			text-decoration: none;
-		}
-
-		/* Ignored by IE6 which doesn't support child selector */
-		> a {
-			display: block;
 		}
 	}
 
@@ -122,17 +110,11 @@ div.vectorTabs {
 		background-position: bottom right;
 		background-repeat: no-repeat;
 
-		a  {
-			/* For IE6, overridden later to display:block by modern browsers */
-			display: inline-block;
-			padding-top: 1em;
-		}
-
-		/* Ignored by IE6 which doesn't support child selector */
-		> a {
+		a {
 			/* @noflip */
 			float: left;
 			display: block;
+			padding-top: 1em;
 
 			.metrolook-nav-directionality & {
 				float: left;
@@ -244,7 +226,7 @@ div.vectorMenu li {
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
 div.vectorMenu li a {
-	display: inline-block;
+	display: block;
 	padding: 0.5em;
 	padding-left: 1em;
 	padding-right: 2.5em;
@@ -257,34 +239,11 @@ div.vectorMenu li a {
 div.vectorMenu li a:hover {
 	background-color: #f3f3f3;
 }
-/* IGNORED BY IE6 */
-div.vectorMenu li > a {
-	display: block;
-}
 
 div.vectorMenu li.selected a,
 div.vectorMenu li.selected a:visited {
 	color: #333;
 	text-decoration: none;
-}
-
-// Expand vectorMenu as basic tabs in IE6
-// (IE6 doesn't support :hover on DIV)
-* html div.vectorMenu div.menu {
-	display: block;
-	position: static;
-	border: 0;
-}
-* html #mw-head div.vectorMenu h5 {
-	display: none;
-}
-* html div.vectorMenu li {
-	float: left;
-	line-height: 1.125em;
-	border-right: 1px solid #a7d7f9;
-}
-* html div.vectorMenu li a {
-	padding-top: 1.25em;
 }
 
 @import 'watchstar.less';

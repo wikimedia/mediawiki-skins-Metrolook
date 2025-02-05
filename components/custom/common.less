@@ -3,11 +3,7 @@
  * prepended with @noflip in a comment block.
  *
  * This stylesheet employs a few CSS trick to accomplish compatibility with a wide range of web
- * browsers. The most common trick is to use some styles in IE6 only. This is accomplished by using
- * a rule that makes things work in IE6, and then following it with a rule that begins with
- * "html > body" or use a child selector ">", which is ignored by IE6 because it does not support
- * the child selector. You can spot this by looking for the "OVERRIDDEN BY COMPLIANT BROWSERS" and
- * "IGNORED BY IE6" comments.
+ * browsers.
  */
 @import 'mediawiki.mixins.less';
 
@@ -15,6 +11,7 @@
 html {
 	font-size: @html-font-size;
 }
+
 html,
 body {
 	height: 100%;
@@ -22,6 +19,7 @@ body {
 	padding: 0;
 	font-family: @content-font-family;
 }
+
 body {
 	background-color: #f3f3f3;
 }
