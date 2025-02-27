@@ -5,12 +5,13 @@
 			"Otokoume",
 			"Shirayuki",
 			"Yusuke1109",
-			"しぃ"
+			"しぃ",
+			"Yaakiyu.jp"
 		]
 	},
 	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolookは、[https://ja.wikipedia.org/wiki/Modern_UI Metro (Modern UI)]の影響を受けたベクター外装のフォークです",
-	"skinmetrolook-collapsiblenav-preference": "Metrolook外装のナビゲーションで、項目の折り畳みを有効にする",
+	"skinmetrolook-collapsiblenav-preference": "Metrolookスキンのナビゲーションで、項目の折り畳みを有効にする",
 	"metrolook-guest": "ゲスト",
 	"metrolook-jump-to-navigation": "ナビゲーションに移動",
 	"metrolook-jump-to-search": "検索に移動"
