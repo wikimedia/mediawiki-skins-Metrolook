@@ -165,8 +165,7 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 		}
 
-		$this->data['pageLanguage'] =
-			$skin->getTitle()->getPageViewLanguage()->getHtmlCode();
+		$this->data['pageLanguage'] = $skin->getTitle()->getPageLanguage()->getHtmlCode();
 
 		// User name (or "Guest") to be displayed at the top right (on LTR
 		// interfaces) portion of the skin
