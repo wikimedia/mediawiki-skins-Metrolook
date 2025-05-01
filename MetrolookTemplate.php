@@ -70,6 +70,9 @@ class MetrolookTemplate extends BaseTemplate {
 				continue;
 			} else {
 				$line = explode( '|', trim( $line, '* ' ), 3 );
+				if ( sizeof( $line ) < 3 ) {
+					return;
+				}
 				$siteURL = $line[0];
 				$altText = $line[1];
 
