@@ -39,7 +39,7 @@ class MetrolookTemplate extends BaseTemplate {
 
 	/**
 	 * @param string $messageName
-	 * @return string
+	 * @return string|void
 	 */
 	private function getTiles( $messageName = 'metrolook-tiles' ) {
 		/**
@@ -66,6 +66,9 @@ class MetrolookTemplate extends BaseTemplate {
 				continue;
 			} else {
 				$line = explode( '|', trim( $line, '* ' ), 3 );
+				if ( count( $line ) < 3 ) {
+					return;
+				}
 				$siteURL = $line[0];
 				$altText = $line[1];
 
