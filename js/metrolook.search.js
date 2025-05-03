@@ -1,6 +1,6 @@
 ( function () {
 	if ( mw.config.get( 'wgMetrolookSearch' ) ) {
-		$( function () {
+		$( () => {
 
 			function isTouchDevice() {
 				return !!( 'ontouchstart' in window );
@@ -11,10 +11,10 @@
 			}
 
 			/* This is here to fix js issue with iPad (all models) */
-			$( function () {
+			$( () => {
 				if ( isTouchDevice() && isMobileUserAgent() ) {
 					$( '#p-search' ).hide();
-					$( 'img.searchbar' ).on( 'click', function ( e ) {
+					$( 'img.searchbar' ).on( 'click', ( e ) => {
 						$( '#p-search' ).fadeToggle( 150 );
 						$( '.clicker' ).toggleClass( 'active' );
 						e.stopPropagation();

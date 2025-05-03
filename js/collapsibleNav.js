@@ -3,11 +3,11 @@
  */
 ( function () {
 	'use strict';
-	var map;
+	let map;
 
 	// Use the same function for all navigation headings - don't repeat
 	function toggle( $element ) {
-		var isCollapsed = $element.parent().is( '.collapsed' );
+		let isCollapsed = $element.parent().is( '.collapsed' );
 
 		mw.cookie.set(
 			'metrolook-nav-' + $element.parent().attr( 'id' ),
@@ -59,7 +59,7 @@
 	}
 
 	function executeMain( $ ) {
-		var $headings;
+		let $headings;
 
 		/* General Portal Modification */
 
@@ -68,7 +68,7 @@
 		// Use cookie data to restore preferences of what to show and hide
 		$( '#mw-panel > .portal:not(.persistent)' )
 			.each( function ( i ) {
-				var id = $( this ).attr( 'id' ),
+				const id = $( this ).attr( 'id' ),
 					state = mw.cookie.get( 'metrolook-nav-' + id );
 				$( this ).find( 'ul:first' ).attr( 'id', id + '-list' );
 				// Add anchor tag to heading for better accessibility
@@ -139,8 +139,8 @@
 			} );
 	}
 
-	$( function ( $ ) {
-		mw.hook( 'wikipage.content' ).add( function () {
+	$( ( $ ) => {
+		mw.hook( 'wikipage.content' ).add( () => {
 			executeMain( $ );
 		} );
 	} );

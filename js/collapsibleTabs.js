@@ -5,7 +5,7 @@
  * @class jQuery.plugin.collapsibleTabs
  */
 ( function () {
-	var boundEvent,
+	let boundEvent,
 		isRTL = document.documentElement.dir === 'rtl';
 
 	/**
@@ -28,7 +28,7 @@
 	 */
 	$.fn.collapsibleTabs = function ( options ) {
 		// Merge options into the defaults
-		var settings = Object.assign( {}, $.collapsibleTabs.defaults, options );
+		const settings = Object.assign( {}, $.collapsibleTabs.defaults, options );
 
 		// return if the function is called on an empty jquery object
 		if ( !this.length ) {
@@ -36,7 +36,7 @@
 		}
 
 		this.each( function () {
-			var $el = $( this );
+			const $el = $( this );
 			// add the element to our array of collapsible managers
 			$.collapsibleTabs.instances.push( $el );
 			// attach the settings to the elements
@@ -50,7 +50,7 @@
 		// if we haven't already bound our resize handler, bind it now
 		if ( !boundEvent ) {
 			boundEvent = true;
-			$( window ).on( 'resize', mw.util.debounce( 100, function () {
+			$( window ).on( 'resize', mw.util.debounce( 100, () => {
 				requestAnimationFrame( $.collapsibleTabs.handleResize );
 			} ) );
 		}
@@ -77,7 +77,7 @@
 			}
 		},
 		addData: function ( $collapsible ) {
-			var settings = $collapsible.parent().data( 'collapsibleTabsSettings' );
+			const settings = $collapsible.parent().data( 'collapsibleTabsSettings' );
 			if ( settings ) {
 				$collapsible.data( 'collapsibleTabsSettings', {
 					expandedContainer: settings.expandedContainer,
@@ -87,7 +87,7 @@
 			}
 		},
 		getSettings: function ( $collapsible ) {
-			var settings = $collapsible.data( 'collapsibleTabsSettings' );
+			let settings = $collapsible.data( 'collapsibleTabsSettings' );
 			if ( !settings ) {
 				$.collapsibleTabs.addData( $collapsible );
 				settings = $collapsible.data( 'collapsibleTabsSettings' );
@@ -95,8 +95,8 @@
 			return settings;
 		},
 		handleResize: function () {
-			$.each( $.collapsibleTabs.instances, function ( i, $el ) {
-				var data = $.collapsibleTabs.getSettings( $el );
+			$.each( $.collapsibleTabs.instances, ( i, $el ) => {
+				const data = $.collapsibleTabs.getSettings( $el );
 				if ( data.shifting ) {
 					return;
 				}
@@ -121,7 +121,7 @@
 			} );
 		},
 		moveToCollapsed: function ( $moving ) {
-			var outerData, expContainerSettings, target;
+			let outerData, expContainerSettings, target;
 
 			outerData = $.collapsibleTabs.getSettings( $moving );
 			if ( !outerData ) {
@@ -148,7 +148,7 @@
 				} );
 		},
 		moveToExpanded: function ( ele ) {
-			var data, expContainerSettings, $target, expandedWidth,
+			let data, expContainerSettings, $target, expandedWidth,
 				$moving = $( ele );
 
 			data = $.collapsibleTabs.getSettings( $moving );
@@ -172,7 +172,7 @@
 					.data( 'collapsibleTabsSettings', data )
 					.animate( { width: expandedWidth + 'px' }, 'normal', function () {
 						$( this ).attr( 'style', 'display: block;' );
-						requestAnimationFrame( function () {
+						requestAnimationFrame( () => {
 						// Update the 'expandedWidth' in case someone was brazen enough to change the tab's
 						// contents after the page load *gasp* (T71729). This doesn't prevent a tab from
 						// collapsing back and forth once, but at least it won't continue to do that forever.
@@ -196,7 +196,7 @@
 		 * @return {number} distance/overlap in pixels
 		 */
 		calculateTabDistance: function () {
-			var leftTab, rightTab, leftEnd, rightStart;
+			let leftTab, rightTab, leftEnd, rightStart;
 
 			// In RTL, #right-navigation is actually on the left and vice versa.
 			// Hooray for descriptive naming.

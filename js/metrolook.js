@@ -1,6 +1,6 @@
 ( function () {
-	$( function () {
-		var openDiv;
+	$( () => {
+		let openDiv;
 
 		function toggleDiv( divID ) {
 			$( '#' + divID ).fadeToggle( 150, function () {
@@ -8,7 +8,7 @@
 			} );
 		}
 
-		$( document ).on( 'click', function ( e ) {
+		$( document ).on( 'click', ( e ) => {
 			if ( !$( e.target ).closest( '#' + openDiv ).length ) {
 				toggleDiv( openDiv );
 			}
@@ -22,11 +22,11 @@
 			return !!( /mobi|alcatel|Android|android|kindle|webOS|webos|iPhone|iPad|iPod|Tablet|PlayBook|Wii|Silk|BlackBerry|playstation|phone|nintendo|htc[-_]|IEMobile|CriOS|Opera Mini|opera.m|palm|panasonic|philips|samsung|Mobile|mobile/i.test( navigator.userAgent ) );
 		}
 
-		$( function () {
+		$( () => {
 			if ( isTouchDevice() && isMobileUserAgent() ) {
 				$( '#usermenu > div' ).toggleClass( 'no-js js' );
 				$( '#usermenu .js div' ).hide();
-				$( '#usermenu .js' ).on( 'click', function ( e ) {
+				$( '#usermenu .js' ).on( 'click', ( e ) => {
 					$( '#usermenu .js div' ).fadeToggle( 150 );
 					$( '#usermenu' ).toggleClass( 'active' );
 					e.stopPropagation();
@@ -34,7 +34,7 @@
 
 				$( '.actionmenu > div' ).toggleClass( 'no-js js' );
 				$( '.actionmenu .js div' ).hide();
-				$( '.actionmenu .js' ).on( 'click', function ( e ) {
+				$( '.actionmenu .js' ).on( 'click', ( e ) => {
 					$( '.actionmenu .js div' ).fadeToggle( 150 );
 					$( '.clicker' ).toggleClass( 'active' );
 					e.stopPropagation();
@@ -87,7 +87,7 @@
 			// This improves usability especially on lower-end mobile devices with
 			// smaller screens.
 			// Fixes https://phabricator.wikimedia.org/T105785
-			$( '#tilegroup' ).not( '.tile-wrapper' ).on( 'click', function () {
+			$( '#tilegroup' ).not( '.tile-wrapper' ).on( 'click', () => {
 				if ( $( '#bartile' ).is( ':visible' ) ) {
 					toggleDiv( 'bartile' );
 				}

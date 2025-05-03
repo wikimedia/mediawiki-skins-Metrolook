@@ -1,16 +1,16 @@
 /**
  * Metrolook-specific scripts
  */
-$( function () {
+$( () => {
 
 	/**
 	 * Collapsible tabs
 	 */
-	var $cactions = $( '#p-cactions' ),
+	let $cactions = $( '#p-cactions' ),
 		$tabContainer = $( '#p-views ul' ),
 		// Avoid forced style calculation during page load
 		initialCactionsWidth = function () {
-			var width = $cactions.width();
+			const width = $cactions.width();
 			initialCactionsWidth = function () {
 				return width;
 			};
@@ -23,21 +23,21 @@ $( function () {
 	 * Dropdown menu accessibility
 	 */
 	$( 'div.vectorMenu' ).each( function () {
-		var $el = $( this );
+		const $el = $( this );
 		$el.find( '> h5 > span' ).parent()
 			.attr( 'tabindex', '0' )
 			// For accessibility, show the menu when the h3 is clicked (bug 24298/46486)
-			.on( 'click keypress', function ( e ) {
+			.on( 'click keypress', ( e ) => {
 				if ( e.type === 'click' || e.which === 13 ) {
 					$el.toggleClass( 'menuForceShow' );
 					e.preventDefault();
 				}
 			} )
 			// When the heading has focus, also set a class that will change the arrow icon
-			.on( 'focus', function () {
+			.on( 'focus', () => {
 				$el.addClass( 'vectorMenuFocus' );
 			} )
-			.on( 'blur', function () {
+			.on( 'blur', () => {
 				$el.removeClass( 'vectorMenuFocus' );
 			} );
 	} );
@@ -45,7 +45,7 @@ $( function () {
 	// Bind callback functions to animate our drop down menu in and out
 	// and then call the collapsibleTabs function on the menu
 	$tabContainer
-		.on( 'beforeTabCollapse', function () {
+		.on( 'beforeTabCollapse', () => {
 			// If the dropdown was hidden, show it
 			if ( $cactions.hasClass( 'emptyPortlet' ) ) {
 				$cactions.removeClass( 'emptyPortlet' );
@@ -54,7 +54,7 @@ $( function () {
 					.animate( { width: initialCactionsWidth() }, 'normal' );
 			}
 		} )
-		.on( 'beforeTabExpand', function () {
+		.on( 'beforeTabExpand', () => {
 			// If we're removing the last child node right now, hide the dropdown
 			if ( $cactions.find( 'li' ).length === 1 ) {
 				$cactions.find( 'h5' ).animate( { width: '1px' }, 'normal', function () {
@@ -67,7 +67,7 @@ $( function () {
 			expandCondition: function ( eleWidth ) {
 				// (This looks a bit awkward because we're doing expensive queries as late as possible.)
 
-				var distance = $.collapsibleTabs.calculateTabDistance();
+				const distance = $.collapsibleTabs.calculateTabDistance();
 				// If there are at least eleWidth + 1 pixels of free space, expand.
 				// We add 1 because .width() will truncate fractional values but .offset() will not.
 				if ( distance >= eleWidth + 1 ) {

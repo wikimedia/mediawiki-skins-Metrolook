@@ -1,6 +1,6 @@
-$( function () {
+$( () => {
 	/* Add offset when scrolling to an anchor from a table of contents link */
-	var dest,
+	let dest,
 		headerHeight = $( 'div.vectorMenu#usermenu' ).height() + 10,
 		// Split hash
 		hash;
