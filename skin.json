@@ -13,7 +13,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.41.0"
+		"MediaWiki": ">= 1.43.0"
 	},
 	"DefaultUserOptions": {
 		"skinmetrolook-collapsiblenav": 1
@@ -66,7 +66,6 @@
 				"interface-category": true,
 				"content-tables": true,
 				"i18n-ordered-lists": true,
-				"i18n-all-lists-margins": true,
 				"i18n-headings": true,
 				"elements": true,
 				"interface": true,
