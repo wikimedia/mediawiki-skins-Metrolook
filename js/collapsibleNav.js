@@ -140,8 +140,11 @@
 	}
 
 	$( function ( $ ) {
-		mw.hook( 'wikipage.content' ).add( function () {
-			executeMain( $ );
+		mw.hook( 'wikipage.content' ).add( function ( $content ) {
+			// T394529: only call executeMain once when the main content of the page is loaded
+			if ( $content && $content.attr( 'id' ) === 'mw-content-text' ) {
+				executeMain( $ );
+			}
 		} );
 	} );
 }() );
