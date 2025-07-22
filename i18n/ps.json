@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"شاه زمان پټان"
 		]
 	},
 	"metrolook-desc": "مېټرولوک د وېکټور پوښۍ يوه [https://en.wikipedia.org/wiki/Metro_(design_language) مېټرو-الهامي] پوښۍ ده",
-	"metrolook-guest": "مېلمه"
+	"skinmetrolook-collapsiblenav-preference": "د مېترولوک پوښۍ څنگپټه کې د توکو پرځېدو چارنول",
+	"metrolook-guest": "مېلمه",
+	"metrolook-jump-to-navigation": "چلند ته ورتلل",
+	"metrolook-jump-to-search": "پلټنې ته ورتلل"
 }
