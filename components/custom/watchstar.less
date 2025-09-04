@@ -1,5 +1,3 @@
-@import 'mediawiki.mixins.rotation.less';
-
 /* Watch/Unwatch Icon Styling */
 #ca-unwatch.icon a,
 #ca-watch.icon a {
@@ -34,16 +32,26 @@
 #ca-unwatch.icon a.loading,
 #ca-watch.icon a.loading {
 	background-image: url( images/watch-icon-loading.svg );
-	.rotation(700ms);
 	/* Suppress the hilarious rotating focus outline on Firefox */
 	outline: none;
 	cursor: default;
 	pointer-events: none;
 	background-position: 50% 60%;
+	animation: rotate 700ms infinite linear;
 	-webkit-transform-origin: 50% 57%;
 	transform-origin: 50% 57%;
 }
 #ca-unwatch.icon a span,
 #ca-watch.icon a span {
 	display: none;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate( 0deg );
+	}
+
+	to {
+		transform: rotate( 360deg );
+	}
 }
