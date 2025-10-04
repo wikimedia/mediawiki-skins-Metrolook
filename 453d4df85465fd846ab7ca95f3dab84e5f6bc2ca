@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc051ac_47d459b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7772
+      },
+      "writtenOn": "2025-10-04T17:17:05Z",
+      "side": 1,
+      "message": "Please merge and backport to MW 1.43.",
+      "revId": "453d4df85465fd846ab7ca95f3dab84e5f6bc2ca",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    }
+  ]
+}
