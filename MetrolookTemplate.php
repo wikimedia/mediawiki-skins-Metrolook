@@ -169,7 +169,18 @@ class MetrolookTemplate extends BaseTemplate {
 			}
 		}
 
-		$this->data['pageLanguage'] = $skin->getTitle()->getPageLanguage()->getHtmlCode();
+		// Prefer the OutputPage language for the page view language (avoids
+		// using deprecated Title::getPageViewLanguage()). Fall back to the
+		// title's page language if OutputPage isn't available.
+		$output = $skin->getOutput();
+		if ( $output ) {
+			$lang = $output->getLanguage();
+		} else {
+			// Legacy fallback, should be safe if Title still exposes getPageLanguage()
+			// (but avoid calling deprecated getPageViewLanguage()).
+			$lang = $skin->getTitle() ? $skin->getTitle()->getPageLanguage() : null;
+		}
+		$this->data['pageLanguage'] = $lang ? $lang->getHtmlCode() : '';
 
 		// User name (or "Guest") to be displayed at the top right (on LTR
 		// interfaces) portion of the skin
