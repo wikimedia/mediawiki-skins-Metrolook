@@ -16,6 +16,23 @@
       "message": "Please merge and backport to MW 1.43.",
       "revId": "453d4df85465fd846ab7ca95f3dab84e5f6bc2ca",
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98cebda9_6258f661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2025-10-06T16:15:04Z",
+      "side": 1,
+      "message": "This isn\u0027t needed? Title::getPageViewLanguage was replaced in https://gerrit.wikimedia.org/r/c/mediawiki/skins/Metrolook/+/1134366",
+      "revId": "453d4df85465fd846ab7ca95f3dab84e5f6bc2ca",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
     }
   ]
 }
