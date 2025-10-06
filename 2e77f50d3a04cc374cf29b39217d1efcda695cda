@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949bb9bd_1279b12f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2025-10-06T17:45:05Z",
+      "side": 1,
+      "message": "No CI as MW 1.42 is EOL",
+      "revId": "2e77f50d3a04cc374cf29b39217d1efcda695cda",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    }
+  ]
+}
