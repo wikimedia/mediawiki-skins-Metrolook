@@ -19,7 +19,7 @@
 		"skinmetrolook-collapsiblenav": 1
 	},
 	"ConfigRegistry": {
-		"metrolook": "GlobalVarConfig::newInstance"
+		"metrolook": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"ValidSkinNames": {
 		"metrolook": {
