@@ -9,5 +9,7 @@
 	"metrolook.css": "/* Allt CSS sem sett er hér mun  hafa áhrif á alla notendur Metrolook-skinnsins. */",
 	"metrolook.js": "/* Allt JavaScript sem sett er hér mun hafa áhrif á notendur Metrolook-skinnsins. */",
 	"skinmetrolook-collapsiblenav-preference": "Leyfa samfellingu atriða á hliðarspjaldinu í Metrolook-skinninu",
-	"metrolook-guest": "Gestur"
+	"metrolook-guest": "Gestur",
+	"metrolook-jump-to-navigation": "Fara í flakk",
+	"metrolook-jump-to-search": "Fara í leit"
 }
