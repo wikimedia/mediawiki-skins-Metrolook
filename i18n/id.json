@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Daud I.F. Argana",
+			"Penyuwangi",
 			"William Surya Permana"
 		]
 	},
 	"metrolook-desc": "Metrolook adalah sebuah pencabangan dari kulit Vector yang [https://en.wikipedia.org/wiki/Metro_(design_language)  terinspirasi Metro]",
-	"skinmetrolook-collapsiblenav-preference": "Aktifkan penciutan butir pada bilah sisi di kulit Metrolook",
+	"skinmetrolook-collapsiblenav-preference": "Nyalakan penciutan butir pada bilah sisi di kulit Metrolook",
 	"metrolook-guest": "Tamu",
 	"metrolook-jump-to-navigation": "Loncat ke navigasi",
 	"metrolook-jump-to-search": "Loncat ke pencarian"
