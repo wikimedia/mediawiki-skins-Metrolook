@@ -7,6 +7,6 @@
 	"metrolook-desc": "Metrolook là một giao diện dựa trên Vectơ mà phỏng theo [https://en.wikipedia.org/wiki/Metro_(design_language) Metro]",
 	"metrolook.css": "/* Mã CSS tại đây sẽ ảnh hưởng đến những người dùng sử dụng giao diện Metrolook */",
 	"metrolook.js": "/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng giao diện Metrolook */",
-	"skinmetrolook-collapsiblenav-preference": "Bật trình đơn chuyển hướng gấp lại được ở bên phải trong giao diện Metrolook",
+	"skinmetrolook-collapsiblenav-preference": "Bật bảng chọn chuyển hướng gấp lại được ở bên phải trong giao diện Metrolook",
 	"metrolook-guest": "Khách"
 }
