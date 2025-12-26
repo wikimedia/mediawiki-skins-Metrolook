@@ -20,14 +20,12 @@ class SkinMetrolookHooks implements
 	ResourceLoaderGetConfigVarsHook
 {
 	private array $metrolookFeatures;
-	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		Config $config,
-		UserOptionsLookup $userOptionsLookup
+		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		$this->metrolookFeatures = $config->get( 'MetrolookFeatures' );
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/* Protected Static Members */

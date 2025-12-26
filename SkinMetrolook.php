@@ -38,23 +38,16 @@ class SkinMetrolook extends SkinTemplate {
 	/** @var string */
 	public $template = 'MetrolookTemplate';
 
-	private Config $metrolookConfig;
-	private HookContainer $hookContainer;
+	private readonly Config $metrolookConfig;
 
-	/**
-	 * @param ConfigFactory $configFactory
-	 * @param HookContainer $hookContainer
-	 * @param array $options
-	 */
 	public function __construct(
 		ConfigFactory $configFactory,
-		HookContainer $hookContainer,
-		$options
+		private readonly HookContainer $hookContainer,
+		array $options,
 	) {
 		$options['bodyOnly'] = true;
 		parent::__construct( $options );
 		$this->metrolookConfig = $configFactory->makeConfig( 'metrolook' );
-		$this->hookContainer = $hookContainer;
 	}
 
 	/** @inheritDoc */
