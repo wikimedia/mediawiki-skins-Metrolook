@@ -19,15 +19,13 @@ class SkinMetrolookHooks implements
 	GetPreferencesHook,
 	ResourceLoaderGetConfigVarsHook
 {
-	private array $metrolookFeatures;
-	private UserOptionsLookup $userOptionsLookup;
+	private readonly array $metrolookFeatures;
 
 	public function __construct(
 		Config $config,
-		UserOptionsLookup $userOptionsLookup
+		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		$this->metrolookFeatures = $config->get( 'MetrolookFeatures' );
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/* Protected Static Members */
