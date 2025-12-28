@@ -499,7 +499,7 @@ class MetrolookTemplate extends BaseTemplate {
 							Title::newMainPage()->getFullURL()
 						)
 						?>" <?php
-						echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
+						echo Html::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) )
 						?>></a></div>
 				<?php
 				}
