@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0742db19_e58dc2a9",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 11926
+      },
+      "writtenOn": "2026-01-23T16:17:38Z",
+      "side": 1,
+      "message": "should be directly after `$item[\u0027class\u0027]` (within the parentheses)",
+      "range": {
+        "startLine": 851,
+        "startChar": 56,
+        "endLine": 851,
+        "endChar": 61
+      },
+      "revId": "65b2b42bc1d0d675828cade3b69d7ce37524f640",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3121ecc6_eadceff3",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 4
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 11926
+      },
+      "writtenOn": "2026-01-23T16:17:38Z",
+      "side": 1,
+      "message": "should be directly after `$item[\u0027class\u0027]` (within the parentheses)",
+      "range": {
+        "startLine": 857,
+        "startChar": 63,
+        "endLine": 857,
+        "endChar": 68
+      },
+      "revId": "65b2b42bc1d0d675828cade3b69d7ce37524f640",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    }
+  ]
+}
