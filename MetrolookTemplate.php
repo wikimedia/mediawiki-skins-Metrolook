@@ -848,13 +848,13 @@ class MetrolookTemplate extends BaseTemplate {
 			$this->config->get( 'MetrolookUseIconWatch' )
 			&& ( $key === 'watch' || $key === 'unwatch' )
 		) {
-			$item['class'] = rtrim( 'icon ' . $item['class'], ' ' );
+			$item['class'] = rtrim( 'icon ' . ( $item['class'] ?? '' ), ' ' );
 			$item['primary'] = true;
 		}
 		// Add CSS class 'collapsible' to links which are not marked as "primary"
 		if (
 			isset( $options['metrolook-collapsible'] ) && $options['metrolook-collapsible'] ) {
-			$item['class'] = rtrim( 'collapsible ' . $item['class'], ' ' );
+			$item['class'] = rtrim( 'collapsible ' . ( $item['class'] ?? '' ), ' ' );
 		}
 		return $this->getSkin()->makeListItem( $key, $item, $options );
 	}
