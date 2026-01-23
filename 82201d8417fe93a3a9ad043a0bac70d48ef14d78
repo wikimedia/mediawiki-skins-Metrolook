@@ -24,6 +24,30 @@
       "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e155872e_1ce38218",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2026-01-23T15:57:46Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "8b3bc7a7_92d88533",
+      "range": {
+        "startLine": 851,
+        "startChar": 30,
+        "endLine": 851,
+        "endChar": 32
+      },
+      "revId": "82201d8417fe93a3a9ad043a0bac70d48ef14d78",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a67c97e0_3132b3e9",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-23T15:57:02Z",
       "side": 1,
       "message": "closing `)` missing",
+      "range": {
+        "startLine": 859,
+        "startChar": 30,
+        "endLine": 859,
+        "endChar": 31
+      },
+      "revId": "82201d8417fe93a3a9ad043a0bac70d48ef14d78",
+      "serverId": "e9e9afe9-4712-486d-8885-f54b72dd1951"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "323d8495_99507670",
+        "filename": "MetrolookTemplate.php",
+        "patchSetId": 2
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1665
+      },
+      "writtenOn": "2026-01-23T15:57:46Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "a67c97e0_3132b3e9",
       "range": {
         "startLine": 859,
         "startChar": 30,
