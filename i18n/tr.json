@@ -3,10 +3,15 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"Joseph",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"HakanIST"
 		]
 	},
+	"metrolook-prefs-talkpage": "[[mw:Skin talk:Metrolook|{{int:talk}}]]",
+	"skinname-metrolook": "Metrolook",
 	"metrolook-desc": "Metrolook, Vektör görünümün bir [https://tr.wikipedia.org/wiki/Metro_(tasarım_dili) Metrodan ilham alan] çatalı",
+	"metrolook.css": "/* All CSS here will be loaded for users of the Metrolook skin */",
+	"metrolook.js": "/* All JavaScript here will be loaded for users of the Metrolook skin */",
 	"skinmetrolook-collapsiblenav-preference": "Metrolook görünümünde kenar çubuğundaki öğelerin daraltılmasını etkinleştir",
 	"metrolook-guest": "Misafir",
 	"metrolook-jump-to-navigation": "Gezinti kısmına atla",
