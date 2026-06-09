@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"metrolook-prefs-talkpage": "[[mw:Skin talk:Metrolook|{{int:talk}}]]",
+	"skinname-metrolook": "Metrolook",
+	"metrolook-desc": "Metrolook je [https://en.wikipedia.org/wiki/Metro_(design_language) Metrom inšpirovaný] fork témy Vector",
+	"metrolook.css": "/* CSS umiestnené tu sa načíta používateľom témy vzhľadu Metrolook */",
+	"metrolook.js": "/* JavaScript umiestnený tu sa načíta používateľom témy vzhľadu Metrolook */",
+	"skinmetrolook-collapsiblenav-preference": "Povoliť zbaľovanie položiek v bočnom paneli témy Metrolook",
+	"metrolook-guest": "Hosť",
+	"metrolook-jump-to-navigation": "Skočiť na navigáciu",
+	"metrolook-jump-to-search": "Skočiť na vyhľadávanie"
+}
