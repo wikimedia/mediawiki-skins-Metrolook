@@ -4,6 +4,9 @@
 			"Bachounda"
 		]
 	},
-	"metrolook-desc": "Metrolook skin for MediaWiki",
-	"metrolook-guest": "ضيف"
+	"metrolook-desc": "Metrolook هو نسخه مفرعه من سكين Vector مستوحاه من [https://en.wikipedia.org/wiki/Metro_(design_language) Metro]",
+	"skinmetrolook-collapsiblenav-preference": "فعّل طي العناصر في الشريط الجانبي في واجهة Metrolook",
+	"metrolook-guest": "ضيف",
+	"metrolook-jump-to-navigation": "أقفز للتصفح",
+	"metrolook-jump-to-search": "أقفز للبحث"
 }
