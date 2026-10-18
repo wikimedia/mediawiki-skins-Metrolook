@@ -132,10 +132,17 @@ class MetrolookTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		$skin = $this->getSkin();
-		$this->data['namespace_urls'] = $this->data['content_navigation']['namespaces'];
+		$this->data['namespace_urls'] = $this->data['content_navigation']['associated-pages'];
 		$this->data['view_urls'] = $this->data['content_navigation']['views'];
 		$this->data['action_urls'] = $this->data['content_navigation']['actions'];
 		$this->data['variant_urls'] = $this->data['content_navigation']['variants'];
+		$personalTools = array_merge(
+			$this->data['content_navigation']['user-interface-preferences'],
+			$this->data['content_navigation']['notifications'],
+			$this->data['content_navigation']['user-page'],
+			$this->data['content_navigation']['user-menu']
+		);
+		$this->data['personal_tools_urls'] = $personalTools;
 
 		// Move the watch/unwatch star outside of the collapsed "actions" menu to the main "views" menu
 		if ( $this->config->get( 'MetrolookUseIconWatch' ) ) {
@@ -149,8 +156,6 @@ class MetrolookTemplate extends BaseTemplate {
 				unset( $this->data['action_urls'][$mode] );
 			}
 		}
-
-		$personalTools = $this->getPersonalTools();
 
 		$langSelector = '';
 		if ( array_key_exists( 'uls', $personalTools ) ) {
@@ -765,7 +770,7 @@ class MetrolookTemplate extends BaseTemplate {
 				case 'PERSONAL':
 					?>
 					<div id="p-personal" role="navigation" class="<?php
-					if ( count( $this->data['personal_urls'] ) == 0 ) {
+					if ( count( $this->data['personal_tools_urls'] ) == 0 ) {
 						echo ' emptyPortlet';
 					}
 					?>" aria-labelledby="p-personal-label">
