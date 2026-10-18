@@ -27,7 +27,27 @@
 			"services": [
 				"ConfigFactory",
 				"HookContainer"
-			]
+			],
+			"args": [ {
+				"name": "metrolook",
+				"template": "MetrolookTemplate",
+				"bodyClasses": [
+					"metrolook-nav-directionality"
+				],
+				"scripts": [
+					"skins.metrolook.js"
+				],
+				"menus": [
+					"associated-pages",
+					"views",
+					"actions",
+					"variants",
+					"user-page",
+					"user-interface-preferences",
+					"notifications",
+					"user-menu"
+				]
+			} ]
 		}
 	},
 	"MessagesDirs": {

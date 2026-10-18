@@ -31,13 +31,6 @@ use MediaWiki\Output\OutputPage;
  * @ingroup Skins
  */
 class SkinMetrolook extends SkinTemplate {
-	/** @var string */
-	public $skinname = 'metrolook';
-	/** @var string */
-	public $stylename = 'Metrolook';
-	/** @var string */
-	public $template = 'MetrolookTemplate';
-
 	private readonly Config $metrolookConfig;
 
 	public function __construct(
@@ -45,7 +38,6 @@ class SkinMetrolook extends SkinTemplate {
 		private readonly HookContainer $hookContainer,
 		array $options,
 	) {
-		$options['bodyOnly'] = true;
 		parent::__construct( $options );
 		$this->metrolookConfig = $configFactory->makeConfig( 'metrolook' );
 	}
@@ -56,7 +48,6 @@ class SkinMetrolook extends SkinTemplate {
 		if ( $this->metrolookConfig->get( 'MetrolookExperimentalPrintStyles' ) ) {
 			$className .= ' metrolook-experimental-print-styles';
 		}
-		$className .= ' metrolook-nav-directionality';
 		return $className;
 	}
 
@@ -78,8 +69,6 @@ class SkinMetrolook extends SkinTemplate {
 			// skins.metrolook.styles and remove this module altogether.
 			$out->addModuleStyles( 'skins.metrolook.styles.experimental.print' );
 		}
-
-		$out->addModules( [ 'skins.metrolook.js' ] );
 	}
 
 	/**
